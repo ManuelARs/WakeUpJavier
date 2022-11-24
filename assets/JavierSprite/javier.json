@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "javier.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 876,
+				"h": 1416
+			},
+			"scale": 0.5,
+			"frames": [
+				{
+					"filename": "JavierD1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 144,
+						"y": 30,
+						"w": 222,
+						"h": 455
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 222,
+						"h": 455
+					}
+				},
+				{
+					"filename": "JavierD2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 68,
+						"y": 15,
+						"w": 324,
+						"h": 470
+					},
+					"frame": {
+						"x": 225,
+						"y": 1,
+						"w": 324,
+						"h": 470
+					}
+				},
+				{
+					"filename": "JavierD3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 166,
+						"y": 30,
+						"w": 222,
+						"h": 455
+					},
+					"frame": {
+						"x": 551,
+						"y": 1,
+						"w": 222,
+						"h": 455
+					}
+				},
+				{
+					"filename": "JavierD4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 89,
+						"y": 15,
+						"w": 324,
+						"h": 470
+					},
+					"frame": {
+						"x": 1,
+						"y": 473,
+						"w": 324,
+						"h": 470
+					}
+				},
+				{
+					"filename": "JavierI1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 134,
+						"y": 30,
+						"w": 222,
+						"h": 455
+					},
+					"frame": {
+						"x": 327,
+						"y": 473,
+						"w": 222,
+						"h": 455
+					}
+				},
+				{
+					"filename": "JavierI2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 108,
+						"y": 15,
+						"w": 324,
+						"h": 470
+					},
+					"frame": {
+						"x": 551,
+						"y": 473,
+						"w": 324,
+						"h": 470
+					}
+				},
+				{
+					"filename": "JavierI3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 112,
+						"y": 30,
+						"w": 222,
+						"h": 455
+					},
+					"frame": {
+						"x": 1,
+						"y": 945,
+						"w": 222,
+						"h": 455
+					}
+				},
+				{
+					"filename": "JavierI4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 87,
+						"y": 15,
+						"w": 324,
+						"h": 470
+					},
+					"frame": {
+						"x": 225,
+						"y": 945,
+						"w": 324,
+						"h": 470
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6a3fddd43d7d2ab8873fab4ae4536f7b:a127b04b9089126a5789c788878e4b99:702b9f853bec0ed64bc176858c3fe831$"
+	}
+}

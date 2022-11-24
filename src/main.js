@@ -1,5 +1,6 @@
 import Win from "./scenes/Win.js";
 import GameOver from "./scenes/GameOver.js";
+import NivelA from "./scenes/NivelA.js";
 import SceneA from "./scenes/SceneA.js";
 import SceneB from "./scenes/SceneB.js";
 import Menu from "./scenes/Menu.js";
@@ -18,7 +19,7 @@ const config = {
                                     // se refiere a dónde se pondrá el canvas o lienzo
     pixelArt: true,		            //Diseño con pixeles definidos (no borrosos)
     backgroundColor: "#34495e", 	//Color de fondo del canvas ()
-    scene: [Bootloader,Menu,SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
+    scene: [Bootloader,Menu,NivelA,SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",
@@ -34,7 +35,7 @@ const config = {
         gravity: {
         y: 800
         },
-        debug: false
+        debug: true
         }
         },
         scale: {

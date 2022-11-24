@@ -44,8 +44,9 @@ class NivelA extends Phaser.Scene{
 
         //OBJETOS
         this.cama = this.add.image(180, 710, 'Eliminar-cama').setScale(0.1);
-        this.espejo = this.add.image(1500, 690, 'Eliminar-mirror').setScale(0.7);
-        this.espejo.body.setSize(50, 100);
+        this.espejo = this.physics.add.image(1500, 690, 'Eliminar-mirror').setScale(0.7);
+        this.espejo.setPushable(false);
+        this.espejo.body.setSize(150, 250);
         
         //CAMARA
         this.cameras.main.startFollow(this.javier, true);
@@ -53,6 +54,7 @@ class NivelA extends Phaser.Scene{
        
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
+        this.espejo.body.setCollideWorldBounds(true);
 
         this.physics.add.existing(this.cama, true );
         this.physics.add.existing(this.espejo, true );

@@ -66,6 +66,7 @@ class NivelA extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
+            this.scene.start('NivelA1');
         });
 
         //Teclado

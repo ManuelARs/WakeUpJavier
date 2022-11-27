@@ -1,6 +1,3 @@
-// // Variables globales para Lista de Ganadores
-// let jugadores = [];
-// let movimientos = [];
 class  NivelA3 extends Phaser.Scene {
     constructor() {
         super({
@@ -34,8 +31,6 @@ class  NivelA3 extends Phaser.Scene {
         //Imagen de referencia para puzzle
         this.imgReferencia = this.add.image(451, 300, 'puzzleAtras').setScale(.3).setDepth(-1);
         this.javier = this.add.image(1500, 627, 'javier').setDepth(4).setScale(1.5);
-        // //Imagen reiniciar
-        // this.reiniciar = this.add.image(470, 840, 'reiniciar').setScale(.3).setInteractive();
         // //Imagen Titulo(Rompecabezas)
         // this.titulo = this.add.image(470, 80, 'rompecabezas').setScale(.6);
         // //Imagen GANASTE
@@ -167,17 +162,6 @@ class  NivelA3 extends Phaser.Scene {
             }
         });
 
-        // //EVENTOS PARA REINICIO
-        // this.reiniciar.on(eventos.POINTER_OVER, function () {
-        //     this.setScale(.4);
-        // });
-        // this.reiniciar.on(eventos.POINTER_OUT, function () {
-        //     this.setScale(.3);
-        // });
-        // this.reiniciar.on(eventos.POINTER_DOWN, function () {
-        //     this.music.stop();
-        //     reiniciarJuego();
-        // }, this);
     }
 
     update(time, delta) {

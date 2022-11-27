@@ -14,9 +14,14 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['nube','fondo2','play','info','conf','logo2','sound','noSound','infoCuadro','noobLovers']);
         this.load.audio('pop', ['./pop.mp3']);
         this.load.audio('InicioM', ['./InicioM2.mp3']);
-        //PARA NIVEL A
+        //PARA NIVEL A   
         this.load.image(['Javier_01','Eliminar-cama', 'Eliminar-mirror']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
+        //PARA NIVELA3
+        this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
+        // this.load.audio('Llorona', ['./Llorona.mp3']);
+        this.load.audio('acierto', ['./pop.mp3']);
+        this.load.audio('ganaste', ['./ganaste.mp3']);
         //PARA ESCENA A
         this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',

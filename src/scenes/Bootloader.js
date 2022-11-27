@@ -17,6 +17,8 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL A
         this.load.image(['Javier_01','Eliminar-cama', 'Eliminar-mirror']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
+        //PARA NIVEL A1
+        this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
         //PARA ESCENA A
         this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',

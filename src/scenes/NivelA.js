@@ -35,7 +35,6 @@ class NivelA extends Phaser.Scene{
         
         this.anims.create({ key: 'JavierIdle', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierD', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'JavierD', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierD', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
-        this.anims.create({ key: 'JavierI', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierI', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         // this.javier.anims.play('JavierD');
 
         // this.javier.body.setSize(200, 500);
@@ -66,20 +65,12 @@ class NivelA extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
+            // this.sound.pauseAll();
             this.scene.start('NivelA1');
         });
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
-        
-        
-
-        //COLISIÓN CON Espejo / FINAL DE NIVEL
-        // this.physics.add.collider(this.javier, this.puerta, () => {
-        //     this.sound.pauseAll();
-        //     this.registry.events.emit('YouWin');
-        //     this.scene.start('Win');
-        // });
     }
 
 
@@ -114,18 +105,6 @@ class NivelA extends Phaser.Scene{
         {
             this.javier.setVelocityY(-500);
         }
-
-        //PARA ESCALAR
-        // if (this.cursors.up.isDown && this.escalar.body.touching.left && this.javier.body.touching.right)
-        // {
-        //     this.javier.y -= 3;
-        // }
-
-        // if (this.cursors.up.isDown && this.escalar2.body.touching.left && this.javier.body.touching.right)
-        // {
-        //     this.javier.y -= 3;
-        // }
-
     }
 
 

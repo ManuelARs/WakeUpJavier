@@ -16,10 +16,10 @@ class Menu extends Phaser.Scene{
         this.click2 = false;
         this.noSound = false;
         // IMÁGENES DE MENÚ
-        this.fondo = this.add.image(800,400, 'fondo2').setScale(.37,.33);
-        this.logo = this.add.image(450,320, 'logo2').setScale(1).setDepth(4);
-        this.noobLovers = this.add.image(420,100, 'noobLovers').setScale(.5).setDepth(4);
-        this.play = this.add.image(430,600, 'play').setScale(.25).setInteractive().setDepth(4);
+        this.fondo = this.add.image(800,400, 'Menu/fondo2').setScale(.37,.33);
+        this.logo = this.add.image(450,320, 'Menu/logo2').setScale(1).setDepth(4);
+        this.noobLovers = this.add.image(420,100, 'Menu/noobLovers').setScale(.5).setDepth(4);
+        this.play = this.add.image(430,600, 'Menu/play').setScale(.25).setInteractive().setDepth(4);
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0,0,1580,780);
         this.cameras.main.fadeIn(1500);
@@ -31,17 +31,17 @@ class Menu extends Phaser.Scene{
         // CONSTANTE EVENTOS
         const eventos = Phaser.Input.Events;
         // Nubes derecha
-        this.nube1 = this.add.image(-200,150, 'nube').setAlpha(0.2).setScale(0.6);
-        this.nube2 = this.add.image(50,150, 'nube').setAlpha(0.2).setScale(0.3);
-        this.nube3 = this.add.image(200,600, 'nube').setAlpha(0.2).setScale(0.6);
-        this.nube6 = this.add.image(90,580, 'nube').setAlpha(0.2).setScale(0.2);
-        this.nube7 = this.add.image(-90,580, 'nube').setAlpha(0.2).setScale(0.8);
-        this.nube9 = this.add.image(-50,460, 'nube').setAlpha(0.2).setScale(0.3);
+        this.nube1 = this.add.image(-200,150, 'Menu/nube').setAlpha(0.2).setScale(0.6);
+        this.nube2 = this.add.image(50,150, 'Menu/nube').setAlpha(0.2).setScale(0.3);
+        this.nube3 = this.add.image(200,600, 'Menu/nube').setAlpha(0.2).setScale(0.6);
+        this.nube6 = this.add.image(90,580, 'Menu/nube').setAlpha(0.2).setScale(0.2);
+        this.nube7 = this.add.image(-90,580, 'Menu/nube').setAlpha(0.2).setScale(0.8);
+        this.nube9 = this.add.image(-50,460, 'Menu/nube').setAlpha(0.2).setScale(0.3);
 
         //Nube izquierda
-        this.nube4 = this.add.image(1800,580, 'nube').setAlpha(0.2);
-        this.nube5 = this.add.image(1500,360, 'nube').setAlpha(0.2).setScale(0.5);
-        this.nube8 = this.add.image(1600,50, 'nube').setAlpha(0.2).setScale(0.3);
+        this.nube4 = this.add.image(1800,580, 'Menu/nube').setAlpha(0.2);
+        this.nube5 = this.add.image(1500,360, 'Menu/nube').setAlpha(0.2).setScale(0.5);
+        this.nube8 = this.add.image(1600,50, 'Menu/nube').setAlpha(0.2).setScale(0.3);
         this.timeline = this.tweens.createTimeline(); 
         this.timeline2 = this.tweens.createTimeline(); 
 

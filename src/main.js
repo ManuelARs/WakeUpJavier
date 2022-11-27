@@ -8,6 +8,7 @@ import Menu from "./scenes/Menu.js";
 import Bootloader from "./scenes/Bootloader.js";
 import HUD from "./scenes/HUD.js";
 import NivelA3 from "./scenes/NivelA3.js";
+import NivelA4 from "./scenes/NivelA4.js";
 
 const config = {
     title: "Curso Phaser",		    //Nombre del juego (opcional)
@@ -22,7 +23,7 @@ const config = {
     pixelArt: true,		            //Diseño con pixeles definidos (no borrosos)
     backgroundColor: "#34495e", 	//Color de fondo del canvas ()
     scene: [Bootloader,Menu,
-        NivelA, NivelA1,NivelA3,
+        NivelA, NivelA1,NivelA3,NivelA4,
         SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,

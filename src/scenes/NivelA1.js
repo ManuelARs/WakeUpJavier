@@ -35,7 +35,7 @@ class NivelA1 extends Phaser.Scene{
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
 
         //OBJETOS
-        this.espejo = this.physics.add.image(1500, 690, 'Eliminar-mirror').setScale(0.7);
+        this.espejo = this.physics.add.image(1500, 690, 'NivelA/Eliminar-mirror').setScale(0.7);
         this.espejo.setPushable(false);
         this.espejo.body.setSize(150, 250);
         

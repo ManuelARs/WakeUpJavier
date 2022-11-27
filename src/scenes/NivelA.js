@@ -42,8 +42,8 @@ class NivelA extends Phaser.Scene{
         this.javier.body.setMass(1);
 
         //OBJETOS
-        this.cama = this.add.image(180, 710, 'Eliminar-cama').setScale(0.1);
-        this.espejo = this.physics.add.image(1500, 690, 'Eliminar-mirror').setScale(0.7);
+        this.cama = this.add.image(180, 710, 'NivelA/Eliminar-cama').setScale(0.1);
+        this.espejo = this.physics.add.image(1500, 690, 'NivelA/Eliminar-mirror').setScale(0.7);
         this.espejo.setPushable(false);
         this.espejo.body.setSize(150, 250);
         

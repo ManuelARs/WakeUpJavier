@@ -66,15 +66,11 @@ class NivelA1 extends Phaser.Scene{
         // console.log(this.dog.y)
         if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
         {
-            // this.dog.anims.paused = true;
-            // this.dog.anims.pause('dogA');
-            // console.log("Entro")
             this.dog.anims.play('dogIdle',true);
         }
         if (this.cursors.left.isDown)
         {
             this.dog.setVelocityX(-200);
-            // this.dog.anims.play('dogI',true);
             this.dog.anims.play('dogC',true);
             this.dog.flipX=1;
         }

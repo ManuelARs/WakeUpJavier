@@ -80,6 +80,16 @@ class  NivelA3 extends Phaser.Scene {
         this.input.setDraggable(this.pieza15);
         this.pieza16 = this.add.image(1320, 235, '16').setInteractive().setScale(.2).setName("16");
         this.input.setDraggable(this.pieza16);
+        //Arreglo de piezas
+        this.arregloPzas = [this.pieza1,this.pieza2,this.pieza3,this.pieza4,this.pieza5,this.pieza6,this.pieza7,this.pieza8,this.pieza9,this.pieza10,this.pieza11,this.pieza12,this.pieza13,this.pieza14, this.pieza15,this.pieza16];
+        this.posiciones = [[1320, 365],[1000, 495],[1160, 105],[1320, 495],[1480, 105],[1000, 235],[1480, 235],[1320, 105],[1160, 365],[1160, 235],[1480, 365],[1000, 105],[1000, 365],[1160, 495],[1480, 495],[1320, 235]];
+        //Acomodar piezas de rompecabezas aleatoriamente
+        for (let pza of this.arregloPzas){
+            let random = Math.floor(Math.random() * this.posiciones.length);
+            pza.x = this.posiciones[random][0];
+            pza.y = this.posiciones[random][1];
+            this.posiciones.splice(random,1);
+        }
         // //Fila 1
         this.drop1 = this.add.image(157, 105, 'marco').setDepth(-1).setInteractive().setScale(.3).setName("1").input.dropZone = true;
         this.drop2 = this.add.image(353, 105, 'marco').setDepth(-1).setInteractive().setScale(.3).setName("2").input.dropZone = true;

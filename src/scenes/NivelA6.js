@@ -7,16 +7,11 @@ class NivelA6 extends Phaser.Scene{
     }
 
     init() {
-        console.log('Escena SceneA');
+        console.log('Escena NivelA6');
     }
     
     preload() {
         this.load.path = './assets/';
-        this.load.image(['abeja', 'casa', 'gato', 'hidrante', 'huellas', 'hueso', 'javier', 'lentes', 'pastor', 'pelota', 'fondo_memorama', 'back']);
-        //this.load.audio('Theme', ['.FALTA MUSICA']);
-        // this.load.audio('voltear', ['./voltear.wav']);
-        // this.load.audio('pasar', ['./pop.mp3']);
-        // this.load.audio('motor', ['./FALTA MUSICA']);
     }
     create() {
         //CONTADORES
@@ -47,82 +42,81 @@ class NivelA6 extends Phaser.Scene{
         // this.music = this.sound.add('Theme', {loop: true, volume: 0.08});
         // this.music.play();
         //MÚSICA VOLTEAR TARJETA
-        //this.voltear = this.sound.add('voltear', {loop:false,volume: 0.3}); 
+        this.voltear = this.sound.add('voltear', {loop:false,volume: 0.3}); 
         //MÚSICA PASAR SOBRE TARJETA
-        //this.pasar = this.sound.add('pasar', {loop:false,volume: 0.3});
+        this.pasar = this.sound.add('pasar', {loop:false,volume: 0.3});
         //MÚSICA GANAR
-        //this.motor = this.sound.add('motor', {loop:false,volume: 0.3});
-        //this.motor.play();
+        this.ganar = this.sound.add('ganaste', {loop:false,volume: 0.3});
 
         //FONDO
-        this.fondo = this.add.image(800,400, "fondo_memorama").setScale(0.37);
+        this.fondo = this.add.image(800,400, "NivelA6/fondo_memorama").setScale(0.37);
 
         //TARJETAS DE MEMORAMA
-        this.abeja = this.add.image(875, 600, "abeja").setInteractive();
-        this.casa = this.add.image(375, 150, "casa").setInteractive();
-        this.gato = this.add.image(625, 150, "gato").setInteractive();
-        this.hidrante = this.add.image(875, 150, "hidrante").setInteractive();
-        this.huellas = this.add.image(1125, 150, "huellas").setInteractive();
-        this.hueso = this.add.image(125, 375, "hueso").setInteractive();
-        this.javier = this.add.image(375, 375, "javier").setInteractive();
-        this.lentes = this.add.image(625, 375, "lentes").setInteractive();
-        this.pastor = this.add.image(875, 375, "pastor").setInteractive();
-        this.pelota = this.add.image(125, 600, "pelota").setInteractive();
-        this.abeja2 = this.add.image(375, 825, "abeja").setInteractive();
-        this.casa2 = this.add.image(625, 600, "casa").setInteractive();
-        this.gato2 = this.add.image(875, 825, "gato").setInteractive();
-        this.hidrante2 = this.add.image(125, 150, "hidrante").setInteractive();
-        this.huellas2 = this.add.image(1125, 825, "huellas").setInteractive();
-        this.hueso2 = this.add.image(1125, 375, "hueso").setInteractive();
-        this.javier2 = this.add.image(125, 825, "javier").setInteractive();
-        this.lentes2 = this.add.image(375, 600, "lentes").setInteractive();
-        this.pastor2 = this.add.image(625, 825, "pastor").setInteractive();
-        this.pelota2 = this.add.image(1125, 600, "pelota").setInteractive();
+        this.abeja = this.add.image(875, 600, "NivelA6/abeja").setInteractive();
+        this.casa = this.add.image(375, 150, "NivelA6/casa").setInteractive();
+        this.gato = this.add.image(625, 150, "NivelA6/gato").setInteractive();
+        this.hidrante = this.add.image(875, 150, "NivelA6/hidrante").setInteractive();
+        this.huellas = this.add.image(1125, 150, "NivelA6/huellas").setInteractive();
+        this.hueso = this.add.image(125, 375, "NivelA6/hueso").setInteractive();
+        this.javier = this.add.image(375, 375, "NivelA6/javier").setInteractive();
+        this.lentes = this.add.image(625, 375, "NivelA6/lentes").setInteractive();
+        this.pastor = this.add.image(875, 375, "NivelA6/pastor").setInteractive();
+        this.pelota = this.add.image(125, 600, "NivelA6/pelota").setInteractive();
+        this.abeja2 = this.add.image(375, 825, "NivelA6/abeja").setInteractive();
+        this.casa2 = this.add.image(625, 600, "NivelA6/casa").setInteractive();
+        this.gato2 = this.add.image(875, 825, "NivelA6/gato").setInteractive();
+        this.hidrante2 = this.add.image(125, 150, "NivelA6/hidrante").setInteractive();
+        this.huellas2 = this.add.image(1125, 825, "NivelA6/huellas").setInteractive();
+        this.hueso2 = this.add.image(1125, 375, "NivelA6/hueso").setInteractive();
+        this.javier2 = this.add.image(125, 825, "NivelA6/javier").setInteractive();
+        this.lentes2 = this.add.image(375, 600, "NivelA6/lentes").setInteractive();
+        this.pastor2 = this.add.image(625, 825, "NivelA6/pastor").setInteractive();
+        this.pelota2 = this.add.image(1125, 600, "NivelA6/pelota").setInteractive();
         //LOGICA PARA TARJETAS RANDOM
         let cards = [this.abeja, this.casa, this.gato, this.hidrante, this.huellas, this.hueso, this.javier, this.lentes, this.pastor, this.pelota, this.abeja2, this.casa2, this.gato2, this.hidrante2, this.huellas2, this.hueso2, this.javier2, this.lentes2, this.pastor2, this.pelota2];
         let pares = [[1260, 480], [860, 130], [1060, 130], [1260, 130], [1460,130], [660, 300], [860, 300], [1060, 300], [1260, 300], [660, 480], [860, 650], [1060, 480], [1260, 650], [660, 130], [1460, 650], [1460, 300], [660, 650], [860, 480], [1060, 650], [1460, 480]]
        
         //CUBIERTAS DE TARJETAS
-        this.backAbeja = this.add.image(875, 600, "back").setInteractive();
-        this.backCasa = this.add.image(375, 150, "back").setInteractive();
-        this.backGato = this.add.image(625, 150, "back").setInteractive();
-        this.backHidrante = this.add.image(875, 150, "back").setInteractive();
-        this.backHuellas = this.add.image(1125, 150, "back").setInteractive();
-        this.backHueso = this.add.image(125, 375, "back").setInteractive();
-        this.backJavier = this.add.image(375, 375, "back").setInteractive();
-        this.backLentes = this.add.image(625, 375, "back").setInteractive();
-        this.backPastor = this.add.image(875, 375, "back").setInteractive();
-        this.backPelota = this.add.image(125, 600, "back").setInteractive();
-        this.backAbeja2 = this.add.image(375, 825, "back").setInteractive();
-        this.backCasa2 = this.add.image(625, 600, "back").setInteractive();
-        this.backGato2 = this.add.image(875, 825, "back").setInteractive();
-        this.backHidrante2 = this.add.image(125, 150, "back").setInteractive();
-        this.backHuellas2 = this.add.image(1125, 825, "back").setInteractive();
-        this.backHueso2 = this.add.image(1125, 375, "back").setInteractive();
-        this.backJavier2 = this.add.image(125, 825, "back").setInteractive();
-        this.backLentes2 = this.add.image(375, 600, "back").setInteractive();
-        this.backPastor2 = this.add.image(625, 825, "back").setInteractive();
-        this.backPelota2 = this.add.image(1125, 600, "back").setInteractive();
-        this.backAbeja.name = "abeja";
-        this.backCasa.name = "casa";
-        this.backGato.name = "gato";
-        this.backHidrante.name = "hidrante";
-        this.backHuellas.name = "huellas";
-        this.backHueso.name = "hueso";
-        this.backJavier.name = "javier";
-        this.backLentes.name = "lentes";
-        this.backPastor.name = "pastor";
-        this.backPelota.name = "pelota";
-        this.backAbeja2.name = "abeja";
-        this.backCasa2.name = "casa";
-        this.backGato2.name = "gato";
-        this.backHidrante2.name = "hidrante";
-        this.backHuellas2.name = "huellas";
-        this.backHueso2.name = "hueso";
-        this.backJavier2.name = "javier";
-        this.backLentes2.name = "lentes";
-        this.backPastor2.name = "pastor";
-        this.backPelota2.name = "pelota";
+        this.backAbeja = this.add.image(875, 600, "NivelA6/back").setInteractive();
+        this.backCasa = this.add.image(375, 150, "NivelA6/back").setInteractive();
+        this.backGato = this.add.image(625, 150, "NivelA6/back").setInteractive();
+        this.backHidrante = this.add.image(875, 150, "NivelA6/back").setInteractive();
+        this.backHuellas = this.add.image(1125, 150, "NivelA6/back").setInteractive();
+        this.backHueso = this.add.image(125, 375, "NivelA6/back").setInteractive();
+        this.backJavier = this.add.image(375, 375, "NivelA6/back").setInteractive();
+        this.backLentes = this.add.image(625, 375, "NivelA6/back").setInteractive();
+        this.backPastor = this.add.image(875, 375, "NivelA6/back").setInteractive();
+        this.backPelota = this.add.image(125, 600, "NivelA6/back").setInteractive();
+        this.backAbeja2 = this.add.image(375, 825, "NivelA6/back").setInteractive();
+        this.backCasa2 = this.add.image(625, 600, "NivelA6/back").setInteractive();
+        this.backGato2 = this.add.image(875, 825, "NivelA6/back").setInteractive();
+        this.backHidrante2 = this.add.image(125, 150, "NivelA6/back").setInteractive();
+        this.backHuellas2 = this.add.image(1125, 825, "NivelA6/back").setInteractive();
+        this.backHueso2 = this.add.image(1125, 375, "NivelA6/back").setInteractive();
+        this.backJavier2 = this.add.image(125, 825, "NivelA6/back").setInteractive();
+        this.backLentes2 = this.add.image(375, 600, "NivelA6/back").setInteractive();
+        this.backPastor2 = this.add.image(625, 825, "NivelA6/back").setInteractive();
+        this.backPelota2 = this.add.image(1125, 600, "NivelA6/back").setInteractive();
+        this.backAbeja.name = "NivelA6/abeja";
+        this.backCasa.name = "NivelA6/casa";
+        this.backGato.name = "NivelA6/gato";
+        this.backHidrante.name = "NivelA6/hidrante";
+        this.backHuellas.name = "NivelA6/huellas";
+        this.backHueso.name = "NivelA6/hueso";
+        this.backJavier.name = "NivelA6/javier";
+        this.backLentes.name = "NivelA6/lentes";
+        this.backPastor.name = "NivelA6/pastor";
+        this.backPelota.name = "NivelA6/pelota";
+        this.backAbeja2.name = "NivelA6/abeja";
+        this.backCasa2.name = "NivelA6/casa";
+        this.backGato2.name = "NivelA6/gato";
+        this.backHidrante2.name = "NivelA6/hidrante";
+        this.backHuellas2.name = "NivelA6/huellas";
+        this.backHueso2.name = "NivelA6/hueso";
+        this.backJavier2.name = "NivelA6/javier";
+        this.backLentes2.name = "NivelA6/lentes";
+        this.backPastor2.name = "NivelA6/pastor";
+        this.backPelota2.name = "NivelA6/pelota";
         // //IMAGEN DE GANADOR
         // this.ganaste = this.add.image(650, 400, "ganaste").setInteractive() 
         // .setOrigin(0.5,0.5).setAlpha(0); 
@@ -168,14 +162,14 @@ class NivelA6 extends Phaser.Scene{
         //EVENTO PARA MANEJAR EFECTO AL PASAR SOBRE LAS TARJETAS
         this.input.on(eventos.GAMEOBJECT_OVER,(event,gameObject)=>{
             if(cardsBack.includes(gameObject)){
-                this.pasar.play();
-                gameObject.setScale(0.22);
+                gameObject.setDisplaySize(170,170);
+                //gameObject.setScale(.22);
             }
         });
         //EVENTO PARA MANEJAR EFECTO AL SALIR LAS TARJETAS
         this.input.on(eventos.GAMEOBJECT_OUT,(event,gameObject)=>{
             if(cardsBack.includes(gameObject)){
-                gameObject.setDisplaySize(200,200);
+                gameObject.setDisplaySize(150,150);
             }
         });
 
@@ -223,9 +217,10 @@ class NivelA6 extends Phaser.Scene{
         if(this.aciertos == 10 && this.ganasteB == false){
             this.ganasteB = true;
             this.fondo.setDepth(5);
-            this.music.stop();
-            this.ganaste.setAlpha(1).setDepth(6);
-            this.motor.play();
+            //this.music.stop();
+            //this.ganaste.setAlpha(1).setDepth(6);
+            this.tiempoRestante.stop();
+            this.ganar.play();
         }
         if(this.tiempoRestante == 0) {
             this.scene.restart()

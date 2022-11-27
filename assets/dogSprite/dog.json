@@ -1,0 +1,146 @@
+{
+	"textures": [
+		{
+			"image": "dog.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 714,
+				"h": 591
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "dogIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 559,
+						"y": 1635,
+						"w": 308,
+						"h": 215
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 308,
+						"h": 215
+					}
+				},
+				{
+					"filename": "dog1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 514,
+						"y": 1665,
+						"w": 402,
+						"h": 185
+					},
+					"frame": {
+						"x": 1,
+						"y": 218,
+						"w": 402,
+						"h": 185
+					}
+				},
+				{
+					"filename": "dog4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 514,
+						"y": 1665,
+						"w": 402,
+						"h": 185
+					},
+					"frame": {
+						"x": 311,
+						"y": 1,
+						"w": 402,
+						"h": 185
+					}
+				},
+				{
+					"filename": "dogIdle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 559,
+						"y": 1635,
+						"w": 308,
+						"h": 215
+					},
+					"frame": {
+						"x": 405,
+						"y": 188,
+						"w": 308,
+						"h": 215
+					}
+				},
+				{
+					"filename": "dog3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 554,
+						"y": 1665,
+						"w": 342,
+						"h": 185
+					},
+					"frame": {
+						"x": 1,
+						"y": 405,
+						"w": 342,
+						"h": 185
+					}
+				},
+				{
+					"filename": "dog2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2000,
+						"h": 2000
+					},
+					"spriteSourceSize": {
+						"x": 585,
+						"y": 1675,
+						"w": 310,
+						"h": 175
+					},
+					"frame": {
+						"x": 345,
+						"y": 405,
+						"w": 310,
+						"h": 175
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c54c312b290cf4cf96ef5f8604676214:b7ce6232d3c68074544e1923a4a867d1:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
+	}
+}

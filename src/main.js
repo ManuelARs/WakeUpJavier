@@ -7,8 +7,10 @@ import SceneB from "./scenes/SceneB.js";
 import Menu from "./scenes/Menu.js";
 import Bootloader from "./scenes/Bootloader.js";
 import HUD from "./scenes/HUD.js";
+import NivelA2 from "./scenes/NivelA2.js";
 import NivelA3 from "./scenes/NivelA3.js";
 import NivelA6 from "./scenes/NivelA6.js";
+import NivelA4 from "./scenes/NivelA4.js";
 
 const config = {
     title: "Curso Phaser",		    //Nombre del juego (opcional)

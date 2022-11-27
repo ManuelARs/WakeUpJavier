@@ -26,6 +26,8 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('Llorona', ['./Llorona.mp3']);
         this.load.audio('acierto', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
+        //PARA NIVEL A4
+        this.load.image([ 'NivelA4/NivelA4']);
         //PARA ESCENA A
         this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
@@ -50,7 +52,7 @@ class Bootloader extends Phaser.Scene{
 
     create(){
         //this.scene.start('Menu');
-        this.scene.launch('Menu');
+        this.scene.launch('NivelA4');
         console.log(this.scene.manager.scenes)
     }
 

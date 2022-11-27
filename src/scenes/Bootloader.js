@@ -50,7 +50,7 @@ class Bootloader extends Phaser.Scene{
 
     create(){
         //this.scene.start('Menu');
-        this.scene.launch('Menu');
+        this.scene.launch('NivelA1');
         console.log(this.scene.manager.scenes)
     }
 

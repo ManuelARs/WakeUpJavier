@@ -4,51 +4,30 @@
 			"image": "dog.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 714,
-				"h": 591
+				"w": 1514,
+				"h": 1185
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "dogIdle1.png",
+					"filename": "dog2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2000,
-						"h": 2000
+						"w": 1000,
+						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 559,
-						"y": 1635,
-						"w": 308,
-						"h": 215
+						"x": 184,
+						"y": 249,
+						"w": 632,
+						"h": 354
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 308,
-						"h": 215
-					}
-				},
-				{
-					"filename": "dog1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 2000,
-						"h": 2000
-					},
-					"spriteSourceSize": {
-						"x": 514,
-						"y": 1665,
-						"w": 402,
-						"h": 185
-					},
-					"frame": {
-						"x": 1,
-						"y": 218,
-						"w": 402,
-						"h": 185
+						"x": 0,
+						"y": 0,
+						"w": 632,
+						"h": 354
 					}
 				},
 				{
@@ -56,41 +35,41 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2000,
-						"h": 2000
+						"w": 1000,
+						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 514,
-						"y": 1665,
-						"w": 402,
-						"h": 185
+						"x": 91,
+						"y": 227,
+						"w": 818,
+						"h": 374
 					},
 					"frame": {
-						"x": 311,
-						"y": 1,
-						"w": 402,
-						"h": 185
+						"x": 632,
+						"y": 0,
+						"w": 818,
+						"h": 374
 					}
 				},
 				{
-					"filename": "dogIdle2.png",
+					"filename": "dog1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2000,
-						"h": 2000
+						"w": 1000,
+						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 559,
-						"y": 1635,
-						"w": 308,
-						"h": 215
+						"x": 91,
+						"y": 224,
+						"w": 818,
+						"h": 375
 					},
 					"frame": {
-						"x": 405,
-						"y": 188,
-						"w": 308,
-						"h": 215
+						"x": 0,
+						"y": 374,
+						"w": 818,
+						"h": 375
 					}
 				},
 				{
@@ -98,41 +77,62 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2000,
-						"h": 2000
+						"w": 1000,
+						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 554,
-						"y": 1665,
-						"w": 342,
-						"h": 185
+						"x": 152,
+						"y": 226,
+						"w": 696,
+						"h": 375
 					},
 					"frame": {
-						"x": 1,
-						"y": 405,
-						"w": 342,
-						"h": 185
+						"x": 818,
+						"y": 374,
+						"w": 696,
+						"h": 375
 					}
 				},
 				{
-					"filename": "dog2.png",
+					"filename": "dogIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2000,
-						"h": 2000
+						"w": 1000,
+						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 585,
-						"y": 1675,
-						"w": 310,
-						"h": 175
+						"x": 187,
+						"y": 218,
+						"w": 626,
+						"h": 436
 					},
 					"frame": {
-						"x": 345,
-						"y": 405,
-						"w": 310,
-						"h": 175
+						"x": 0,
+						"y": 749,
+						"w": 626,
+						"h": 436
+					}
+				},
+				{
+					"filename": "dogIdle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 187,
+						"y": 218,
+						"w": 626,
+						"h": 436
+					},
+					"frame": {
+						"x": 626,
+						"y": 749,
+						"w": 626,
+						"h": 436
 					}
 				}
 			]
@@ -141,6 +141,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:c54c312b290cf4cf96ef5f8604676214:b7ce6232d3c68074544e1923a4a867d1:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1a58913f998cbfe9c8a46d12c573ec13:cc7564693f314b19252e30960877fccf:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
 	}
 }

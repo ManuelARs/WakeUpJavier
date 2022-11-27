@@ -11,7 +11,7 @@ class Bootloader extends Phaser.Scene{
     preload() {
         //PARA MENU
         this.load.path = './assets/';
-        this.load.image(['nube','fondo2','play','info','conf','logo2','sound','noSound','infoCuadro','noobLovers']);
+        this.load.image(['Menu/nube','Menu/fondo2','Menu/play','Menu/info','Menu/conf','Menu/logo2','Menu/sound','Menu/noSound','Menu/infoCuadro','Menu/noobLovers']);
         this.load.audio('pop', ['./pop.mp3']);
         this.load.audio('InicioM', ['./InicioM2.mp3']);
         //PARA NIVEL A   
@@ -21,11 +21,21 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
         this.load.image(['tronco','NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor']);
         //PARA NIVEL A2
+        this.load.image(['NivelA2/NivelA2']);
         //PARA NIVEL A3
         this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
         // this.load.audio('Llorona', ['./Llorona.mp3']);
         this.load.audio('acierto', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
+
+        //PARA NIVEL 6
+        this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back']);
+        //this.load.audio('Theme', ['./FALTA MUSICA']);
+        this.load.audio('voltear', ['./pop.mp3']);
+        this.load.audio('ganaste', ['./ganaste.mp3']);
+        
+        //PARA NIVELA4
+        this.load.image([ 'NivelA4/NivelA4']);
         //PARA ESCENA A
         this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
@@ -39,18 +49,23 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('gong', ['./gong.mp3']);
         this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
-        this.load.image(['gameOverBack','botonMenu2']);
+        this.load.image(['gameOverBack','Menu/botonMenu2']);
         this.load.audio('gameOver', ['./game_over.mp3']);
         //PARA ESCENA YOU WIN
-        this.load.image(['winBack','botonMenu']);
+        this.load.image(['winBack','Menu/botonMenu']);
         this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
         this.load.image(['heart'])
     }
 
     create(){
+<<<<<<< HEAD
         //this.scene.start('Menu');
         this.scene.launch('NivelA1');
+=======
+        this.scene.start('Menu');
+        //this.scene.launch('NivelA6');
+>>>>>>> b80f21754289437c2d8f7ee61cee06e3c1856996
         console.log(this.scene.manager.scenes)
     }
 

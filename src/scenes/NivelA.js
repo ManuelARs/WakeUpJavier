@@ -72,12 +72,9 @@ class NivelA extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.espejo2.setAlpha(1)
+            //this.espejo2.setAlpha(1)
             // this.sound.pauseAll();
             this.scene.start('NivelA1');
-            // setTimeout(() => {
-            //     this.scene.start('NivelA1');
-            //   }, "500")
         });
 
         //Teclado
@@ -115,6 +112,10 @@ class NivelA extends Phaser.Scene{
         if ((this.cursors.up.isDown && this.javier.body.onFloor()))
         {
             this.javier.setVelocityY(-500);
+        }
+
+        if(this.javier.x > 1100) {
+            this.espejo2.setAlpha(1)
         }
     }
 

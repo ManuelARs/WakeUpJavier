@@ -25,7 +25,7 @@ class NivelA1 extends Phaser.Scene{
         //MÚSICA
         // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
         // this.musicaFondo.play();
-        //FONDO Y SPRITE
+        //FONDO 
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
 
         //CONVERSACIONES
@@ -34,6 +34,9 @@ class NivelA1 extends Phaser.Scene{
         this.gataCara = this.add.image(1500, 125, 'NivelA1/gataCara').setScale(1.2).setAlpha(0);
         this.dialogo1 = this.add.image(790, 125, 'NivelA1/dialogo1_1').setScale(0.8).setAlpha(0);
         this.dialogo2 = this.add.image(790, 125, 'NivelA1/dialogo1_2').setScale(0.7).setAlpha(0);
+
+        //INSTRUCCIONES
+        this.instrucciones = this.add.image(1400, 390, 'NivelA1/instrucciones2').setScale(0.35).setAlpha(0);
         
         setTimeout(() => {
             this.dogCara.setAlpha(1);
@@ -44,6 +47,7 @@ class NivelA1 extends Phaser.Scene{
             this.dogCara.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
             this.dialogo1.setAlpha(0);
+            this.instrucciones.setAlpha(1);
             this.movimiento = 1;
         }, 6000);
 
@@ -95,6 +99,7 @@ class NivelA1 extends Phaser.Scene{
                 this.gataCara.setAlpha(0);
                 this.fondoDialogo.setAlpha(0);
                 this.dialogo2.setAlpha(0);
+                this.instrucciones.setAlpha(0);
                 this.gata.flipX=1;
             }, 5000);
             this.tweens = this.add.tween({

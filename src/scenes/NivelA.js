@@ -26,10 +26,10 @@ class NivelA extends Phaser.Scene{
         this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
         this.musicaFondo.play();
         //FONDO Y SPRITE
-        this.fondo = this.add.image(800, 395, 'fondo_opc1').setScale(1.1).setDepth(-3).setAlpha(1);
+        this.fondo = this.add.image(790, 385, 'NivelA/fondo_opc1').setDepth(-2).setScale(.36,.32);
         
         // this.javier = this.physics.add.image(50, 10, 'Javier_01').setScale(0.2);
-        this.javier = this.physics.add.sprite(100, 400, 'Javier', 0).setScale(0.5);
+        this.javier = this.physics.add.sprite(100, 400, 'Javier', 0).setScale(0.8);
         this.javier.body.setSize(200, 450);
         this.javier.body.setMass(1);
         
@@ -43,9 +43,14 @@ class NivelA extends Phaser.Scene{
 
         //OBJETOS
         this.cama = this.add.image(180, 710, 'NivelA/Eliminar-cama').setScale(0.1);
-        this.espejo = this.physics.add.image(1500, 690, 'NivelA/Eliminar-mirror').setScale(0.7);
+        this.espejo = this.physics.add.image(1530, 380, 'NivelA/espejo').setScale(0.22);
+        this.espejo.body.setAllowGravity(false);
         this.espejo.setPushable(false);
-        this.espejo.body.setSize(150, 250);
+        this.espejo.body.setSize(400, 1000);
+        this.espejo2 = this.physics.add.image(1530, 380, 'NivelA/espejo2').setScale(0.22).setDepth(10).setAlpha(0);
+        this.espejo2.body.setAllowGravity(false);
+        this.espejo2.setPushable(false);
+        this.espejo2.body.setSize(100, 250);
         
         //CAMARA
         this.cameras.main.startFollow(this.javier, true);
@@ -53,6 +58,8 @@ class NivelA extends Phaser.Scene{
        
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
+        this.javier.setCollideWorldBounds(true);
+        this.javier.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 1580, 700));
         this.espejo.body.setCollideWorldBounds(true);
 
         this.physics.add.existing(this.cama, true );
@@ -65,8 +72,12 @@ class NivelA extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
+            this.espejo2.setAlpha(1)
             // this.sound.pauseAll();
-            this.scene.start('NivelA1');
+            //this.scene.start('NivelA1');
+            setTimeout(() => {
+                this.scene.start('NivelA1');
+              }, "2000")
         });
 
         //Teclado
@@ -85,14 +96,14 @@ class NivelA extends Phaser.Scene{
         }
         if (this.cursors.left.isDown)
         {
-            this.javier.setVelocityX(-200);
+            this.javier.setVelocityX(-250);
             // this.javier.anims.play('JavierI',true);
             this.javier.anims.play('JavierD',true);
             this.javier.flipX=1;
         }
         else if (this.cursors.right.isDown)
         {
-            this.javier.setVelocityX(200);
+            this.javier.setVelocityX(250);
             this.javier.anims.play('JavierD',true);
             this.javier.flipX=0;
         }

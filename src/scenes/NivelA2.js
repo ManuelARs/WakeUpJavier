@@ -79,6 +79,9 @@ class NivelA2 extends Phaser.Scene {
             this.dog.setVelocityY(-500);
         }
 
+        // if(this.javier.x > 1100) {
+        //     this.espejo2.setAlpha(1)
+        // }
     }
 }
 

@@ -55,13 +55,8 @@ class NivelA extends Phaser.Scene{
         this.javier.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 1580, 635));
         this.espejo.body.setCollideWorldBounds(true);
 
-        // this.physics.add.existing(this.cama, true );
         this.physics.add.existing(this.espejo, true );
-        // this.cama.body.setSize(300, 50);
-        // this.physics.add.collider(this.javier, this.cama, () => {
-        //     this.javier.setVelocityY(0);
-        //     this.javier.setAccelerationY(0);
-        // });
+
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
@@ -79,15 +74,11 @@ class NivelA extends Phaser.Scene{
         //MOVIMIENTOS
         if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
         {
-            // this.javier.anims.paused = true;
-            // this.javier.anims.pause('JavierA');
-            // console.log("Entro")
             this.javier.anims.play('JavierIdle');
         }
         if (this.cursors.left.isDown)
         {
             this.javier.setVelocityX(-250);
-            // this.javier.anims.play('JavierI',true);
             this.javier.anims.play('JavierD',true);
             this.javier.flipX=1;
         }

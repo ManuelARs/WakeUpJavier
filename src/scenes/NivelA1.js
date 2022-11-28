@@ -18,6 +18,9 @@ class NivelA1 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
         // this.cameras.main.setZoom(2);
+
+        //BANDERA
+        this.movimiento = 0;
         
         //MÚSICA
         // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
@@ -25,13 +28,41 @@ class NivelA1 extends Phaser.Scene{
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
 
+        //CONVERSACIONES
+        this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(0);
+        this.dogCara = this.add.image(125, 125, 'NivelA1/dogCara').setScale(1).setAlpha(0);
+        this.gataCara = this.add.image(1500, 125, 'NivelA1/gataCara').setScale(1.2).setAlpha(0);
+        this.dialogo1 = this.add.image(790, 125, 'NivelA1/dialogo1_1').setScale(0.8).setAlpha(0);
+        this.dialogo2 = this.add.image(790, 125, 'NivelA1/dialogo1_2').setScale(0.7).setAlpha(0);
+        
+        setTimeout(() => {
+            this.dogCara.setAlpha(1);
+            this.fondoDialogo.setAlpha(1);
+            this.dialogo1.setAlpha(1);
+        }, 1000);
+        setTimeout(() => {
+            this.dogCara.setAlpha(0);
+            this.fondoDialogo.setAlpha(0);
+            this.dialogo1.setAlpha(0);
+            this.movimiento = 1;
+        }, 3000);
+
+        //OBJETOS
+        this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
+        this.salida.body.setSize(150, 1100);
+        this.banca = this.physics.add.staticImage(550, 650, 'NivelA1/banca').setScale(1.3);
+        this.banca.setPushable(false);
+        this.banca.body.setSize(180, 50);
+        this.banca.setOffset(-20,65);
+
         //PERSONAJES
         //Perro Javier
         this.dog = this.physics.add.sprite(100, 610, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
+        // this.dog.body.setImmovable(true);
         //Gata Mia
-        this.gata = this.physics.add.image(750, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
+        this.gata = this.physics.add.image(600, 600, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
         this.gata.body.setSize(60, 50);
         this.gata.setPushable(false);
         //this.gata.body.setImmovable(true);
@@ -39,12 +70,6 @@ class NivelA1 extends Phaser.Scene{
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
-
-        //OBJETOS
-        this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
-        // this.salida.setPushable(false);
-        this.salida.body.setSize(150, 1100);
-        // this.salida.body.setOffset(0,0);
         
         //CAMARA
         this.cameras.main.startFollow(this.dog, true);
@@ -52,18 +77,39 @@ class NivelA1 extends Phaser.Scene{
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
+        // this.banca.body.setCollideWorldBounds(true);
   
+        this.physics.add.collider(this.dog, this.banca);
+        this.physics.add.collider(this.gata, this.banca);
+
         this.physics.add.collider(this.dog, this.gata, () => {
-            // this.tweens = this.add.tween({
-            // targets: [this.gata],
-            // x: 1600,
-            // onComplete: () => {
-            //         console.log(this.gata.x);
-            //         this.gata.setAlpha(0);
-            //         this.gata.disableBody(true, true);
-            //         console.log('Se completa el tween');
-            //     },
-            // });
+            this.movimiento = 0;
+            this.dog.x=496.6;
+            this.dog.y=624.9;
+            console.log(this.dog.x)
+            console.log(this.dog.y)
+            this.gataCara.setAlpha(1);
+            this.fondoDialogo.setAlpha(1);
+            this.dialogo2.setAlpha(1);
+            setTimeout(() => {
+                this.gataCara.setAlpha(0);
+                this.fondoDialogo.setAlpha(0);
+                this.dialogo2.setAlpha(0);
+                this.gata.flipX=1;
+            }, 5000);
+            this.tweens = this.add.tween({
+            targets: [this.gata],
+            x: 1600,
+            delay: 5000,
+            duration: 4000,
+            onComplete: () => {
+                    console.log(this.gata.x);
+                    this.gata.setAlpha(0);
+                    this.gata.disableBody(true, true);
+                    console.log('Se completa el tween');
+                    this.movimiento = 1;
+                },
+            });
             //APARECEN LAS PRIMERAS INSTRUCCIONES
             //SE MUESTRAN LOS MOVIMIENTOS QUE PUEDE HACER JAVIER
             //DESPUÉS LA GATA DEBE SALIR DE LA ESCENA Y JAVIER DEBE ALCANZARLA
@@ -91,7 +137,13 @@ class NivelA1 extends Phaser.Scene{
     update(time, delta) {
         //MOVIMIENTOS
         // console.log(this.dog.y)
-        if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+        if(this.movimiento==0)
+        {
+            this.dog.anims.play('dogIdle',true);
+        }
+        if(this.movimiento==1)
+        {
+            if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
         {
             this.dog.anims.play('dogIdle',true);
         }
@@ -115,6 +167,7 @@ class NivelA1 extends Phaser.Scene{
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
         {
             this.dog.setVelocityY(-500);
+        }
         }
 
     }

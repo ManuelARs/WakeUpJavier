@@ -30,6 +30,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelA5/nivelA5']);
         //PARA NIVEL A6
         this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back','NivelA6/instrucciones']);
+        this.load.atlas('Dog2', 'NivelA6/dog2.png', 'NivelA6/dog2.json');
         this.load.atlas('DogB', 'badDogSprite/pastor.png', 'badDogSprite/pastor.json');
         this.load.image(['NivelA5/nivelA5', 'NivelA5/hidrante', 'NivelA5/hueso', 'NivelA5/tronco']);
         //PARA NIVELA7
@@ -64,11 +65,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-<<<<<<< HEAD
         this.scene.start('NivelA6');
-=======
-        this.scene.start('NivelA5');
->>>>>>> 491418564a3635ecf95c2e94f7d11ce1e05f6451
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

@@ -16,7 +16,7 @@ class NivelA6 extends Phaser.Scene{
     create() {
         //CONTADORES
         let contador = 0;
-        this.aciertos = 9;
+        this.aciertos = 0;
         //BANDERAS
         this.ganasteB=false;
         //TEMPORIZADOR
@@ -32,9 +32,9 @@ class NivelA6 extends Phaser.Scene{
         this.instrucciones = this.add.image(300, 310, 'NivelA6/instrucciones').setScale(0.4);
         //PERSONAJES
         //Perro Javier
-        this.dog = this.add.sprite(200, 650, 'Dog', 0).setScale(0.2);
+        this.dog = this.add.sprite(200, 650, 'Dog2', 0).setScale(0.2);
         //ANIMACIONES
-        this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog2', { prefix: 'dogIdleL', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         this.dog.anims.play('dogIdle',true);
 
         // this.timedEvent = this.time.delayedCall(1000, reiniciar, [], this, loop:true);

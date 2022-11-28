@@ -22,9 +22,6 @@ class  NivelA3 extends Phaser.Scene {
         //TIMER
         let timedEvent;
         
-        //BOUNDS PARA PERSONAJES
-        this.physics.world.setBounds(0,0,1580, 680)
-        
         //Imagen de Fondo
         this.fondo = this.add.image(775, 360, 'NivelA3/fondoPuzzle').setDepth(-2).setScale(.4,.35);
         

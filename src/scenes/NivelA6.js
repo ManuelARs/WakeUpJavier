@@ -16,26 +16,34 @@ class NivelA6 extends Phaser.Scene{
     create() {
         //CONTADORES
         let contador = 0;
-        this.aciertos = 0;
+        this.aciertos = 9;
         //BANDERAS
         this.ganasteB=false;
+        //TEMPORIZADOR
+        this.tiempoRestante = 95
+        this.timer
         //TIMER
         this.timedEvent;
+        //FONDO
+        this.fondo = this.add.image(800,400, "NivelA6/fondo_memorama").setScale(0.37,0.32);
         //TEXTO PUNTAJE
-        this.text = this.add.text(10,2,'',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'})
-        .setDepth(10);
-        //ARREGLO QUE GUARDA TARJETAS DESCUBIERTAS
-        let cardsInGame = [];
-        //CREAR TIMER
-        this.tiempoRestante = 120
-        this.timer
+        this.text = this.add.text(700,12,'',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);
+        //INSTRUCCIONES
+        this.instrucciones = this.add.image(300, 310, 'NivelA6/instrucciones').setScale(0.4);
+        //PERSONAJES
+        //Perro Javier
+        this.dog = this.add.sprite(200, 650, 'Dog', 0).setScale(0.2);
+        //ANIMACIONES
+        this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.dog.anims.play('dogIdle',true);
+
         // this.timedEvent = this.time.delayedCall(1000, reiniciar, [], this, loop:true);
         this.timedEvent2 = this.time.addEvent({ delay: 1000, callback: reiniciar, callbackScope: this, loop: true });
         function reiniciar() {
             this.tiempoRestante -= 1
             this.textoContador.setText('TIEMPO RESTANTE: ' + this.tiempoRestante);
         }
-        this.textoContador = this.add.text(1200, 2, 'TIEMPO RESTANTE: 40',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(1120, 12, 'TIEMPO RESTANTE: ',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
         //CONSTANTE 
         const eventos = Phaser.Input.Events;
         //MÚSICA DE FONDO
@@ -47,10 +55,8 @@ class NivelA6 extends Phaser.Scene{
         //this.pasar = this.sound.add('pasar', {loop:false,volume: 0.3});
         //MÚSICA GANAR
         this.ganar = this.sound.add('ganaste', {loop:false,volume: 0.3});
-
-        //FONDO
-        this.fondo = this.add.image(800,400, "NivelA6/fondo_memorama").setScale(0.37);
-
+        //ARREGLO QUE GUARDA TARJETAS DESCUBIERTAS
+        let cardsInGame = [];
         //TARJETAS DE MEMORAMA
         this.abeja = this.add.image(875, 600, "NivelA6/abeja").setInteractive();
         this.casa = this.add.image(375, 150, "NivelA6/casa").setInteractive();
@@ -216,14 +222,18 @@ class NivelA6 extends Phaser.Scene{
         this.puntaje();
         if(this.aciertos == 10 && this.ganasteB == false){
             this.ganasteB = true;
-            this.fondo.setDepth(5);
+            //this.fondo.setDepth(5);
             //this.music.stop();
             //this.ganaste.setAlpha(1).setDepth(6);
-            this.tiempoRestante.stop();
+            //this.tiempoRestante
             this.ganar.play();
+            setTimeout(() => {
+                this.scene.start('NivelA7');
+            }, 2000);
+            
         }
         if(this.tiempoRestante == 0) {
-            this.scene.restart()
+            this.scene.restart();
         }
     }
 }

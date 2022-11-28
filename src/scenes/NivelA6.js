@@ -44,7 +44,7 @@ class NivelA6 extends Phaser.Scene{
         //MÚSICA VOLTEAR TARJETA
         this.voltear = this.sound.add('voltear', {loop:false,volume: 0.3}); 
         //MÚSICA PASAR SOBRE TARJETA
-        this.pasar = this.sound.add('pasar', {loop:false,volume: 0.3});
+        //this.pasar = this.sound.add('pasar', {loop:false,volume: 0.3});
         //MÚSICA GANAR
         this.ganar = this.sound.add('ganaste', {loop:false,volume: 0.3});
 

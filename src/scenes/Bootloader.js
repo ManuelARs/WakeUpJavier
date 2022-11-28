@@ -15,17 +15,18 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('pop', ['./pop.mp3']);
         this.load.audio('InicioM', ['./InicioM2.mp3']);
         //PARA NIVEL A   
-        this.load.image(['NivelA/Eliminar-cama', 'NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2']);
+        this.load.image(['NivelA/Eliminar-cama', 'NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2','NivelA/instrucciones1']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
         //PARA NIVEL A1
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
         this.load.image(['NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1', 'NivelA1/banca', 'NivelA1/dogCara','NivelA1/fondoDialogo', 'NivelA1/gataCara','NivelA1/dialogo1_1','NivelA1/dialogo1_2','NivelA1/instrucciones2']);
         //PARA NIVEL A2
-        this.load.image(['NivelA2/NivelA2','NivelA2/panal','NivelA2/mesa']);
+        this.load.image(['NivelA2/NivelA2','NivelA2/panal','NivelA2/mesa','NivelA2/dialogo2_1','NivelA2/dialogo2_2']);
         //PARA NIVEL A3
         this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
         //PARA NIVELA5
-        this.load.image(['NivelA5/nivelA5']);
+        this.load.atlas('DogB', 'badDogSprite/pastor.png', 'badDogSprite/pastor.json');
+        this.load.image(['NivelA5/nivelA5', 'NivelA5/hidrante', 'NivelA5/hueso', 'NivelA5/tronco']);
         //PARA NIVELA7
         this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2']);
         // this.load.audio('Llorona', ['./Llorona.mp3']);
@@ -61,8 +62,8 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        // this.scene.start('NivelA1');
-        this.scene.launch('NivelA5');
+        this.scene.start('NivelA5');
+        //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }
 

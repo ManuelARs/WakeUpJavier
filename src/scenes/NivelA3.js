@@ -15,24 +15,27 @@ class  NivelA3 extends Phaser.Scene {
     }
 
     create() {
-        // //Banderas
-        // let correcto = false;
-        //Contador 
-        // let contmov = 0;
+        //CONTADORES
         let contador = 0;
         let aciertos = 16;
+        
         //TIMER
         let timedEvent;
+        
         //BOUNDS PARA PERSONAJES
         this.physics.world.setBounds(0,0,1580, 680)
+        
         //Imagen de Fondo
         this.fondo = this.add.image(775, 360, 'NivelA3/fondoPuzzle').setDepth(-2).setScale(.4,.35);
+        
         //Imagen de referencia para puzzle
         this.imgReferencia = this.add.image(451, 300, 'NivelA3/puzzleAtras').setScale(.3).setDepth(-1);
+        
         //PERSONAJES
         //Perro Javier
         this.dog = this.add.sprite(1500, 630, 'Dog', 0).setScale(0.2);
         this.dog.flipX = true;
+        
         //ANIMACIONES
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         this.dog.anims.play('dogIdle',true);
@@ -43,10 +46,12 @@ class  NivelA3 extends Phaser.Scene {
         // //MÚSICA DE FONDO
         // this.music = this.sound.add('Llorona', { loop: true, volume: .2 });
         // this.music.play();
+        
         //MÚSICA ACIERTO
         this.acierto = this.sound.add('acierto', { loop: false, volume: 0.5 });
         //MÚSICA GANASTE
         this.ganasteAudio = this.sound.add('ganaste', { loop: false, volume: 0.5 });
+        
         //Piezas de rompecabezas
         this.pieza1 = this.add.image(1320, 365, 'NivelA3/1').setInteractive().setScale(.2).setName("1");
         this.input.setDraggable(this.pieza1);
@@ -80,9 +85,11 @@ class  NivelA3 extends Phaser.Scene {
         this.input.setDraggable(this.pieza15);
         this.pieza16 = this.add.image(1320, 235, 'NivelA3/16').setInteractive().setScale(.2).setName("16");
         this.input.setDraggable(this.pieza16);
+        
         //Arreglo de piezas
         this.arregloPzas = [this.pieza1,this.pieza2,this.pieza3,this.pieza4,this.pieza5,this.pieza6,this.pieza7,this.pieza8,this.pieza9,this.pieza10,this.pieza11,this.pieza12,this.pieza13,this.pieza14, this.pieza15,this.pieza16];
         this.posiciones = [[1320, 365],[1000, 495],[1160, 105],[1320, 495],[1480, 105],[1000, 235],[1480, 235],[1320, 105],[1160, 365],[1160, 235],[1480, 365],[1000, 105],[1000, 365],[1160, 495],[1480, 495],[1320, 235]];
+        
         //Acomodar piezas de rompecabezas aleatoriamente
         for (let pza of this.arregloPzas){
             let random = Math.floor(Math.random() * this.posiciones.length);
@@ -90,28 +97,34 @@ class  NivelA3 extends Phaser.Scene {
             pza.y = this.posiciones[random][1];
             this.posiciones.splice(random,1);
         }
-        // //Fila 1
+        
+        //Fila 1
         this.drop1 = this.add.image(157, 105, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("1").input.dropZone = true;
         this.drop2 = this.add.image(353, 105, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("2").input.dropZone = true;
         this.drop3 = this.add.image(549, 105, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("3").input.dropZone = true;
         this.drop4 = this.add.image(745, 105, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("4").input.dropZone = true;
+       
         //Fila 2
         this.drop5 = this.add.image(157, 235, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("5").input.dropZone = true;
         this.drop6 = this.add.image(353, 235, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("6").input.dropZone = true;
         this.drop7 = this.add.image(549, 235, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("7").input.dropZone = true;
         this.drop8 = this.add.image(745, 235, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("8").input.dropZone = true;
-        // //Fila 3
+        
+        //Fila 3
         this.drop9 = this.add.image(157, 365, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("9").input.dropZone = true;
         this.drop10 = this.add.image(353, 365, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("10").input.dropZone = true;
         this.drop11 = this.add.image(549, 365, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("11").input.dropZone = true;
         this.drop12 = this.add.image(745, 365, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("12").input.dropZone = true;
-        //Fila 3
+        
+        //Fila 4
         this.drop13 = this.add.image(157, 495, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("13").input.dropZone = true;
         this.drop14 = this.add.image(353, 495, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("14").input.dropZone = true;
         this.drop15 = this.add.image(549, 495, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("15").input.dropZone = true;
         this.drop16 = this.add.image(745, 495, 'NivelA3/marco').setDepth(-1).setInteractive().setScale(.3).setName("16").input.dropZone = true;
+        
         //Programación de eventos principales
         const eventos = Phaser.Input.Events;
+        
         //Evento para inicializar el arrastre
         this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
             obj.setScale(0.3);

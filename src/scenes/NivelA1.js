@@ -42,6 +42,7 @@ class NivelA1 extends Phaser.Scene{
             this.dogCara.setAlpha(1);
             this.fondoDialogo.setAlpha(1);
             this.dialogo1.setAlpha(1);
+            console.log("Entra primer Timeout")
         }, 1500);
         setTimeout(() => {
             this.dogCara.setAlpha(0);
@@ -141,7 +142,6 @@ class NivelA1 extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
-        // console.log(this.dog.y)
         if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);

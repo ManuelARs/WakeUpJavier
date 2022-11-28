@@ -32,6 +32,10 @@ class NivelA7 extends Phaser.Scene{
         this.espejo.body.setAllowGravity(false);
         this.espejo.setPushable(false);
         this.espejo.body.setSize(400, 700);
+        this.espejo2 = this.physics.add.image(1520, 600, 'NivelA7/espejoCallejon2').setScale(0.3).setDepth(4).setAlpha(0);
+        this.espejo2.body.setAllowGravity(false);
+        this.espejo2.setPushable(false);
+        this.espejo2.body.setSize(400, 700);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
@@ -69,6 +73,11 @@ class NivelA7 extends Phaser.Scene{
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
         {
             this.dog.setVelocityY(-500);
+        }
+
+        if(this.dog.x > 1300) {
+            this.espejo2.setAlpha(1);
+            // this.espejo2.setAlpha();
         }
     }
 

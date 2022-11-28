@@ -24,13 +24,13 @@ class NivelA1 extends Phaser.Scene{
         // this.musicaFondo.play();
 
         //FONDO Y SPRITE
-        let fondo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'NivelA1/NivelA1')
-        let scaleX = this.cameras.main.width / fondo.width
-        let scaleY = this.cameras.main.height / fondo.height
-        let scale = Math.max(scaleX, scaleY)
-        fondo.setScale(scale).setScrollFactor(0)
+        // let fondo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'NivelA1/NivelA1')
+        // let scaleX = this.cameras.main.width / fondo.width
+        // let scaleY = this.cameras.main.height / fondo.height
+        // let scale = Math.max(scaleX, scaleY)
+        // fondo.setScale(scale).setScrollFactor(0)
         // this.cameras.main.setZoom(2);
-        // this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setScale(0.3).setDepth(-3).setAlpha(1);
+        this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setScale(.37,.35).setDepth(-3).setAlpha(1);
 
         //PERSONAJES
         this.dog = this.physics.add.sprite(50, 750, 'Dog', 0).setScale(0.2);

@@ -19,7 +19,7 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
         //PARA NIVEL A1
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
-        this.load.image(['tronco','NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1','NivelA1/pasto']);
+        this.load.image(['NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1', 'NivelA1/banca', 'NivelA1/dogCara','NivelA1/fondoDialogo', 'NivelA1/gataCara','NivelA1/dialogo1_1','NivelA1/dialogo1_2']);
         //PARA NIVEL A2
         this.load.image(['NivelA2/NivelA2','NivelA2/pasto','dogSprite/dog.png','dogSprite/dog.json','Dog','NivelA2/Eliminar-gata','NivelA2/mesa','NivelA2/panal','NivelA2/abeja']);
         //PARA NIVEL A3
@@ -39,25 +39,25 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('voltear', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
         //PARA ESCENA A
-        this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
-        'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
-        'escalera', 'ninja','fondo_opc1','coleccionable','end','instrucciones']);
-        this.load.audio('gong', ['./gong.mp3']);
-        this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
+        // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
+        // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
+        // 'escalera', 'ninja','fondo_opc1','coleccionable','end','instrucciones']);
+        // this.load.audio('gong', ['./gong.mp3']);
+        // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA B
-        this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
-        'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
-        'escalera', 'ninja','fondo_opc1','coleccionable','end']);
-        this.load.audio('gong', ['./gong.mp3']);
-        this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
+        // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
+        // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
+        // 'escalera', 'ninja','fondo_opc1','coleccionable','end']);
+        // this.load.audio('gong', ['./gong.mp3']);
+        // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
-        this.load.image(['gameOverBack','Menu/botonMenu2']);
-        this.load.audio('gameOver', ['./game_over.mp3']);
+        // this.load.image(['gameOverBack','Menu/botonMenu2']);
+        // this.load.audio('gameOver', ['./game_over.mp3']);
         //PARA ESCENA YOU WIN
-        this.load.image(['winBack','Menu/botonMenu']);
-        this.load.audio('win', ['./winner.mp3']);
+        // this.load.image(['winBack','Menu/botonMenu']);
+        // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
-        this.load.image(['heart'])
+        this.load.image(['SceneASceneB/heart'])
     }
 
     create(){

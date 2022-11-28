@@ -83,15 +83,11 @@ class NivelA extends Phaser.Scene{
         //MOVIMIENTOS
         if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
         {
-            // this.javier.anims.paused = true;
-            // this.javier.anims.pause('JavierA');
-            // console.log("Entro")
             this.javier.anims.play('JavierIdle');
         }
         if (this.cursors.left.isDown)
         {
             this.javier.setVelocityX(-250);
-            // this.javier.anims.play('JavierI',true);
             this.javier.anims.play('JavierD',true);
             this.javier.flipX=1;
         }

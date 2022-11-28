@@ -17,13 +17,21 @@ class NivelA1 extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
-        // this.cameras.main.setZoom(2);
+        
         
         //MÚSICA
-        this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        this.musicaFondo.play();
+        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
+        // this.musicaFondo.play();
+
         //FONDO Y SPRITE
-        this.fondo = this.add.image(800, 395, 'fondo_opc1').setScale(1.1).setDepth(-3).setAlpha(1);
+        let fondo = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'NivelA1/NivelA1')
+        let scaleX = this.cameras.main.width / fondo.width
+        let scaleY = this.cameras.main.height / fondo.height
+        let scale = Math.max(scaleX, scaleY)
+        fondo.setScale(scale).setScrollFactor(0)
+        // this.cameras.main.setZoom(2);
+        // this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setScale(0.3).setDepth(-3).setAlpha(1);
+
         //PERSONAJES
         this.dog = this.physics.add.sprite(50, 750, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(400, 300);
@@ -54,7 +62,13 @@ class NivelA1 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.gata, () => {
             this.tweens = this.add.tween({
             targets: [this.gata],
-            x: 1500,
+            x: 1600,
+            onComplete: () => {
+                    console.log(this.gata.x);
+                    this.gata.setAlpha(0);
+                    this.gata.disableBody(true, true);
+                    console.log('Se completa el tween');
+                },
             });
         });        
         this.physics.add.collider(this.dog, this.salida, () => {

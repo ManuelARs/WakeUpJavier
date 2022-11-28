@@ -4,13 +4,13 @@
 			"image": "dog.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1514,
-				"h": 1185
+				"w": 2024,
+				"h": 2025
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "dog2.png",
+					"filename": "dogSalto1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -18,20 +18,20 @@
 						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 184,
-						"y": 249,
-						"w": 632,
-						"h": 354
+						"x": 84,
+						"y": 187,
+						"w": 832,
+						"h": 447
 					},
 					"frame": {
 						"x": 0,
 						"y": 0,
-						"w": 632,
-						"h": 354
+						"w": 832,
+						"h": 447
 					}
 				},
 				{
-					"filename": "dog4.png",
+					"filename": "dogSalto2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -39,16 +39,16 @@
 						"h": 1000
 					},
 					"spriteSourceSize": {
-						"x": 91,
-						"y": 227,
-						"w": 818,
-						"h": 374
+						"x": 84,
+						"y": 107,
+						"w": 832,
+						"h": 384
 					},
 					"frame": {
-						"x": 632,
+						"x": 832,
 						"y": 0,
-						"w": 818,
-						"h": 374
+						"w": 832,
+						"h": 384
 					}
 				},
 				{
@@ -66,10 +66,115 @@
 						"h": 375
 					},
 					"frame": {
-						"x": 0,
-						"y": 374,
+						"x": 832,
+						"y": 384,
 						"w": 818,
 						"h": 375
+					}
+				},
+				{
+					"filename": "dog4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 91,
+						"y": 227,
+						"w": 818,
+						"h": 374
+					},
+					"frame": {
+						"x": 0,
+						"y": 447,
+						"w": 818,
+						"h": 374
+					}
+				},
+				{
+					"filename": "dogSalto4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 91,
+						"y": 227,
+						"w": 818,
+						"h": 374
+					},
+					"frame": {
+						"x": 0,
+						"y": 447,
+						"w": 818,
+						"h": 374
+					}
+				},
+				{
+					"filename": "dogJump1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 121,
+						"y": 194,
+						"w": 758,
+						"h": 410
+					},
+					"frame": {
+						"x": 818,
+						"y": 759,
+						"w": 758,
+						"h": 410
+					}
+				},
+				{
+					"filename": "dogJump2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 121,
+						"y": 216,
+						"w": 758,
+						"h": 388
+					},
+					"frame": {
+						"x": 0,
+						"y": 821,
+						"w": 758,
+						"h": 388
+					}
+				},
+				{
+					"filename": "dogJump3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 141,
+						"y": 122,
+						"w": 738,
+						"h": 441
+					},
+					"frame": {
+						"x": 0,
+						"y": 1209,
+						"w": 738,
+						"h": 441
 					}
 				},
 				{
@@ -87,8 +192,29 @@
 						"h": 375
 					},
 					"frame": {
-						"x": 818,
-						"y": 374,
+						"x": 0,
+						"y": 1650,
+						"w": 696,
+						"h": 375
+					}
+				},
+				{
+					"filename": "dogSalto3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 152,
+						"y": 224,
+						"w": 696,
+						"h": 375
+					},
+					"frame": {
+						"x": 696,
+						"y": 1650,
 						"w": 696,
 						"h": 375
 					}
@@ -108,10 +234,31 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 0,
-						"y": 749,
+						"x": 738,
+						"y": 1209,
 						"w": 626,
 						"h": 436
+					}
+				},
+				{
+					"filename": "dog2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 184,
+						"y": 249,
+						"w": 632,
+						"h": 354
+					},
+					"frame": {
+						"x": 1392,
+						"y": 1169,
+						"w": 632,
+						"h": 354
 					}
 				},
 				{
@@ -129,8 +276,8 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 626,
-						"y": 749,
+						"x": 1392,
+						"y": 1523,
 						"w": 626,
 						"h": 436
 					}
@@ -141,6 +288,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1a58913f998cbfe9c8a46d12c573ec13:cc7564693f314b19252e30960877fccf:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:dea1e09f915a3211a240a1bf9126c592:73edab579e80588639a092ad83c17dd3:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
 	}
 }

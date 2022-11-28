@@ -20,10 +20,11 @@ class NivelA1 extends Phaser.Scene{
         // this.cameras.main.setZoom(2);
         
         //MÚSICA
-        this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        this.musicaFondo.play();
+        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
+        // this.musicaFondo.play();
         //FONDO Y SPRITE
-        this.fondo = this.add.image(800, 395, 'fondo_opc1').setScale(1.1).setDepth(-3).setAlpha(1);
+        this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
+        this.pasto = this.physics.add.image(800, 740, 'NivelA1/pasto').setDepth(-1).setScale(.4,.25);
         //PERSONAJES
         this.dog = this.physics.add.sprite(50, 750, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(400, 300);

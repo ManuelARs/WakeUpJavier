@@ -19,7 +19,7 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
         //PARA NIVEL A1
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
-        this.load.image(['tronco','NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor']);
+        this.load.image(['tronco','NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1','NivelA1/pasto']);
         //PARA NIVEL A2
         this.load.image(['NivelA2/NivelA2']);
         //PARA NIVEL A3
@@ -63,7 +63,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('Menu');
+        this.scene.start('NivelA1');
         //this.scene.launch('NivelA6');
         console.log(this.scene.manager.scenes)
     }

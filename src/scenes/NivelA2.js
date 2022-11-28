@@ -13,17 +13,17 @@ class NivelA2 extends Phaser.Scene {
     }
 
     create() {
+        this.physics.world.setBounds(0,0,1580, 700);
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
 
         //Imagen de Fondo
         this.fondo = this.add.image(775, 360, 'NivelA2/NivelA2').setDepth(-2).setScale(.4,.38);
-        //Fondo pasto
-        this.pasto = this.physics.add.image(790, 740, 'NivelA2/pasto').setDepth(-1).setScale(.42,.27);
-        this.pasto.body.setAllowGravity(false);
-        this.pasto.body.setImmovable(true);
-        this.pasto.body.setSize(3800,250);
+        this.mesa = this.physics.add.staticImage(200, 630, 'NivelA2/mesa').setScale(2);
+        this.mesa.body.setSize(180,15);
+        this.mesa.setOffset(-0.20,-10);
+        this.panal = this.add.image(1270,480, 'NivelA2/panal').setScale(2);
 
         //PERSONAJES
         //Javier perrito
@@ -42,9 +42,9 @@ class NivelA2 extends Phaser.Scene {
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
-        //COLISIÓN PASTO CON PERRO Y GATA
-        this.physics.add.collider(this.dog, this.pasto, () => {});
-        this.physics.add.collider(this.gata, this.pasto, () => {});
+        
+        //COLISIÓN Mesa CON PERRO 
+        this.physics.add.collider(this.dog, this.mesa, () => {});
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -79,9 +79,9 @@ class NivelA2 extends Phaser.Scene {
             this.dog.setVelocityY(-500);
         }
 
-        // if(this.javier.x > 1100) {
-        //     this.espejo2.setAlpha(1)
-        // }
+        if(this.dog.x > 1260) {
+            this.cameras.main.shake(500,0.008);
+        }
     }
 }
 

@@ -17,9 +17,7 @@ class NivelA extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
-        // this.cameras.main.centerOn(this.javier);
-        // this.cameras.main.centerOnY(this.javier.y);
-        // this.cameras.main.setZoom(2);
+        this.cameras.main.setZoom(2);
         
         //MÚSICA
         // this.gong = this.sound.add('gong',{loop:false});

@@ -21,7 +21,7 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
         this.load.image(['tronco','NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1','NivelA1/pasto']);
         //PARA NIVEL A2
-        this.load.image(['NivelA2/NivelA2','NivelA2/pasto','dogSprite/dog.png','dogSprite/dog.json','Dog','NivelA2/Eliminar-gata']);
+        this.load.image(['NivelA2/NivelA2','NivelA2/pasto','dogSprite/dog.png','dogSprite/dog.json','Dog','NivelA2/Eliminar-gata','NivelA2/mesa','NivelA2/panal','NivelA2/abeja']);
         //PARA NIVEL A3
         this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
         //PARA NIVELA5
@@ -31,15 +31,13 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('Llorona', ['./Llorona.mp3']);
         this.load.audio('acierto', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
-
-        //PARA NIVEL 6
+        //PARA NIVELA4
+        this.load.image([ 'NivelA4/NivelA4']);
+        //PARA NIVEL A6
         this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back']);
         //this.load.audio('Theme', ['./FALTA MUSICA']);
         this.load.audio('voltear', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
-        
-        //PARA NIVELA4
-        this.load.image([ 'NivelA4/NivelA4']);
         //PARA ESCENA A
         this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',

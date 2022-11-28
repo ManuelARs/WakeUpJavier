@@ -31,6 +31,9 @@ class  NivelA3 extends Phaser.Scene {
         //Imagen de referencia para puzzle
         this.imgReferencia = this.add.image(451, 300, 'NivelA3/puzzleAtras').setScale(.3).setDepth(-1);
         
+        //INSTRUCCIONES
+        this.instrucciones = this.add.image(460, 610, 'NivelA3/instrucciones').setScale(0.4);
+
         //PERSONAJES
         //Perro Javier
         this.dog = this.add.sprite(1500, 630, 'Dog', 0).setScale(0.2);
@@ -140,8 +143,11 @@ class  NivelA3 extends Phaser.Scene {
             if (!dropzone) { //Cuando no sea dropeable
                 obj.x = obj.input.dragStartX;//Arrastre de un game-object sobre una zona "dropeable"
                 obj.y = obj.input.dragStartY;
+                obj.setScale(.2);
             }
-            obj.setScale(.3);
+            else{
+                obj.setScale(.3);
+            }
         });
         //Personalización de eventos de la zona "dropeable"
         this.input.on(eventos.DRAG_ENTER, (pointer, obj, dropzone) => {

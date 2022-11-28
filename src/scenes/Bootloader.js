@@ -26,7 +26,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
         //PARA NIVELA5
         this.load.atlas('DogB', 'badDogSprite/pastor.png', 'badDogSprite/pastor.json');
-        this.load.image(['NivelA5/nivelA5', 'NivelA5/hidrante', 'NivelA5/hueso', 'NivelA5/tronco']);
+        this.load.image(['NivelA5/nivelA5', 'NivelA5/hidrante', 'NivelA5/hueso', 'NivelA5/tronco', 'NivelA5/dialogo5_1', 'NivelA5/dialogo5_2', 'NivelA5/pastorCara']);
         //PARA NIVELA7
         this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2']);
         // this.load.audio('Llorona', ['./Llorona.mp3']);

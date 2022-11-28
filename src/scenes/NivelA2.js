@@ -14,7 +14,7 @@ class NivelA2 extends Phaser.Scene {
 
     create() {
         //BOUNDS DE LA ESCENA
-        this.physics.world.setBounds(0,0,450, 700);
+        this.physics.world.setBounds(0,0,400, 700);
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
@@ -29,7 +29,7 @@ class NivelA2 extends Phaser.Scene {
         this.mesa.setOffset(-0.20,-10);
         this.panal = this.add.image(1270,480, 'NivelA2/panal').setScale(2);
 
-        //CONVERSACIONES
+        //DIÁLOGOS
         this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
         this.dogCara = this.add.image(125, 125, 'NivelA1/dogCara').setScale(1).setAlpha(1);
         this.gataCara = this.add.image(1500, 125, 'NivelA1/gataCara').setScale(1.2).setAlpha(0);
@@ -43,7 +43,6 @@ class NivelA2 extends Phaser.Scene {
         this.dog.body.setMass(1);
         //Gata Mia
         this.gata = this.physics.add.image(360, 450, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        //x250
         this.gata.body.setSize(40, 50);
         this.gata.setPushable(false);
 
@@ -51,11 +50,7 @@ class NivelA2 extends Phaser.Scene {
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
 
-        //COLISIONES
-        this.dog.body.setCollideWorldBounds(true);
-        this.gata.body.setCollideWorldBounds(true);
-        //SE MUESTRA DIÁLOGO DE GATA
-
+        //APARICIÓN DE DIÁLOGOS
         setTimeout(() => {
             this.gataCara.setAlpha(1);
             this.dialogo2.setAlpha(1);
@@ -70,6 +65,10 @@ class NivelA2 extends Phaser.Scene {
             this.fondoDialogo.setAlpha(0);
             this.movimiento = 1;
         }, 8000);
+
+        //COLISIONES
+        this.dog.body.setCollideWorldBounds(true);
+        this.gata.body.setCollideWorldBounds(true);
 
         //Mejorar tween con timeline maybe?
         // this.tweens = this.add.tween({

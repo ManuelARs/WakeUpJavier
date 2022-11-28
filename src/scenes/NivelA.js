@@ -17,6 +17,7 @@ class NivelA extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
+        this.cameras.main.setZoom(2);
         
         //MÚSICA
         // this.gong = this.sound.add('gong',{loop:false});
@@ -33,6 +34,9 @@ class NivelA extends Phaser.Scene{
         this.anims.create({ key: 'JavierIdle', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierI', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'JavierD', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierD', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         // this.javier.anims.play('JavierD');
+
+        // this.javier.body.setSize(200, 500);
+        // this.javier.body.setOffset(0,0);
 
         //OBJETOS
         //this.cama = this.add.image(180, 710, 'NivelA/Eliminar-cama').setScale(0.1);

@@ -1,0 +1,272 @@
+{
+	"textures": [
+		{
+			"image": "pastor.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 906,
+				"h": 57
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "pastorIdle3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 7,
+						"w": 51,
+						"h": 57
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 51,
+						"h": 57
+					}
+				},
+				{
+					"filename": "pastorIdle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 7,
+						"w": 46,
+						"h": 57
+					},
+					"frame": {
+						"x": 51,
+						"y": 0,
+						"w": 46,
+						"h": 57
+					}
+				},
+				{
+					"filename": "pastorIdle4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 7,
+						"w": 46,
+						"h": 57
+					},
+					"frame": {
+						"x": 97,
+						"y": 0,
+						"w": 46,
+						"h": 57
+					}
+				},
+				{
+					"filename": "pastorIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 7,
+						"w": 35,
+						"h": 57
+					},
+					"frame": {
+						"x": 143,
+						"y": 0,
+						"w": 35,
+						"h": 57
+					}
+				},
+				{
+					"filename": "pastor4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 14,
+						"w": 91,
+						"h": 50
+					},
+					"frame": {
+						"x": 178,
+						"y": 0,
+						"w": 91,
+						"h": 50
+					}
+				},
+				{
+					"filename": "pastor8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 14,
+						"w": 91,
+						"h": 50
+					},
+					"frame": {
+						"x": 269,
+						"y": 0,
+						"w": 91,
+						"h": 50
+					}
+				},
+				{
+					"filename": "pastor3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 14,
+						"w": 90,
+						"h": 50
+					},
+					"frame": {
+						"x": 360,
+						"y": 0,
+						"w": 90,
+						"h": 50
+					}
+				},
+				{
+					"filename": "pastor7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 14,
+						"w": 90,
+						"h": 50
+					},
+					"frame": {
+						"x": 450,
+						"y": 0,
+						"w": 90,
+						"h": 50
+					}
+				},
+				{
+					"filename": "pastor1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 16,
+						"w": 92,
+						"h": 48
+					},
+					"frame": {
+						"x": 540,
+						"y": 0,
+						"w": 92,
+						"h": 48
+					}
+				},
+				{
+					"filename": "pastor5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 16,
+						"w": 92,
+						"h": 48
+					},
+					"frame": {
+						"x": 632,
+						"y": 0,
+						"w": 92,
+						"h": 48
+					}
+				},
+				{
+					"filename": "pastor2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 16,
+						"w": 91,
+						"h": 48
+					},
+					"frame": {
+						"x": 724,
+						"y": 0,
+						"w": 91,
+						"h": 48
+					}
+				},
+				{
+					"filename": "pastor6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 16,
+						"w": 91,
+						"h": 48
+					},
+					"frame": {
+						"x": 815,
+						"y": 0,
+						"w": 91,
+						"h": 48
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:23f16ac1ed79908dfbf3a0a8fed40486:62cf52c1e2774d54a792320123c88801:68173622ac060be33e83035bfb86dd6a$"
+	}
+}

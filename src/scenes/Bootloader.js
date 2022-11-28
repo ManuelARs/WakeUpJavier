@@ -27,7 +27,7 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVELA5
         this.load.image(['NivelA5/nivelA5']);
         //PARA NIVELA7
-        this.load.image(['NivelA7/nivelA7']);
+        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2']);
         // this.load.audio('Llorona', ['./Llorona.mp3']);
         this.load.audio('acierto', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
@@ -61,7 +61,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelA1');
+        this.scene.start('NivelA7');
         //this.scene.launch('NivelA6');
         //console.log(this.scene.manager.scenes)
     }

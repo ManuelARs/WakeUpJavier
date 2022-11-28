@@ -39,13 +39,13 @@ class NivelA1 extends Phaser.Scene{
             this.dogCara.setAlpha(1);
             this.fondoDialogo.setAlpha(1);
             this.dialogo1.setAlpha(1);
-        }, 1000);
+        }, 1500);
         setTimeout(() => {
             this.dogCara.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
             this.dialogo1.setAlpha(0);
             this.movimiento = 1;
-        }, 3000);
+        }, 6000);
 
         //OBJETOS
         this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);

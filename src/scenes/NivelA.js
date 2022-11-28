@@ -12,7 +12,7 @@ class NivelA extends Phaser.Scene{
 
     create() {
         // this.scene.moveAbove('Bootloader','HUD');
-        console.log(this.scene.manager.scenes);
+        //console.log(this.scene.manager.scenes);
         
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
@@ -74,10 +74,10 @@ class NivelA extends Phaser.Scene{
             this.javier.setAccelerationY(0);
             this.espejo2.setAlpha(1)
             // this.sound.pauseAll();
-            //this.scene.start('NivelA1');
-            setTimeout(() => {
-                this.scene.start('NivelA1');
-              }, "2000")
+            this.scene.start('NivelA1');
+            // setTimeout(() => {
+            //     this.scene.start('NivelA1');
+            //   }, "500")
         });
 
         //Teclado

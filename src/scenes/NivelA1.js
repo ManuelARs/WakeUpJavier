@@ -12,11 +12,11 @@ class NivelA1 extends Phaser.Scene{
 
     create() {
         // this.scene.moveAbove('Bootloader','HUD');
-        console.log(this.scene.manager.scenes);
+        //console.log(this.scene.manager.scenes);
         
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
-        this.cameras.main.fadeIn(2000);
+        this.cameras.main.fadeIn(1000);
         // this.cameras.main.setZoom(2);
         
         //MÚSICA
@@ -24,13 +24,20 @@ class NivelA1 extends Phaser.Scene{
         // this.musicaFondo.play();
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
-        this.pasto = this.physics.add.image(800, 740, 'NivelA1/pasto').setDepth(-1).setScale(.4,.25);
+        this.pasto = this.physics.add.image(790, 740, 'NivelA1/pasto').setDepth(-1).setScale(.42,.27);
+        this.pasto.body.setAllowGravity(false);
+        this.pasto.body.setImmovable(true);
+        this.pasto.body.setSize(3800,250);
         //PERSONAJES
-        this.dog = this.physics.add.sprite(50, 750, 'Dog', 0).setScale(0.2);
-        this.dog.body.setSize(400, 300);
+        //Perro Javier
+        this.dog = this.physics.add.sprite(100, 610, 'Dog', 0).setScale(0.2);
+        this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
-
-        this.gata = this.physics.add.image(750, 750, 'NivelA1/Eliminar-gata', 0).setScale(1.5);
+        //Gata Mia
+        this.gata = this.physics.add.image(250, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
+        this.gata.body.setSize(60, 50);
+        this.gata.setPushable(false);
+        //this.gata.body.setImmovable(true);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
@@ -44,25 +51,32 @@ class NivelA1 extends Phaser.Scene{
         
         //CAMARA
         this.cameras.main.startFollow(this.dog, true);
-        
        
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
 
-        this.physics.add.existing(this.gata, true );
+        //this.physics.add.existing(this.gata, true );
   
         this.physics.add.collider(this.dog, this.gata, () => {
-            this.tweens = this.add.tween({
-            targets: [this.gata],
-            x: 1500,
-            });
+            // this.tweens = this.add.tween({
+            // targets: [this.gata],
+            //     x: 1500,
+            //     flipX: 180,
+            //     duration: 4000
+            // });
+            //APARECEN LAS PRIMERAS INSTRUCCIONES
+            //SE MUESTRAN LOS MOVIMIENTOS QUE PUEDE HACER JAVIER
+            //DESPUÉS LA GATA DEBE SALIR DE LA ESCENA Y JAVIER DEBE ALCANZARLA
         });        
         this.physics.add.collider(this.dog, this.salida, () => {
             this.dog.setVelocityY(0);
             this.dog.setAccelerationY(0);
-            this.scene.start('NivelA3');
+            this.scene.start('NivelA2');
         });
+        //COLISIÓN PASTO CON PERRO Y GATA
+        this.physics.add.collider(this.dog, this.pasto, () => {});
+        this.physics.add.collider(this.gata, this.pasto, () => {});
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();

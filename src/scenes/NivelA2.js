@@ -46,7 +46,9 @@ class NivelA2 extends Phaser.Scene {
         //COLISIÓN Mesa CON PERRO 
         this.physics.add.collider(this.dog, this.mesa, () => {});
         this.physics.add.collider(this.gata, this.mesa, () => {});
-        this.physics.add.collider(this.dog, this.gata, () => {});
+        this.physics.add.collider(this.dog, this.gata, () => {
+            
+        });
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -79,10 +81,6 @@ class NivelA2 extends Phaser.Scene {
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
         {
             this.dog.setVelocityY(-500);
-        }
-
-        if(this.dog.x > 1260) {
-            this.cameras.main.shake(500,0.008);
         }
     }
 }

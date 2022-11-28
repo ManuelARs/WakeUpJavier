@@ -90,7 +90,7 @@ class  NivelA4 extends Phaser.Scene {
                 this.dog.setVelocityY(-500);
             }
             // se cae panal y se crean los grupos de las abejas
-            this.cameras.main.shake(500,0.005);
+            //this.cameras.main.shake(500,0.0008);
             this.panal.body.setAllowGravity(true);
             this.panal.angle = 30
             if(this.tocoPanal == true) {
@@ -113,7 +113,7 @@ class  NivelA4 extends Phaser.Scene {
                     targets: this.abejas.getChildren(),
                     x: 1500,
                     yoyo: true,
-                    duration: 4000,
+                    duration: 6000,
                     repeat: -1,
                     easy: 'Power1',
                     onYoyo: () => {
@@ -147,7 +147,7 @@ class  NivelA4 extends Phaser.Scene {
                     targets: this.abejas2.getChildren(),
                     x: 240,
                     yoyo: true,
-                    duration: 4000,
+                    duration: 6000,
                     repeat: -1,
                     easy: 'Power1',
                     onYoyo: () => {
@@ -180,7 +180,7 @@ class  NivelA4 extends Phaser.Scene {
                     targets: this.abejas3.getChildren(),
                     x: 1500,
                     yoyo: true,
-                    duration: 6000,
+                    duration: 8000,
                     repeat: -1,
                     easy: 'Power1',
                     onYoyo: () => {
@@ -198,7 +198,7 @@ class  NivelA4 extends Phaser.Scene {
             }
             
         } else {
-            this.gata.x += 1;
+            this.gata.x += 10;
         }
 
         // Logica de colisiones con abejas

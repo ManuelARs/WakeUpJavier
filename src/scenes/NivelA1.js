@@ -31,7 +31,7 @@ class NivelA1 extends Phaser.Scene{
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
         //Gata Mia
-        this.gata = this.physics.add.image(250, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
+        this.gata = this.physics.add.image(750, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
         this.gata.body.setSize(60, 50);
         this.gata.setPushable(false);
         //this.gata.body.setImmovable(true);

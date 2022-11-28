@@ -92,7 +92,7 @@ class Menu extends Phaser.Scene{
         // EVENTO SÓLO PARA PLAY
         this.play.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();
-            this.scene.start("NivelA7");         
+            this.scene.start("NivelA");         
         }, this);
     }
 

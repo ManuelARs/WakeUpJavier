@@ -23,11 +23,19 @@ class  NivelA3 extends Phaser.Scene {
         let aciertos = 16;
         //TIMER
         let timedEvent;
+        //BOUNDS PARA PERSONAJES
+        this.physics.world.setBounds(0,0,1580, 680)
         //Imagen de Fondo
         this.fondo = this.add.image(775, 360, 'NivelA3/fondoPuzzle').setDepth(-2).setScale(.4,.35);
         //Imagen de referencia para puzzle
         this.imgReferencia = this.add.image(451, 300, 'NivelA3/puzzleAtras').setScale(.3).setDepth(-1);
-        this.javier = this.add.image(1500, 627, 'NivelA3/javier').setDepth(4).setScale(1.5);
+        //PERSONAJES
+        //Perro Javier
+        this.dog = this.add.sprite(1500, 630, 'Dog', 0).setScale(0.2);
+        this.dog.flipX = true;
+        //ANIMACIONES
+        this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.dog.anims.play('dogIdle',true);
         // //Imagen Titulo(Rompecabezas)
         // this.titulo = this.add.image(470, 80, 'rompecabezas').setScale(.6);
         // //Imagen GANASTE
@@ -135,8 +143,8 @@ class  NivelA3 extends Phaser.Scene {
         let showGanaste = () => {
             //this.music.stop();
             //this.ganaste.setAlpha(1);
-            this.ganasteAudio.play();
             //alert("GANASTE");
+            this.scene.start('NivelA4');
         };
         //Evento DROP
         this.input.on(eventos.DROP, (pointer, obj, dropzone) => {
@@ -154,6 +162,7 @@ class  NivelA3 extends Phaser.Scene {
                 //VERIFICAR SI EL JUGADOR GANÓ
                 if (contador == aciertos) {
                     // movimientos.push(contmov);
+                    this.ganasteAudio.play();
                     timedEvent = this.time.delayedCall(1000, showGanaste, [], this);
                 }
             }

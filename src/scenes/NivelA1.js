@@ -59,21 +59,15 @@ class NivelA1 extends Phaser.Scene{
         //this.physics.add.existing(this.gata, true );
   
         this.physics.add.collider(this.dog, this.gata, () => {
-            this.tweens = this.add.tween({
-            targets: [this.gata],
-            x: 1600,
-            onComplete: () => {
-                    console.log(this.gata.x);
-                    this.gata.setAlpha(0);
-                    this.gata.disableBody(true, true);
-                    console.log('Se completa el tween');
-                },
-            });
             // this.tweens = this.add.tween({
             // targets: [this.gata],
-            //     x: 1500,
-            //     flipX: 180,
-            //     duration: 4000
+            // x: 1600,
+            // onComplete: () => {
+            //         console.log(this.gata.x);
+            //         this.gata.setAlpha(0);
+            //         this.gata.disableBody(true, true);
+            //         console.log('Se completa el tween');
+            //     },
             // });
             //APARECEN LAS PRIMERAS INSTRUCCIONES
             //SE MUESTRAN LOS MOVIMIENTOS QUE PUEDE HACER JAVIER

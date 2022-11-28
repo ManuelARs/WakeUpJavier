@@ -17,40 +17,23 @@ class NivelA extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
-        this.cameras.main.setZoom(2);
         
         //MÚSICA
         // this.gong = this.sound.add('gong',{loop:false});
         // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
         // this.musicaFondo.play();
-<<<<<<< HEAD
-        
-        //FONDO Y SPRITE
-        this.fondo = this.add.image(790, 385, 'NivelA/fondo_opc1').setDepth(-2).setScale(.36,.32);
-        
-        //PERSONAJE
-        this.javier = this.physics.add.sprite(100, 400, 'Javier', 0).setScale(0.5);
-        this.javier.body.setSize(200, 450);
-=======
         //FONDO Y SPRITE
         this.fondo = this.add.image(790, 385, 'NivelA/fondo_opc1').setDepth(-2).setScale(.36,.32);
         
         // this.javier = this.physics.add.image(50, 10, 'Javier_01').setScale(0.2);
         this.javier = this.physics.add.sprite(350, 480, 'Javier', 0).setScale(0.4).setDepth(45);
         this.javier.body.setSize(230, 550);
->>>>>>> b151fc7f78eba7e9e182681ccc94bd1081e8094a
         this.javier.body.setMass(1);
         
         this.anims.create({ key: 'JavierIdle', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierI', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'JavierD', frames: this.anims.generateFrameNames('Javier', { prefix: 'JavierD', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         // this.javier.anims.play('JavierD');
 
-<<<<<<< HEAD
-=======
-        // this.javier.body.setSize(200, 500);
-        // this.javier.body.setOffset(0,0);
-
->>>>>>> b151fc7f78eba7e9e182681ccc94bd1081e8094a
         //OBJETOS
         //this.cama = this.add.image(180, 710, 'NivelA/Eliminar-cama').setScale(0.1);
         this.espejo = this.physics.add.image(1530, 380, 'NivelA/espejo').setScale(0.22);

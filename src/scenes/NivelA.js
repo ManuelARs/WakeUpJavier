@@ -55,13 +55,8 @@ class NivelA extends Phaser.Scene{
         this.javier.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 1580, 635));
         this.espejo.body.setCollideWorldBounds(true);
 
-        // this.physics.add.existing(this.cama, true );
         this.physics.add.existing(this.espejo, true );
-        // this.cama.body.setSize(300, 50);
-        // this.physics.add.collider(this.javier, this.cama, () => {
-        //     this.javier.setVelocityY(0);
-        //     this.javier.setAccelerationY(0);
-        // });
+
         this.physics.add.collider(this.javier, this.espejo, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);

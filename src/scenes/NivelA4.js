@@ -21,9 +21,9 @@ class  NivelA4 extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
         //Imagen de Fondo
-        this.fondo = this.add.image(775, 360, 'NivelA4/NivelA4').setDepth(-2).setScale(.4,.35);
-        this.mesa = this.physics.add.staticImage(200, 630, 'NivelA4/mesa').setScale(2);
-        this.mesa.body.setSize(140,15);
+        this.fondo = this.add.image(775, 370, 'NivelA4/NivelA4').setDepth(-2).setScale(.4,.35);
+        this.mesa = this.physics.add.staticImage(300, 630, 'NivelA4/mesa').setScale(2);
+        this.mesa.body.setSize(145,15);
         this.mesa.setOffset(-0.20,-10);
         this.panal = this.physics.add.image(1270,515, 'NivelA4/panal').setScale(1.2);
         this.panal.body.setAllowGravity(false);
@@ -34,8 +34,15 @@ class  NivelA4 extends Phaser.Scene {
         this.dog.body.setMass(1);
         //Gata Mia
         this.gata = this.physics.add.image(250, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        this.gata.body.setSize(60, 50);
+        this.gata.body.setSize(60, 70);
         this.gata.setPushable(false);
+        this.gata.flipX = true
+        //CONVERSACIONES
+        this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
+        this.dogCara = this.add.image(125, 125, 'NivelA1/dogCara').setScale(1).setAlpha(0);
+        this.gataCara = this.add.image(1500, 125, 'NivelA1/gataCara').setScale(1.2).setAlpha(1);
+        this.dialogo1 = this.add.image(770, 125, 'NivelA4/dialogo4_1').setScale(0.7).setAlpha(1);
+        this.dialogo2 = this.add.image(790, 125, 'NivelA4/dialogo4_2').setScale(0.7).setAlpha(0);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
@@ -56,6 +63,24 @@ class  NivelA4 extends Phaser.Scene {
             this.dog.setAccelerationY(0);
             this.scene.start('NivelA5');
         });
+
+        //DIALOGOS
+      setTimeout(() => {
+          this.gataCara.setAlpha(0);
+          this.fondoDialogo.setAlpha(0);
+          // nuevo dialogo ej Esto te ayudara a relajarte
+          this.dialogo1.setAlpha(0);
+          this.gataCara.setAlpha(1);
+          this.fondoDialogo.setAlpha(1);
+          this.dialogo2.setAlpha(1);
+      }, 3000);
+
+      setTimeout(() => {
+        this.gataCara.setAlpha(0);
+        this.fondoDialogo.setAlpha(0);
+        // nuevo dialogo ej Esto te ayudara a relajarte
+        this.dialogo2.setAlpha(0);
+    }, 7000);
     }
 
     update(time, delta) {
@@ -66,7 +91,7 @@ class  NivelA4 extends Phaser.Scene {
             this.dog.anims.play('dogIdle',true);
         }
         
-        if(this.gata.x > 1280) {
+        if(this.gata.x > 1450) {
             // se le permite al perro avanzar 
             if (this.cursors.left.isDown)
             {
@@ -195,10 +220,11 @@ class  NivelA4 extends Phaser.Scene {
                     }
                   });
                   this.tocoPanal = false;
+                  this.gata.flipX = false
             }
             
         } else {
-            this.gata.x += 10;
+            this.gata.x += 4;
         }
 
         // Logica de colisiones con abejas

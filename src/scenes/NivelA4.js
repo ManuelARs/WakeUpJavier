@@ -29,12 +29,12 @@ class  NivelA4 extends Phaser.Scene {
         // this.abeja = this.add.image(1270,515, 'NivelA4/abeja').setScale(0.2);
         this.abejas = this.physics.add.group({
             key: 'abeja',
-            repeat: 5,
+            repeat: 2,
             setXY: {
-              x: 900,
-              y: 500,
-              stepY: -50,
-              stepX: 20
+              x: 240,
+              y: 680,
+              stepY: -30,
+              stepX: 50
             }
           });
         this.abejas.children.iterate((abejas) => {
@@ -44,9 +44,9 @@ class  NivelA4 extends Phaser.Scene {
         });
         this.add.tween({
             targets: this.abejas.getChildren(),
-            x: 1250,
+            x: 1500,
             yoyo: true,
-            duration: 6000,
+            duration: 4000,
             repeat: -1,
             easy: 'Power1',
             onYoyo: () => {
@@ -56,6 +56,73 @@ class  NivelA4 extends Phaser.Scene {
             },
             onRepeat: () => {
               this.abejas.children.iterate((abeja) => {
+                abeja.flipX = 0;
+              });
+            }
+          });
+        this.abejas2 = this.physics.add.group({
+            key: 'abeja',
+            repeat: 1,
+            setXY: {
+                x: 1500,
+                y: 650,
+                stepY: -30,
+                stepX: 50
+            }
+        });
+        this.abejas2.children.iterate((abejas) => {
+            abejas.setScale(0.18);
+            abejas.body.setAllowGravity(false);
+            abejas.setCollideWorldBounds(true);
+            abejas.flipX = 1;
+        });
+        this.add.tween({
+            targets: this.abejas2.getChildren(),
+            x: 240,
+            yoyo: true,
+            duration: 4000,
+            repeat: -1,
+            easy: 'Power1',
+            onYoyo: () => {
+              this.abejas2.children.iterate((abeja) => {
+                abeja.flipX = 0;
+              });
+            },
+            onRepeat: () => {
+              this.abejas2.children.iterate((abeja) => {
+                abeja.flipX = 1;
+              });
+            }
+          });
+        this.abejas3 = this.physics.add.group({
+            key: 'abeja',
+            repeat: 3,
+            setXY: {
+                x: 350,
+                y: 550,
+                stepY: -30,
+                stepX: -30
+            }
+        });
+        this.abejas3.children.iterate((abejas) => {
+            abejas.setScale(0.18);
+            abejas.body.setAllowGravity(false);
+            abejas.setCollideWorldBounds(true);
+        });
+        this.add.tween({
+            targets: this.abejas3.getChildren(),
+            x: 1500,
+            yoyo: true,
+            duration: 6000,
+            repeat: -1,
+            easy: 'Power1',
+            onYoyo: () => {
+              this.abejas3.children.iterate((abeja) => {
+                abeja.flipX = 1;
+              });
+            },
+            onRepeat: () => {
+              this.abejas3.children.iterate((abeja) => {
                 abeja.flipX = 0;
               });
             }
@@ -117,6 +184,13 @@ class  NivelA4 extends Phaser.Scene {
             this.panal.body.setAllowGravity(true);
             this.panal.angle = 30
         }
+        function choqueAbeja(javier, abeja) {
+            javier.setTint(0xff0000);
+            // bandera+=1;
+            // console.log(bandera);
+            // quitarCora();
+          }
+        this.physics.collide(this.dog, this.abejas, choqueAbeja);
     }
 }
 

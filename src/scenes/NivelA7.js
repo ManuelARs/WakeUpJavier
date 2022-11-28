@@ -21,9 +21,10 @@ class NivelA7 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
         
+
         //PERSONAJES
         //Perro Javier
-        this.dog = this.physics.add.sprite(100, 610, 'Dog', 0).setScale(0.2);
+        this.dog = this.physics.add.sprite(100, 630, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
 

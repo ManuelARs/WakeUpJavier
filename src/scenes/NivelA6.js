@@ -30,12 +30,17 @@ class NivelA6 extends Phaser.Scene{
         this.text = this.add.text(700,12,'',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);
         //INSTRUCCIONES
         this.instrucciones = this.add.image(300, 310, 'NivelA6/instrucciones').setScale(0.4);
+        //DIÁLOGOS
+        this.fondoDialogo = this.add.image(280, 160, 'NivelA6/fondoDialogo').setScale(0.35).setAlpha(0);
+        this.pastorCara = this.add.image(430, 130, 'NivelA6/pastorCara').setScale(1.7).setAlpha(0);
+        this.dialogo1 = this.add.image(210, 160, 'NivelA6/dialogo6_1').setScale(0.35).setAlpha(0);
+
         //PERSONAJES
         //Perro Javier
         this.dog = this.add.sprite(200, 650, 'Dog2', 0).setScale(0.2);
         //ANIMACIONES
-        this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog2', { prefix: 'dogIdleL', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
-        this.dog.anims.play('dogIdle',true);
+        this.anims.create({ key: 'dogIdle2', frames: this.anims.generateFrameNames('Dog2', { prefix: 'dogIdleL', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.dog.anims.play('dogIdle2',true);
 
         // this.timedEvent = this.time.delayedCall(1000, reiniciar, [], this, loop:true);
         this.timedEvent2 = this.time.addEvent({ delay: 1000, callback: reiniciar, callbackScope: this, loop: true });
@@ -227,12 +232,18 @@ class NivelA6 extends Phaser.Scene{
             //this.ganaste.setAlpha(1).setDepth(6);
             //this.tiempoRestante
             this.ganar.play();
+            this.instrucciones.setAlpha(0);
+            this.text.setAlpha(0);
+            this.textoContador.setAlpha(0);
+            //Diálogo de Pastor
+            this.pastorCara.setAlpha(1);
+            this.fondoDialogo.setAlpha(1);
+            this.dialogo1.setAlpha(1);
             setTimeout(() => {
                 this.scene.start('NivelA7');
-            }, 2000);
-            
+            }, 3000);
         }
-        if(this.tiempoRestante == 0) {
+        if(this.tiempoRestante == 0 && this.ganasteB == false) {
             this.scene.restart();
         }
     }

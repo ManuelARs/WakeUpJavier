@@ -15,7 +15,10 @@ class  NivelA4 extends Phaser.Scene {
     }
 
     create() {
-      this.tocoPanal = true
+      //BANDERAS
+      this.tocoPanal = true;
+      this.gataTween = false;
+      //BOUNDS PARA PERSONAJES
       this.physics.world.setBounds(0,0,1580, 700);
       //CAMARA INICIAL EFECTO FADE IN
       this.cameras.main.setBounds(0, 0, 1580, 780);
@@ -34,9 +37,9 @@ class  NivelA4 extends Phaser.Scene {
       this.dog.body.setMass(1);
       //Gata Mia
       this.gata = this.physics.add.image(250, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-      this.gata.body.setSize(60, 70);
+      this.gata.body.setSize(60, 40);
       this.gata.setPushable(false);
-      this.gata.flipX = true;
+      //this.gata.flipX = true;
       //CONVERSACIONES
       this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
       this.dogCara = this.add.image(125, 125, 'NivelA1/dogCara').setScale(1).setAlpha(0);
@@ -67,19 +70,38 @@ class  NivelA4 extends Phaser.Scene {
       setTimeout(() => {
           this.gataCara.setAlpha(0);
           this.fondoDialogo.setAlpha(0);
-          // nuevo dialogo ej Esto te ayudara a relajarte
           this.dialogo1.setAlpha(0);
-          this.gataCara.setAlpha(1);
-          this.fondoDialogo.setAlpha(1);
-          this.dialogo2.setAlpha(1);
-      }, 3000);
+          this.gata.flipX = true;
+          //TWEEN QUE LLEVA A LA GATA AL ÁRBOL
+          this.tweens = this.add.tween({
+            targets: [this.gata],
+            x: 1270,
+            //delay: 5000,
+            duration: 2000,
+            onComplete: () => {
+                    this.cameras.main.shake(600,0.0009);
+                    //TWEEN QUE LLEVA A LA GATA AL FINAL DE ESCENA
+                    this.tweens = this.add.tween({
+                      targets: [this.gata],
+                      x: 1500,
+                      duration: 2000,
+                      onComplete: () => {
+                              this.gata.flipX = false;
+                              this.fondoDialogo.setAlpha(1);
+                              this.dialogo2.setAlpha(1);
+                              this.gataCara.setAlpha(1);
+                          }
+                    });
+                    // console.log(this.gata.x);
+                    // this.gata.setAlpha(0);
+                    // this.gata.disableBody(true, true);
+                    //console.log('Se completa el tween');
+                    //this.movimiento = 1;
+                },
+          });
+      }, 4000);
 
-      setTimeout(() => {
-        this.gataCara.setAlpha(0);
-        this.fondoDialogo.setAlpha(0);
-        // nuevo dialogo ej Esto te ayudara a relajarte
-        this.dialogo2.setAlpha(0);
-      }, 7000);
+
     }
 
     update(time, delta) {
@@ -89,6 +111,7 @@ class  NivelA4 extends Phaser.Scene {
         {
             this.dog.anims.play('dogIdle',true);
         }
+
         
         if(this.gata.x > 1450) {
             // se le permite al perro avanzar 
@@ -116,7 +139,7 @@ class  NivelA4 extends Phaser.Scene {
             // se cae panal y se crean los grupos de las abejas
             //this.cameras.main.shake(500,0.0008);
             this.panal.body.setAllowGravity(true);
-            this.panal.angle = 30
+            this.panal.angle = 40
             if(this.tocoPanal == true) {
                 this.abejas = this.physics.add.group({
                     key: 'abeja',
@@ -221,10 +244,10 @@ class  NivelA4 extends Phaser.Scene {
                   this.tocoPanal = false;
                   this.gata.flipX = false
             }
-            
-        } else {
-            this.gata.x += 4;
-        }
+          }   
+        // } else {
+        //     this.gata.x += 4;
+        // }
 
         // Logica de colisiones con abejas
         let choqueAbeja = (javier, abeja) => {

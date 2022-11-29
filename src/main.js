@@ -13,6 +13,13 @@ import NivelA6 from "./scenes/NivelA6.js";
 import NivelA4 from "./scenes/NivelA4.js";
 import NivelA5 from "./scenes/NivelA5.js";
 import NivelA7 from "./scenes/NivelA7.js";
+//NIVEL B
+import NivelB1 from "./scenes/NivelB1.js";
+import NivelB2 from "./scenes/NivelB2.js";
+import NivelB3 from "./scenes/NivelB3.js";
+import NivelB4 from "./scenes/NivelB4.js";
+import NivelB5 from "./scenes/NivelB5.js";
+
 
 const config = {
     title: "Curso Phaser",		    //Nombre del juego (opcional)
@@ -28,7 +35,7 @@ const config = {
     backgroundColor: "#34495e", 	//Color de fondo del canvas ()
     scene: [Bootloader,Menu,
         NivelA, NivelA1,NivelA2, NivelA3,NivelA4,NivelA6,
-        NivelA5,NivelA7, SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
+        NivelA5,NivelA7,NivelB1,NivelB2,NivelB3,NivelB4,NivelB5,SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",

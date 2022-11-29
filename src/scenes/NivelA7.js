@@ -100,7 +100,7 @@ class NivelA7 extends Phaser.Scene{
         
         //COLISIÓN DE JAVIER CON ESPEJO
         this.physics.add.collider(this.dog, this.espejo, () => {
-            //this.movimiento = 0;
+            this.movimiento = 0;
             this.dog.setVelocityY(0);
             this.dog.setAccelerationY(0);
             this.tweens = this.add.tween({

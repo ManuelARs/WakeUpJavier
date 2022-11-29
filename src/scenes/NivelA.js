@@ -58,7 +58,7 @@ class NivelA extends Phaser.Scene{
         
         //COLISIÓN DE JAVIER CON ESPEJO
         this.physics.add.collider(this.javier, this.espejo, () => {
-            //this.movimiento = 0;
+            this.movimiento = 0;
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
             // this.espejo2.setAlpha(1);
@@ -79,10 +79,10 @@ class NivelA extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
-        // if(this.movimiento==0)
-        // {
-        //     this.javier.anims.play('JavierIdle');  
-        // }
+        if(this.movimiento==0)
+        {
+            this.javier.anims.play('JavierIdle');  
+        }
         if(this.movimiento==1)
         {
             if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)

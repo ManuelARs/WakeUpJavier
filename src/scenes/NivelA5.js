@@ -163,7 +163,7 @@ class NivelA5 extends Phaser.Scene{
             }
           });
 
-          //DIALOGOS
+        //DIÁLOGOS
         setTimeout(() => {
             this.fondoDialogo.setAlpha(0);
             this.dialogo1.setAlpha(0);

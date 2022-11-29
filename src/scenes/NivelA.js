@@ -65,13 +65,12 @@ class NivelA extends Phaser.Scene{
             this.tweens = this.add.tween({
                 targets: [this.espejo2],
                 alpha: 1,
-                duration: 2500,
+                duration: 2000,
                 onComplete: () => {
                         //console.log('Se completa el tween');
                         this.scene.start('NivelA1');
                     },
                 });
-            
         });
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -106,11 +105,6 @@ class NivelA extends Phaser.Scene{
         {
             this.javier.setVelocityX(0);
         }
-        //TECLA ARRIBA: SALTO
-        // if ((this.cursors.up.isDown && this.javier.body.onFloor()))
-        // {
-        //     this.javier.setVelocityY(-500);
-        // }
         }
     }
 

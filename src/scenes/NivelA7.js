@@ -21,12 +21,25 @@ class NivelA7 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
         
+        //DIÁLOGOS
+        this.fondoDialogo = this.add.image(790, 135, 'NivelA7/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
+        this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(1);
+        this.gataCara = this.add.image(1500, 135, 'NivelA1/gataCara').setScale(1.2).setAlpha(1);
+        this.dialogo1 = this.add.image(770, 155, 'NivelA7/dialogo7_1').setScale(0.45).setAlpha(0);
+        this.dialogo2 = this.add.image(670, 135, 'NivelA7/dialogo7_2').setScale(0.45).setAlpha(0);
+        this.dialogo3 = this.add.image(900, 155, 'NivelA7/dialogo7_3').setScale(0.45).setAlpha(0);
+        this.dialogo4 = this.add.image(670, 135, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(1);
 
         //PERSONAJES
         //Perro Javier
-        this.dog = this.physics.add.sprite(100, 630, 'Dog', 0).setScale(0.2);
+        this.dog = this.physics.add.sprite(100, 650, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
+        //Gata Mia
+        this.gata = this.physics.add.image(300, 650, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
+        this.gata.body.setSize(60, 60);
+        this.gata.setPushable(false);
+        // this.gata.flipX = true
 
         //OBJETOS
         this.espejo = this.physics.add.image(1520, 600, 'NivelA7/espejoCallejon').setScale(0.3);
@@ -43,6 +56,8 @@ class NivelA7 extends Phaser.Scene{
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
+        this.gata.body.setCollideWorldBounds(true);
+
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
     }

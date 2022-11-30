@@ -14,7 +14,7 @@ class NivelB5 extends Phaser.Scene{
     
     create() {
         //IMAGENES DE FONDO
-        this.fondo = this.add.image(775, 360, 'NivelB5/NivelB5').setDepth(-2).setScale(.37,.35);
+        this.fondo = this.add.image(775, 360, 'NivelB5/NivelB5_2').setDepth(-2).setScale(.37,.35);
 
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);

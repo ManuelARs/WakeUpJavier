@@ -68,7 +68,7 @@ class NivelB1 extends Phaser.Scene{
         this.dialogo2 = this.add.image(790, 125, 'NivelB1/dialogo1_2').setScale(0.7).setAlpha(0);
         this.dialogo3 = this.add.image(790, 125, 'NivelB1/dialogo1_3').setScale(0.6).setAlpha(0);
         this.dialogo4 = this.add.image(790, 125, 'NivelB1/dialogo1_4').setScale(0.7).setAlpha(0);
-        this.dialogo5 = this.add.image(790, 125, 'NivelB1/dialogo1_5').setScale(0.6).setAlpha(0);
+        this.dialogo5 = this.add.image(760, 125, 'NivelB1/dialogo1_5').setScale(0.6).setAlpha(0);
         this.dialogo6 = this.add.image(790, 125, 'NivelB1/dialogo1_6').setScale(0.7).setAlpha(0);
         this.dialogo7 = this.add.image(790, 125, 'NivelB1/dialogo1_7').setScale(0.8).setAlpha(0);
 

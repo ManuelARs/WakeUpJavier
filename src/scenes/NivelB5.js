@@ -18,6 +18,7 @@ class NivelB5 extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
+        
         //BANDERA
         this.movimiento = 1;
         //OBJETOS
@@ -25,9 +26,11 @@ class NivelB5 extends Phaser.Scene{
         this.agua = this.physics.add.image(520, 750, 'NivelB5/agua').setScale(0.37,0.32);
         this.agua.body.setAllowGravity(false);
         this.agua.setPushable(false);
-        this.agua2 = this.physics.add.image(1480, 745, 'NivelB5/agua2').setScale(1.7,1.3)
+        this.agua2 = this.physics.add.image(1480, 745, 'NivelB5/agua2').setScale(1.7,1.5)
         this.agua2.body.setAllowGravity(false);
         this.agua2.setPushable(false);
+        //Reflejo
+        this.reflejo = this.add.image(1405, 747, 'NivelB5/reflejoMonstruo').setScale(0.47).setAlpha(0);
         //tierra
         this.tierra = this.physics.add.image(120, 200, 'NivelB5/tierra');
         this.tierra.body.setAllowGravity(false);
@@ -49,29 +52,38 @@ class NivelB5 extends Phaser.Scene{
         this.pino = this.physics.add.image(50, 97, 'NivelB5/pino').setScale(1.5);
         this.pino.body.setAllowGravity(false);
         this.pino.setPushable(false);
+
     
         //PERSONAJES
         //Javier Monstruo 
-        this.javier = this.physics.add.sprite(120, 120, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
+        this.javier = this.physics.add.sprite(160, 120, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
         this.javier.body.setSize(210, 260);
         this.javier.body.setMass(1);
-        this.javier.flipX=true;
+        //this.javier.flipX=true;
+
         //Abi
-        this.abi = this.physics.add.sprite(100, 120, 'Abi', 0).setAlpha(1).setDepth(3).setScale(1.2);
-        //ANIMACIONES
+        this.abi = this.physics.add.sprite(100, 120, 'Abi', 0).setAlpha(1).setDepth(3).setScale(0.12);
+        this.abi.body.setSize(300, 400);
+        this.abi.setOffset(190,250);
+        this.abi.setPushable(false);
+        //ANIMACIONES MONSTRUO
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'monsterIdle', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruoIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
+        //ANIMACION ABI
+        this.anims.create({ key: 'abiIdle', frames: this.anims.generateFrameNames('Abi', { prefix: 'abiIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate:2 });
+        this.abi.anims.play('abiIdle',true);
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
-        this.javier.body.setCollideWorldBounds(true);
+        this.abi.body.setCollideWorldBounds(true);
         this.physics.add.collider(this.javier, this.tierra);
-        this.physics.add.collider(this.javier, this.tierra);
+        this.physics.add.collider(this.abi, this.tierra);
         this.physics.add.collider(this.javier, this.tierra2);
         this.physics.add.collider(this.javier, this.tierraP);
         this.physics.add.collider(this.javier, this.tierraP2);
         this.physics.add.collider(this.javier, this.tierraP3);
         this.physics.add.collider(this.javier, this.tierra2);
+        this.physics.add.collider(this.abi, this.javier);
         this.physics.add.collider(this.javier, this.agua, () => {this.javier.x = 120;this.javier.y = 120});
         this.physics.add.collider(this.javier, this.agua2, () => {this.javier.x = 120;this.javier.y = 120});
 
@@ -82,8 +94,13 @@ class NivelB5 extends Phaser.Scene{
 
 
     update(time, delta) {
+        //console.log(this.javier.x);
        //MOVIMIENTOS
-       if(this.movimiento==1)
+       if(this.movimiento == 0)
+        {
+            this.javier.anims.play('monsterIdle');  
+        }
+       if(this.movimiento == 1)
        {
            if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
            {
@@ -110,6 +127,27 @@ class NivelB5 extends Phaser.Scene{
            {
                this.javier.setVelocityY(-500);
            }
+       }
+       //console.log(this.javier.y)
+       //Reflejo de javier en el agua
+       if(this.javier.x > 1345){
+           this.movimiento = 0;
+           this.javier.x = 1346;
+           this.javier.y = 668;
+            this.javier.body.stop();
+            //  this.javier.setVelocityY(0);
+            //  this.javier.setAccelerationY(0);
+            this.cameras.main.startFollow(this.javier, true);
+            this.cameras.main.setZoom(4);
+            this.tweens = this.add.tween({
+                targets: [this.reflejo],
+                alpha: 1,
+                duration: 4000,
+                onComplete: () => {
+                        //console.log('Se completa el tween');
+                        this.scene.start('NivelB4');
+                    },
+            });
        }
     }
 

@@ -20,12 +20,27 @@ class NivelA7 extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
-        
+        //BANDERA MOVIMIENTO
+        this.movimiento = 0;
+        //DIÁLOGOS
+        this.fondoDialogo = this.add.image(790, 135, 'NivelA7/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
+        this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(0);
+        this.gataCara = this.add.image(1500, 135, 'NivelA1/gataCara').setScale(1.2).setAlpha(1);
+        this.dialogo1 = this.add.image(770, 155, 'NivelA7/dialogo7_1').setScale(0.45).setAlpha(1);
+        this.dialogo2 = this.add.image(670, 135, 'NivelA7/dialogo7_2').setScale(0.45).setAlpha(0);
+        this.dialogo3 = this.add.image(900, 155, 'NivelA7/dialogo7_3').setScale(0.45).setAlpha(0);
+        this.dialogo4 = this.add.image(670, 135, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(0);
+
         //PERSONAJES
         //Perro Javier
-        this.dog = this.physics.add.sprite(100, 610, 'Dog', 0).setScale(0.2);
-        this.dog.body.setSize(480, 300);
+        this.dog = this.physics.add.sprite(100, 650, 'Dog', 0).setScale(0.2).setDepth(3);
+        this.dog.body.setSize(550, 300);
         this.dog.body.setMass(1);
+        //Gata Mia
+        this.gata = this.physics.add.image(500, 650, 'NivelA1/Eliminar-gata', 0).setScale(1.8).setDepth(3);
+        this.gata.body.setSize(50, 50);
+        this.gata.setPushable(false);
+        // this.gata.flipX = true
 
         //OBJETOS
         this.espejo = this.physics.add.image(1520, 600, 'NivelA7/espejoCallejon').setScale(0.3);
@@ -40,8 +55,65 @@ class NivelA7 extends Phaser.Scene{
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        
+        //TIMEOUTS PARA DIÁLOGOS
+        setTimeout(() => {
+            this.dialogo1.setAlpha(0);
+            this.gataCara.setAlpha(0);
+            this.dogCara.setAlpha(1);
+            this.dialogo2.setAlpha(1);
+        }, 4000);
+        setTimeout(() => {
+            this.dialogo2.setAlpha(0);
+            this.gataCara.setAlpha(1);
+            this.dogCara.setAlpha(0);
+            this.dialogo3.setAlpha(1);
+        }, 7000);
+        setTimeout(() => {
+            this.dialogo3.setAlpha(0);
+            this.gataCara.setAlpha(0);
+            this.dogCara.setAlpha(1);
+            this.dialogo4.setAlpha(1);
+        }, 10500);
+        setTimeout(() => {
+            this.dialogo4.setAlpha(0);
+            this.gataCara.setAlpha(0);
+            this.dogCara.setAlpha(0);
+            this.fondoDialogo.setAlpha(0);
+            this.gata.flipX=1;
+            this.tweens = this.add.tween({
+                targets: [this.gata],
+                x: 1600,
+                duration: 3000,
+                onComplete: () => {
+                        //console.log(this.gata.x);
+                        //this.gata.setAlpha(0);
+                        this.gata.disableBody(true, true);
+                        this.movimiento = 1;
+                    },
+            });
+        }, 14500);
+        
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
+        this.gata.body.setCollideWorldBounds(true);
+        
+        //COLISIÓN DE JAVIER CON ESPEJO
+        this.physics.add.collider(this.dog, this.espejo, () => {
+            this.movimiento = 0;
+            this.dog.setVelocityY(0);
+            this.dog.setAccelerationY(0);
+            this.tweens = this.add.tween({
+                targets: [this.espejo2],
+                alpha: 1,
+                duration: 1800,
+                onComplete: () => {
+                        //console.log('Se completa el tween');
+                        this.scene.start('NivelB1');
+                    },
+                });
+        });
+
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
     }
@@ -49,35 +121,37 @@ class NivelA7 extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
-        if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+        if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
         }
-        if (this.cursors.left.isDown)
+        if(this.movimiento==1)
         {
-            this.dog.setVelocityX(-200);
-            this.dog.anims.play('dogC',true);
-            this.dog.flipX=1;
-        }
-        else if (this.cursors.right.isDown)
-        {
-            this.dog.setVelocityX(200);
-            this.dog.anims.play('dogC',true);
-            this.dog.flipX=0;
-        }
-        else
-        {
-            this.dog.setVelocityX(0);
-        }
+            if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+            {
+                this.dog.anims.play('dogIdle',true);
+            }
+            if (this.cursors.left.isDown)
+            {
+                this.dog.setVelocityX(-200);
+                this.dog.anims.play('dogC',true);
+                this.dog.flipX=1;
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.dog.setVelocityX(200);
+                this.dog.anims.play('dogC',true);
+                this.dog.flipX=0;
+            }
+            else
+            {
+                this.dog.setVelocityX(0);
+            }
 
-        if ((this.cursors.up.isDown && this.dog.body.onFloor()))
-        {
-            this.dog.setVelocityY(-500);
-        }
-
-        if(this.dog.x > 1300) {
-            this.espejo2.setAlpha(1);
-            // this.espejo2.setAlpha();
+            if ((this.cursors.up.isDown && this.dog.body.onFloor()))
+            {
+                this.dog.setVelocityY(-500);
+            }
         }
     }
 

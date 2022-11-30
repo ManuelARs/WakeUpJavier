@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "dog2.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1136,
+				"h": 396
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "dogIdleL1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 900,
+						"h": 900
+					},
+					"spriteSourceSize": {
+						"x": 167,
+						"y": 196,
+						"w": 566,
+						"h": 394
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 566,
+						"h": 394
+					}
+				},
+				{
+					"filename": "dogIdleL2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 900,
+						"h": 900
+					},
+					"spriteSourceSize": {
+						"x": 167,
+						"y": 196,
+						"w": 566,
+						"h": 394
+					},
+					"frame": {
+						"x": 569,
+						"y": 1,
+						"w": 566,
+						"h": 394
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:728405b2131d5fcdc6cca5e61593c7cd:c70756add3443efae40b390e8b8be28a:bb16f58601825258e38e41edc57dfaa5$"
+	}
+}

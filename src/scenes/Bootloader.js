@@ -23,18 +23,22 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL A2
         this.load.image(['NivelA2/NivelA2','NivelA2/panal','NivelA2/mesa','NivelA2/dialogo2_1','NivelA2/dialogo2_2']);
         //PARA NIVEL A3
-        this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier']);
+        this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier','NivelA3/instrucciones']);
+        //PARA NIVELA4
+        this.load.image([ 'NivelA4/NivelA4', 'NivelA4/panal', 'NivelA4/panalCaido', 'NivelA4/mesa', 'NivelA4/abeja', 'NivelA4/dialogo4_1', 'NivelA4/dialogo4_2']);
         //PARA NIVELA5
         this.load.image(['NivelA5/nivelA5']);
+        this.load.atlas('DogB', 'badDogSprite/pastor.png', 'badDogSprite/pastor.json');
+        this.load.image(['NivelA5/nivelA5', 'NivelA5/hidrante', 'NivelA5/hueso', 'NivelA5/tronco', 'NivelA5/dialogo5_1', 'NivelA5/dialogo5_2', 'NivelA5/pastorCara']);
+        //PARA NIVEL A6
+        this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back','NivelA6/instrucciones','NivelA6/fondoDialogo','NivelA6/dialogo6_1','NivelA6/pastorCara']);
+        this.load.atlas('Dog2', 'NivelA6/dog2.png', 'NivelA6/dog2.json');
         //PARA NIVELA7
-        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2']);
+        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2','NivelA7/fondoDialogo','NivelA7/dialogo7_1','NivelA7/dialogo7_2','NivelA7/dialogo7_3','NivelA7/dialogo7_4']);
         // this.load.audio('Llorona', ['./Llorona.mp3']);
         this.load.audio('acierto', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
-        //PARA NIVELA4
-        this.load.image([ 'NivelA4/NivelA4', 'NivelA4/panal', 'NivelA4/panalCaido', 'NivelA4/mesa', 'NivelA4/abeja', 'NivelA4/dialogo4_1', 'NivelA4/dialogo4_2']);
-        //PARA NIVEL A6
-        this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back']);
+
         //this.load.audio('Theme', ['./FALTA MUSICA']);
         this.load.audio('voltear', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);

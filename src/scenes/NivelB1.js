@@ -43,6 +43,12 @@ class NivelB1 extends Phaser.Scene{
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'monsterIdle', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruoIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
 
+        //DIÁLOGOS
+        this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(0);
+        this.dogCara = this.add.image(125, 125, 'NivelA1/dogCara').setScale(1).setAlpha(0);
+        this.gataCara = this.add.image(1500, 125, 'NivelA1/gataCara').setScale(1.2).setAlpha(0);
+        this.dialogo1 = this.add.image(790, 125, 'NivelA1/dialogo1_1').setScale(0.8).setAlpha(0);
+        this.dialogo2 = this.add.image(790, 125, 'NivelA1/dialogo1_2').setScale(0.7).setAlpha(0);
          //COLISIONES
          this.javier.body.setCollideWorldBounds(true);
          this.monsterAl.body.setCollideWorldBounds(true);
@@ -55,6 +61,10 @@ class NivelB1 extends Phaser.Scene{
 
     update(time, delta) {
        //MOVIMIENTOS
+       if(this.movimiento==0)
+        {
+            this.javier.anims.play('monsterIdle');  
+        }
        if(this.movimiento==1)
        {
            if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)

@@ -31,6 +31,10 @@ class NivelB2 extends Phaser.Scene{
         this.javier.body.setMass(1);
         this.javier.flipX=true;
 
+        //Salida
+        this.salida = this.physics.add.staticImage(1580, 210, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
+        this.salida.body.setSize(60, 60);
+
         // Nubes derecha
         this.nube1 = this.add.image(-200,150, 'Menu/nube').setAlpha(0.2).setScale(0.6);
         this.nube2 = this.add.image(50,150, 'Menu/nube').setAlpha(0.2).setScale(0.3);
@@ -166,7 +170,14 @@ class NivelB2 extends Phaser.Scene{
          this.timeline2.play();
 
         //Teclado
-        this.cursors = this.input.keyboard.createCursorKeys();         
+        this.cursors = this.input.keyboard.createCursorKeys();        
+        
+        //COLISIÓN DE JAVIER CON LA SALIDA   
+        this.physics.add.collider(this.javier, this.salida, () => {
+            this.javier.setVelocityY(0);
+            this.javier.setAccelerationY(0);
+            this.scene.start('NivelB3');
+        });
     }
 
 

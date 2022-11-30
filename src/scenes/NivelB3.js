@@ -15,7 +15,8 @@ class NivelB3 extends Phaser.Scene{
     create() {
         this.aciertos = 0
         this.vidas = 3
-        this.textoContador = this.add.text(1300, 2, 'MORAS: 0/9',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(1300, 2, ':0/9',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10);;
+        this.entrega = this.add.text(200, 2, 'Entrega las moras con la tecla "E"',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10).setAlpha(0);
 
         //BOUNDS DE LA ESCENA
         this.physics.world.setBounds(0,0,1580,730);
@@ -27,7 +28,7 @@ class NivelB3 extends Phaser.Scene{
         this.cameras.main.fadeIn(1000);
 
         //BANDERA
-        this.movimiento = 1;
+        this.movimiento = 0;
 
         //PERSONAJES
         //Javier Monstruo 
@@ -36,13 +37,20 @@ class NivelB3 extends Phaser.Scene{
         this.javier.body.setMass(1);
         this.javier.flipX=true;
         //mounstruo
+        this.monstruo = this.physics.add.image(200, 690, 'NivelB3/monstruo').setScale(0.5).setAlpha(1);
+        this.monstruo.flipX=false;
+        this.monstruo.body.setAllowGravity(true);
+        this.monstruo.body.setMass(1);
+        this.monstruo.setPushable(false);
+        this.monstruo.setCollideWorldBounds(true);
 
         //CONVERSACIONES
         this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
-        this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(0);
-        this.monstruoCara = this.add.image(1470, 135, 'NivelB3/monstruo_cara').setScale(0.5).setAlpha(1);
-        this.dialogo1 = this.add.image(770, 135, 'NivelA5/dialogo5_1').setScale(0.7).setAlpha(1);
-        this.dialogo2 = this.add.image(790, 135, 'NivelA5/dialogo5_2').setScale(0.7).setAlpha(0);
+        this.javierCara = this.add.image(125, 135, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(1);
+        this.monstruoCara = this.add.image(1470, 135, 'NivelB3/monstruo_cara').setScale(0.5).setAlpha(0);
+        this.dialogo1 = this.add.image(770, 135, 'NivelB3/dialogo3_1').setScale(0.7).setAlpha(1);
+        this.dialogo2 = this.add.image(740, 135, 'NivelB3/dialogo3_2').setScale(0.5).setAlpha(0);
+        this.dialogo3 = this.add.image(770, 135, 'NivelB3/dialogo3_3').setScale(0.5).setAlpha(0);
         
         //OBJETOS
         //troncos
@@ -68,9 +76,11 @@ class NivelB3 extends Phaser.Scene{
             tronco.body.setSize(85, 20);
             tronco.setPushable(false);
             tronco.body.setAllowGravity(false);
+            tronco.setDepth(-1)
         }
 
         //moras
+        this.moraMarcador = this.add.image(1280, 15, 'NivelB3/mora', 0).setScale(0.19);
         this.mora1 = this.physics.add.image(200, 550, 'NivelB3/mora', 0).setScale(0.3);
         this.mora2 = this.physics.add.image(40, 250, 'NivelB3/mora', 0).setScale(0.3);
         this.mora3 = this.physics.add.image(310, 370, 'NivelB3/mora', 0).setScale(0.3);
@@ -88,18 +98,55 @@ class NivelB3 extends Phaser.Scene{
             mora.body.setAllowGravity(false);
         }
 
-        //tuercas
-        this.tuerca1 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4);
-        this.tuerca1.setVelocity(150, 850);
-        this.tuerca1.setBounce(1, 1);
-        this.tuerca1.setPushable(false);
-        this.tuerca1.setCollideWorldBounds(true);
+        //DESPUES DE 4 SEGUNDOS
+        setTimeout(() => {
+            //dialogos
+            this.dialogo1.setAlpha(0);
+            this.dialogo2.setAlpha(1);
+            this.javierCara.setAlpha(0);
+            this.monstruoCara.setAlpha(1);
+        }, 3000);
+        setTimeout(() => {
+            //tuercas
+            this.tuerca1 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca1.setVelocity(150, 850);
+            this.tuerca1.setBounce(1, 1);
+            this.tuerca1.setPushable(false);
+            this.tuerca1.setCollideWorldBounds(true);
 
-        this.tuerca3 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4);
-        this.tuerca3.setVelocity(350, 1000);
-        this.tuerca3.setBounce(1, 1);
-        this.tuerca3.setPushable(false);
-        this.tuerca3.setCollideWorldBounds(true);
+            this.tuerca3 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca3.setVelocity(350, 1000);
+            this.tuerca3.setBounce(1, 1);
+            this.tuerca3.setPushable(false);
+            this.tuerca3.setCollideWorldBounds(true);
+
+            //Colision con tuerca
+            this.physics.add.collider(this.javier, this.tuerca1, () => {
+                this.javier.y = 900
+                this.javier.x = 100
+                this.tuerca1.x = 1500
+                // this.tuerca2.x = 1500
+                this.tuerca3.x = 1500
+                this.vidas -= 1
+                //this.scene.restart()
+            });
+            this.physics.add.collider(this.javier, this.tuerca3, () => {
+                this.javier.y = 900
+                this.javier.x = 100
+                this.tuerca1.x = 1500
+                // this.tuerca2.x = 1500
+                this.tuerca3.x = 1500
+                this.vidas -= 1
+                //this.scene.restart()
+            });
+
+            //dialogos
+            this.fondoDialogo.setAlpha(0);
+            this.dialogo2.setAlpha(0);
+            this.monstruoCara.setAlpha(0);
+            this.movimiento=1
+        }, 7000);
+
 
         //ANIMACIONES
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
@@ -124,6 +171,7 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tronco14);  
         this.physics.add.collider(this.javier, this.tronco15);  
         this.physics.add.collider(this.javier, this.tronco16);  
+        this.physics.add.collider(this.javier, this.monstruo);  
 
         this.physics.add.overlap(this.javier, this.mora1, collectMora, null, this);
         this.physics.add.overlap(this.javier, this.mora2, collectMora, null, this);
@@ -138,82 +186,76 @@ class NivelB3 extends Phaser.Scene{
         function collectMora (jugador, objeto)
         {
             this.aciertos += 1;
-            this.textoContador.setText('MORAS: ' + this.aciertos + '/9');
+            this.textoContador.setText(': ' + this.aciertos + '/9');
             objeto.disableBody(true, true)
         }
-
-        //Colision con tuerca
-        this.physics.add.collider(this.javier, this.tuerca1, () => {
-            this.javier.y = 900
-            this.javier.x = 100
-            this.tuerca1.x = 1500
-            // this.tuerca2.x = 1500
-            this.tuerca3.x = 1500
-            this.vidas -= 1
-            //this.scene.restart()
-        });
-        // this.physics.add.collider(this.javier, this.tuerca2, () => {
-        //     this.javier.y = 900
-        //     this.javier.x = 100
-        //     this.tuerca1.x = 1500
-        //     this.tuerca2.x = 1500
-        //     this.tuerca3.x = 1500
-        //     //this.scene.restart()
-        // });
-        this.physics.add.collider(this.javier, this.tuerca3, () => {
-            this.javier.y = 900
-            this.javier.x = 100
-            this.tuerca1.x = 1500
-            // this.tuerca2.x = 1500
-            this.tuerca3.x = 1500
-            this.vidas -= 1
-            //this.scene.restart()
-        });
 
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.teclado = Phaser.Input.Keyboard;
  
     }
 
 
     update(time, delta) {
        //MOVIMIENTOS
-       if(this.movimiento==1)
+       if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
        {
-           if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
-           {
-               this.javier.anims.play('monsterIdle',true);
-           }
-       if (this.cursors.left.isDown)
-           {
-               this.javier.setVelocityX(-200);
-               this.javier.anims.play('monsterC',true);
-               this.javier.flipX=0;
-           }
-       else if (this.cursors.right.isDown)
-           {
-               this.javier.setVelocityX(200);
-               this.javier.anims.play('monsterC',true);
-               this.javier.flipX=1;
-           }
-       else
-       {
-           this.javier.setVelocityX(0);
+           this.javier.anims.play('monsterIdle',true);
        }
+        if(this.movimiento==1) {
+            if (this.cursors.left.isDown)
+                {
+                    this.javier.setVelocityX(-200);
+                    this.javier.anims.play('monsterC',true);
+                    this.javier.flipX=0;
+                }
+            else if (this.cursors.right.isDown)
+                {
+                    this.javier.setVelocityX(200);
+                    this.javier.anims.play('monsterC',true);
+                    this.javier.flipX=1;
+                }
+            else
+            {
+                this.javier.setVelocityX(0);
+            }
 
-       if ((this.cursors.up.isDown && this.javier.body.onFloor()))
-           {
-               this.javier.setVelocityY(-500);
-           }
-       }
+            if ((this.cursors.up.isDown && this.javier.body.onFloor()))
+                {
+                    this.javier.setVelocityY(-500);
+                }
+        }
 
        if(this.vidas == 0) {
         this.scene.restart()
        }
 
        if(this.aciertos == 9) {
-        this.scene.start('NivelB4');
+            //dialogos
+            if(this.javier.x > 200) {
+                this.monstruo.flipX=true;
+            }
+            this.entrega.setAlpha(1)
+            this.tuerca1.disableBody(true, true)
+            this.tuerca3.disableBody(true, true)
+            this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
+                if(this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
+                    this.entrega.x = 2000
+                    this.fondoDialogo.setAlpha(1);
+                    this.dialogo3.setAlpha(1);
+                    this.monstruoCara.setAlpha(1);
+                    this.movimiento=0
+                    setTimeout(() => {
+                        this.scene.start('NivelB4');
+                        this.fondoDialogo.setAlpha(0);
+                        this.dialogo3.setAlpha(0);
+                        this.monstruoCara.setAlpha(0);
+                    }, 4000);
+                }
+    
+            });
        }
        
     }

@@ -58,20 +58,19 @@ class NivelA extends Phaser.Scene{
         
         //COLISIÓN DE JAVIER CON ESPEJO
         this.physics.add.collider(this.javier, this.espejo, () => {
-            //this.movimiento = 0;
+            this.movimiento = 0;
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
             // this.espejo2.setAlpha(1);
             this.tweens = this.add.tween({
                 targets: [this.espejo2],
                 alpha: 1,
-                duration: 2500,
+                duration: 2000,
                 onComplete: () => {
                         //console.log('Se completa el tween');
                         this.scene.start('NivelA1');
                     },
                 });
-            
         });
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -80,10 +79,10 @@ class NivelA extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
-        // if(this.movimiento==0)
-        // {
-        //     this.javier.anims.play('JavierIdle');  
-        // }
+        if(this.movimiento==0)
+        {
+            this.javier.anims.play('JavierIdle');  
+        }
         if(this.movimiento==1)
         {
             if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
@@ -106,11 +105,6 @@ class NivelA extends Phaser.Scene{
         {
             this.javier.setVelocityX(0);
         }
-        //TECLA ARRIBA: SALTO
-        // if ((this.cursors.up.isDown && this.javier.body.onFloor()))
-        // {
-        //     this.javier.setVelocityY(-500);
-        // }
         }
     }
 

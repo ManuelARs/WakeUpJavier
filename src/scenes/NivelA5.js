@@ -20,6 +20,8 @@ class NivelA5 extends Phaser.Scene{
         this.aciertos = 0
         this.textoContador = this.add.text(1300, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
 
+        //BANDERA MOVIMIENTO
+        this.movimiento=0
 
         this.fondo = this.add.image(775, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
         this.physics.world.setBounds(0,0,1580, 700);
@@ -46,15 +48,15 @@ class NivelA5 extends Phaser.Scene{
         //this.dogB.
         //hidrante
         this.hidrante = this.physics.add.image(800, 620, 'NivelA5/hidrante', 0).setScale(1.8);
-        this.hidrante.body.setSize(60, 85);
+        this.hidrante.body.setSize(30, 70);
         this.hidrante.setPushable(false);
         //tronco
         this.tronco = this.physics.add.image(650, 660, 'NivelA5/tronco', 0).setScale(1.5);
         this.tronco.body.setSize(60, 55);
-        this.tronco.setPushable(false);
+        this.tronco.setPushable(true);
         //hueso
         this.hueso = this.physics.add.image(800, 320, 'NivelA5/hueso', 0).setScale(0.65);
-        this.hueso.body.setSize(200, 100);
+        this.hueso.body.setSize(200, 130);
         this.hueso.setPushable(false);
         this.hueso.body.setAllowGravity(false);
         //salida
@@ -88,10 +90,15 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.tronco);
         this.physics.add.collider(this.dog, this.dogB);
         this.physics.add.collider(this.dog, this.hidrante);
+        this.physics.add.collider(this.tronco, this.hidrante);
         //Colision con HUESO
         this.physics.add.collider(this.dog, this.hueso, () => {
             this.aciertos += 1;
             this.textoContador.setText('ACIERTOS: ' + this.aciertos + '/3');
+            this.hueso.setTint(0xFFFF00);
+            setTimeout(() => {
+              this.hueso.clearTint();
+            }, 500);
         });
         //Grupo de abejitas
         this.abejas = this.physics.add.group({
@@ -163,11 +170,12 @@ class NivelA5 extends Phaser.Scene{
             }
           });
 
-          //DIALOGOS
+        //DIÁLOGOS
         setTimeout(() => {
             this.fondoDialogo.setAlpha(0);
             this.dialogo1.setAlpha(0);
             this.gataCara.setAlpha(0);
+            this.movimiento=1
             //this.fondoDialogo.setAlpha(1);
             //this.dialogo2.setAlpha(1);
         }, 4000);
@@ -183,32 +191,37 @@ class NivelA5 extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
-        // console.log(this.dog.y)
-        if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+        if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
         }
-        // se le permite al perro avanzar 
-        if (this.cursors.left.isDown)
+        if(this.movimiento==1)
         {
-            this.dog.setVelocityX(-200);
-            this.dog.anims.play('dogC',true);
-            this.dog.flipX=1;
-        }
-        else if (this.cursors.right.isDown)
-        {
-            this.dog.setVelocityX(200);
-            this.dog.anims.play('dogC',true);
-            this.dog.flipX=0;
-        }
-        else
-        {
-            this.dog.setVelocityX(0);
-        }
+            if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+            {
+                this.dog.anims.play('dogIdle',true);
+            }
+            if (this.cursors.left.isDown)
+            {
+                this.dog.setVelocityX(-200);
+                this.dog.anims.play('dogC',true);
+                this.dog.flipX=1;
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.dog.setVelocityX(200);
+                this.dog.anims.play('dogC',true);
+                this.dog.flipX=0;
+            }
+            else
+            {
+                this.dog.setVelocityX(0);
+            }
 
-        if ((this.cursors.up.isDown && this.dog.body.onFloor()))
-        {
-            this.dog.setVelocityY(-500);
+            if ((this.cursors.up.isDown && this.dog.body.onFloor()))
+            {
+                this.dog.setVelocityY(-500);
+            }
         }
         //MOVIMIENTOS PERRO MALO
         //if(this.dogB.body.onFloor())
@@ -225,6 +238,11 @@ class NivelA5 extends Phaser.Scene{
         
         if(this.aciertos >= 3) {
             //this.abejas.disableBody(true, true)
+            this.movimiento = 0
+            this.dog.flipX=0
+            this.dog.body.stop();
+            this.dog.x=800
+            this.dog.y=540
             this.abejas.children.iterate((abeja) => {
                 abeja.disableBody(true, true)
               });
@@ -251,6 +269,7 @@ class NivelA5 extends Phaser.Scene{
                     this.dogB.anims.play('pastorIdle',false);
                     this.dogB.anims.play('pastorC',true);
                     this.dogB.flipX=0;
+                    this.movimiento = 1
                     this.tweens = this.add.tween({
                         targets: [this.dogB],
                         x: 1750,

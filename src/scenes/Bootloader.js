@@ -44,7 +44,10 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('ganaste', ['./ganaste.mp3']);
 
         //PARA NIVEL B1
-        this.load.image(['NivelB1/NivelB1','NivelB1/monsterAldea']);
+        this.load.image(['NivelB1/NivelB1','NivelB1/monsterAldea','NivelB1/caraMonstruo','NivelB1/caraMonstruoCafe','NivelB1/caraArmadillo',
+                        'NivelB1/dialogo1_1','NivelB1/dialogo1_2' ,'NivelB1/dialogo1_3','NivelB1/dialogo1_4','NivelB1/dialogo1_5',
+                        'NivelB1/dialogo1_6','NivelB1/dialogo1_7'
+                        ]);
         this.load.atlas('Monster', 'monsterSprite/monstruo.png', 'monsterSprite/monstruo.json');
         //PARA NIVEL B2
         this.load.image(['NivelB2/NivelB2']);

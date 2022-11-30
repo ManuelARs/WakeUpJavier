@@ -43,7 +43,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelB1/NivelB1','NivelB1/monsterAldea']);
         this.load.atlas('Monster', 'monsterSprite/monstruo.png', 'monsterSprite/monstruo.json');
         //PARA NIVEL B2
-        this.load.image(['NivelB2/NivelB2']);
+        this.load.image(['NivelB2/NivelB2','NivelB2/agua','NivelB2/pasto1','NivelB2/pasto2','NivelB2/tronco','NivelB2/boton','NivelB2/boton2','NivelB2/tronco2','NivelB2/flecha','NivelB2/puente']);
         //PARA NIVEL B3
         this.load.image(['NivelB3/NivelB3']);
         //PARA NIVEL B4
@@ -74,7 +74,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelB1');
+        this.scene.start('NivelB2');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

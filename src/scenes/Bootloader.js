@@ -57,7 +57,7 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Abi', 'abiSprite/abi.png', 'abiSprite/abi.json');
         this.load.image(['NivelB4/NivelB4','NivelB4/caraAbi']);
         //PARA NIVEL B5
-        this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta']);
+        this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 
         //PARA ESCENA A
         // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 

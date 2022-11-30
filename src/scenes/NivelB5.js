@@ -59,13 +59,21 @@ class NivelB5 extends Phaser.Scene{
         this.pino = this.physics.add.image(50, 97, 'NivelB5/pino').setScale(1.5);
         this.pino.body.setAllowGravity(false);
         this.pino.setPushable(false);
+        //Sobre
+        this.sobre = this.physics.add.image(1300, 600, 'NivelB5/sobre').setScale(.3).setAngle(20);
+        this.sobre.body.setAllowGravity(false);
+        this.sobre.setPushable(false);
+        //Carta
+
         //DIÁLOGOS
         this.fondoDialogo = this.add.image(1000, 100, 'NivelB5/fondoDialogo').setScale(0.35, 0.3).setAlpha(1);
-        this.javierCara = this.add.image(545, 100, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(1);
-        this.abiCara = this.add.image(1470, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(1);
-        // this.dialogo1 = this.add.image(770, 135, 'NivelB3/dialogo3_1').setScale(0.7).setAlpha(1);
-        // this.dialogo2 = this.add.image(740, 135, 'NivelB3/dialogo3_2').setScale(0.5).setAlpha(0);
-        // this.dialogo3 = this.add.image(770, 135, 'NivelB3/dialogo3_3').setScale(0.5).setAlpha(0);
+        this.javierCara = this.add.image(545, 100, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(0);
+        this.abiCara = this.add.image(1420, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(1);
+        this.dialogo1 = this.add.image(1000, 100, 'NivelB5/dialogo5_1').setScale(0.5).setAlpha(1);
+        this.dialogo2 = this.add.image(1050, 105, 'NivelB5/dialogo5_2').setScale(0.4).setAlpha(0);
+        this.dialogo3 = this.add.image(970, 105, 'NivelB5/dialogo5_3').setScale(0.4).setAlpha(0);
+        this.dialogo4 = this.add.image(820, 105, 'NivelB5/dialogo5_4').setScale(0.5).setAlpha(0);
+        this.dialogo5 = this.add.image(950, 105, 'NivelB5/dialogo5_5').setScale(0.4).setAlpha(0);
 
         //PERSONAJES
         //Javier Monstruo 
@@ -85,7 +93,7 @@ class NivelB5 extends Phaser.Scene{
         //ANIMACION ABI
         this.anims.create({ key: 'abiIdle', frames: this.anims.generateFrameNames('Abi', { prefix: 'abiIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate:2 });
         this.abi.anims.play('abiIdle',true);
-        //TWEENS ALETA
+        //TWEENS ALETAS
         this.add.tween({
             targets: [this.aleta],
             x: 300,
@@ -115,6 +123,46 @@ class NivelB5 extends Phaser.Scene{
             }
         });
 
+        //TWEEN SOBRE
+        this.add.tween({
+            targets: [this.sobre],
+            y: 585,
+            yoyo: true,
+            duration: 1000,
+            repeat: -1,
+            easy: 'Power1',
+        });
+        
+        //TIMEOUT PARA DIÁLOGOS
+        setTimeout(() => {
+            this.abiCara.setAlpha(0);
+            this.dialogo1.setAlpha(0);
+            this.javierCara.setAlpha(1);
+            this.dialogo2.setAlpha(1);
+        }, 2500);
+        setTimeout(() => {
+            this.javierCara.setAlpha(0);
+            this.dialogo2.setAlpha(0);
+            this.abiCara.setAlpha(1);
+            this.dialogo3.setAlpha(1);
+        }, 6000);
+        setTimeout(() => {
+            this.abiCara.setAlpha(0);
+            this.dialogo3.setAlpha(0);
+            this.javierCara.setAlpha(1);
+            this.dialogo4.setAlpha(1);
+        }, 9500);
+        setTimeout(() => {
+            this.javierCara.setAlpha(0);
+            this.dialogo4.setAlpha(0);
+            this.abiCara.setAlpha(1);
+            this.dialogo5.setAlpha(1);
+        }, 13000);
+        setTimeout(() => {
+            this.abiCara.setAlpha(0);
+            this.dialogo5.setAlpha(0);
+            this.fondoDialogo.setAlpha(0);
+        }, 16500);
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
         this.abi.body.setCollideWorldBounds(true);

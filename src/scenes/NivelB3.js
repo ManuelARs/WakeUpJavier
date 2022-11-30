@@ -170,8 +170,7 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tronco13);  
         this.physics.add.collider(this.javier, this.tronco14);  
         this.physics.add.collider(this.javier, this.tronco15);  
-        this.physics.add.collider(this.javier, this.tronco16);  
-        this.physics.add.collider(this.javier, this.monstruo);  
+        this.physics.add.collider(this.javier, this.tronco16);   
 
         this.physics.add.overlap(this.javier, this.mora1, collectMora, null, this);
         this.physics.add.overlap(this.javier, this.mora2, collectMora, null, this);
@@ -182,6 +181,7 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.overlap(this.javier, this.mora7, collectMora, null, this);
         this.physics.add.overlap(this.javier, this.mora8, collectMora, null, this);
         this.physics.add.overlap(this.javier, this.mora9, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.monstruo);
 
         function collectMora (jugador, objeto)
         {

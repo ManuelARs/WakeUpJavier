@@ -65,7 +65,7 @@ class  NivelA4 extends Phaser.Scene {
           abejas.setScale(0.18);
           abejas.body.setAllowGravity(false);
           abejas.setCollideWorldBounds(true);
-          // abejas.setPushable(false);
+          abejas.setPushable(false);
           abejas.disableBody(true, true);
       });
       this.add.tween({
@@ -100,7 +100,7 @@ class  NivelA4 extends Phaser.Scene {
           abejas.setScale(0.18);
           abejas.body.setAllowGravity(false);
           abejas.setCollideWorldBounds(true);
-          //abejas.setPushable(false);
+          abejas.setPushable(false);
           abejas.disableBody(true, true);
           abejas.flipX = 1;
       });
@@ -136,7 +136,7 @@ class  NivelA4 extends Phaser.Scene {
           abejas.setScale(0.18);
           abejas.body.setAllowGravity(false);
           abejas.setCollideWorldBounds(true);
-          //abejas.setPushable(false);
+          abejas.setPushable(false);
           abejas.disableBody(true, true);
       });
       this.add.tween({

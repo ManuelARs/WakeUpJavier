@@ -30,12 +30,12 @@ class NivelB1 extends Phaser.Scene{
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(300, 500, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.47);
-        this.javier.body.setSize(210, 260);
+        this.javier.body.setSize(140, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
 
         //MonstruoAldea 1 
-        this.monsterAl = this.physics.add.sprite(1300, 500, 'NivelB1/monsterAldea', 0).setAlpha(1).setDepth(3);
+        this.monsterAl = this.physics.add.sprite(1300, 500, 'NivelB1/monsterAldea', 0).setAlpha(1).setDepth(2);
         this.monsterAl.body.setSize(120,130);
         this.monsterAl.body.setMass(1);
         this.monsterAl.setPushable(false);
@@ -68,7 +68,7 @@ class NivelB1 extends Phaser.Scene{
         this.dialogo2 = this.add.image(790, 125, 'NivelB1/dialogo1_2').setScale(0.7).setAlpha(0);
         this.dialogo3 = this.add.image(790, 125, 'NivelB1/dialogo1_3').setScale(0.6).setAlpha(0);
         this.dialogo4 = this.add.image(790, 125, 'NivelB1/dialogo1_4').setScale(0.7).setAlpha(0);
-        this.dialogo5 = this.add.image(760, 125, 'NivelB1/dialogo1_5').setScale(0.6).setAlpha(0);
+        this.dialogo5 = this.add.image(750, 125, 'NivelB1/dialogo1_5').setScale(0.6).setAlpha(0);
         this.dialogo6 = this.add.image(790, 125, 'NivelB1/dialogo1_6').setScale(0.7).setAlpha(0);
         this.dialogo7 = this.add.image(790, 125, 'NivelB1/dialogo1_7').setScale(0.8).setAlpha(0);
 

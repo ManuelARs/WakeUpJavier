@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "abi.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 372,
+				"h": 862
+			},
+			"scale": 10,
+			"frames": [
+				{
+					"filename": "abiIdle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 640,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 134,
+						"y": 194,
+						"w": 372,
+						"h": 446
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 372,
+						"h": 446
+					}
+				},
+				{
+					"filename": "abiIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 640,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 134,
+						"y": 224,
+						"w": 372,
+						"h": 416
+					},
+					"frame": {
+						"x": 0,
+						"y": 446,
+						"w": 372,
+						"h": 416
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:38a6a46edf81bf57723c36a86f379b3d:75221311ce5c8fbc36d15a4529ce4607:d7fd7cb7e511750e550c1514b4df21f6$"
+	}
+}

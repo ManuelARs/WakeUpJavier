@@ -24,7 +24,7 @@ class NivelC1 extends Phaser.Scene{
         this.cameras.main.fadeIn(2000);
 
         //BANDERA
-        this.movimiento = 0;
+        this.movimiento = 1;
         this.dialogoChoque = 0;
 
         //PERSONAJES

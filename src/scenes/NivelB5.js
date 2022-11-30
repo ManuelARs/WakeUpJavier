@@ -13,8 +13,6 @@ class NivelB5 extends Phaser.Scene{
     // }
     
     create() {
-        //BOUNDS DE LA ESCENA
-        this.physics.world.setBounds(0,0,1580,710);
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB5/NivelB5_2').setDepth(-2).setScale(.37,.35);
         //CAMARA INICIAL EFECTO FADE IN
@@ -23,6 +21,13 @@ class NivelB5 extends Phaser.Scene{
         //BANDERA
         this.movimiento = 1;
         //OBJETOS
+        //agua
+        this.agua = this.physics.add.image(520, 750, 'NivelB5/agua').setScale(0.37,0.32);
+        this.agua.body.setAllowGravity(false);
+        this.agua.setPushable(false);
+        this.agua2 = this.physics.add.image(1480, 745, 'NivelB5/agua2').setScale(1.7,1.3)
+        this.agua2.body.setAllowGravity(false);
+        this.agua2.setPushable(false);
         //tierra
         this.tierra = this.physics.add.image(120, 200, 'NivelB5/tierra');
         this.tierra.body.setAllowGravity(false);
@@ -44,10 +49,7 @@ class NivelB5 extends Phaser.Scene{
         this.pino = this.physics.add.image(50, 97, 'NivelB5/pino').setScale(1.5);
         this.pino.body.setAllowGravity(false);
         this.pino.setPushable(false);
-        //agua
-        this.pino = this.physics.add.image(50, 97, 'NivelB5/pino').setScale(1.5);
-        this.pino.body.setAllowGravity(false);
-        this.pino.setPushable(false);       
+    
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(120, 120, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
@@ -66,6 +68,8 @@ class NivelB5 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tierraP2);
         this.physics.add.collider(this.javier, this.tierraP3);
         this.physics.add.collider(this.javier, this.tierra2);
+        this.physics.add.collider(this.javier, this.agua, () => {this.javier.x = 120;this.javier.y = 120});
+        this.physics.add.collider(this.javier, this.agua2, () => {this.javier.x = 120;this.javier.y = 120});
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();

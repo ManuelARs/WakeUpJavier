@@ -90,7 +90,9 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.tronco);
         this.physics.add.collider(this.dog, this.dogB);
         this.physics.add.collider(this.dog, this.hidrante);
-        this.physics.add.collider(this.tronco, this.hidrante);
+        this.physics.add.collider(this.tronco, this.hidrante, () => {
+          this.hidrante.body.stop();
+      });
         //Colision con HUESO
         this.physics.add.collider(this.dog, this.hueso, () => {
             this.aciertos += 1;

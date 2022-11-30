@@ -22,6 +22,13 @@ class NivelB5 extends Phaser.Scene{
         //BANDERA
         this.movimiento = 1;
         //OBJETOS
+        //aletas
+        this.aleta = this.physics.add.image(700, 710, 'NivelB5/aleta').setScale(0.37,0.32);
+        this.aleta.body.setAllowGravity(false);
+        this.aleta2 = this.physics.add.image(400, 710, 'NivelB5/aleta').setScale(0.37,0.32);
+        this.aleta2.body.setAllowGravity(false);
+        this.aleta2.flipX = true;
+        
         //agua
         this.agua = this.physics.add.image(520, 750, 'NivelB5/agua').setScale(0.37,0.32);
         this.agua.body.setAllowGravity(false);
@@ -52,8 +59,14 @@ class NivelB5 extends Phaser.Scene{
         this.pino = this.physics.add.image(50, 97, 'NivelB5/pino').setScale(1.5);
         this.pino.body.setAllowGravity(false);
         this.pino.setPushable(false);
+        //DIÁLOGOS
+        this.fondoDialogo = this.add.image(1000, 100, 'NivelB5/fondoDialogo').setScale(0.35, 0.3).setAlpha(1);
+        this.javierCara = this.add.image(545, 100, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(1);
+        this.abiCara = this.add.image(1470, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(1);
+        // this.dialogo1 = this.add.image(770, 135, 'NivelB3/dialogo3_1').setScale(0.7).setAlpha(1);
+        // this.dialogo2 = this.add.image(740, 135, 'NivelB3/dialogo3_2').setScale(0.5).setAlpha(0);
+        // this.dialogo3 = this.add.image(770, 135, 'NivelB3/dialogo3_3').setScale(0.5).setAlpha(0);
 
-    
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(160, 120, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
@@ -72,7 +85,36 @@ class NivelB5 extends Phaser.Scene{
         //ANIMACION ABI
         this.anims.create({ key: 'abiIdle', frames: this.anims.generateFrameNames('Abi', { prefix: 'abiIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate:2 });
         this.abi.anims.play('abiIdle',true);
-        
+        //TWEENS ALETA
+        this.add.tween({
+            targets: [this.aleta],
+            x: 300,
+            yoyo: true,
+            duration: 3500,
+            repeat: -1,
+            easy: 'Power1',
+            onYoyo: () => {
+                this.aleta.flipX = 1;
+            },
+            onRepeat: () => {
+                this.aleta.flipX = 0;
+            }
+        });
+          this.add.tween({
+            targets: [this.aleta2],
+            x: 950,
+            yoyo: true,
+            duration: 3500,
+            repeat: -1,
+            easy: 'Power1',
+            onYoyo: () => {
+                this.aleta2.flipX = 0;
+            },
+            onRepeat: () => {
+                this.aleta2.flipX = 1;
+            }
+        });
+
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
         this.abi.body.setCollideWorldBounds(true);

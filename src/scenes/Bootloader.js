@@ -44,12 +44,15 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('ganaste', ['./ganaste.mp3']);
 
         //PARA NIVEL B1
-        this.load.image(['NivelB1/NivelB1','NivelB1/monsterAldea']);
+        this.load.image(['NivelB1/NivelB1','NivelB1/monsterAldea','NivelB1/caraMonstruo','NivelB1/caraMonstruoCafe','NivelB1/caraArmadillo',
+                        'NivelB1/dialogo1_1','NivelB1/dialogo1_2' ,'NivelB1/dialogo1_3','NivelB1/dialogo1_4','NivelB1/dialogo1_5',
+                        'NivelB1/dialogo1_6','NivelB1/dialogo1_7'
+                        ]);
         this.load.atlas('Monster', 'monsterSprite/monstruo.png', 'monsterSprite/monstruo.json');
         //PARA NIVEL B2
-        this.load.image(['NivelB2/NivelB2']);
+        this.load.image(['NivelB2/NivelB2','NivelB2/agua','NivelB2/pasto1','NivelB2/pasto2','NivelB2/tronco','NivelB2/boton','NivelB2/boton2','NivelB2/tronco2','NivelB2/flecha','NivelB2/puente']);
         //PARA NIVEL B3
-        this.load.image(['NivelB3/NivelB3']);
+        this.load.image(['NivelB3/NivelB3', 'NivelB3/monstruo', 'NivelB3/mora', 'NivelB3/tronco', 'NivelB3/tuerca', 'NivelB3/monstruo_cara', 'NivelB3/dialogo3_1', 'NivelB3/dialogo3_2', 'NivelB3/dialogo3_3', 'NivelB3/caraMonstruo']);
         //PARA NIVEL B4
         this.load.image(['NivelB4/NivelB4']);
         //PARA NIVEL B5

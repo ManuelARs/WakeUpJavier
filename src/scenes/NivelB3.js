@@ -13,6 +13,10 @@ class NivelB3 extends Phaser.Scene{
     // }
     
     create() {
+        this.aciertos = 0
+        this.vidas = 3
+        this.textoContador = this.add.text(1300, 2, 'MORAS: 0/9',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10);;
+
         //BOUNDS DE LA ESCENA
         this.physics.world.setBounds(0,0,1580,730);
         //IMAGENES DE FONDO
@@ -31,83 +35,71 @@ class NivelB3 extends Phaser.Scene{
         this.javier.body.setSize(210, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
+        //mounstruo
 
+        //CONVERSACIONES
+        this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
+        this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(0);
+        this.monstruoCara = this.add.image(1470, 135, 'NivelB3/monstruo_cara').setScale(0.5).setAlpha(1);
+        this.dialogo1 = this.add.image(770, 135, 'NivelA5/dialogo5_1').setScale(0.7).setAlpha(1);
+        this.dialogo2 = this.add.image(790, 135, 'NivelA5/dialogo5_2').setScale(0.7).setAlpha(0);
+        
         //OBJETOS
         //troncos
         this.tronco1 = this.physics.add.image(200, 600, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco1.body.setSize(85, 20);
-        this.tronco1.setPushable(false);
-        this.tronco1.body.setAllowGravity(false);
         this.tronco2 = this.physics.add.image(60, 450, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco2.body.setSize(85, 20);
-        this.tronco2.setPushable(false);
-        this.tronco2.body.setAllowGravity(false);
         this.tronco3 = this.physics.add.image(190, 300, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco3.body.setSize(85, 20);
-        this.tronco3.setPushable(false);
-        this.tronco3.body.setAllowGravity(false);
         this.tronco4 = this.physics.add.image(310, 420, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco4.body.setSize(85, 20);
-        this.tronco4.setPushable(false);
-        this.tronco4.body.setAllowGravity(false);
         this.tronco5 = this.physics.add.image(460, 320, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco5.body.setSize(85, 20);
-        this.tronco5.setPushable(false);
-        this.tronco5.body.setAllowGravity(false);
         this.tronco6 = this.physics.add.image(620, 450, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco6.body.setSize(85, 20);
-        this.tronco6.setPushable(false);
-        this.tronco6.body.setAllowGravity(false);
         this.tronco7 = this.physics.add.image(790, 590, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco7.body.setSize(85, 20);
-        this.tronco7.setPushable(false);
-        this.tronco7.body.setAllowGravity(false);
         this.tronco8 = this.physics.add.image(630, 200, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco8.body.setSize(85, 20);
-        this.tronco8.setPushable(false);
-        this.tronco8.body.setAllowGravity(false);
         this.tronco9 = this.physics.add.image(800, 230, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco9.body.setSize(85, 20);
-        this.tronco9.setPushable(false);
-        this.tronco9.body.setAllowGravity(false);
         this.tronco10 = this.physics.add.image(970, 437, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco10.body.setSize(85, 20);
-        this.tronco10.setPushable(false);
-        this.tronco10.body.setAllowGravity(false);
-        this.tronco11 = this.physics.add.image(970, 157, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco11.body.setSize(85, 20);
-        this.tronco11.setPushable(false);
-        this.tronco11.body.setAllowGravity(false);
+        this.tronco11 = this.physics.add.image(950, 157, 'NivelB3/tronco', 0).setScale(1.2);
         this.tronco12 = this.physics.add.image(1190, 200, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco12.body.setSize(85, 20);
-        this.tronco12.setPushable(false);
-        this.tronco12.body.setAllowGravity(false);
         this.tronco13 = this.physics.add.image(1190, 400, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco13.body.setSize(85, 20);
-        this.tronco13.setPushable(false);
-        this.tronco13.body.setAllowGravity(false);
         this.tronco14 = this.physics.add.image(1320, 520, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco14.body.setSize(85, 20);
-        this.tronco14.setPushable(false);
-        this.tronco14.body.setAllowGravity(false);
         this.tronco15 = this.physics.add.image(1520, 630, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco15.body.setSize(85, 20);
-        this.tronco15.setPushable(false);
-        this.tronco15.body.setAllowGravity(false);
-        this.tronco16 = this.physics.add.image(1500, 230, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco16.body.setSize(85, 20);
-        this.tronco16.setPushable(false);
-        this.tronco16.body.setAllowGravity(false);
+        this.tronco16 = this.physics.add.image(1450, 230, 'NivelB3/tronco', 0).setScale(1.2);
+
+        this.troncos = [this.tronco1, this.tronco2, this.tronco3, this.tronco4, this.tronco5, this.tronco6, this.tronco7, this.tronco8, this.tronco9, this.tronco10, this.tronco11, this.tronco12, this.tronco13, this.tronco14, this.tronco15, this.tronco16]
+        for(let tronco of this.troncos) {
+            tronco.body.setSize(85, 20);
+            tronco.setPushable(false);
+            tronco.body.setAllowGravity(false);
+        }
 
         //moras
         this.mora1 = this.physics.add.image(200, 550, 'NivelB3/mora', 0).setScale(0.3);
-        this.mora1.body.setSize(150, 150);
-        this.mora1.setPushable(false);
-        this.mora1.body.setAllowGravity(false);
         this.mora2 = this.physics.add.image(40, 250, 'NivelB3/mora', 0).setScale(0.3);
-        this.mora2.body.setSize(150, 150);
-        this.mora2.setPushable(false);
-        this.mora2.body.setAllowGravity(false);
+        this.mora3 = this.physics.add.image(310, 370, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora4 = this.physics.add.image(540, 380, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora5 = this.physics.add.image(970, 370, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora6 = this.physics.add.image(1280, 300, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora7 = this.physics.add.image(1500, 420, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora8 = this.physics.add.image(1240, 600, 'NivelB3/mora', 0).setScale(0.3);
+        this.mora9 = this.physics.add.image(1540, 60, 'NivelB3/mora', 0).setScale(0.3);
+
+        this.moras = [this.mora1, this.mora2, this.mora3, this.mora4, this.mora5, this.mora6, this.mora7, this.mora8, this.mora9]
+        for(let mora of this.moras) {
+            mora.body.setSize(150, 150);
+            mora.setPushable(false);
+            mora.body.setAllowGravity(false);
+        }
+
+        //tuercas
+        this.tuerca1 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4);
+        this.tuerca1.setVelocity(150, 850);
+        this.tuerca1.setBounce(1, 1);
+        this.tuerca1.setPushable(false);
+        this.tuerca1.setCollideWorldBounds(true);
+
+        this.tuerca3 = this.physics.add.image(1500, 800, 'NivelB3/tuerca', 0).setScale(0.4);
+        this.tuerca3.setVelocity(350, 1000);
+        this.tuerca3.setBounce(1, 1);
+        this.tuerca3.setPushable(false);
+        this.tuerca3.setCollideWorldBounds(true);
 
         //ANIMACIONES
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
@@ -132,6 +124,52 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tronco14);  
         this.physics.add.collider(this.javier, this.tronco15);  
         this.physics.add.collider(this.javier, this.tronco16);  
+
+        this.physics.add.overlap(this.javier, this.mora1, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora2, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora3, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora4, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora5, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora6, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora7, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora8, collectMora, null, this);
+        this.physics.add.overlap(this.javier, this.mora9, collectMora, null, this);
+
+        function collectMora (jugador, objeto)
+        {
+            this.aciertos += 1;
+            this.textoContador.setText('MORAS: ' + this.aciertos + '/9');
+            objeto.disableBody(true, true)
+        }
+
+        //Colision con tuerca
+        this.physics.add.collider(this.javier, this.tuerca1, () => {
+            this.javier.y = 900
+            this.javier.x = 100
+            this.tuerca1.x = 1500
+            // this.tuerca2.x = 1500
+            this.tuerca3.x = 1500
+            this.vidas -= 1
+            //this.scene.restart()
+        });
+        // this.physics.add.collider(this.javier, this.tuerca2, () => {
+        //     this.javier.y = 900
+        //     this.javier.x = 100
+        //     this.tuerca1.x = 1500
+        //     this.tuerca2.x = 1500
+        //     this.tuerca3.x = 1500
+        //     //this.scene.restart()
+        // });
+        this.physics.add.collider(this.javier, this.tuerca3, () => {
+            this.javier.y = 900
+            this.javier.x = 100
+            this.tuerca1.x = 1500
+            // this.tuerca2.x = 1500
+            this.tuerca3.x = 1500
+            this.vidas -= 1
+            //this.scene.restart()
+        });
+
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -169,6 +207,15 @@ class NivelB3 extends Phaser.Scene{
                this.javier.setVelocityY(-500);
            }
        }
+
+       if(this.vidas == 0) {
+        this.scene.restart()
+       }
+
+       if(this.aciertos == 9) {
+        this.scene.start('NivelB4');
+       }
+       
     }
 
 

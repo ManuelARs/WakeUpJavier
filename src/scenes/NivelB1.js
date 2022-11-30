@@ -40,6 +40,18 @@ class NivelB1 extends Phaser.Scene{
         this.monsterAl.body.setMass(1);
         this.monsterAl.setPushable(false);
 
+        // Nubes derecha
+        this.nube1 = this.add.image(-200,150, 'Menu/nube').setAlpha(0.2).setScale(0.6);
+        this.nube2 = this.add.image(50,150, 'Menu/nube').setAlpha(0.2).setScale(0.3);
+        this.nube3 = this.add.image(200,600, 'Menu/nube').setAlpha(0.2).setScale(0.6);
+        this.nube6 = this.add.image(90,580, 'Menu/nube').setAlpha(0.2).setScale(0.2);
+        this.nube7 = this.add.image(-90,580, 'Menu/nube').setAlpha(0.2).setScale(0.8);
+        this.nube9 = this.add.image(-50,460, 'Menu/nube').setAlpha(0.2).setScale(0.3);
+        //Nube izquierda
+        this.nube4 = this.add.image(1800,580, 'Menu/nube').setAlpha(0.2);
+        this.nube5 = this.add.image(1500,360, 'Menu/nube').setAlpha(0.2).setScale(0.5);
+        this.nube8 = this.add.image(1600,50, 'Menu/nube').setAlpha(0.2).setScale(0.3);
+
         //OBJETOS
         this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
         this.salida.body.setSize(150, 1100);
@@ -158,7 +170,40 @@ class NivelB1 extends Phaser.Scene{
             this.javier.setAccelerationY(0);
             this.scene.start('NivelB2');
         });
+        // TIMELINES NUBES DERECHA
+        this.timeline = this.tweens.createTimeline(); 
+        this.timeline = this.tweens.timeline({
+            targets: [this.nube1,this.nube2,this.nube3,this.nube6,this.nube7,this.nube9],
+            paused: true,
+            loop: -1,
+            totalDuration: 80000,
+            tweens: [
+                {
+                    x: 1800,
+                    yoyo:true,
+                    repeat:-1,
+                },
+            ]
+        });
+        this.timeline.play();
 
+        // TIMELINES NUBES IZQUIERDA
+        this.timeline2 = this.tweens.createTimeline(); 
+        this.timeline2 = this.tweens.timeline({
+            targets: [this.nube4,this.nube5,this.nube8],
+            paused: true,
+            loop: -1,
+            totalDuration: 90000,
+            tweens: [
+                {
+                    x: -300,
+                    yoyo:true,
+                    repeat:-1,
+                },
+            ]
+        });
+        this.timeline2.play();
+        
          //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
     }

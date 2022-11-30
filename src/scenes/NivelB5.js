@@ -56,12 +56,16 @@ class NivelB5 extends Phaser.Scene{
         this.javier.body.setSize(210, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
+        //Abi
+        this.abi = this.physics.add.sprite(100, 120, 'Abi', 0).setAlpha(1).setDepth(3).setScale(1.2);
         //ANIMACIONES
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'monsterIdle', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruoIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
+        this.javier.body.setCollideWorldBounds(true);
+        this.physics.add.collider(this.javier, this.tierra);
         this.physics.add.collider(this.javier, this.tierra);
         this.physics.add.collider(this.javier, this.tierra2);
         this.physics.add.collider(this.javier, this.tierraP);

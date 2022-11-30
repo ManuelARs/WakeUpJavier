@@ -97,6 +97,9 @@ class NivelB3 extends Phaser.Scene{
             mora.setPushable(false);
             mora.body.setAllowGravity(false);
         }
+        //salida
+        this.salida = this.physics.add.staticImage(1650, 740, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
+        this.salida.body.setSize(100, 100);
 
         //DESPUES DE 4 SEGUNDOS
         setTimeout(() => {
@@ -183,6 +186,13 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.overlap(this.javier, this.mora9, collectMora, null, this);
         this.physics.add.overlap(this.javier, this.monstruo);
 
+        //COLISIÓN DE JAVIER CON LA SALIDA   
+        this.physics.add.collider(this.javier, this.salida, () => {
+            this.javier.setVelocityY(0);
+            this.javier.setAccelerationY(0);
+            this.scene.start('NivelB4');
+        });
+
         function collectMora (jugador, objeto)
         {
             this.aciertos += 1;
@@ -242,13 +252,16 @@ class NivelB3 extends Phaser.Scene{
             this.tuerca3.disableBody(true, true)
             this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
                 if(this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
+                    this.javier.body.stop();
                     this.entrega.x = 2000
                     this.fondoDialogo.setAlpha(1);
                     this.dialogo3.setAlpha(1);
                     this.monstruoCara.setAlpha(1);
                     this.movimiento=0
+                    this.tronco15.disableBody(true, true)
                     setTimeout(() => {
-                        this.scene.start('NivelB4');
+                        // this.scene.start('NivelB4');
+                        this.movimiento=1
                         this.fondoDialogo.setAlpha(0);
                         this.dialogo3.setAlpha(0);
                         this.monstruoCara.setAlpha(0);

@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "samurai.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1882,
+				"h": 651
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "samuraiIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 360,
+						"h": 655
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 0,
+						"w": 350,
+						"h": 649
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 350,
+						"h": 649
+					}
+				},
+				{
+					"filename": "samuraiG2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 368,
+						"h": 597
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 2,
+						"w": 362,
+						"h": 595
+					},
+					"frame": {
+						"x": 353,
+						"y": 1,
+						"w": 362,
+						"h": 595
+					}
+				},
+				{
+					"filename": "samuraiG1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 422,
+						"h": 568
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 8,
+						"w": 410,
+						"h": 560
+					},
+					"frame": {
+						"x": 717,
+						"y": 1,
+						"w": 410,
+						"h": 560
+					}
+				},
+				{
+					"filename": "samuraiG3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 771,
+						"h": 532
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 13,
+						"w": 752,
+						"h": 512
+					},
+					"frame": {
+						"x": 1129,
+						"y": 1,
+						"w": 752,
+						"h": 512
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:70f5134ad6859baa15ea0ce11b38161d:9028c8c220c09aa84ad79199bed82eba:2b6b1cfe2e1d275038a31c8bfb7108bf$"
+	}
+}

@@ -82,10 +82,8 @@ class NivelB1 extends Phaser.Scene{
         }, 1500);
         setTimeout(() => {
             this.javierCara.setAlpha(0);
-            this.fondoDialogo.setAlpha(0);
             this.dialogo1.setAlpha(0);
             this.monstruoCara.setAlpha(1);
-            this.fondoDialogo.setAlpha(1);
             this.dialogo2.setAlpha(1);
         }, 4000);
         setTimeout(() => {
@@ -114,44 +112,34 @@ class NivelB1 extends Phaser.Scene{
                 this.dialogo3.setAlpha(1);
                 setTimeout(() => {
                     this.monstruoCara.setAlpha(0);
-                    this.fondoDialogo.setAlpha(0);
                     this.dialogo3.setAlpha(0);
                     this.javierCara.setAlpha(1);
-                    this.fondoDialogo.setAlpha(1);
                     this.dialogo4.setAlpha(1);
                     this.javier.setVelocityY(-200);
                 }, 3000);
                 setTimeout(() => {
                     this.javierCara.setAlpha(0);
-                    this.fondoDialogo.setAlpha(0);
                     this.dialogo4.setAlpha(0);
                     this.monstruoCara.setAlpha(1);
-                    this.fondoDialogo.setAlpha(1);
                     this.dialogo5.setAlpha(1);
                     this.monsterAl.setVelocityY(-200);
                 }, 6000);
                 setTimeout(() => {
                     this.monstruoCara.setAlpha(0);
-                    this.fondoDialogo.setAlpha(0);
                     this.dialogo5.setAlpha(0);
-
                     this.javierCara.setAlpha(1);
-                    this.fondoDialogo.setAlpha(1);
                     this.dialogo6.setAlpha(1);
                 }, 11000);
                 setTimeout(() => {
                     this.javierCara.setAlpha(0);
-                    this.fondoDialogo.setAlpha(0);
                     this.dialogo6.setAlpha(0);
-
                     this.monstruoCara.setAlpha(1);
-                    this.fondoDialogo.setAlpha(1);
                     this.dialogo7.setAlpha(1);
                 }, 13000);
                 setTimeout(() => {
                     this.monstruoCara.setAlpha(0);
-                    this.fondoDialogo.setAlpha(0);
                     this.dialogo7.setAlpha(0);
+                    this.fondoDialogo.setAlpha(0);
                     this.movimiento = 1;
                     this.dialogoChoque=1
                     this.registry.events.emit('apareceHUD2');

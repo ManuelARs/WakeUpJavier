@@ -22,14 +22,14 @@ import NivelB5 from "./scenes/NivelB5.js";
 //NIVEL C
 import NivelC1 from "./scenes/NivelC1.js";
 import NivelC2 from "./scenes/NivelC2.js";
-// import NivelC3 from "./scenes/NivelC3.js";
-// import NivelC4 from "./scenes/NivelC4.js";
-// import NivelC5 from "./scenes/NivelC5.js";
-// import NivelC6 from "./scenes/NivelC6.js";
-// import NivelC7 from "./scenes/NivelC7.js";
-// import NivelC8 from "./scenes/NivelC8.js";
-// import NivelC9 from "./scenes/NivelC9.js";
-// import NivelC10 from "./scenes/NivelC10.js";
+import NivelC3 from "./scenes/NivelC3.js";
+import NivelC4 from "./scenes/NivelC4.js";
+import NivelC5 from "./scenes/NivelC5.js";
+import NivelC6 from "./scenes/NivelC6.js";
+//import NivelC7 from "./scenes/NivelC7.js";
+//import NivelC8 from "./scenes/NivelC8.js";
+import NivelC9 from "./scenes/NivelC9.js";
+import NivelC10 from "./scenes/NivelC10.js";
 
 
 const config = {
@@ -47,9 +47,15 @@ const config = {
     scene: [Bootloader,HUD,
         NivelA, NivelA1,NivelA2, NivelA3,NivelA4,NivelA6,
         NivelA5,NivelA7,NivelB1,NivelB2,NivelB3,NivelB4,NivelB5,
+<<<<<<< HEAD
         NivelC1,
         // NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,NivelC7,NivelC8,NivelC9,NivelC10,
         SceneA,SceneB,GameOver,Win,Menu],    //Aquí irá la lista de scenas del juego
+=======
+        NivelC1, NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,//NivelC7,NivelC8,
+        NivelC9,NivelC10,
+        SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
+>>>>>>> 908268e05db0c5183b3ae386f262d18a9f8f3229
     banner:{
         hidePhaser: true,
         text: "#fff00f",

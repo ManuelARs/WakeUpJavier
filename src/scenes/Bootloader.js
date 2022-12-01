@@ -34,13 +34,8 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back','NivelA6/instrucciones','NivelA6/fondoDialogo','NivelA6/dialogo6_1','NivelA6/pastorCara']);
         this.load.atlas('Dog2', 'NivelA6/dog2.png', 'NivelA6/dog2.json');
         //PARA NIVELA7
-        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2','NivelA7/fondoDialogo','NivelA7/dialogo7_1','NivelA7/dialogo7_2','NivelA7/dialogo7_3','NivelA7/dialogo7_4']);
-        // this.load.audio('Llorona', ['./Llorona.mp3']);
+        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2','NivelA7/fondoDialogo','NivelA7/dialogo7_1','NivelA7/dialogo7_2','NivelA7/dialogo7_3','NivelA7/dialogo7_4','NivelA7/dialogo7_5']);
         this.load.audio('acierto', ['./pop.mp3']);
-        this.load.audio('ganaste', ['./ganaste.mp3']);
-
-        //this.load.audio('Theme', ['./FALTA MUSICA']);
-        this.load.audio('voltear', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
 
         //PARA NIVEL B1
@@ -54,11 +49,35 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL B3
         this.load.image(['NivelB3/NivelB3', 'NivelB3/monstruo', 'NivelB3/mora', 'NivelB3/tronco', 'NivelB3/tuerca', 'NivelB3/monstruo_cara', 'NivelB3/dialogo3_1', 'NivelB3/dialogo3_2', 'NivelB3/dialogo3_3', 'NivelB3/caraMonstruo']);
         //PARA NIVEL B4
+        this.load.atlas('Randal', 'badMonster/randal.png', 'badMonster/randal.json');
         this.load.atlas('Abi', 'abiSprite/abi.png', 'abiSprite/abi.json');
-        this.load.image(['NivelB4/NivelB4']);
+        this.load.image(['NivelB4/NivelB4', 'NivelB4/boton', 'NivelB4/maquina', 'NivelB4/nube', 'NivelB4/pino', 'NivelB4/tierra', 'NivelB4/tronco', 'NivelB4/tierra2', 'NivelB4/piedra', 'NivelB4/caraEnemigo', 'NivelB4/dialogo4_1', 'NivelB4/dialogo4_2', 'NivelB4/dialogo4_3', 'NivelB4/dialogo4_4', 'NivelB4/dialogo4_5', 'NivelB4/maquina2']);
+        this.load.atlas('Abi', 'abiSprite/abi.png', 'abiSprite/abi.json');
         //PARA NIVEL B5
-        this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3']);
+        this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 
+        //PARA NIVEL C1
+        this.load.atlas('Ninja', 'ninjaSprite/ninja.png', 'ninjaSprite/ninja.json');
+        this.load.atlas('Samurai', 'samuraiSprite/samurai.png', 'samuraiSprite/samurai.json');
+        this.load.image(['NivelC1/NivelC1','NivelC1/jefe']);
+        //PARA NIVEL C2
+        this.load.image(['NivelC2/NivelC2','NivelC2/puerta','NivelC2/ventana','NivelC2/barra','NivelC2/escalar','NivelC2/techo']);
+        //PARA NIVEL C3
+        this.load.image(['NivelC3/NivelC3']);
+        //PARA NIVEL C4
+        this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro']);
+        //PARA NIVEL C5
+        this.load.image(['NivelC5/NivelC5','NivelC5/palacioEnemigo']);
+        //PARA NIVEL C6
+        this.load.image(['NivelC6/NivelC6']);
+        //PARA NIVEL C7
+        this.load.image(['NivelC7/NivelC7']);
+        //PARA NIVEL C8
+        this.load.image(['NivelC8/NivelC8']);
+        //PARA NIVEL C9
+        this.load.image(['NivelC9/NivelC9']);
+        //PARA NIVEL C3
+        this.load.image(['NivelC10/NivelC10']);
         //PARA ESCENA A
         // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
@@ -78,11 +97,24 @@ class Bootloader extends Phaser.Scene{
         // this.load.image(['winBack','Menu/botonMenu']);
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
+<<<<<<< HEAD
         this.load.image(['HUD/heart'])
     }
 
     create(){
         this.scene.start('NivelA4');
+=======
+        this.load.image(['SceneASceneB/heart'])
+        //MÚSICA GENERAL
+        //this.load.audio('Theme', ['./FALTA MUSICA']);
+        //EFECTOS DE SONIDOS GENERAL
+        this.load.audio('voltear', ['./pop.mp3']);
+        this.load.audio('ganaste', ['./ganaste.mp3']);
+    }
+
+    create(){
+        this.scene.start('NivelC6');
+>>>>>>> 908268e05db0c5183b3ae386f262d18a9f8f3229
         //this.scene.launch('Menu');
         console.log(this.scene.manager.scenes)
     }

@@ -24,7 +24,7 @@ class  NivelA4 extends Phaser.Scene {
       this.cameras.main.setBounds(0, 0, 1580, 780);
       this.cameras.main.fadeIn(1000);
       //Imagen de Fondo
-      this.fondo = this.add.image(775, 360, 'NivelA4/NivelA4').setDepth(-2).setScale(1.5);
+      this.fondo = this.add.image(775, 360, 'NivelA4/NivelA4').setDepth(-2).setScale(.4,.35);
       //OBJETOS
       this.mesa = this.physics.add.staticImage(300, 630, 'NivelA4/mesa').setScale(2);
       this.mesa.body.setSize(145,15);

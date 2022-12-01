@@ -97,24 +97,11 @@ class Bootloader extends Phaser.Scene{
         // this.load.image(['winBack','Menu/botonMenu']);
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
-<<<<<<< HEAD
-        this.load.image(['HUD/heart'])
+        this.load.image(['SceneASceneB/heart'])
     }
 
     create(){
         this.scene.start('NivelA4');
-=======
-        this.load.image(['SceneASceneB/heart'])
-        //MÚSICA GENERAL
-        //this.load.audio('Theme', ['./FALTA MUSICA']);
-        //EFECTOS DE SONIDOS GENERAL
-        this.load.audio('voltear', ['./pop.mp3']);
-        this.load.audio('ganaste', ['./ganaste.mp3']);
-    }
-
-    create(){
-        this.scene.start('NivelC6');
->>>>>>> 908268e05db0c5183b3ae386f262d18a9f8f3229
         //this.scene.launch('Menu');
         console.log(this.scene.manager.scenes)
     }

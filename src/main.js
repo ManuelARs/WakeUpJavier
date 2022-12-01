@@ -47,15 +47,9 @@ const config = {
     scene: [Bootloader,HUD,
         NivelA, NivelA1,NivelA2, NivelA3,NivelA4,NivelA6,
         NivelA5,NivelA7,NivelB1,NivelB2,NivelB3,NivelB4,NivelB5,
-<<<<<<< HEAD
-        NivelC1,
-        // NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,NivelC7,NivelC8,NivelC9,NivelC10,
-        SceneA,SceneB,GameOver,Win,Menu],    //Aquí irá la lista de scenas del juego
-=======
         NivelC1, NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,//NivelC7,NivelC8,
         NivelC9,NivelC10,
-        SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
->>>>>>> 908268e05db0c5183b3ae386f262d18a9f8f3229
+        SceneA,SceneB,GameOver,Win,Menu],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",

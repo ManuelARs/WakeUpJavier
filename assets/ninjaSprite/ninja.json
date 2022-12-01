@@ -1,0 +1,356 @@
+{
+	"textures": [
+		{
+			"image": "ninja.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 145,
+				"h": 145
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ninjaClimb3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 34,
+						"h": 54
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 34,
+						"h": 54
+					}
+				},
+				{
+					"filename": "ninjaClimb2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 0,
+						"w": 34,
+						"h": 55
+					},
+					"frame": {
+						"x": 37,
+						"y": 1,
+						"w": 34,
+						"h": 55
+					}
+				},
+				{
+					"filename": "ninjaClimb4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					},
+					"frame": {
+						"x": 73,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					},
+					"frame": {
+						"x": 73,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					},
+					"frame": {
+						"x": 110,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					},
+					"frame": {
+						"x": 110,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					},
+					"frame": {
+						"x": 110,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					},
+					"frame": {
+						"x": 110,
+						"y": 1,
+						"w": 34,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					},
+					"frame": {
+						"x": 1,
+						"y": 58,
+						"w": 35,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 1,
+						"w": 35,
+						"h": 58
+					},
+					"frame": {
+						"x": 1,
+						"y": 58,
+						"w": 35,
+						"h": 58
+					}
+				},
+				{
+					"filename": "ninjaThrow10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 0,
+						"w": 48,
+						"h": 59
+					},
+					"frame": {
+						"x": 38,
+						"y": 61,
+						"w": 48,
+						"h": 59
+					}
+				},
+				{
+					"filename": "ninjaThrow11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 0,
+						"w": 48,
+						"h": 59
+					},
+					"frame": {
+						"x": 38,
+						"y": 61,
+						"w": 48,
+						"h": 59
+					}
+				},
+				{
+					"filename": "ninjaThrow8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 0,
+						"w": 48,
+						"h": 59
+					},
+					"frame": {
+						"x": 38,
+						"y": 61,
+						"w": 48,
+						"h": 59
+					}
+				},
+				{
+					"filename": "ninjaThrow9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 0,
+						"w": 48,
+						"h": 59
+					},
+					"frame": {
+						"x": 38,
+						"y": 61,
+						"w": 48,
+						"h": 59
+					}
+				},
+				{
+					"filename": "ninjaClimb1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 0,
+						"w": 35,
+						"h": 63
+					},
+					"frame": {
+						"x": 88,
+						"y": 61,
+						"w": 35,
+						"h": 63
+					}
+				},
+				{
+					"filename": "ninjaIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 0,
+						"w": 35,
+						"h": 63
+					},
+					"frame": {
+						"x": 88,
+						"y": 61,
+						"w": 35,
+						"h": 63
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6b75282b7a6954601d3ca5b01e7b55fc:48977e9a920156c094a01667028f4904:1489d2aafae73d0b92d12aa6b7f0cec0$"
+	}
+}

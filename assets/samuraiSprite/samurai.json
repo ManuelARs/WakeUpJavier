@@ -4,74 +4,11 @@
 			"image": "samurai.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1882,
-				"h": 652
+				"w": 1777,
+				"h": 1748
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "samuraiIdle1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1000,
-						"h": 1000
-					},
-					"spriteSourceSize": {
-						"x": 311,
-						"y": 184,
-						"w": 350,
-						"h": 650
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 350,
-						"h": 650
-					}
-				},
-				{
-					"filename": "samuraiG2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1000,
-						"h": 1000
-					},
-					"spriteSourceSize": {
-						"x": 310,
-						"y": 239,
-						"w": 362,
-						"h": 596
-					},
-					"frame": {
-						"x": 353,
-						"y": 1,
-						"w": 362,
-						"h": 596
-					}
-				},
-				{
-					"filename": "samuraiG1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1000,
-						"h": 1000
-					},
-					"spriteSourceSize": {
-						"x": 279,
-						"y": 273,
-						"w": 410,
-						"h": 560
-					},
-					"frame": {
-						"x": 717,
-						"y": 1,
-						"w": 410,
-						"h": 560
-					}
-				},
 				{
 					"filename": "samuraiG3.png",
 					"rotated": false,
@@ -87,10 +24,241 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1129,
+						"x": 1,
 						"y": 1,
 						"w": 752,
 						"h": 512
+					}
+				},
+				{
+					"filename": "samuraiC5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 268,
+						"y": 106,
+						"w": 434,
+						"h": 670
+					},
+					"frame": {
+						"x": 1,
+						"y": 515,
+						"w": 434,
+						"h": 670
+					}
+				},
+				{
+					"filename": "samuraiC3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 259,
+						"y": 288,
+						"w": 485,
+						"h": 534
+					},
+					"frame": {
+						"x": 755,
+						"y": 1,
+						"w": 485,
+						"h": 534
+					}
+				},
+				{
+					"filename": "samuraiC1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 267,
+						"y": 294,
+						"w": 447,
+						"h": 540
+					},
+					"frame": {
+						"x": 1242,
+						"y": 1,
+						"w": 447,
+						"h": 540
+					}
+				},
+				{
+					"filename": "samuraiG2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 279,
+						"y": 273,
+						"w": 410,
+						"h": 560
+					},
+					"frame": {
+						"x": 1,
+						"y": 1187,
+						"w": 410,
+						"h": 560
+					}
+				},
+				{
+					"filename": "samuraiE2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 353,
+						"y": 310,
+						"w": 290,
+						"h": 531
+					},
+					"frame": {
+						"x": 437,
+						"y": 515,
+						"w": 290,
+						"h": 531
+					}
+				},
+				{
+					"filename": "samuraiC6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 255,
+						"y": 336,
+						"w": 478,
+						"h": 497
+					},
+					"frame": {
+						"x": 729,
+						"y": 537,
+						"w": 478,
+						"h": 497
+					}
+				},
+				{
+					"filename": "samuraiC2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 274,
+						"y": 274,
+						"w": 422,
+						"h": 496
+					},
+					"frame": {
+						"x": 1209,
+						"y": 543,
+						"w": 422,
+						"h": 496
+					}
+				},
+				{
+					"filename": "samuraiE1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 359,
+						"y": 310,
+						"w": 278,
+						"h": 509
+					},
+					"frame": {
+						"x": 413,
+						"y": 1187,
+						"w": 278,
+						"h": 509
+					}
+				},
+				{
+					"filename": "samuraiC4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 309,
+						"y": 180,
+						"w": 367,
+						"h": 651
+					},
+					"frame": {
+						"x": 693,
+						"y": 1048,
+						"w": 367,
+						"h": 651
+					}
+				},
+				{
+					"filename": "samuraiIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 311,
+						"y": 184,
+						"w": 350,
+						"h": 650
+					},
+					"frame": {
+						"x": 1062,
+						"y": 1041,
+						"w": 350,
+						"h": 650
+					}
+				},
+				{
+					"filename": "samuraiG1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1000,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 310,
+						"y": 239,
+						"w": 362,
+						"h": 596
+					},
+					"frame": {
+						"x": 1414,
+						"y": 1041,
+						"w": 362,
+						"h": 596
 					}
 				}
 			]
@@ -99,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9548e61ed5be6894806d8d71658744e4:809fca7113e3282a667c5e1697c4d63b:2b6b1cfe2e1d275038a31c8bfb7108bf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1833355f194f654ef167dcc74dae5b50:7f1109a15eb2e8cae62fd3c5297d249f:2b6b1cfe2e1d275038a31c8bfb7108bf$"
 	}
 }

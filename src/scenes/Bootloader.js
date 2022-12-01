@@ -98,6 +98,11 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
         this.load.image(['HUD/heart'])
+        //MÚSICA GENERAL
+        //this.load.audio('Theme', ['./FALTA MUSICA']);
+        //EFECTOS DE SONIDOS GENERAL
+        this.load.audio('voltear', ['./pop.mp3']);
+        this.load.audio('ganaste', ['./ganaste.mp3']);
     }
 
     create(){

@@ -38,7 +38,7 @@ class GameOver extends Phaser.Scene{
         //EVENTO CLICK MENU
         this.play.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();
-            this.scene.start("NivelB1", { score: this.hud2 });
+            this.scene.start(this.nivel, { score: this.hud2 });
         }, this);
         this.menu.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();

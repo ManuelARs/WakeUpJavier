@@ -35,11 +35,15 @@ class NivelC4 extends Phaser.Scene{
         this.muro = this.physics.add.image(1000, 460, 'NivelC4/muro').setDepth(-2).setScale(.36,.32);
         this.muro.body.setAllowGravity(false);
         this.muro.setPushable(false);
-        
+        this.mascara = this.physics.add.image(500, 80, 'NivelC4/mascara').setDepth(0).setScale(.5);
+        this.mascara.body.setAllowGravity(false);
+        this.mascara.setPushable(false);
+
+
         //PERSONAJES
         //Javier Samurai
-        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
-        this.javier.body.setSize(300, 400);
+        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.15);
+        this.javier.body.setSize(300, 450);
         console.log(this.javier.body.offset)
         this.javier.body.setMass(1);
         this.javier.flipX=false;
@@ -53,6 +57,10 @@ class NivelC4 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.muro);
         this.physics.add.collider(this.javier, this.muro);
         this.physics.add.collider(this.javier, this.barras);
+        this.physics.add.overlap(this.javier, this.mascara, collectMascara, null, this);
+        function collectMascara (jugador, objeto) {
+            objeto.disableBody(true, true)
+        }
 
         //TECLADO
         this.cursors = this.input.keyboard.createCursorKeys();

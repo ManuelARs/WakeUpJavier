@@ -27,7 +27,7 @@ class NivelB2 extends Phaser.Scene{
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(70, 500, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.35);
-        this.javier.body.setSize(210, 260);
+        this.javier.body.setSize(130, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
 

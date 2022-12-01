@@ -16,6 +16,7 @@ class NivelB4 extends Phaser.Scene{
     
     create() {
         this.vidas = 3
+        this.quitar = 0
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB4/NivelB4').setDepth(-2).setScale(.37,.35);
 
@@ -73,6 +74,9 @@ class NivelB4 extends Phaser.Scene{
         this.maquina = this.physics.add.image(750, 110, 'NivelB4/maquina').setScale(0.1);
         this.maquina.body.setAllowGravity(false);
         this.maquina.setPushable(false);
+        this.maquina2 = this.physics.add.image(750, 110, 'NivelB4/maquina2').setScale(0.1).setAlpha(0);
+        this.maquina2.body.setAllowGravity(false);
+        this.maquina2.setPushable(false);
 
         //piedras
         this.piedra = this.physics.add.image(1350, 710, 'NivelB4/piedra').setScale(0.2);
@@ -83,10 +87,10 @@ class NivelB4 extends Phaser.Scene{
         this.piedra2.setImmovable(true);
 
         //maquina
-        this.boton = this.physics.add.image(630, 205, 'NivelB4/boton').setScale(1).setDepth(10);
+        this.boton = this.physics.add.image(750, 205, 'NivelB4/boton').setScale(1).setDepth(10);
         this.boton.body.setAllowGravity(false);
         this.boton.setPushable(false);
-        this.boton2 = this.physics.add.image(800, 205, 'NivelB4/boton').setScale(1).setDepth(10);
+        this.boton2 = this.physics.add.image(1100, 250, 'NivelB4/boton').setScale(1).setDepth(10).disableBody(true, true);
         this.boton2.body.setAllowGravity(false);
         this.boton2.setPushable(false);
         this.boton3 = this.physics.add.image(130, 435, 'NivelB4/boton').setScale(1).disableBody(true, true);
@@ -95,6 +99,11 @@ class NivelB4 extends Phaser.Scene{
         this.boton4 = this.physics.add.image(1350, 390, 'NivelB4/boton').setScale(1);
         this.boton4.body.setAllowGravity(false);
         this.boton4.setPushable(false);
+
+        this.botonB = this.add.image(750, 205, 'NivelB2/boton2').setScale(0.5).setAlpha(0);
+        this.boton2B = this.add.image(1100, 250, 'NivelB2/boton2').setScale(0.5).setAlpha(0);
+        this.boton3B = this.add.image(130, 435, 'NivelB2/boton2').setScale(0.5).setAlpha(0);
+        this.boton4B = this.add.image(1350, 390, 'NivelB2/boton2').setScale(0.5).setAlpha(0);
 
         // Nubes derecha
         this.nube1 = this.add.image(-200,150, 'Menu/nube').setAlpha(0.2).setScale(0.6);
@@ -108,6 +117,8 @@ class NivelB4 extends Phaser.Scene{
         this.nube5 = this.add.image(1500,360, 'Menu/nube').setAlpha(0.2).setScale(0.5);
         this.nube8 = this.add.image(1600,50, 'Menu/nube').setAlpha(0.2).setScale(0.3);
 
+        this.nubes = [this.nube1, this.nube2, this.nube3, this.nube4, this.nube5, this.nube6, this.nube7, this.nube8, this.nube9]
+
         //CONVERSACIONES
         this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1).setDepth(10);
         this.javierCara = this.add.image(125, 135, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(0).setDepth(10);
@@ -116,6 +127,7 @@ class NivelB4 extends Phaser.Scene{
         this.dialogo2 = this.add.image(1000, 135, 'NivelB4/dialogo4_2').setScale(0.7).setAlpha(0).setDepth(10);
         this.dialogo3 = this.add.image(730, 135, 'NivelB4/dialogo4_3').setScale(0.55).setAlpha(0).setDepth(10);
         this.dialogo4 = this.add.image(770, 135, 'NivelB4/dialogo4_4').setScale(0.7).setAlpha(0).setDepth(10);
+        this.dialogo5 = this.add.image(770, 135, 'NivelB4/dialogo4_5').setScale(0.7).setAlpha(0).setDepth(10);
 
 
         setTimeout(() => {
@@ -187,10 +199,10 @@ class NivelB4 extends Phaser.Scene{
                 this.tronco.y = 680
                 this.javier.x = 120
                 this.javier.y = 720
-                this.tierraP.disableBody(true, true);
-                this.tierraP1.disableBody(true, true);
-                this.tierraP4.disableBody(true, true);
-                this.boton3.disableBody(true, true);
+                // this.tierraP.disableBody(true, true);
+                // this.tierraP1.disableBody(true, true);
+                // this.tierraP4.disableBody(true, true);
+                // this.boton3.disableBody(true, true);
                 this.vidas -= 1
             }
             
@@ -285,8 +297,8 @@ class NivelB4 extends Phaser.Scene{
  
         //PERSONAJES
         //Javier Monstruo 
-        this.javier = this.physics.add.sprite(120, 720, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
-        this.javier.body.setSize(210, 260);
+        this.javier = this.physics.add.sprite(120, 720, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3).setDepth(10);
+        this.javier.body.setSize(130, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
 
@@ -297,15 +309,24 @@ class NivelB4 extends Phaser.Scene{
         this.monstruo.flipX=true;
         this.monstruo.setPushable(false)
 
+        //Novia 
+        this.novia = this.physics.add.sprite(1500, 340, 'Abi', 0).setAlpha(1).setDepth(3).setScale(0.15).disableBody(true, true);
+        this.novia.body.setSize(250, 540);
+        this.novia.body.setMass(1);
+        this.novia.flipX=true;
+        this.novia.setPushable(false)
+
         //ANIMACIONES
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'monsterIdle', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruoIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
         this.anims.create({ key: 'randalIdle', frames: this.anims.generateFrameNames('Randal', { prefix: 'randalIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
-        
+        this.anims.create({ key: 'abiIdle', frames: this.anims.generateFrameNames('Abi', { prefix: 'abiIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 4 });
+
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
         this.monstruo.body.setCollideWorldBounds(true);
         this.tronco.body.setCollideWorldBounds(true);
+        this.novia.body.setCollideWorldBounds(true);
 
         this.physics.add.collider(this.javier, this.tierra2)
         this.physics.add.collider(this.javier, this.tierra)
@@ -314,58 +335,72 @@ class NivelB4 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tierraP2)
         this.physics.add.collider(this.javier, this.tierraP3)
         this.physics.add.collider(this.javier, this.tierraP4)
-        // this.physics.add.collider(this.javier, this.tuerca1)
-        // this.physics.add.collider(this.javier, this.tuerca1, () => {
-        //     clearInterval(identificadorTiempoDeEspera)
-        //     clearInterval(identificadorTiempoDeEspera2)
-        //     this.scene.restart()
-        // });
-        // this.physics.add.collider(this.javier, this.tuerca2, () => {
-        //     clearInterval(identificadorTiempoDeEspera)
-        //     clearInterval(identificadorTiempoDeEspera2)
-        //     this.scene.restart()
-        // });
-        // this.physics.add.collider(this.javier, this.tuerca3, () => {
-        //     clearInterval(identificadorTiempoDeEspera)
-        //     clearInterval(identificadorTiempoDeEspera2)
-        //     this.scene.restart()
-        // });
-        // this.physics.add.collider(this.javier, this.tuerca4, () => {
-        //     clearInterval(identificadorTiempoDeEspera)
-        //     clearInterval(identificadorTiempoDeEspera2)
-        //     this.scene.restart()
-        // });
-        //this.physics.add.collider(this.javier, this.boton)
-        // this.physics.add.collider(this.javier, this.boton2)
-        //this.physics.add.collider(this.javier, this.boton3)
+
         this.physics.add.collider(this.javier, this.boton4, () => {
             if (this.boton4.body.touching.up )
                 {
                     this.tierraP1.enableBody(false, 0, 0, true, true)
                     this.boton3.enableBody(false, 0, 0, true, true)
+                    this.boton4.setAlpha(0)
+                    this.boton4B.setAlpha(1)
                 }
         });
         this.physics.add.collider(this.javier, this.boton3, () => {
             if (this.boton3.body.touching.up )
                 {
                     this.tierraP.enableBody(false, 0, 0, true, true)
+                    this.boton3.setAlpha(0)
+                    this.boton3B.setAlpha(1)
                 }
         });
         this.physics.add.collider(this.javier, this.boton, () => {
             if (this.boton.body.touching.up )
                 {
                     this.tierraP4.enableBody(false, 0, 0, true, true)
+                    this.boton2.enableBody(false, 0, 0, true, true)
+                    this.boton.setAlpha(0)
+                    this.botonB.setAlpha(1)
                 }
         });
-        this.physics.add.collider(this.javier, this.boton2, () => {
-            if (this.boton2.body.touching.up )
-                {
-                    this.tierraP4.enableBody(false, 0, 0, true, true)
-                }
+        this.colisonFinal = this.physics.add.collider(this.javier, this.boton2, () => {
+            if (this.boton2.body.touching.up ) {
+                this.tuerca1.disableBody(true, true)
+                this.tuerca2.disableBody(true, true)
+                this.tuerca3.disableBody(true, true)
+                this.tuerca4.disableBody(true, true)
+                this.maquina.setAlpha(0)
+                this.maquina2.setAlpha(1)
+                this.boton2.setAlpha(0)
+                this.boton2B.setAlpha(1)
+                this.novia.enableBody(false, 0, 0, true, true)
+                //CUARTO TWEEN
+                this.monstruo.body.stop()
+                this.fondoDialogo.setAlpha(1)
+                this.dialogo5.setAlpha(1)
+                this.add.tween({
+                    targets: [this.monstruo],
+                    x: 1600,
+                    y: 0,
+                    angle:800,
+                    scale: 0,
+                    alpha: .7,
+                    onComplete: () =>{
+                        this.monstruo.setAlpha(0);
+                        this.fondoDialogo.setAlpha(0)
+                        this.dialogo5.setAlpha(0)
+                    },
+                    duration: 3000,
+                })
+                this.quitar = 1
+            }
+        });
+        this.physics.add.collider(this.javier, this.novia, () => {
+            this.scene.start('NivelB5')
         });
 
         this.physics.add.collider(this.javier, this.tronco)
-        this.physics.add.collider(this.monstruo, this.tierra2)
+        this.collider_m = this.physics.add.collider(this.monstruo, this.tierra2)
+        this.physics.add.collider(this.novia, this.tierra)
         this.physics.add.collider(this.tronco, this.piedra, () => {
             this.tronco.x = 1265
             console.log(this.tronco.x)
@@ -385,6 +420,10 @@ class NivelB4 extends Phaser.Scene{
        if(this.monstruo.body.onFloor())
        {
            this.monstruo.anims.play('randalIdle',true);
+       }
+       if(this.novia.body.onFloor())
+       {
+           this.novia.anims.play('abiIdle',true);
        }
        if(this.movimiento==1)
        {
@@ -419,6 +458,10 @@ class NivelB4 extends Phaser.Scene{
         this.scene.restart()
         clearInterval(this.identificadorTiempoDeEspera)
         clearInterval(this.identificadorTiempoDeEspera2)
+       }
+
+       if(this.quitar) {
+        this.physics.world.removeCollider(this.colisonFinal);
        }
     }
 

@@ -33,7 +33,7 @@ class NivelB3 extends Phaser.Scene{
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(70, 730, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.35);
-        this.javier.body.setSize(210, 260);
+        this.javier.body.setSize(130, 260);
         this.javier.body.setMass(1);
         this.javier.flipX=true;
         //mounstruo
@@ -68,7 +68,7 @@ class NivelB3 extends Phaser.Scene{
         this.tronco12 = this.physics.add.image(1190, 200, 'NivelB3/tronco', 0).setScale(1.2);
         this.tronco13 = this.physics.add.image(1190, 400, 'NivelB3/tronco', 0).setScale(1.2);
         this.tronco14 = this.physics.add.image(1320, 520, 'NivelB3/tronco', 0).setScale(1.2);
-        this.tronco15 = this.physics.add.image(1520, 630, 'NivelB3/tronco', 0).setScale(1.2);
+        this.tronco15 = this.physics.add.image(1520, 640, 'NivelB3/tronco', 0).setScale(1.2);
         this.tronco16 = this.physics.add.image(1450, 230, 'NivelB3/tronco', 0).setScale(1.2);
 
         this.troncos = [this.tronco1, this.tronco2, this.tronco3, this.tronco4, this.tronco5, this.tronco6, this.tronco7, this.tronco8, this.tronco9, this.tronco10, this.tronco11, this.tronco12, this.tronco13, this.tronco14, this.tronco15, this.tronco16]

@@ -54,7 +54,8 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL B3
         this.load.image(['NivelB3/NivelB3', 'NivelB3/monstruo', 'NivelB3/mora', 'NivelB3/tronco', 'NivelB3/tuerca', 'NivelB3/monstruo_cara', 'NivelB3/dialogo3_1', 'NivelB3/dialogo3_2', 'NivelB3/dialogo3_3', 'NivelB3/caraMonstruo']);
         //PARA NIVEL B4
-        this.load.image(['NivelB4/NivelB4']);
+        this.load.atlas('Randal', 'badMonster/randal.png', 'badMonster/randal.json');
+        this.load.image(['NivelB4/NivelB4', 'NivelB4/boton', 'NivelB4/maquina', 'NivelB4/nube', 'NivelB4/pino', 'NivelB4/tierra', 'NivelB4/tronco', 'NivelB4/tierra2', 'NivelB4/piedra']);
         //PARA NIVEL B5
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3']);
 
@@ -81,7 +82,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelA5');
+        this.scene.start('NivelB4');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

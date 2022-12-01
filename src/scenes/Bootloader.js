@@ -49,8 +49,10 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL B3
         this.load.image(['NivelB3/NivelB3', 'NivelB3/monstruo', 'NivelB3/mora', 'NivelB3/tronco', 'NivelB3/tuerca', 'NivelB3/monstruo_cara', 'NivelB3/dialogo3_1', 'NivelB3/dialogo3_2', 'NivelB3/dialogo3_3', 'NivelB3/caraMonstruo']);
         //PARA NIVEL B4
+        this.load.atlas('Randal', 'badMonster/randal.png', 'badMonster/randal.json');
         this.load.atlas('Abi', 'abiSprite/abi.png', 'abiSprite/abi.json');
-        this.load.image(['NivelB4/NivelB4','NivelB4/caraAbi']);
+        this.load.image(['NivelB4/NivelB4', 'NivelB4/boton', 'NivelB4/maquina', 'NivelB4/nube', 'NivelB4/pino', 'NivelB4/tierra', 'NivelB4/tronco', 'NivelB4/tierra2', 'NivelB4/piedra', 'NivelB4/caraEnemigo', 'NivelB4/dialogo4_1', 'NivelB4/dialogo4_2', 'NivelB4/dialogo4_3', 'NivelB4/dialogo4_4', 'NivelB4/dialogo4_5', 'NivelB4/maquina2']);
+        this.load.atlas('Abi', 'abiSprite/abi.png', 'abiSprite/abi.json');
         //PARA NIVEL B5
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 

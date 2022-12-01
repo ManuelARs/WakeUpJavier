@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "randal.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 131,
+				"h": 131
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "randalIdle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 64,
+						"h": 59
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 64,
+						"h": 59
+					}
+				},
+				{
+					"filename": "randalIdle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 63,
+						"h": 59
+					},
+					"frame": {
+						"x": 67,
+						"y": 1,
+						"w": 63,
+						"h": 59
+					}
+				},
+				{
+					"filename": "randalIdle4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 64,
+						"h": 59
+					},
+					"frame": {
+						"x": 1,
+						"y": 62,
+						"w": 64,
+						"h": 59
+					}
+				},
+				{
+					"filename": "randalIdle3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 5,
+						"w": 63,
+						"h": 59
+					},
+					"frame": {
+						"x": 67,
+						"y": 62,
+						"w": 63,
+						"h": 59
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:dc96ec8f1c2fd1a58a7111b97e45c842:cc0c5b7b997d0bf2ad712d8dfa2f0fca:d7d3c885372a1b824618d5fe18d4ce0c$"
+	}
+}

@@ -29,7 +29,8 @@ class NivelA7 extends Phaser.Scene{
         this.dialogo1 = this.add.image(770, 155, 'NivelA7/dialogo7_1').setScale(0.45).setAlpha(1);
         this.dialogo2 = this.add.image(670, 135, 'NivelA7/dialogo7_2').setScale(0.45).setAlpha(0);
         this.dialogo3 = this.add.image(900, 155, 'NivelA7/dialogo7_3').setScale(0.45).setAlpha(0);
-        this.dialogo4 = this.add.image(670, 135, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(0);
+        this.dialogo4 = this.add.image(900, 135, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(0);
+        this.dialogo5 = this.add.image(800, 135, 'NivelA7/dialogo7_5').setScale(0.45).setAlpha(0);
 
         //PERSONAJES
         //Perro Javier
@@ -62,22 +63,27 @@ class NivelA7 extends Phaser.Scene{
             this.gataCara.setAlpha(0);
             this.dogCara.setAlpha(1);
             this.dialogo2.setAlpha(1);
-        }, 4000);
+        }, 5000);
         setTimeout(() => {
             this.dialogo2.setAlpha(0);
-            this.gataCara.setAlpha(1);
             this.dogCara.setAlpha(0);
+            this.gataCara.setAlpha(1);
             this.dialogo3.setAlpha(1);
-        }, 7000);
+        }, 8500);
         setTimeout(() => {
             this.dialogo3.setAlpha(0);
-            this.gataCara.setAlpha(0);
-            this.dogCara.setAlpha(1);
             this.dialogo4.setAlpha(1);
-        }, 10500);
+        }, 12500);
         setTimeout(() => {
-            this.dialogo4.setAlpha(0);
             this.gataCara.setAlpha(0);
+            this.dialogo4.setAlpha(0);
+            this.dogCara.setAlpha(1);
+            this.dialogo5.setAlpha(1);
+        }, 16500);
+        setTimeout(() => {
+            this.dialogo5.setAlpha(0);
+            this.gataCara.setAlpha(0);
+            this.dogCara.setAlpha(0);
             this.dogCara.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
             this.gata.flipX=1;
@@ -92,7 +98,7 @@ class NivelA7 extends Phaser.Scene{
                         this.movimiento = 1;
                     },
             });
-        }, 14500);
+        }, 20500);
         
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);

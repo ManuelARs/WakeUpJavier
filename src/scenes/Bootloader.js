@@ -34,13 +34,8 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelA6/abeja', 'NivelA6/casa', 'NivelA6/gato', 'NivelA6/hidrante', 'NivelA6/huellas', 'NivelA6/hueso', 'NivelA6/javier', 'NivelA6/lentes', 'NivelA6/pastor', 'NivelA6/pelota', 'NivelA6/fondo_memorama', 'NivelA6/back','NivelA6/instrucciones','NivelA6/fondoDialogo','NivelA6/dialogo6_1','NivelA6/pastorCara']);
         this.load.atlas('Dog2', 'NivelA6/dog2.png', 'NivelA6/dog2.json');
         //PARA NIVELA7
-        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2','NivelA7/fondoDialogo','NivelA7/dialogo7_1','NivelA7/dialogo7_2','NivelA7/dialogo7_3','NivelA7/dialogo7_4']);
-        // this.load.audio('Llorona', ['./Llorona.mp3']);
+        this.load.image(['NivelA7/nivelA7','NivelA7/espejoCallejon','NivelA7/espejoCallejon2','NivelA7/fondoDialogo','NivelA7/dialogo7_1','NivelA7/dialogo7_2','NivelA7/dialogo7_3','NivelA7/dialogo7_4','NivelA7/dialogo7_5']);
         this.load.audio('acierto', ['./pop.mp3']);
-        this.load.audio('ganaste', ['./ganaste.mp3']);
-
-        //this.load.audio('Theme', ['./FALTA MUSICA']);
-        this.load.audio('voltear', ['./pop.mp3']);
         this.load.audio('ganaste', ['./ganaste.mp3']);
 
         //PARA NIVEL B1
@@ -99,10 +94,15 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
         this.load.image(['SceneASceneB/heart'])
+        //MÚSICA GENERAL
+        //this.load.audio('Theme', ['./FALTA MUSICA']);
+        //EFECTOS DE SONIDOS GENERAL
+        this.load.audio('voltear', ['./pop.mp3']);
+        this.load.audio('ganaste', ['./ganaste.mp3']);
     }
 
     create(){
-        this.scene.start('NivelC10');
+        this.scene.start('NivelA7');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

@@ -23,7 +23,7 @@ class NivelA5 extends Phaser.Scene{
         //BANDERA MOVIMIENTO
         this.movimiento=0
 
-        this.fondo = this.add.image(775, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
+        this.fondo = this.add.image(770, 360, 'NivelA5/nivelA5').setDepth(-2)//.setScale(.35);
         this.physics.world.setBounds(0,0,1580, 700);
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);

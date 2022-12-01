@@ -59,6 +59,26 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL B5
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3']);
 
+        //PARA NIVEL C1
+        this.load.image(['NivelC1/NivelC1']);
+        //PARA NIVEL C2
+        this.load.image(['NivelC2/NivelC2']);
+        //PARA NIVEL C3
+        this.load.image(['NivelC3/NivelC3']);
+        //PARA NIVEL C4
+        this.load.image(['NivelC4/NivelC4']);
+        //PARA NIVEL C5
+        this.load.image(['NivelC5/NivelC5']);
+        //PARA NIVEL C6
+        this.load.image(['NivelC6/NivelC6']);
+        //PARA NIVEL C7
+        this.load.image(['NivelC7/NivelC7']);
+        //PARA NIVEL C8
+        this.load.image(['NivelC8/NivelC8']);
+        //PARA NIVEL C9
+        this.load.image(['NivelC9/NivelC9']);
+        //PARA NIVEL C3
+        this.load.image(['NivelC10/NivelC10']);
         //PARA ESCENA A
         // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
         // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
@@ -82,7 +102,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC1');
+        this.scene.start('NivelC10');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

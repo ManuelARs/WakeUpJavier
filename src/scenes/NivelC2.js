@@ -17,7 +17,7 @@ class NivelC2 extends Phaser.Scene{
         this.physics.world.setBounds(0,0,1580,670);
 
         //IMAGENES DE FONDO
-        this.fondo = this.add.image(775, 360, 'NivelC2/NivelC2').setDepth(-2).setScale(.37,.35);
+        this.fondo = this.add.image(775, 360, 'NivelC2/NivelC2').setDepth(-2).setScale(.37,.33);
 
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);

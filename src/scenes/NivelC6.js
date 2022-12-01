@@ -11,7 +11,7 @@ class NivelC6 extends Phaser.Scene{
     
     create() {
         //BOUNDS DE ESCENA
-        this.physics.world.setBounds(250,0,1580, 630)
+        this.physics.world.setBounds(0,0,1580, 730)
         
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
@@ -29,10 +29,11 @@ class NivelC6 extends Phaser.Scene{
 
         //FONDO
         this.fondo = this.add.image(790, 385, 'NivelC6/NivelC6').setDepth(-2).setScale(.38,.32);
+        
         //ANIMACIONES
         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'samuraiIdle', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
-        this.anims.create({ key: 'samuraiCaminar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiC', suffix: '.png', start: 1, end:6 }), repeat: -1, frameRate: 4 });
+        this.anims.create({ key: 'samuraiCaminar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiC', suffix: '.png', start: 1, end:6 }), repeat: -1, frameRate: 6 });
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);

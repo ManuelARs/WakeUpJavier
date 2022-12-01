@@ -65,7 +65,7 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL C4
         this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro']);
         //PARA NIVEL C5
-        this.load.image(['NivelC5/NivelC5']);
+        this.load.image(['NivelC5/NivelC5','NivelC5/palacioEnemigo']);
         //PARA NIVEL C6
         this.load.image(['NivelC6/NivelC6']);
         //PARA NIVEL C7

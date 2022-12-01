@@ -72,19 +72,19 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('gong', ['./gong.mp3']);
         // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
-        // this.load.image(['gameOverBack','Menu/botonMenu2']);
-        // this.load.audio('gameOver', ['./game_over.mp3']);
+        this.load.image(['GameOver/gameOverBack','Menu/botonMenu2']);
+        this.load.audio('gameOver', ['GameOver/game_over.mp3']);
         //PARA ESCENA YOU WIN
         // this.load.image(['winBack','Menu/botonMenu']);
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
-        this.load.image(['SceneASceneB/heart'])
+        this.load.image(['HUD/heart'])
     }
 
     create(){
-        this.scene.start('NivelC1');
+        this.scene.start('NivelA4');
         //this.scene.launch('Menu');
-        //console.log(this.scene.manager.scenes)
+        console.log(this.scene.manager.scenes)
     }
 
     update(time, delta) {

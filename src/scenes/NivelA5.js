@@ -5,8 +5,10 @@ class NivelA5 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA5');
+        console.log('init', data);
+        this.life = data.score;
     }
 
     preload() {
@@ -69,6 +71,7 @@ class NivelA5 extends Phaser.Scene{
         this.pastorCara = this.add.image(1500, 135, 'NivelA5/pastorCara').setScale(1.2).setAlpha(0);
         this.dialogo1 = this.add.image(770, 135, 'NivelA5/dialogo5_1').setScale(0.7).setAlpha(1);
         this.dialogo2 = this.add.image(790, 135, 'NivelA5/dialogo5_2').setScale(0.7).setAlpha(0);
+        this.registry.events.emit('desapareceHUD');
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
@@ -92,6 +95,7 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.hidrante);
         this.physics.add.collider(this.tronco, this.hidrante, () => {
           this.hidrante.body.stop();
+          this.tronco.x=726.5
       });
         //Colision con HUESO
         this.physics.add.collider(this.dog, this.hueso, () => {
@@ -178,6 +182,7 @@ class NivelA5 extends Phaser.Scene{
             this.dialogo1.setAlpha(0);
             this.gataCara.setAlpha(0);
             this.movimiento=1
+            this.registry.events.emit('apareceHUD');
             //this.fondoDialogo.setAlpha(1);
             //this.dialogo2.setAlpha(1);
         }, 4000);
@@ -233,7 +238,15 @@ class NivelA5 extends Phaser.Scene{
      
         //COLISION CON ABEJAS
         let choqueAbeja = (javier, abeja) => {
-            this.scene.restart()
+          this.cameras.main.shake(700,0.005);
+          this.life--;
+          this.registry.events.emit('loseHeart');
+          if(this.life === 0) {
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+          }
+          this.dog.x=250
+          this.dog.flipX=0;
         }
         this.physics.collide(this.dog, this.abejas, choqueAbeja);
         this.physics.collide(this.dog, this.abejas2, choqueAbeja);
@@ -261,6 +274,7 @@ class NivelA5 extends Phaser.Scene{
                 this.aciertos = 0
                 this.dogB.anims.play('pastorC',false);
                 this.dogB.anims.play('pastorIdle',true);
+                this.registry.events.emit('desapareceHUD');
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo2.setAlpha(1);
                 this.pastorCara.setAlpha(1);
@@ -271,6 +285,7 @@ class NivelA5 extends Phaser.Scene{
                     this.dogB.anims.play('pastorIdle',false);
                     this.dogB.anims.play('pastorC',true);
                     this.dogB.flipX=0;
+                    this.registry.events.emit('apareceHUD');
                     this.movimiento = 1
                     this.tweens = this.add.tween({
                         targets: [this.dogB],

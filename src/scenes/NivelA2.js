@@ -69,38 +69,6 @@ class NivelA2 extends Phaser.Scene {
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
-
-        //Mejorar tween con timeline maybe?
-        // this.tweens = this.add.tween({
-        //     targets: [this.gata],
-        //     x: 250,
-        //     y: 520,
-        //     duration: 2000,
-        //     onComplete: () => {
-        //         this.tweens = this.add.tween({
-        //             targets: [this.dog],
-        //             x: 150,
-        //             y: 550,
-        //             duration: 2000,
-        //             onStart: () => {
-        //                 this.dog.setAlpha(1);
-        //             },
-        //             onComplete: () => {
-        //                 this.gataCara.setAlpha(1);
-        //                 this.fondoDialogo.setAlpha(1);
-        //                 // nuevo dialogo ej Esto te ayudara a relajarte
-        //                 // this.dialogo2.setAlpha(1);
-        //                 setTimeout(() => {
-        //                     this.gataCara.setAlpha(0);
-        //                     this.fondoDialogo.setAlpha(0);
-        //                     // nuevo dialogo ej Esto te ayudara a relajarte
-        //                     // this.dialogo2.setAlpha(0);
-        //                     this.scene.start('NivelA3');
-        //                 }, 3000);
-        //             },
-        //         });
-        //     },
-        // });
         
         //COLISIÓN Mesa CON PERRO 
         this.physics.add.collider(this.dog, this.mesa, () => {});

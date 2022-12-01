@@ -5,12 +5,15 @@ class NivelB1 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB1');
+        console.log('init', data);
+        this.hud2 = data.score;
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
-
-    // preload() {
-    // }
     
     create() {
         //BOUNDS DE LA ESCENA
@@ -90,6 +93,8 @@ class NivelB1 extends Phaser.Scene{
             this.fondoDialogo.setAlpha(0);
             this.dialogo2.setAlpha(0);
             this.movimiento = 1;
+            this.registry.events.emit('cambioNivelB');
+            this.registry.events.emit('apareceHUD2');
         }, 6000);
 
          //COLISIONES
@@ -103,7 +108,7 @@ class NivelB1 extends Phaser.Scene{
                 this.movimiento = 0;
                 this.javier.x = 1190;
                 this.javier.body.stop();
-                //3
+                this.registry.events.emit('desapareceHUD2');
                 this.monstruoCara.setAlpha(1);
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo3.setAlpha(1);
@@ -149,10 +154,12 @@ class NivelB1 extends Phaser.Scene{
                     this.dialogo7.setAlpha(0);
                     this.movimiento = 1;
                     this.dialogoChoque=1
+                    this.registry.events.emit('apareceHUD2');
                 }, 15000);
             }
             if(this.dialogoChoque==1)
             {
+                this.registry.events.emit('desapareceHUD2');
                 this.monstruoCara.setAlpha(1);
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo7.setAlpha(1);
@@ -160,6 +167,7 @@ class NivelB1 extends Phaser.Scene{
                     this.monstruoCara.setAlpha(0);
                     this.fondoDialogo.setAlpha(0);
                     this.dialogo7.setAlpha(0);
+                    this.registry.events.emit('apareceHUD2');
                 }, 2000);
             }
          }); 
@@ -168,6 +176,7 @@ class NivelB1 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
+            this.javier.body.stop()
             this.scene.start('NivelB2');
         });
         // TIMELINES NUBES DERECHA

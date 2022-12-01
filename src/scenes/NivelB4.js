@@ -15,6 +15,7 @@ class NivelB4 extends Phaser.Scene{
     }
     
     create() {
+        this.vidas = 3
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB4/NivelB4').setDepth(-2).setScale(.37,.35);
 
@@ -26,7 +27,7 @@ class NivelB4 extends Phaser.Scene{
         this.cameras.main.fadeIn(1000);
 
         //BANDERA
-        this.movimiento = 1;
+        this.movimiento = 0;
         
         //tierra
         this.tierra = this.physics.add.image(1500, 430, 'NivelB4/tierra').setScale(1.4,1.2);
@@ -82,10 +83,10 @@ class NivelB4 extends Phaser.Scene{
         this.piedra2.setImmovable(true);
 
         //maquina
-        this.boton = this.physics.add.image(630, 205, 'NivelB4/boton').setScale(1);
+        this.boton = this.physics.add.image(630, 205, 'NivelB4/boton').setScale(1).setDepth(10);
         this.boton.body.setAllowGravity(false);
         this.boton.setPushable(false);
-        this.boton2 = this.physics.add.image(700, 205, 'NivelB4/boton').setScale(1);
+        this.boton2 = this.physics.add.image(800, 205, 'NivelB4/boton').setScale(1).setDepth(10);
         this.boton2.body.setAllowGravity(false);
         this.boton2.setPushable(false);
         this.boton3 = this.physics.add.image(130, 435, 'NivelB4/boton').setScale(1).disableBody(true, true);
@@ -106,6 +107,146 @@ class NivelB4 extends Phaser.Scene{
         this.nube4 = this.add.image(1800,580, 'Menu/nube').setAlpha(0.2);
         this.nube5 = this.add.image(1500,360, 'Menu/nube').setAlpha(0.2).setScale(0.5);
         this.nube8 = this.add.image(1600,50, 'Menu/nube').setAlpha(0.2).setScale(0.3);
+
+        //CONVERSACIONES
+        this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1).setDepth(10);
+        this.javierCara = this.add.image(125, 135, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(0).setDepth(10);
+        this.enemigo = this.add.image(1470, 135, 'NivelB4/caraEnemigo').setScale(0.9).setAlpha(1).setDepth(10);
+        this.dialogo1 = this.add.image(770, 135, 'NivelB4/dialogo4_1').setScale(0.7).setAlpha(1).setDepth(10);
+        this.dialogo2 = this.add.image(1000, 135, 'NivelB4/dialogo4_2').setScale(0.7).setAlpha(0).setDepth(10);
+        this.dialogo3 = this.add.image(730, 135, 'NivelB4/dialogo4_3').setScale(0.55).setAlpha(0).setDepth(10);
+        this.dialogo4 = this.add.image(770, 135, 'NivelB4/dialogo4_4').setScale(0.7).setAlpha(0).setDepth(10);
+
+
+        setTimeout(() => {
+            this.enemigo.setAlpha(0)
+            this.dialogo1.setAlpha(0)
+            this.dialogo2.setAlpha(1)
+            this.javierCara.setAlpha(1)
+        }, 3000);
+
+        setTimeout(() => {
+            this.dialogo2.setAlpha(0)
+            this.javierCara.setAlpha(0)
+            this.enemigo.setAlpha(1)
+            this.dialogo3.setAlpha(1)
+        }, 6000);
+
+        setTimeout(() => {
+            this.enemigo.setAlpha(0)
+            this.dialogo3.setAlpha(0)
+            this.dialogo4.setAlpha(1)
+            this.javierCara.setAlpha(1)
+        }, 9000);
+
+        setTimeout(() => {
+            this.movimiento = 1
+            this.dialogo4.setAlpha(0)
+            this.javierCara.setAlpha(0)
+            this.fondoDialogo.setAlpha(0)
+            //LOGICA DE TUERCAS
+            this.identificadorTiempoDeEspera;
+            this.identificadorTiempoDeEspera2;
+
+            let temporizadorDeRetraso = ()=> {
+            this.identificadorTiempoDeEspera = setInterval(primerasTuercas, 2000);
+            this.identificadorTiempoDeEspera2 = setInterval(segundasTuercas, 2500);
+            }
+
+            //primera tuerca
+            this.tuerca1 = this.physics.add.image(750, 70, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca1.setVelocity(-220, -450);
+            this.tuerca1.setBounce(0, 0);
+            this.tuerca1.setPushable(false);
+            //segunda tuerca
+            this.tuerca2 = this.physics.add.image(800, 70, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca2.setVelocity(220, -450);
+            this.tuerca2.setBounce(0, 0);
+            this.tuerca2.setPushable(false);
+            // tercera tuerca
+            this.tuerca3 = this.physics.add.image(750, 70, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca3.setVelocity(-270, -450);
+            this.tuerca3.setBounce(0, 0);
+            this.tuerca3.setPushable(false);
+            // cuarta tuerca
+            this.tuerca4 = this.physics.add.image(800, 70, 'NivelB3/tuerca', 0).setScale(0.4).setDepth(10);
+            this.tuerca4.setVelocity(270, -450);
+            this.tuerca4.setBounce(0, 0);
+            this.tuerca4.setPushable(false);
+
+            let reset = () => {
+                this.tuerca1.x = 700
+                this.tuerca1.y = 70
+                this.tuerca2.x = 850
+                this.tuerca2.y = 70
+                this.tuerca3.x = 700
+                this.tuerca3.y = 70
+                this.tuerca4.x = 850
+                this.tuerca4.y = 70
+                this.tronco.x = 1200
+                this.tronco.y = 680
+                this.javier.x = 120
+                this.javier.y = 720
+                this.tierraP.disableBody(true, true);
+                this.tierraP1.disableBody(true, true);
+                this.tierraP4.disableBody(true, true);
+                this.boton3.disableBody(true, true);
+                this.vidas -= 1
+            }
+            
+            let primerasTuercas = () => {
+                console.log("hola")
+                let randomIzq = Math.random() * (440 - 70) + 70;
+                console.log(randomIzq)
+                this.tuerca1.x = 700
+                this.tuerca1.y = 70
+                this.tuerca1.setVelocity(-randomIzq, -450);
+                let randomDer = Math.random() * (440 - 70) + 70;
+                this.tuerca2.x = 850
+                this.tuerca2.y = 70
+                this.tuerca2.setVelocity(randomDer, -450);
+            }
+
+            let segundasTuercas = () => {
+                console.log("hola")
+                let randomIzq = Math.random() * (440 - 70) + 70;
+                console.log(randomIzq)
+                this.tuerca3.x = 700
+                this.tuerca3.y = 70
+                this.tuerca3.setVelocity(-randomIzq, -450);
+                let randomDer = Math.random() * (440 - 70) + 70;
+                this.tuerca4.x = 850
+                this.tuerca4.y = 70
+                this.tuerca4.setVelocity(randomDer, -450);
+            }
+
+            temporizadorDeRetraso()
+            this.physics.add.collider(this.javier, this.tuerca1, () => {
+                clearInterval(this.identificadorTiempoDeEspera)
+                clearInterval(this.identificadorTiempoDeEspera2)
+                temporizadorDeRetraso()
+                reset()
+            });
+            this.physics.add.collider(this.javier, this.tuerca2, () => {
+                clearInterval(this.identificadorTiempoDeEspera)
+                clearInterval(this.identificadorTiempoDeEspera2)
+                temporizadorDeRetraso()
+                reset()
+            });
+            this.physics.add.collider(this.javier, this.tuerca3, () => {
+                clearInterval(this.identificadorTiempoDeEspera)
+                clearInterval(this.identificadorTiempoDeEspera2)
+                temporizadorDeRetraso()
+                reset()
+            });
+            this.physics.add.collider(this.javier, this.tuerca4, () => {
+                clearInterval(this.identificadorTiempoDeEspera)
+                clearInterval(this.identificadorTiempoDeEspera2)
+                temporizadorDeRetraso()
+                reset()
+            });
+        }, 12000);
+        
    
 
         // TIMELINES NUBES DERECHA
@@ -173,8 +314,29 @@ class NivelB4 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tierraP2)
         this.physics.add.collider(this.javier, this.tierraP3)
         this.physics.add.collider(this.javier, this.tierraP4)
+        // this.physics.add.collider(this.javier, this.tuerca1)
+        // this.physics.add.collider(this.javier, this.tuerca1, () => {
+        //     clearInterval(identificadorTiempoDeEspera)
+        //     clearInterval(identificadorTiempoDeEspera2)
+        //     this.scene.restart()
+        // });
+        // this.physics.add.collider(this.javier, this.tuerca2, () => {
+        //     clearInterval(identificadorTiempoDeEspera)
+        //     clearInterval(identificadorTiempoDeEspera2)
+        //     this.scene.restart()
+        // });
+        // this.physics.add.collider(this.javier, this.tuerca3, () => {
+        //     clearInterval(identificadorTiempoDeEspera)
+        //     clearInterval(identificadorTiempoDeEspera2)
+        //     this.scene.restart()
+        // });
+        // this.physics.add.collider(this.javier, this.tuerca4, () => {
+        //     clearInterval(identificadorTiempoDeEspera)
+        //     clearInterval(identificadorTiempoDeEspera2)
+        //     this.scene.restart()
+        // });
         //this.physics.add.collider(this.javier, this.boton)
-        this.physics.add.collider(this.javier, this.boton2)
+        // this.physics.add.collider(this.javier, this.boton2)
         //this.physics.add.collider(this.javier, this.boton3)
         this.physics.add.collider(this.javier, this.boton4, () => {
             if (this.boton4.body.touching.up )
@@ -190,7 +352,13 @@ class NivelB4 extends Phaser.Scene{
                 }
         });
         this.physics.add.collider(this.javier, this.boton, () => {
-            if (this.boton3.body.touching.up )
+            if (this.boton.body.touching.up )
+                {
+                    this.tierraP4.enableBody(false, 0, 0, true, true)
+                }
+        });
+        this.physics.add.collider(this.javier, this.boton2, () => {
+            if (this.boton2.body.touching.up )
                 {
                     this.tierraP4.enableBody(false, 0, 0, true, true)
                 }
@@ -245,6 +413,12 @@ class NivelB4 extends Phaser.Scene{
            {
                this.javier.setVelocityY(-500);
            }
+       }
+
+       if(this.vidas == 0) {
+        this.scene.restart()
+        clearInterval(this.identificadorTiempoDeEspera)
+        clearInterval(this.identificadorTiempoDeEspera2)
        }
     }
 

@@ -55,9 +55,11 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 
         //PARA NIVEL C1
-        this.load.image(['NivelC1/NivelC1']);
+        this.load.atlas('Ninja', 'ninjaSprite/ninja.png', 'ninjaSprite/ninja.json');
+        this.load.atlas('Samurai', 'samuraiSprite/samurai.png', 'samuraiSprite/samurai.json');
+        this.load.image(['NivelC1/NivelC1','NivelC1/jefe']);
         //PARA NIVEL C2
-        this.load.image(['NivelC2/NivelC2']);
+        this.load.image(['NivelC2/NivelC2','NivelC2/puerta','NivelC2/ventana','NivelC2/barra','NivelC2/escalar','NivelC2/techo']);
         //PARA NIVEL C3
         this.load.image(['NivelC3/NivelC3']);
         //PARA NIVEL C4
@@ -102,7 +104,11 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
+<<<<<<< HEAD
         this.scene.start('NivelC4');
+=======
+        this.scene.start('NivelC2');
+>>>>>>> cf1a0b4ed0977434e88cc0273848c9b9c6a8b4eb
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

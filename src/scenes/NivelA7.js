@@ -28,9 +28,9 @@ class NivelA7 extends Phaser.Scene{
         this.gataCara = this.add.image(1500, 135, 'NivelA1/gataCara').setScale(1.2).setAlpha(1);
         this.dialogo1 = this.add.image(770, 155, 'NivelA7/dialogo7_1').setScale(0.45).setAlpha(1);
         this.dialogo2 = this.add.image(670, 135, 'NivelA7/dialogo7_2').setScale(0.45).setAlpha(0);
-        this.dialogo3 = this.add.image(900, 155, 'NivelA7/dialogo7_3').setScale(0.45).setAlpha(0);
-        this.dialogo4 = this.add.image(900, 135, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(0);
-        this.dialogo5 = this.add.image(800, 135, 'NivelA7/dialogo7_5').setScale(0.45).setAlpha(0);
+        this.dialogo3 = this.add.image(1000, 155, 'NivelA7/dialogo7_3').setScale(0.45).setAlpha(0);
+        this.dialogo4 = this.add.image(1100, 155, 'NivelA7/dialogo7_4').setScale(0.45).setAlpha(0);
+        this.dialogo5 = this.add.image(800, 140, 'NivelA7/dialogo7_5').setScale(0.45).setAlpha(0);
 
         //PERSONAJES
         //Perro Javier

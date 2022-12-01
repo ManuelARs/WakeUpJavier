@@ -20,7 +20,7 @@ class NivelA5 extends Phaser.Scene{
     create() {
         //ACIERTOS
         this.aciertos = 0
-        this.textoContador = this.add.text(1300, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(100, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
 
         //BANDERA MOVIMIENTO
         this.movimiento=0

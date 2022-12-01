@@ -5,8 +5,10 @@ class NivelB4 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB4');
+        console.log('init', data);
+        this.life = data.score;
     }
 
     preload() {
@@ -15,7 +17,7 @@ class NivelB4 extends Phaser.Scene{
     }
     
     create() {
-        this.vidas = 3
+        this.registry.events.emit('desapareceHUD2');
         this.quitar = 0
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB4/NivelB4').setDepth(-2).setScale(.37,.35);
@@ -156,6 +158,7 @@ class NivelB4 extends Phaser.Scene{
             this.dialogo4.setAlpha(0)
             this.javierCara.setAlpha(0)
             this.fondoDialogo.setAlpha(0)
+            this.registry.events.emit('apareceHUD2');
             //LOGICA DE TUERCAS
             this.identificadorTiempoDeEspera;
             this.identificadorTiempoDeEspera2;
@@ -203,7 +206,15 @@ class NivelB4 extends Phaser.Scene{
                 // this.tierraP1.disableBody(true, true);
                 // this.tierraP4.disableBody(true, true);
                 // this.boton3.disableBody(true, true);
-                this.vidas -= 1
+                this.cameras.main.shake(700,0.005);
+                this.life--;
+                this.registry.events.emit('loseHeartB');
+                if(this.life === 0) {
+                    clearInterval(this.identificadorTiempoDeEspera)
+                    clearInterval(this.identificadorTiempoDeEspera2)
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
+                }
             }
             
             let primerasTuercas = () => {
@@ -375,6 +386,7 @@ class NivelB4 extends Phaser.Scene{
                 this.novia.enableBody(false, 0, 0, true, true)
                 //CUARTO TWEEN
                 this.monstruo.body.stop()
+                this.registry.events.emit('desapareceHUD2');
                 this.fondoDialogo.setAlpha(1)
                 this.dialogo5.setAlpha(1)
                 this.add.tween({
@@ -395,7 +407,7 @@ class NivelB4 extends Phaser.Scene{
             }
         });
         this.physics.add.collider(this.javier, this.novia, () => {
-            this.scene.start('NivelB5')
+            this.scene.start('NivelB5', { score: this.life })
         });
 
         this.physics.add.collider(this.javier, this.tronco)
@@ -453,13 +465,6 @@ class NivelB4 extends Phaser.Scene{
                this.javier.setVelocityY(-500);
            }
        }
-
-       if(this.vidas == 0) {
-        this.scene.restart()
-        clearInterval(this.identificadorTiempoDeEspera)
-        clearInterval(this.identificadorTiempoDeEspera2)
-       }
-
        if(this.quitar) {
         this.physics.world.removeCollider(this.colisonFinal);
        }

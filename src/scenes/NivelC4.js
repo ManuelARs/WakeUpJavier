@@ -40,10 +40,8 @@ class NivelC4 extends Phaser.Scene{
         //Javier Samurai
         this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
         this.javier.body.setSize(300, 400);
-        //this.javier.body.setOffset(1,-20);
         console.log(this.javier.body.offset)
         this.javier.body.setMass(1);
-        // this.javier.refreshBody();
         this.javier.flipX=false;
         
         //ANIMACIONES

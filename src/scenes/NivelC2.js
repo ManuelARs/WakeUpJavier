@@ -70,25 +70,15 @@ class NivelC2 extends Phaser.Scene{
         picos.create(400, 570, 'NivelC2/picos').setScale(0.2).refreshBody().disableBody(true,true);
         picos.create(875, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
         picos.create(1040, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
+        picos.create(1200, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
+        picos.create(1360, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
 
-        //ANIMACIONES
-        this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
-        this.anims.create({ key: 'samuraiIdle', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
-
-        //DIÁLOGOS
-        // this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(0);
-        // this.javierCara = this.add.image(125, 125, 'NivelC2/caraMonstruo').setScale(1.2).setAlpha(0);
-        // this.monstruoCara = this.add.image(1470, 125, 'NivelC2/caraMonstruoCafe').setScale(1).setAlpha(0);
-        // this.dialogo1 = this.add.image(790, 125, 'NivelC2/dialogo1_1').setScale(0.8).setAlpha(0);
-        // this.dialogo2 = this.add.image(790, 125, 'NivelC2/dialogo1_2').setScale(0.7).setAlpha(0);
-        // this.dialogo3 = this.add.image(790, 125, 'NivelC2/dialogo1_3').setScale(0.6).setAlpha(0);
-        // this.dialogo4 = this.add.image(790, 125, 'NivelC2/dialogo1_4').setScale(0.7).setAlpha(0);
-        // this.dialogo5 = this.add.image(750, 125, 'NivelC2/dialogo1_5').setScale(0.6).setAlpha(0);
-        // this.dialogo6 = this.add.image(790, 125, 'NivelC2/dialogo1_6').setScale(0.7).setAlpha(0);
-        // this.dialogo7 = this.add.image(790, 125, 'NivelC2/dialogo1_7').setScale(0.8).setAlpha(0);
+         //ANIMACIONES
+         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
+         this.anims.create({ key: 'samuraiIdle', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
+         this.anims.create({ key: 'samuraiCaminar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiC', suffix: '.png', start: 1, end:6 }), repeat: -1, frameRate: 6 });
 
         //COLISIONES
-        //  this.physics.add.overlap(this.javier, this.objeto, collectObjeto, null, this);
         this.javier.body.setCollideWorldBounds(true);
         this.physics.add.collider(this.javier, this.techo);
         this.physics.add.collider(this.javier, this.barraA);
@@ -137,6 +127,8 @@ class NivelC2 extends Phaser.Scene{
             this.barraB.getChildren()[1].enableBody(false,0,0,true,true); 
             this.barraB.getChildren()[2].enableBody(false,0,0,true,true); 
             this.barraB.getChildren()[3].enableBody(false,0,0,true,true); 
+            picos.getChildren()[3].enableBody(false,0,0,true,true);
+            picos.getChildren()[4].enableBody(false,0,0,true,true);
         }
 
         //Colision Picos
@@ -154,6 +146,8 @@ class NivelC2 extends Phaser.Scene{
             this.barraB.getChildren()[2].disableBody(true,true); 
             this.barraB.getChildren()[3].disableBody(true,true);
             this.estrella2.enableBody(false,0,0,true,true); 
+            picos.getChildren()[3].disableBody(true,true);
+            picos.getChildren()[4].disableBody(true,true);
         });
          
         //COLISIÓN DE JAVIER CON LA SALIDA   
@@ -175,33 +169,33 @@ class NivelC2 extends Phaser.Scene{
       {
           this.javier.anims.play('samuraiIdle');  
       }
-     if(this.movimiento==1)
-     {
-         if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
-         {
+      if(this.movimiento==1)
+      {
+          if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+          {
              this.javier.anims.play('samuraiIdle',true);
-         }
-     if (this.cursors.left.isDown)
-         {
+          }
+          if (this.cursors.left.isDown)
+          {
              this.javier.setVelocityX(-200);
-             this.javier.anims.play('samuraiIdle',true); //Caminar
+             this.javier.anims.play('samuraiCaminar',true); //Caminar
              this.javier.flipX=1;
-         }
-     else if (this.cursors.right.isDown)
-         {
+          }
+          else if (this.cursors.right.isDown)
+          {
              this.javier.setVelocityX(200);
-             this.javier.anims.play('samuraiIdle',true); //Caminar
+             this.javier.anims.play('samuraiCaminar',true); //Caminar
              this.javier.flipX=0;
-         }
-     else
-     {
-         this.javier.setVelocityX(0);
-     }
+          }
+          else
+          {
+              this.javier.setVelocityX(0);
+          }
 
-     if ((this.cursors.up.isDown && this.javier.body.onFloor()))
-         {
+          if ((this.cursors.up.isDown && this.javier.body.onFloor()))
+          {
              this.javier.setVelocityY(-500);
-         }
+          }
      }
     }
 

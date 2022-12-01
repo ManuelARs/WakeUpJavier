@@ -24,9 +24,12 @@ class NivelB5 extends Phaser.Scene{
         //aletas
         this.aleta = this.physics.add.image(700, 710, 'NivelB5/aleta').setScale(0.37,0.32);
         this.aleta.body.setAllowGravity(false);
+        this.aleta.setPushable(false);
         this.aleta2 = this.physics.add.image(400, 710, 'NivelB5/aleta').setScale(0.37,0.32);
         this.aleta2.body.setAllowGravity(false);
+        this.aleta2.setPushable(false);
         this.aleta2.flipX = true;
+
         
         //agua
         this.agua = this.physics.add.image(520, 750, 'NivelB5/agua').setScale(0.37,0.32);

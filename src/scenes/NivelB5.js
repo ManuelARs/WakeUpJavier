@@ -9,9 +9,6 @@ class NivelB5 extends Phaser.Scene{
         console.log('Escena NivelB5');
     }
 
-    // preload() {
-    // }
-    
     create() {
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB5/NivelB5_2').setDepth(-2).setScale(.37,.35);
@@ -20,7 +17,9 @@ class NivelB5 extends Phaser.Scene{
         this.cameras.main.fadeIn(1000);
         
         //BANDERA
-        this.movimiento = 1;
+        this.movimiento = 0;
+        this.final = 0;
+
         //OBJETOS
         //aletas
         this.aleta = this.physics.add.image(700, 710, 'NivelB5/aleta').setScale(0.37,0.32);
@@ -60,10 +59,11 @@ class NivelB5 extends Phaser.Scene{
         this.pino.body.setAllowGravity(false);
         this.pino.setPushable(false);
         //Sobre
-        this.sobre = this.physics.add.image(1300, 600, 'NivelB5/sobre').setScale(.3).setAngle(20);
+        this.sobre = this.physics.add.image(1200, 600, 'NivelB5/sobre').setScale(.3).setAngle(20);
         this.sobre.body.setAllowGravity(false);
         this.sobre.setPushable(false);
         //Carta
+        this.carta = this.add.image(780, 380, 'NivelB5/carta').setScale(.4,.35).setAlpha(0).setDepth(2);
 
         //DIÁLOGOS
         this.fondoDialogo = this.add.image(1000, 100, 'NivelB5/fondoDialogo').setScale(0.35, 0.3).setAlpha(1);
@@ -80,19 +80,20 @@ class NivelB5 extends Phaser.Scene{
         this.javier = this.physics.add.sprite(160, 120, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.3);
         this.javier.body.setSize(210, 260);
         this.javier.body.setMass(1);
-        //this.javier.flipX=true;
 
         //Abi
         this.abi = this.physics.add.sprite(100, 120, 'Abi', 0).setAlpha(1).setDepth(3).setScale(0.12);
         this.abi.body.setSize(300, 400);
         this.abi.setOffset(190,250);
         this.abi.setPushable(false);
+
         //ANIMACIONES MONSTRUO
         this.anims.create({ key: 'monsterC', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruo', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'monsterIdle', frames: this.anims.generateFrameNames('Monster', { prefix: 'monstruoIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
         //ANIMACION ABI
         this.anims.create({ key: 'abiIdle', frames: this.anims.generateFrameNames('Abi', { prefix: 'abiIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate:2 });
         this.abi.anims.play('abiIdle',true);
+        
         //TWEENS ALETAS
         this.add.tween({
             targets: [this.aleta],
@@ -162,7 +163,9 @@ class NivelB5 extends Phaser.Scene{
             this.abiCara.setAlpha(0);
             this.dialogo5.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
+            this.movimiento = 1;
         }, 16500);
+    
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
         this.abi.body.setCollideWorldBounds(true);
@@ -176,6 +179,39 @@ class NivelB5 extends Phaser.Scene{
         this.physics.add.collider(this.abi, this.javier);
         this.physics.add.collider(this.javier, this.agua, () => {this.javier.x = 120;this.javier.y = 120});
         this.physics.add.collider(this.javier, this.agua2, () => {this.javier.x = 120;this.javier.y = 120});
+        this.physics.add.collider(this.javier, this.sobre, () => {
+            this.sobre.disableBody(true,true);
+            this.movimiento = 0;
+            this.javier.body.stop();
+            this.carta.setAlpha(1); 
+            setTimeout(() => {
+                this.carta.setAlpha(0);
+            }, 12000);
+            setTimeout(() => {
+                this.final = 1;
+                this.cameras.main.startFollow(this.javier, true);
+                this.cameras.main.setZoom(4); 
+                //TWEEN FINAL DE JAVIER
+                this.add.tween({
+                    targets: [this.javier],
+                    x: 1350,
+                    duration: 3000,
+                    onComplete: () => {
+                        this.final = 0;
+                        this.tweens = this.add.tween({
+                            targets: [this.reflejo],
+                            alpha: 1,
+                            duration: 4000,
+                            onComplete: () => {
+                                    //console.log('Se completa el tween');
+                                    this.scene.start('Menu');
+                                },
+                        });                   
+                    }
+                });
+            }, 13000);
+
+        });
 
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -184,60 +220,44 @@ class NivelB5 extends Phaser.Scene{
 
 
     update(time, delta) {
-        //console.log(this.javier.x);
-       //MOVIMIENTOS
-       if(this.movimiento == 0)
+        //MOVIMIENTOS
+        if(this.movimiento == 0)
         {
-            this.javier.anims.play('monsterIdle');  
+            if(this.final == 0){
+                this.javier.anims.play('monsterIdle',true); 
+            }
+            else
+            {
+                this.javier.anims.play('monsterC',true);
+            }
         }
-       if(this.movimiento == 1)
-       {
+        if(this.movimiento == 1)
+        {
            if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
            {
                this.javier.anims.play('monsterIdle',true);
            }
-       if (this.cursors.left.isDown)
-           {
-               this.javier.setVelocityX(-200);
-               this.javier.anims.play('monsterC',true);
-               this.javier.flipX=0;
-           }
-       else if (this.cursors.right.isDown)
-           {
-               this.javier.setVelocityX(200);
-               this.javier.anims.play('monsterC',true);
-               this.javier.flipX=1;
-           }
-       else
-       {
-           this.javier.setVelocityX(0);
-       }
+            if (this.cursors.left.isDown)
+            {
+                this.javier.setVelocityX(-200);
+                this.javier.anims.play('monsterC',true);
+                this.javier.flipX=0;
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.javier.setVelocityX(200);
+                this.javier.anims.play('monsterC',true);
+                this.javier.flipX=1;
+            }
+            else
+            {
+                this.javier.setVelocityX(0);
+            }
 
-       if ((this.cursors.up.isDown && this.javier.body.onFloor()))
-           {
-               this.javier.setVelocityY(-500);
-           }
-       }
-       //console.log(this.javier.y)
-       //Reflejo de javier en el agua
-       if(this.javier.x > 1345){
-           this.movimiento = 0;
-           this.javier.x = 1346;
-           this.javier.y = 668;
-            this.javier.body.stop();
-            //  this.javier.setVelocityY(0);
-            //  this.javier.setAccelerationY(0);
-            this.cameras.main.startFollow(this.javier, true);
-            this.cameras.main.setZoom(4);
-            this.tweens = this.add.tween({
-                targets: [this.reflejo],
-                alpha: 1,
-                duration: 4000,
-                onComplete: () => {
-                        //console.log('Se completa el tween');
-                        this.scene.start('NivelB4');
-                    },
-            });
+            if ((this.cursors.up.isDown && this.javier.body.onFloor()))
+            {
+                this.javier.setVelocityY(-500);
+            }
        }
     }
 

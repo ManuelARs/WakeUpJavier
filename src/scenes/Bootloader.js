@@ -61,7 +61,7 @@ class Bootloader extends Phaser.Scene{
         this.load.atlas('Samurai', 'samuraiSprite/samurai.png', 'samuraiSprite/samurai.json');
         this.load.image(['NivelC1/NivelC1','NivelC1/jefe']);
         //PARA NIVEL C2
-        this.load.image(['NivelC2/NivelC2','NivelC2/puerta','NivelC2/ventana','NivelC2/barra','NivelC2/escalar','NivelC2/techo','NivelC2/picos','NivelC2/estrella','NivelC2/techo2']);
+        this.load.image(['NivelC2/NivelC2','NivelC2/puerta','NivelC2/ventana','NivelC2/barra','NivelC2/escalar','NivelC2/techo','NivelC2/picos','NivelC2/estrella','NivelC2/techo2','NivelC2/picos2']);
         //PARA NIVEL C3
         this.load.image(['NivelC3/NivelC3']);
         //PARA NIVEL C4
@@ -106,7 +106,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC4');
+        this.scene.start('NivelC2');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

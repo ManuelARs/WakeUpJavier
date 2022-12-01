@@ -29,7 +29,7 @@ class NivelC2 extends Phaser.Scene{
 
         //PERSONAJES
         //Javier Samurai
-        this.javier = this.physics.add.sprite(50, 500, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.20);
+        this.javier = this.physics.add.sprite(50, 700, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.20);
         this.javier.body.setSize(300, 500);
         this.javier.body.setMass(4);
         this.javier.flipX=false;
@@ -37,16 +37,18 @@ class NivelC2 extends Phaser.Scene{
         // OBJETOS
         this.salida = this.physics.add.staticImage(1580, 210, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
         this.salida.body.setSize(60, 60);
-        //Estrella
+        //Estrellas
         this.estrella = this.physics.add.staticImage(1000, 690, 'NivelC2/estrella').setAlpha(0).refreshBody();
+        this.estrella2 = this.physics.add.staticImage(50, 260, 'NivelC2/estrella').setAlpha(0).refreshBody();
 
         // ESCENARIO ***
         //Techo
-        this.techo = this.physics.add.staticImage(500, 580, 'NivelC2/techo').setScale(0.4).refreshBody().disableBody(true,true);
-        this.techo2 = this.physics.add.staticImage(1480, 580, 'NivelC2/techo2').setScale(0.4).refreshBody()//.disableBody(true,true);
+        this.techo = this.physics.add.staticImage(500, 580, 'NivelC2/techo').setScale(0.4).refreshBody()//.disableBody(true,true);
+        this.techo2 = this.physics.add.image(1480, 580, 'NivelC2/techo2').setScale(0.4).refreshBody()//.disableBody(true,true);
+        this.techo2.body.setAllowGravity(false);
+        this.techo2.setPushable(false);
         //Grupo Barras A
         this.barraA = this.physics.add.staticGroup();
-        this.barraA.create(1350, 440, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraA.create(1000, 440, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraA.create(650, 500, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraA.create(300, 440, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
@@ -54,7 +56,7 @@ class NivelC2 extends Phaser.Scene{
 
         //Grupo Barras A
         this.barraB = this.physics.add.staticGroup();
-        this.barraB.create(400, 200, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
+        this.barraB.create(380, 220, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraB.create(650, 350, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraB.create(900, 200, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
         this.barraB.create(1200, 350, 'NivelC2/barra').setScale(0.3).refreshBody().disableBody(true,true);
@@ -65,8 +67,9 @@ class NivelC2 extends Phaser.Scene{
 
         //PICOS
         var picos = this.physics.add.staticGroup();
-        picos.create(400, 570, 'NivelC2/picos').setScale(0.2,0.2).refreshBody().disableBody(true,true);
-        //picos.create(1100, 570, 'NivelC2/picos').setScale(0.2).refreshBody().disableBody(true,true);
+        picos.create(400, 570, 'NivelC2/picos').setScale(0.2).refreshBody().disableBody(true,true);
+        picos.create(875, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
+        picos.create(1040, 570, 'NivelC2/picos2').setScale(0.2).refreshBody().disableBody(true,true);
 
         //ANIMACIONES
         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
@@ -87,38 +90,70 @@ class NivelC2 extends Phaser.Scene{
         //COLISIONES
         //  this.physics.add.overlap(this.javier, this.objeto, collectObjeto, null, this);
         this.javier.body.setCollideWorldBounds(true);
-        this.physics.add.collider(this.javier, this.techo1);
+        this.physics.add.collider(this.javier, this.techo);
         this.physics.add.collider(this.javier, this.barraA);
         this.physics.add.collider(this.javier, this.barraB);
         this.physics.add.collider(this.javier, this.ventana);
-        //this.physics.add.collider(this.javier, this.estrella);
+        this.physics.add.collider(this.javier, this.techo2);
 
         //Colision estrella
         this.physics.add.overlap(this.javier, this.estrella, collectObjeto, null, this);
         function collectObjeto (jugador,estrella)
         {
+            this.estrella.disableBody(true,true);
             picos.getChildren()[0].enableBody(false,0,0,true,true);
-           // picos.getChildren()[1].enableBody(false,0,0,true,true);
-            this.barraA.getChildren()[0].enableBody(false,0,0,true,true);
+            picos.getChildren()[1].enableBody(false,0,0,true,true);
+            picos.getChildren()[2].enableBody(false,0,0,true,true);
+            this.barraA.getChildren()[0].enableBody(false,0,0,true,true); 
             this.barraA.getChildren()[1].enableBody(false,0,0,true,true); 
             this.barraA.getChildren()[2].enableBody(false,0,0,true,true); 
             this.barraA.getChildren()[3].enableBody(false,0,0,true,true); 
-            this.barraA.getChildren()[4].enableBody(false,0,0,true,true); 
-            this.techo.enableBody(false,0,0,true,true);
+            this.javier.body.stop();
+            this.cameras.main.startFollow(this.puerta, true);
+            this.cameras.main.setZoom(4); 
+            //TWEEN BARRA SE CAE
+            this.add.tween({
+                targets: [this.techo2],
+                y:710,
+                duration: 500,
+                onComplete: () => {
+                    this.cameras.main.setZoom(1); 
+                    console.log("Entro al complete");
+                    this.physics.add.collider(this.javier, this.techo2);
+                    this.techo2.y=710; 
+                }
+            });
+        }
+
+        //Colision estrella2
+        this.physics.add.overlap(this.javier, this.estrella2, collectObjeto2, null, this);
+        function collectObjeto2 (jugador,estrella2)
+        {
+            this.estrella2.disableBody(true,true);
+            this.barraA.getChildren()[0].disableBody(true,true);
+            this.barraA.getChildren()[1].disableBody(true,true); 
+            this.barraA.getChildren()[2].disableBody(true,true); 
+            this.barraB.getChildren()[0].enableBody(false,0,0,true,true); 
+            this.barraB.getChildren()[1].enableBody(false,0,0,true,true); 
+            this.barraB.getChildren()[2].enableBody(false,0,0,true,true); 
+            this.barraB.getChildren()[3].enableBody(false,0,0,true,true); 
         }
 
         //Colision Picos
         this.physics.add.collider(this.javier, picos, () => {
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
-            //this.contadorVidas -= 1;
-            //this.registry.events.emit('loseHeart',-1);
             this.javier.body.x=1510;
-            console.log("Colision")
-            // if (this.contadorVidas==0){
-            //     this.musicaFondo.stop();
-            //     this.scene.start('GameOver');
-            // }
+            console.log("Colision");
+            this.barraA.getChildren()[0].enableBody(false,0,0,true,true); 
+            this.barraA.getChildren()[1].enableBody(false,0,0,true,true); 
+            this.barraA.getChildren()[2].enableBody(false,0,0,true,true); 
+            this.barraA.getChildren()[3].enableBody(false,0,0,true,true);
+            this.barraB.getChildren()[0].disableBody(true,true); 
+            this.barraB.getChildren()[1].disableBody(true,true); 
+            this.barraB.getChildren()[2].disableBody(true,true); 
+            this.barraB.getChildren()[3].disableBody(true,true);
+            this.estrella2.enableBody(false,0,0,true,true); 
         });
          
         //COLISIÓN DE JAVIER CON LA SALIDA   

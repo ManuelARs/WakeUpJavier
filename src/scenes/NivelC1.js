@@ -16,9 +16,6 @@ class NivelC1 extends Phaser.Scene{
         //BOUNDS DE LA ESCENA
         this.physics.world.setBounds(0,0,1580,720);
 
-        //IMAGENES DE FONDO
-        this.fondo = this.add.image(775, 360, 'NivelC1/NivelC1').setDepth(-2).setScale(.37,.35);
-
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
@@ -27,6 +24,9 @@ class NivelC1 extends Phaser.Scene{
         this.movimiento = 1;
         this.dialogoChoque = 0;
 
+        //IMAGENES DE FONDO
+        this.fondo = this.add.image(775, 360, 'NivelC1/NivelC1').setDepth(-2).setScale(.37,.35);
+
         //PERSONAJES
         //Javier Samurai
         this.javier = this.physics.add.sprite(300, 500, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.29);
@@ -34,7 +34,7 @@ class NivelC1 extends Phaser.Scene{
         this.javier.body.setMass(1);
         this.javier.flipX=false;
         //Jefe 
-        this.jefe = this.add.image(800, 600, 'NivelC1/jefe', 0).setAlpha(1).setDepth(3).setScale(1.2)
+        this.jefe = this.add.image(800, 600, 'NivelC1/jefe', 0).setAlpha(1).setDepth(2).setScale(1.2)
 
         //OBJETOS
         this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);

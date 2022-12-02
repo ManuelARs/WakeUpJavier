@@ -84,7 +84,7 @@ class NivelB3 extends Phaser.Scene{
         }
 
         //moras
-        this.moraMarcador = this.add.image(1280, 15, 'NivelB3/mora', 0).setScale(0.19);
+        this.moraMarcador = this.add.image(80, 15, 'NivelB3/mora', 0).setScale(0.19);
         this.mora1 = this.physics.add.image(200, 550, 'NivelB3/mora', 0).setScale(0.3);
         this.mora2 = this.physics.add.image(40, 250, 'NivelB3/mora', 0).setScale(0.3);
         this.mora3 = this.physics.add.image(310, 370, 'NivelB3/mora', 0).setScale(0.3);

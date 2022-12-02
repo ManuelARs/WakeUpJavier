@@ -135,7 +135,11 @@ class NivelB2 extends Phaser.Scene{
                 this.scene.stop()
             }
          });
-         this.physics.add.collider(this.javier, this.pasto1);
+        //  this.physics.add.collider(this.javier, this.pasto1);
+         this.physics.add.collider(this.javier, this.pasto1, () => {
+            this.registry.events.emit('cambioNivelB');
+            this.registry.events.emit('apareceHUD2');
+         });
          this.physics.add.collider(this.javier, this.pasto2);
          this.physics.add.collider(this.javier, this.pasto3);
          this.physics.add.collider(this.javier, this.pasto4);

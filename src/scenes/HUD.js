@@ -23,7 +23,6 @@ class HUD extends Phaser.Scene{
             }
         });
         this.groupLife.setAlpha(0);
-        this.groupLife.setAlpha(0);
 
         //IMAGENES CORAZONES 2
         this.groupLife2 = this.add.group({

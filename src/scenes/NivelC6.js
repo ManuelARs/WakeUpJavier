@@ -31,7 +31,7 @@ class NivelC6 extends Phaser.Scene{
 
         //PERSONAJES
         //Javier Samurai
-        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
+        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.15);
         this.javier.body.setSize(300, 400);
         this.javier.body.setMass(1);
         this.javier.flipX=false;

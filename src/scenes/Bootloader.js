@@ -103,11 +103,8 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-<<<<<<< HEAD
-        this.scene.start('NivelA1', { hud: 1, musica: this.musicaFondoB });
-=======
-        this.scene.start('NivelC1', { hud: 1, musica: this.musicaFondoB });
->>>>>>> 00d9e0515ed6ec44e4d81c6ca791a557195f8f60
+        // this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
+        this.scene.start('Menu', { hud: 1, musica: this.musicaFondoA });
         // this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

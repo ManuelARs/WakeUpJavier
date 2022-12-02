@@ -265,7 +265,9 @@ class  NivelA4 extends Phaser.Scene {
         this.dog.body.stop();
         this.registry.events.emit('desapareceHUD');
         this.musicaAbejas.stop();
-        this.scene.start('NivelA5', { score: this.life, musica: this.musicaFondoA });
+        this.musicaFondoA.resume()
+        this.registry.events.emit('Musica',this.musicaFondoA);
+        this.scene.start('NivelA5', { score: this.life, musica: this.musicaFondoA, hud: 1 });
       });
       
       //Teclado

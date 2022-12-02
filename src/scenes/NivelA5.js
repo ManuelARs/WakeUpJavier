@@ -10,6 +10,7 @@ class NivelA5 extends Phaser.Scene{
         console.log('init', data);
         this.life = data.score;
         this.musicaFondoA = data.musica;
+        this.hud = data.hud
     }
 
     preload() {
@@ -28,6 +29,11 @@ class NivelA5 extends Phaser.Scene{
         
         //MUSICA
         this.musicaFondoA.resume()
+        if(this.hud==1)
+        {
+          this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
+          this.musicaFondoA.play();
+        }
         this.registry.events.emit('Musica',this.musicaFondoA);
 
         //FONDO

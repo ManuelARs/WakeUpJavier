@@ -5,8 +5,10 @@ class NivelB5 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB5');
+        console.log('init', data);
+        this.life = data.score;
     }
 
     create() {
@@ -166,6 +168,7 @@ class NivelB5 extends Phaser.Scene{
             this.abiCara.setAlpha(0);
             this.dialogo5.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
+            this.registry.events.emit('apareceHUD2');
             this.movimiento = 1;
         }, 16500);
     
@@ -180,10 +183,30 @@ class NivelB5 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tierraP3);
         this.physics.add.collider(this.javier, this.tierra2);
         this.physics.add.collider(this.abi, this.javier);
-        this.physics.add.collider(this.javier, this.agua, () => {this.javier.x = 120;this.javier.y = 120});
-        this.physics.add.collider(this.javier, this.agua2, () => {this.javier.x = 120;this.javier.y = 120});
+        this.physics.add.collider(this.javier, this.agua, () => {
+            this.javier.x = 120;this.javier.y = 120
+            //DAÑO
+            this.cameras.main.shake(700,0.005);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
+        });
+        this.physics.add.collider(this.javier, this.agua2, () => {
+            this.javier.x = 120;this.javier.y = 120
+            this.cameras.main.shake(700,0.005);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
+        });
         this.physics.add.collider(this.javier, this.sobre, () => {
             this.sobre.disableBody(true,true);
+            this.registry.events.emit('desapareceHUD2');
             this.movimiento = 0;
             this.javier.body.stop();
             this.carta.setAlpha(1); 
@@ -207,7 +230,7 @@ class NivelB5 extends Phaser.Scene{
                             duration: 4000,
                             onComplete: () => {
                                     //console.log('Se completa el tween');
-                                    this.scene.start('Menu');
+                                    this.scene.start('NivelC1');
                                 },
                         });                   
                     }

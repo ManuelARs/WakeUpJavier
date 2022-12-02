@@ -18,6 +18,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelA/Eliminar-cama', 'NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2','NivelA/instrucciones1']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
         //PARA NIVEL A1
+        this.load.audio('nivel1M', ['NivelA1/nivel1.mp3']);
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
         this.load.image(['NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1', 'NivelA1/banca', 'NivelA1/dogCara','NivelA1/fondoDialogo', 'NivelA1/gataCara','NivelA1/dialogo1_1','NivelA1/dialogo1_2','NivelA1/instrucciones2']);
         //PARA NIVEL A2
@@ -65,7 +66,7 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL C3
         this.load.image(['NivelC3/NivelC3']);
         //PARA NIVEL C4
-        this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro']);
+        this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro', 'NivelC4/mascara', 'NivelC4/guardia']);
         //PARA NIVEL C5
         this.load.image(['NivelC5/NivelC5']);
         //PARA NIVEL C6
@@ -91,13 +92,13 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('gong', ['./gong.mp3']);
         // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
-        // this.load.image(['gameOverBack','Menu/botonMenu2']);
-        // this.load.audio('gameOver', ['./game_over.mp3']);
+        this.load.image(['GameOver/gameOverBack','Menu/botonMenu2']);
+        this.load.audio('gameOver', ['GameOver/game_over.mp3']);
         //PARA ESCENA YOU WIN
         // this.load.image(['winBack','Menu/botonMenu']);
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
-        this.load.image(['SceneASceneB/heart'])
+        this.load.image(['HUD/heart'])
         //MÚSICA GENERAL
         //this.load.audio('Theme', ['./FALTA MUSICA']);
         //EFECTOS DE SONIDOS GENERAL
@@ -106,9 +107,9 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC7');
+        this.scene.start('Menu');
         //this.scene.launch('Menu');
-        //console.log(this.scene.manager.scenes)
+        console.log(this.scene.manager.scenes)
     }
 
     update(time, delta) {

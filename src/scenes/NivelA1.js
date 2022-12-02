@@ -25,8 +25,9 @@ class NivelA1 extends Phaser.Scene{
         this.movimiento = 0;
         
         //MÚSICA
-        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        // this.musicaFondo.play();
+        this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
+        this.musicaFondoA.play();
+        console.log(this.musicaFondoA)
         
         //FONDO 
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);

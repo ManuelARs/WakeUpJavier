@@ -63,7 +63,6 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 
         //PARA NIVEL C1
-        this.load.atlas('Ninja', 'ninjaSprite/ninja.png', 'ninjaSprite/ninja.json');
         this.load.atlas('Samurai', 'samuraiSprite/samurai.png', 'samuraiSprite/samurai.json');
         this.load.image(['NivelC1/NivelC1','NivelC1/jefe']);
         //PARA NIVEL C2
@@ -81,7 +80,8 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL C8
         this.load.image(['NivelC8/NivelC8']);
         //PARA NIVEL C9
-        this.load.image(['NivelC9/NivelC9']);
+        this.load.atlas('Ninja', 'ninjaSprite/ninja.png', 'ninjaSprite/ninja.json');
+        this.load.image(['NivelC9/NivelC9','NivelC9/barra','NivelC9/escalar','NivelC9/picos','NivelC9/puerta','NivelC9/estrella']);
         //PARA NIVEL C10
         this.load.image(['NivelC10/NivelC10','NivelC10/escalar','NivelC10/mascara','NivelC10/gong','NivelC10/puerta','NivelC10/reflejo','NivelC10/japones']);
         //PARA ESCENA A
@@ -103,7 +103,7 @@ class Bootloader extends Phaser.Scene{
         // this.load.image(['winBack','Menu/botonMenu']);
         // this.load.audio('win', ['./winner.mp3']);
         //PARA ESCENA HUD
-        this.load.image(['HUD/heart'])
+        this.load.image(['HUD/heart','HUD/coleccionable'])
         //MÚSICA GENERAL
         //this.load.audio('Theme', ['./FALTA MUSICA']);
         //EFECTOS DE SONIDOS GENERAL

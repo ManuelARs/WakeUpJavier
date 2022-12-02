@@ -162,7 +162,7 @@ class  NivelA3 extends Phaser.Scene {
             //this.music.stop();
             //this.ganaste.setAlpha(1);
             //alert("GANASTE");
-            this.scene.start('NivelA4',{ score: this.musicaFondoA });
+            this.scene.start('NivelA4',{ musica: this.musicaFondoA });
         };
         //Evento DROP
         this.input.on(eventos.DROP, (pointer, obj, dropzone) => {

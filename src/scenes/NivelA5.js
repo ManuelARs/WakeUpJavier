@@ -27,6 +27,7 @@ class NivelA5 extends Phaser.Scene{
         this.movimiento=0
         //MUSICA
         this.musicaFondoA.resume()
+        this.registry.events.emit('Musica',this.musicaFondoA);
 
         this.fondo = this.add.image(770, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
         this.physics.world.setBounds(0,0,1580, 700);

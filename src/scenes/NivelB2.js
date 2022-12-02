@@ -8,7 +8,17 @@ class NivelB2 extends Phaser.Scene{
     init(data) {
         console.log('Escena NivelB2');
         console.log('init', data);
+        this.hud2 = data.hud;
         this.musicaFondoB = data.musica;
+        console.log(this.musicaFondoB)
+        if(this.hud2==1)
+        {
+            this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
+            // this.musicaFondoB.play();
+            this.scene.launch('HUD');
+            this.registry.events.emit('Musica',this.musicaFondoB);
+            this.registry.events.emit('apareceHUD2');
+        }
     }
 
     // preload() {
@@ -28,7 +38,13 @@ class NivelB2 extends Phaser.Scene{
         //VIDAS
         this.life = 10;
         this.registry.events.emit('apareceHUD2');
-
+        //MUSICA
+        if(this.hud2==1)
+        {   
+            this.registry.events.emit('apareceHUD2');
+            console.log(this.musicaFondoB)
+            this.musicaFondoB.play()
+        }
         //PERSONAJES
         //Javier Monstruo 
         this.javier = this.physics.add.sprite(70, 500, 'Monster', 0).setAlpha(1).setDepth(3).setScale(0.35);
@@ -111,6 +127,7 @@ class NivelB2 extends Phaser.Scene{
             this.cameras.main.shake(700,0.005);
             this.life--;
             this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('apareceHUD2');
             if(this.life === 0) {
                 this.musicaFondoB.stop();
                 this.registry.events.emit('game_over');
@@ -194,6 +211,7 @@ class NivelB2 extends Phaser.Scene{
             this.javier.setAccelerationY(0);
             this.scene.start('NivelB3', { score: this.life, musica: this.musicaFondoB });
         });
+        this.registry.events.emit('apareceHUD2');
     }
 
 
@@ -201,6 +219,7 @@ class NivelB2 extends Phaser.Scene{
         //MOVIMIENTOS
         if(this.movimiento==1)
         {
+            // this.registry.events.emit('apareceHUD2');
             if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
             {
                 this.javier.anims.play('monsterIdle',true);

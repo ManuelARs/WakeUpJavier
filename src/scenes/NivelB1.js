@@ -8,7 +8,7 @@ class NivelB1 extends Phaser.Scene{
     init(data) {
         console.log('Escena NivelB1');
         console.log('init', data);
-        this.hud2 = data.score;
+        this.hud2 = data.hud;
         if(this.hud2==1)
         {
             this.scene.launch('HUD');
@@ -29,6 +29,7 @@ class NivelB1 extends Phaser.Scene{
         //MUSICA
         this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
         this.musicaFondoB.play();
+        this.registry.events.emit('Musica',this.musicaFondoB);
 
         //BANDERA
         this.movimiento = 0;

@@ -9,7 +9,7 @@ class  NivelA4 extends Phaser.Scene {
         console.log('Escena NivelA4')
         this.scene.launch('HUD');
         console.log('init', data);
-        this.musicaFondoA = data.score;
+        this.musicaFondoA = data.musica;
     }
 
     preload() {
@@ -221,6 +221,7 @@ class  NivelA4 extends Phaser.Scene {
           this.registry.events.emit('loseHeart');
           if(this.life === 0) {
                 this.musicaAbejas.stop();
+                this.registry.events.emit('Musica',this.musicaFondoA);
                 this.registry.events.emit('game_over');
                 this.scene.stop()
           }

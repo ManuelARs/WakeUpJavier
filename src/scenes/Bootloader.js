@@ -67,7 +67,7 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL C4
         this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro', 'NivelC4/mascara', 'NivelC4/guardia']);
         //PARA NIVEL C5
-        this.load.image(['NivelC5/NivelC5','NivelC5/palacioEnemigo']);
+        this.load.image(['NivelC5/NivelC5','NivelC5/palacioEnemigo', 'NivelC5/ninja']);
         //PARA NIVEL C6
         this.load.image(['NivelC6/NivelC6']);
         //PARA NIVEL C7
@@ -106,7 +106,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC4');
+        this.scene.start('NivelD');
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

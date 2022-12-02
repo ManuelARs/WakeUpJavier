@@ -30,6 +30,7 @@ import NivelC6 from "./scenes/NivelC6.js";
 //import NivelC8 from "./scenes/NivelC8.js";
 import NivelC9 from "./scenes/NivelC9.js";
 import NivelC10 from "./scenes/NivelC10.js";
+import NivelD from "./scenes/NivelD.js";
 
 
 const config = {
@@ -48,7 +49,7 @@ const config = {
         NivelA, NivelA1,NivelA2, NivelA3,NivelA4,NivelA6,
         NivelA5,NivelA7,NivelB1,NivelB2,NivelB3,NivelB4,NivelB5,
         NivelC1, NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,//NivelC7,NivelC8,
-        NivelC9,NivelC10,
+        NivelC9,NivelC10,NivelD,
         SceneA,SceneB,HUD,GameOver,Win],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,

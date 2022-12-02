@@ -21,7 +21,7 @@ class NivelA5 extends Phaser.Scene{
     create() {
         //ACIERTOS
         this.aciertos = 0
-        this.textoContador = this.add.text(100, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(100, 2, 'GOLPES: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
 
         //BANDERA MOVIMIENTO
         this.movimiento=0
@@ -112,7 +112,7 @@ class NivelA5 extends Phaser.Scene{
         //Colision con HUESO
         this.physics.add.collider(this.dog, this.hueso, () => {
             this.aciertos += 1;
-            this.textoContador.setText('ACIERTOS: ' + this.aciertos + '/3');
+            this.textoContador.setText('GOLPES: ' + this.aciertos + '/3');
             this.hueso.setTint(0xFFFF00);
             setTimeout(() => {
               this.hueso.clearTint();

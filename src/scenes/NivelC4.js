@@ -43,9 +43,8 @@ class NivelC4 extends Phaser.Scene{
         this.fondoDialogo = this.add.image(790, 125, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(0);
         this.javierCara = this.add.image(125, 125, 'NivelC1/caraSamurai').setScale(1.2).setAlpha(0);
         this.guardiaD = this.add.image(1470, 125, 'NivelC1/caraGuardia').setScale(1).setAlpha(0);
-        this.dialogo1 = this.add.image(770, 135, 'NivelB3/dialogo3_1').setScale(0.7).setAlpha(0);
-        this.dialogo2 = this.add.image(740, 135, 'NivelB3/dialogo3_2').setScale(0.5).setAlpha(0);
-        this.dialogo3 = this.add.image(770, 135, 'NivelB3/dialogo3_3').setScale(0.5).setAlpha(0);
+        this.dialogo1 = this.add.image(900, 135, 'NivelC4/dialogo4_1').setScale(0.7).setAlpha(0);
+        this.dialogo2 = this.add.image(740, 135, 'NivelC4/dialogo4_2').setScale(0.6).setAlpha(0);
 
         //salida
         this.salida = this.physics.add.staticImage(1650, 740, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);

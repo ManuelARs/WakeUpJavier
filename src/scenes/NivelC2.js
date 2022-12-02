@@ -5,8 +5,15 @@ class NivelC2 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC2');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
 
     create() {
@@ -22,7 +29,20 @@ class NivelC2 extends Phaser.Scene{
         this.puerta = this.add.image(1525, 690, 'NivelC2/puerta').setScale(0.3);
         //BANDERA
         this.movimiento = 1;
-        this.dialogoChoque = 0;
+
+        //VIDAS
+        this.life = 10;
+        //MUSICA
+        this.registry.events.emit('Musica',this.musicaFondo);
+        if(this.hud2!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+           console.log("EntroHUD2")
+            this.musicaFondo.play()
+        }
 
         //PERSONAJES
         //Javier Samurai
@@ -88,6 +108,8 @@ class NivelC2 extends Phaser.Scene{
         this.physics.add.overlap(this.javier, this.estrella, collectObjeto, null, this);
         function collectObjeto (jugador,estrella)
         {
+            this.registry.events.emit('apareceHUD2');
+            this.registry.events.emit('cambioNivelC');
             this.estrella.disableBody(true,true);
             picos.getChildren()[0].enableBody(false,0,0,true,true);
             picos.getChildren()[1].enableBody(false,0,0,true,true);
@@ -133,6 +155,13 @@ class NivelC2 extends Phaser.Scene{
         this.physics.add.collider(this.javier, picos, () => {
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=1510;
             //console.log("Colision");
             this.barraA.getChildren()[0].enableBody(false,0,0,true,true); 
@@ -152,7 +181,8 @@ class NivelC2 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
         this.javier.setVelocityY(0);
         this.javier.setAccelerationY(0);
-        this.scene.start('NivelC4');
+        this.scene.start('NivelC4', { score:this.life, musica: this.musicaFondo})
+        // this.scene.start('NivelC4');
         });
 
         

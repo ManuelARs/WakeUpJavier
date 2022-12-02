@@ -63,6 +63,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelB5/NivelB5_2','NivelB5/agua','NivelB5/agua2','NivelB5/pino','NivelB5/tierra','NivelB5/tierra2','NivelB5/reflejoMonstruo','NivelB5/tierra3','NivelB5/fondoDialogo','NivelB5/aleta','NivelB5/dialogo5_1','NivelB5/dialogo5_2','NivelB5/dialogo5_3','NivelB5/dialogo5_4','NivelB5/dialogo5_5','NivelB5/sobre','NivelB5/carta']);
 
         //PARA NIVEL C1
+        this.load.audio('nivelC', ['NivelC1/musicaFondo.mp3']);
         this.load.atlas('Samurai', 'samuraiSprite/samurai.png', 'samuraiSprite/samurai.json');
         this.load.image(['NivelC1/NivelC1','NivelC1/jefe']);
         //PARA NIVEL C2
@@ -100,7 +101,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC9', { hud: 1, musica: this.musicaFondoB });
+        this.scene.start('NivelC1', { hud: 1, musica: this.musicaFondoB });
         // this.scene.launch('Menu');
         console.log(this.scene.manager.scenes)
     }

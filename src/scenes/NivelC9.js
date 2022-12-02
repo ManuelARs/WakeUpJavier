@@ -65,8 +65,16 @@ class NivelC9 extends Phaser.Scene{
         this.ship;
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC9');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -91,6 +99,17 @@ class NivelC9 extends Phaser.Scene{
         this.ninjamove=0;
         this.ninjaGolpe=0;
         this.timer=0
+        //MUSICA
+        if(this.hud!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
 
         //PERSONAJES
         //Javier Samurai 100 300
@@ -177,8 +196,13 @@ class NivelC9 extends Phaser.Scene{
         });
         this.physics.add.collider(this.javier, this.bullets, () => {
             this.cameras.main.shake(500,0.008);
-            //this.finalScore -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
             this.javier.body.y=300;
         });
@@ -199,15 +223,25 @@ class NivelC9 extends Phaser.Scene{
         //COLISIÓN CON PICOS
         this.physics.add.collider(this.javier, this.picos, () => {
             this.cameras.main.shake(500,0.008);
-            //this.finalScore -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
             this.javier.body.y=300;
         });
         this.physics.add.collider(this.javier, this.picos2, () => {
             this.cameras.main.shake(500,0.008);
-            //this.finalScore -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
             this.javier.body.y=300;
         });
@@ -284,9 +318,10 @@ class NivelC9 extends Phaser.Scene{
 
         //COLISIÓN CON PUERTA / FINAL DE NIVEL
         this.physics.add.collider(this.javier, this.puerta, () => {
-            this.sound.pauseAll();
+            // this.sound.pauseAll();
             // this.registry.events.emit('YouWin');
-            this.scene.start('NivelC10');
+            this.scene.start('NivelC10', { score:this.life, musica: this.musicaFondo})
+            // this.scene.start('NivelC10');
         });
 
         //TECLADO

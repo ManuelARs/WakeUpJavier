@@ -10,6 +10,14 @@ class NivelB5 extends Phaser.Scene{
         console.log('init', data);
         this.musicaFondoB = data.musica;
         this.life = data.score;
+        this.hud2 = data.hud
+        if(this.hud2==1)
+        {
+            this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
+            this.scene.launch('HUD');
+            this.registry.events.emit('Musica',this.musicaFondoB);
+            this.registry.events.emit('apareceHUD2');
+        }
     }
 
     create() {
@@ -23,6 +31,11 @@ class NivelB5 extends Phaser.Scene{
         this.movimiento = 0;
         this.final = 0;
         //MUSICA
+        if(this.hud2==1)
+        {   
+            this.registry.events.emit('apareceHUD2');
+            this.musicaFondoB.play()
+        }
         this.musicaFondoB.resume();
         this.musicaFondoCarta = this.sound.add('nivel2CM',{loop:true});
 

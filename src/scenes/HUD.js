@@ -7,7 +7,7 @@ class HUD extends Phaser.Scene{
 
     init() {
         console.log('Escena HUD');
-        this.scene.moveAbove('NivelC1','HUD');
+        this.scene.moveAbove('NivelC10','HUD');
     }
 
     create() {
@@ -76,6 +76,11 @@ class HUD extends Phaser.Scene{
             console.log("CAMBIO NIVEL")
             console.log(this.groupLife2)
             this.nivel="NivelB2"
+        });
+        this.registry.events.on('cambioNivelC', () => {
+            console.log("CAMBIO NIVEL C2")
+            console.log(this.groupLife2)
+            this.nivel="NivelC2"
         });
         this.registry.events.on('Musica', (data) => {
             this.musica=data

@@ -5,8 +5,10 @@ class NivelA2 extends Phaser.Scene {
         });
     }
 
-    init() {
-        console.log('Escena NivelA2')
+    init(data) {
+        console.log('Escena NivelA2');
+        console.log('init', data);
+        this.musicaFondoA = data.score;
     }
 
     preload() {
@@ -21,6 +23,9 @@ class NivelA2 extends Phaser.Scene {
 
         //BANDERA movimiento
         this.movimiento = 0;
+
+        //MUSICA
+        // this.musicaFondoA.pause();
 
         //IMÁGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelA2/NivelA2').setDepth(-2).setScale(.4,.38);
@@ -69,44 +74,12 @@ class NivelA2 extends Phaser.Scene {
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
-
-        //Mejorar tween con timeline maybe?
-        // this.tweens = this.add.tween({
-        //     targets: [this.gata],
-        //     x: 250,
-        //     y: 520,
-        //     duration: 2000,
-        //     onComplete: () => {
-        //         this.tweens = this.add.tween({
-        //             targets: [this.dog],
-        //             x: 150,
-        //             y: 550,
-        //             duration: 2000,
-        //             onStart: () => {
-        //                 this.dog.setAlpha(1);
-        //             },
-        //             onComplete: () => {
-        //                 this.gataCara.setAlpha(1);
-        //                 this.fondoDialogo.setAlpha(1);
-        //                 // nuevo dialogo ej Esto te ayudara a relajarte
-        //                 // this.dialogo2.setAlpha(1);
-        //                 setTimeout(() => {
-        //                     this.gataCara.setAlpha(0);
-        //                     this.fondoDialogo.setAlpha(0);
-        //                     // nuevo dialogo ej Esto te ayudara a relajarte
-        //                     // this.dialogo2.setAlpha(0);
-        //                     this.scene.start('NivelA3');
-        //                 }, 3000);
-        //             },
-        //         });
-        //     },
-        // });
         
         //COLISIÓN Mesa CON PERRO 
         this.physics.add.collider(this.dog, this.mesa, () => {});
         this.physics.add.collider(this.gata, this.mesa, () => {});
         this.physics.add.collider(this.dog, this.gata, () => {
-            this.scene.start('NivelA3');
+            this.scene.start('NivelA3',{ score: this.musicaFondoA });
         });
 
         //Teclado

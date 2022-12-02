@@ -5,8 +5,11 @@ class  NivelA4 extends Phaser.Scene {
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA4')
+        this.scene.launch('HUD');
+        console.log('init', data);
+        this.musicaFondoA = data.score;
     }
 
     preload() {
@@ -15,8 +18,16 @@ class  NivelA4 extends Phaser.Scene {
     }
 
     create() {
+      console.log(this.scene.manager.scenes)
+      //MUSICA
+      this.musicaFondoA.pause();
+      this.musicaAbejas = this.sound.add('abejaM',{loop:true});
+      this.musicaAbejas.play();
+      //VIDAS
+      this.life = 3;
       //BANDERAS
       this.caePanal = false;
+      this.movimiento=0
       //this.gataTween = false;
       //BOUNDS PARA PERSONAJES
       this.physics.world.setBounds(0,0,1580, 700);
@@ -185,6 +196,8 @@ class  NivelA4 extends Phaser.Scene {
                               this.fondoDialogo.setAlpha(0);
                               this.dialogo2.setAlpha(0);
                               this.gataCara.setAlpha(0);
+                              this.movimiento=1
+                              this.registry.events.emit('apareceHUD');
                             }, 4000);
                         }
                   });
@@ -204,6 +217,13 @@ class  NivelA4 extends Phaser.Scene {
       let choqueAbeja = () => {
           //EFECTO DE VIBRACIÓN EN CÁMARA
           this.cameras.main.shake(700,0.005);
+          this.life--;
+          this.registry.events.emit('loseHeart');
+          if(this.life === 0) {
+                this.musicaAbejas.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+          }
           this.dog.x = 100;
       };
       this.physics.add.collider(this.dog, this.abejas, () => {
@@ -217,46 +237,50 @@ class  NivelA4 extends Phaser.Scene {
       });
       //COLISIÓN JAVIER CON GATA
       this.physics.add.collider(this.dog, this.gata, () => {
-        this.dog.setVelocityY(0);
-        this.dog.setAccelerationY(0);
-        setTimeout(() => {
-          this.scene.start('NivelA5');
-        }, 400);
-        
+        this.movimiento=0
+        this.dog.body.stop();
+        this.registry.events.emit('desapareceHUD');
+        this.musicaAbejas.stop();
+        this.scene.start('NivelA5', { score: this.life, musica: this.musicaFondoA });
       });
 
     }
 
     update(time, delta) {
-        //CONDICIONES PARA MOVIMIENTOS
-        if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+        //MOVIMIENTOS
+        if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
         }
-
-        if(this.gata.x > 1450) {
-            // se le permite al perro avanzar 
-            if (this.cursors.left.isDown)
+        if(this.movimiento==1)
+        {
+            if(this.dog.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)
+            {
+                this.dog.anims.play('dogIdle',true);
+            }
+        if (this.cursors.left.isDown)
             {
                 this.dog.setVelocityX(-200);
                 this.dog.anims.play('dogC',true);
                 this.dog.flipX=1;
             }
-            else if (this.cursors.right.isDown)
+        else if (this.cursors.right.isDown)
             {
                 this.dog.setVelocityX(200);
                 this.dog.anims.play('dogC',true);
                 this.dog.flipX=0;
             }
-            else
-            {
-                this.dog.setVelocityX(0);
-            }
-    
-            if ((this.cursors.up.isDown && this.dog.body.onFloor()))
+        else
+        {
+            this.dog.setVelocityX(0);
+        }
+
+        if ((this.cursors.up.isDown && this.dog.body.onFloor()))
             {
                 this.dog.setVelocityY(-500);
             }
+        }
+        if(this.gata.x > 1450) {
             // se cae panal y se crean los grupos de las abejas
             this.panal.body.setAllowGravity(true);
             this.panal.angle = 40;

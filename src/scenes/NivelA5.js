@@ -5,8 +5,11 @@ class NivelA5 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA5');
+        console.log('init', data);
+        this.life = data.score;
+        this.musicaFondoA = data.musica;
     }
 
     preload() {
@@ -18,10 +21,12 @@ class NivelA5 extends Phaser.Scene{
     create() {
         //ACIERTOS
         this.aciertos = 0
-        this.textoContador = this.add.text(1300, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(100, 2, 'ACIERTOS: 0/3',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
 
         //BANDERA MOVIMIENTO
         this.movimiento=0
+        //MUSICA
+        this.musicaFondoA.resume()
 
         this.fondo = this.add.image(770, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
         this.physics.world.setBounds(0,0,1580, 700);
@@ -69,6 +74,7 @@ class NivelA5 extends Phaser.Scene{
         this.pastorCara = this.add.image(1500, 135, 'NivelA5/pastorCara').setScale(1.2).setAlpha(0);
         this.dialogo1 = this.add.image(770, 135, 'NivelA5/dialogo5_1').setScale(0.7).setAlpha(1);
         this.dialogo2 = this.add.image(790, 135, 'NivelA5/dialogo5_2').setScale(0.7).setAlpha(0);
+        this.registry.events.emit('desapareceHUD');
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
@@ -92,6 +98,7 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.hidrante);
         this.physics.add.collider(this.tronco, this.hidrante, () => {
           this.hidrante.body.stop();
+          this.tronco.x=726.5
       });
         //Colision con HUESO
         this.physics.add.collider(this.dog, this.hueso, () => {
@@ -178,6 +185,7 @@ class NivelA5 extends Phaser.Scene{
             this.dialogo1.setAlpha(0);
             this.gataCara.setAlpha(0);
             this.movimiento=1
+            this.registry.events.emit('apareceHUD');
             //this.fondoDialogo.setAlpha(1);
             //this.dialogo2.setAlpha(1);
         }, 4000);
@@ -186,7 +194,7 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.salida, () => {
             this.dog.setVelocityY(0);
             this.dog.setAccelerationY(0);
-            this.scene.start('NivelA6');
+            this.scene.start('NivelA6',{ score: this.life, musica: this.musicaFondoA });
         });
     }
 
@@ -233,7 +241,16 @@ class NivelA5 extends Phaser.Scene{
      
         //COLISION CON ABEJAS
         let choqueAbeja = (javier, abeja) => {
-            this.scene.restart()
+          this.cameras.main.shake(700,0.005);
+          this.life--;
+          this.registry.events.emit('loseHeart');
+          if(this.life === 0) {
+                this.musicaFondoA.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+          }
+          this.dog.x=250
+          this.dog.flipX=0;
         }
         this.physics.collide(this.dog, this.abejas, choqueAbeja);
         this.physics.collide(this.dog, this.abejas2, choqueAbeja);
@@ -261,6 +278,7 @@ class NivelA5 extends Phaser.Scene{
                 this.aciertos = 0
                 this.dogB.anims.play('pastorC',false);
                 this.dogB.anims.play('pastorIdle',true);
+                this.registry.events.emit('desapareceHUD');
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo2.setAlpha(1);
                 this.pastorCara.setAlpha(1);
@@ -271,6 +289,7 @@ class NivelA5 extends Phaser.Scene{
                     this.dogB.anims.play('pastorIdle',false);
                     this.dogB.anims.play('pastorC',true);
                     this.dogB.flipX=0;
+                    this.registry.events.emit('apareceHUD');
                     this.movimiento = 1
                     this.tweens = this.add.tween({
                         targets: [this.dogB],

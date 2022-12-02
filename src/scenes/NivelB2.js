@@ -5,8 +5,10 @@ class NivelB2 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB2');
+        console.log('init', data);
+        this.musicaFondoB = data.musica;
     }
 
     // preload() {
@@ -23,6 +25,9 @@ class NivelB2 extends Phaser.Scene{
 
         //BANDERA
         this.movimiento = 1;
+        //VIDAS
+        this.life = 10;
+        this.registry.events.emit('apareceHUD2');
 
         //PERSONAJES
         //Javier Monstruo 
@@ -98,8 +103,19 @@ class NivelB2 extends Phaser.Scene{
 
          //COLISIONES
          this.javier.body.setCollideWorldBounds(true);
+
          this.physics.add.collider(this.javier, this.agua, () => {
-            this.scene.restart();
+            this.javier.body.stop()
+            this.javier.y=500
+            this.javier.x=70
+            this.cameras.main.shake(700,0.005);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondoB.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
          });
          this.physics.add.collider(this.javier, this.pasto1);
          this.physics.add.collider(this.javier, this.pasto2);
@@ -176,7 +192,7 @@ class NivelB2 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelB3');
+            this.scene.start('NivelB3', { score: this.life, musica: this.musicaFondoB });
         });
     }
 

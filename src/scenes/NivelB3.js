@@ -5,17 +5,20 @@ class NivelB3 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB3');
+        console.log('init', data);
+        this.musicaFondoB = data.musica;
+        this.life = data.score;
     }
 
     // preload() {
     // }
     
     create() {
+        this.registry.events.emit('desapareceHUD2');
         this.aciertos = 0
-        this.vidas = 3
-        this.textoContador = this.add.text(1300, 2, ':0/9',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10);;
+        this.textoContador = this.add.text(100, 2, ':0/9',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10);;
         this.entrega = this.add.text(200, 2, 'Entrega las moras con la tecla "E"',{fontFamily: 'Consolas',color: 'white',fontSize: '30px'}).setDepth(10).setAlpha(0);
 
         //BOUNDS DE LA ESCENA
@@ -29,6 +32,7 @@ class NivelB3 extends Phaser.Scene{
 
         //BANDERA
         this.movimiento = 0;
+        this.lastconversacion=0
 
         //PERSONAJES
         //Javier Monstruo 
@@ -130,7 +134,15 @@ class NivelB3 extends Phaser.Scene{
                 this.tuerca1.x = 1500
                 // this.tuerca2.x = 1500
                 this.tuerca3.x = 1500
-                this.vidas -= 1
+                //DAÑO QUITAR VIDA
+                this.cameras.main.shake(700,0.005);
+                this.life--;
+                this.registry.events.emit('loseHeartB');
+                if(this.life === 0) {
+                    this.musicaFondoB.stop();
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
+                }
                 //this.scene.restart()
             });
             this.physics.add.collider(this.javier, this.tuerca3, () => {
@@ -139,7 +151,14 @@ class NivelB3 extends Phaser.Scene{
                 this.tuerca1.x = 1500
                 // this.tuerca2.x = 1500
                 this.tuerca3.x = 1500
-                this.vidas -= 1
+                this.cameras.main.shake(700,0.005);
+                this.life--;
+                this.registry.events.emit('loseHeartB');
+                if(this.life === 0) {
+                    this.musicaFondoB.stop();
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
+                }
                 //this.scene.restart()
             });
 
@@ -148,6 +167,7 @@ class NivelB3 extends Phaser.Scene{
             this.dialogo2.setAlpha(0);
             this.monstruoCara.setAlpha(0);
             this.movimiento=1
+            this.registry.events.emit('apareceHUD2');
         }, 7000);
 
 
@@ -190,7 +210,7 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelB4');
+            this.scene.start('NivelB4', { score: this.life, musica: this.musicaFondoB });
         });
 
         function collectMora (jugador, objeto)
@@ -200,10 +220,38 @@ class NivelB3 extends Phaser.Scene{
             objeto.disableBody(true, true)
         }
 
-
+        //PRUEBAS----------------------------------------------
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
         this.teclado = Phaser.Input.Keyboard;
+
+        this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
+            console.log("hola")
+            if(this.aciertos == 9 && this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
+                if(this.lastconversacion==0)
+                {
+                    this.javier.body.stop();
+                    this.entrega.x = 2000
+                    this.registry.events.emit('desapareceHUD2');
+                    this.fondoDialogo.setAlpha(1);
+                    this.dialogo3.setAlpha(1);
+                    this.monstruoCara.setAlpha(1);
+                    this.movimiento=0
+                    this.tronco15.disableBody(true, true)
+                    setTimeout(() => {
+                        // this.scene.start('NivelB4');
+                        this.movimiento=1
+                        this.lastconversacion=1
+                        this.fondoDialogo.setAlpha(0);
+                        this.dialogo3.setAlpha(0);
+                        this.monstruoCara.setAlpha(0);
+                        this.aciertos = 0;
+                        this.registry.events.emit('apareceHUD2');
+                    }, 4000);
+                }
+            }
+
+        });
  
     }
 
@@ -238,9 +286,6 @@ class NivelB3 extends Phaser.Scene{
                 }
         }
 
-       if(this.vidas == 0) {
-        this.scene.restart()
-       }
 
        if(this.aciertos == 9) {
             //dialogos
@@ -250,25 +295,32 @@ class NivelB3 extends Phaser.Scene{
             this.entrega.setAlpha(1)
             this.tuerca1.disableBody(true, true)
             this.tuerca3.disableBody(true, true)
-            this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
-                if(this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
-                    this.javier.body.stop();
-                    this.entrega.x = 2000
-                    this.fondoDialogo.setAlpha(1);
-                    this.dialogo3.setAlpha(1);
-                    this.monstruoCara.setAlpha(1);
-                    this.movimiento=0
-                    this.tronco15.disableBody(true, true)
-                    setTimeout(() => {
-                        // this.scene.start('NivelB4');
-                        this.movimiento=1
-                        this.fondoDialogo.setAlpha(0);
-                        this.dialogo3.setAlpha(0);
-                        this.monstruoCara.setAlpha(0);
-                    }, 4000);
-                }
+            // this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
+            //     if(this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
+            //         if(this.lastconversacion==0)
+            //         {
+            //             this.javier.body.stop();
+            //             this.entrega.x = 2000
+            //             this.registry.events.emit('desapareceHUD2');
+            //             this.fondoDialogo.setAlpha(1);
+            //             this.dialogo3.setAlpha(1);
+            //             this.monstruoCara.setAlpha(1);
+            //             this.movimiento=0
+            //             this.tronco15.disableBody(true, true)
+            //             setTimeout(() => {
+            //                 // this.scene.start('NivelB4');
+            //                 this.movimiento=1
+            //                 this.lastconversacion=1
+            //                 this.fondoDialogo.setAlpha(0);
+            //                 this.dialogo3.setAlpha(0);
+            //                 this.monstruoCara.setAlpha(0);
+            //                 this.aciertos = 0;
+            //                 this.registry.events.emit('apareceHUD2');
+            //             }, 4000);
+            //         }
+            //     }
     
-            });
+            // });
        }
        
     }

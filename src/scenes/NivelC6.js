@@ -20,6 +20,15 @@ class NivelC6 extends Phaser.Scene{
         //BANDERAS
         this.movimiento = 1; 
 
+        //FONDO
+        this.fondo = this.add.image(790, 385, 'NivelC6/NivelC6').setDepth(-2).setScale(.38,.32);
+        
+        //OBJETOS
+        this.palacio = this.add.image(1315, 435, 'NivelC6/palacioEnemigo').setScale(0.3);
+        this.puerta = this.physics.add.image(1380, 691, 'NivelC6/puerta').setScale(0.33);
+        this.puerta.setPushable(false);
+        this.puerta.body.setAllowGravity(false);
+
         //PERSONAJES
         //Javier Samurai
         this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
@@ -27,8 +36,6 @@ class NivelC6 extends Phaser.Scene{
         this.javier.body.setMass(1);
         this.javier.flipX=false;
 
-        //FONDO
-        this.fondo = this.add.image(790, 385, 'NivelC6/NivelC6').setDepth(-2).setScale(.38,.32);
         
         //ANIMACIONES
         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
@@ -37,7 +44,7 @@ class NivelC6 extends Phaser.Scene{
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
-        
+        this.physics.add.collider(this.javier, this.puerta, () => {this.scene.start('NivelC9');});
         //TECLADO
         this.cursors = this.input.keyboard.createCursorKeys();
     }
@@ -76,7 +83,7 @@ class NivelC6 extends Phaser.Scene{
            {
               this.javier.setVelocityY(-500);
            }
-      }
+       }
     }
 
 }

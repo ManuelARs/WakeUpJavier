@@ -6,14 +6,18 @@ class NivelA6 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA6');
+        console.log('init', data);
+        this.life = data.score;
+        this.musicaFondoA = data.musica;
     }
     
     preload() {
         this.load.path = './assets/';
     }
     create() {
+        this.registry.events.emit('desapareceHUD');
         //CONTADORES
         let contador = 0;
         this.aciertos = 0;
@@ -240,7 +244,7 @@ class NivelA6 extends Phaser.Scene{
             this.fondoDialogo.setAlpha(1);
             this.dialogo1.setAlpha(1);
             setTimeout(() => {
-                this.scene.start('NivelA7');
+                this.scene.start('NivelA7',{ musica: this.musicaFondoA });
             }, 3000);
         }
         if(this.tiempoRestante == 0 && this.ganasteB == false) {

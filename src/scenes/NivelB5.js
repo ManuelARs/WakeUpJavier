@@ -5,8 +5,11 @@ class NivelB5 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB5');
+        console.log('init', data);
+        this.musicaFondoB = data.musica;
+        this.life = data.score;
     }
 
     create() {
@@ -19,14 +22,20 @@ class NivelB5 extends Phaser.Scene{
         //BANDERA
         this.movimiento = 0;
         this.final = 0;
+        //MUSICA
+        this.musicaFondoB.resume();
+        this.musicaFondoCarta = this.sound.add('nivel2CM',{loop:true});
 
         //OBJETOS
         //aletas
         this.aleta = this.physics.add.image(700, 710, 'NivelB5/aleta').setScale(0.37,0.32);
         this.aleta.body.setAllowGravity(false);
+        this.aleta.setPushable(false);
         this.aleta2 = this.physics.add.image(400, 710, 'NivelB5/aleta').setScale(0.37,0.32);
         this.aleta2.body.setAllowGravity(false);
+        this.aleta2.setPushable(false);
         this.aleta2.flipX = true;
+
         
         //agua
         this.agua = this.physics.add.image(520, 750, 'NivelB5/agua').setScale(0.37,0.32);
@@ -163,6 +172,7 @@ class NivelB5 extends Phaser.Scene{
             this.abiCara.setAlpha(0);
             this.dialogo5.setAlpha(0);
             this.fondoDialogo.setAlpha(0);
+            this.registry.events.emit('apareceHUD2');
             this.movimiento = 1;
         }, 16500);
     
@@ -177,10 +187,34 @@ class NivelB5 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.tierraP3);
         this.physics.add.collider(this.javier, this.tierra2);
         this.physics.add.collider(this.abi, this.javier);
-        this.physics.add.collider(this.javier, this.agua, () => {this.javier.x = 120;this.javier.y = 120});
-        this.physics.add.collider(this.javier, this.agua2, () => {this.javier.x = 120;this.javier.y = 120});
+        this.physics.add.collider(this.javier, this.agua, () => {
+            this.javier.x = 120;this.javier.y = 120
+            //DAÑO
+            this.cameras.main.shake(700,0.005);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondoB.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
+        });
+        this.physics.add.collider(this.javier, this.agua2, () => {
+            this.javier.x = 120;this.javier.y = 120
+            this.cameras.main.shake(700,0.005);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondoB.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
+        });
         this.physics.add.collider(this.javier, this.sobre, () => {
             this.sobre.disableBody(true,true);
+            this.musicaFondoB.stop();
+            this.musicaFondoCarta.play()
+            this.registry.events.emit('desapareceHUD2');
             this.movimiento = 0;
             this.javier.body.stop();
             this.carta.setAlpha(1); 
@@ -204,8 +238,9 @@ class NivelB5 extends Phaser.Scene{
                             duration: 4000,
                             onComplete: () => {
                                     //console.log('Se completa el tween');
-                                    this.scene.start('Menu');
-                                },
+                                    this.musicaFondoCarta.stop()
+                                    this.scene.start('NivelC1');
+                            },
                         });                   
                     }
                 });

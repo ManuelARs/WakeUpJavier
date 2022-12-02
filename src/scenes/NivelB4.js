@@ -5,8 +5,11 @@ class NivelB4 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB4');
+        console.log('init', data);
+        this.musicaFondoB = data.musica;
+        this.life = data.score;
     }
 
     preload() {
@@ -15,7 +18,7 @@ class NivelB4 extends Phaser.Scene{
     }
     
     create() {
-        this.vidas = 3
+        this.registry.events.emit('desapareceHUD2');
         this.quitar = 0
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB4/NivelB4').setDepth(-2).setScale(.37,.35);
@@ -26,6 +29,11 @@ class NivelB4 extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
+
+        //MUSICA
+        this.musicaFondoB.pause();
+        this.musicaFondoB2 = this.sound.add('nivel2DM',{loop:true});
+        this.musicaFondoB2.play();
 
         //BANDERA
         this.movimiento = 0;
@@ -123,6 +131,7 @@ class NivelB4 extends Phaser.Scene{
         this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1).setDepth(10);
         this.javierCara = this.add.image(125, 135, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(0).setDepth(10);
         this.enemigo = this.add.image(1470, 135, 'NivelB4/caraEnemigo').setScale(0.9).setAlpha(1).setDepth(10);
+        this.abiCara = this.add.image(1420, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(0);
         this.dialogo1 = this.add.image(770, 135, 'NivelB4/dialogo4_1').setScale(0.7).setAlpha(1).setDepth(10);
         this.dialogo2 = this.add.image(1000, 135, 'NivelB4/dialogo4_2').setScale(0.7).setAlpha(0).setDepth(10);
         this.dialogo3 = this.add.image(730, 135, 'NivelB4/dialogo4_3').setScale(0.55).setAlpha(0).setDepth(10);
@@ -156,6 +165,7 @@ class NivelB4 extends Phaser.Scene{
             this.dialogo4.setAlpha(0)
             this.javierCara.setAlpha(0)
             this.fondoDialogo.setAlpha(0)
+            this.registry.events.emit('apareceHUD2');
             //LOGICA DE TUERCAS
             this.identificadorTiempoDeEspera;
             this.identificadorTiempoDeEspera2;
@@ -203,7 +213,16 @@ class NivelB4 extends Phaser.Scene{
                 // this.tierraP1.disableBody(true, true);
                 // this.tierraP4.disableBody(true, true);
                 // this.boton3.disableBody(true, true);
-                this.vidas -= 1
+                this.cameras.main.shake(700,0.005);
+                this.life--;
+                this.registry.events.emit('loseHeartB');
+                if(this.life === 0) {
+                    this.musicaFondoB2.stop();
+                    clearInterval(this.identificadorTiempoDeEspera)
+                    clearInterval(this.identificadorTiempoDeEspera2)
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
+                }
             }
             
             let primerasTuercas = () => {
@@ -373,9 +392,14 @@ class NivelB4 extends Phaser.Scene{
                 this.boton2.setAlpha(0)
                 this.boton2B.setAlpha(1)
                 this.novia.enableBody(false, 0, 0, true, true)
+                clearInterval(this.identificadorTiempoDeEspera)
+                clearInterval(this.identificadorTiempoDeEspera2)
                 //CUARTO TWEEN
+                this.musicaFondoB2.stop();
                 this.monstruo.body.stop()
+                this.registry.events.emit('desapareceHUD2');
                 this.fondoDialogo.setAlpha(1)
+                this.abiCara.setAlpha(1)
                 this.dialogo5.setAlpha(1)
                 this.add.tween({
                     targets: [this.monstruo],
@@ -395,7 +419,8 @@ class NivelB4 extends Phaser.Scene{
             }
         });
         this.physics.add.collider(this.javier, this.novia, () => {
-            this.scene.start('NivelB5')
+            this.scene.start('NivelB5', { score: this.life, musica: this.musicaFondoB})
+            //ganas
         });
 
         this.physics.add.collider(this.javier, this.tronco)
@@ -453,13 +478,6 @@ class NivelB4 extends Phaser.Scene{
                this.javier.setVelocityY(-500);
            }
        }
-
-       if(this.vidas == 0) {
-        this.scene.restart()
-        clearInterval(this.identificadorTiempoDeEspera)
-        clearInterval(this.identificadorTiempoDeEspera2)
-       }
-
        if(this.quitar) {
         this.physics.world.removeCollider(this.colisonFinal);
        }

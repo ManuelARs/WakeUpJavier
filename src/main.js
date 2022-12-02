@@ -2,8 +2,6 @@ import Win from "./scenes/Win.js";
 import GameOver from "./scenes/GameOver.js";
 import NivelA from "./scenes/NivelA.js";
 import NivelA1 from "./scenes/NivelA1.js";
-import SceneA from "./scenes/SceneA.js";
-import SceneB from "./scenes/SceneB.js";
 import Menu from "./scenes/Menu.js";
 import Bootloader from "./scenes/Bootloader.js";
 import HUD from "./scenes/HUD.js";
@@ -22,7 +20,6 @@ import NivelB5 from "./scenes/NivelB5.js";
 //NIVEL C
 import NivelC1 from "./scenes/NivelC1.js";
 import NivelC2 from "./scenes/NivelC2.js";
-import NivelC3 from "./scenes/NivelC3.js";
 import NivelC4 from "./scenes/NivelC4.js";
 import NivelC5 from "./scenes/NivelC5.js";
 import NivelC6 from "./scenes/NivelC6.js";
@@ -48,9 +45,8 @@ const config = {
     scene: [Bootloader,HUD,
         NivelA, NivelA1,NivelA2, NivelA3,NivelA4,NivelA6,
         NivelA5,NivelA7,NivelB1,NivelB2,NivelB3,NivelB4,NivelB5,
-        NivelC1, NivelC2,NivelC3,NivelC4,NivelC5,NivelC6,NivelC7,NivelC8,
-        NivelC9,NivelC10,
-        SceneA,SceneB,GameOver,Win,Menu],    //Aquí irá la lista de scenas del juego
+        NivelC1, NivelC2,NivelC4,NivelC5,NivelC6,NivelC7,NivelC8,
+        NivelC9,NivelC10,GameOver,Win,Menu],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",

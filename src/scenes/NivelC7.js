@@ -50,12 +50,12 @@ class NivelC7 extends Phaser.Scene{
         // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
         // this.musicaFondo.play();
 
-        // // IMAGEN INSTRUCCIONES
-        // this.instrucciones = this.add.image(750,25, 'instrucciones').setDepth(4).setScale(0.28);
-        // //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 19 SEGUNDOS
-        // setTimeout(() => {
-        //     this.instrucciones.setAlpha(0);
-        // }, 19000);
+        // IMAGEN INSTRUCCIONES
+        this.instrucciones = this.add.image(750,25, 'NivelC7/instrucciones').setDepth(4).setScale(0.28);
+        //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 20 SEGUNDOS
+        setTimeout(() => {
+            this.instrucciones.setAlpha(0);
+        }, 20000);
 
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 358, 'NivelC7/NivelC7').setDepth(-2).setScale(.37,.34);

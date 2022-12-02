@@ -7,57 +7,92 @@ class HUD extends Phaser.Scene{
 
     init() {
         console.log('Escena HUD');
+        this.scene.moveAbove('NivelC1','HUD');
     }
 
     create() {
         // IMAGEN CORAZONES
-        this.cora= this.add.image(1450, 40, 'heart').setScale(.25).setDepth(10).setTint('0x943126');
-        this.cora2= this.add.image(1500, 40, 'heart').setScale(.25).setDepth(10).setTint('0x943126');
-        this.cora3= this.add.image(1550, 40, 'heart').setScale(.25).setDepth(10).setTint('0x943126');
+        this.groupLife = this.add.group({
+            key: 'HUD/heart',
+            repeat: 2,
+            setScale: { x: 0.25, y: 0.25},
+            setXY: {
+                x: 1450,
+                y: 25,
+                stepX: 50
+            }
+        });
+        this.groupLife.setAlpha(0);
+        this.groupLife.setAlpha(0);
 
-        // IMAGEN INSTRUCCIONES
-        //this.instrucciones = this.add.image(250,500, 'instrucciones').setDepth(4).setScale(0.15);
-        
+        //IMAGENES CORAZONES 2
+        this.groupLife2 = this.add.group({
+            key: 'HUD/heart',
+            repeat: 9,
+            setScale: { x: 0.25, y: 0.25},
+            setXY: {
+                x: 1100,
+                y: 25,
+                stepX: 50
+            }
+        });
+        this.groupLife2.setAlpha(0);
+
+        //NIVEL
+        this.nivel ="NivelA4"
+        // TEXTO CONTADOR ESTRELLA
+        // this.coraTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
+
         // IMAGEN ESTRELLITA
-        this.star = this.add.image(40, 40, 'coleccionable').setScale(.35).setDepth(10).setTint('0x943126');
+        // this.star = this.add.image(40, 40, 'coleccionable').setScale(.35).setDepth(10).setTint('0x943126');
        
         // VARIABLES de Estrellas
-        this.data.set('estrellas',0);
-        console.log(this.data.list);
+        // this.data.set('estrellas',0);
+        // console.log(this.data.list);
         // TEXTO CONTADOR ESTRELLA
-        this.starTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
+        // this.starTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
 
-        // VARIABLES de Datos
-        this.data.set('vidas', 3);
+        //APARECER DESAPARECER HUD
+        this.registry.events.on('apareceHUD', () => {
+            this.groupLife.setAlpha(1)
+        });
+        this.registry.events.on('desapareceHUD', () => {
+            this.groupLife.setAlpha(0)
+        });
 
+        //APARECER DESAPARECER HUD2
+        this.registry.events.on('apareceHUD2', () => {
+            console.log("Entra aparecerCorazones2")
+            console.log(this.groupLife2)
+            this.groupLife2.setAlpha(1)
+        });
+        this.registry.events.on('desapareceHUD2', () => {
+            this.groupLife2.setAlpha(0)
+        });
+
+        //CAMBIO NIVEL
+        this.registry.events.on('cambioNivelB', () => {
+            console.log("CAMBIO NIVEL")
+            console.log(this.groupLife2)
+            this.nivel="NivelB1"
+        });
 
         //  ESCUCHA EVENTO loseHeart perder una vida
-        this.registry.events.on('loseHeart', (dato) => {
-            this.data.list.vidas += dato;
-            console.log(this.data.query('vidas'))
-            if(this.data.list.vidas==2){
-                this.cora.setAlpha(0);
-            }
-            if(this.data.list.vidas==1){
-                this.cora2.setAlpha(0);
-            }
-            if(this.data.list.vidas==0){
-                this.cora3.setAlpha(0);
-                this.data.setValue('vidas', 3);
-                this.data.set('estrellas',0);
-                this.starTexto.text = this.data.list.estrellas + '/4';
-                setTimeout(() => {
-                    this.scene.pause('HUD');
-                    console.log("Se pausó escena HUD");
-                }, 1000);
-                setTimeout(() => {
-                        this.scene.resume('HUD');
-                        console.log("Se reanudó escena HUD");
-                        this.cora.setAlpha(1);
-                        this.cora2.setAlpha(1);
-                        this.cora3.setAlpha(1);
-                }, 2000);     
-            }
+        this.registry.events.on('loseHeart', () => {
+            this.groupLife.getChildren()[this.groupLife.getChildren().length - 1].destroy();
+            console.log(this.groupLife.getChildren().length)
+        });
+        
+        this.registry.events.on('loseHeartB', () => {
+            console.log("Entro a loseheartB")
+            this.groupLife2.getChildren()[this.groupLife2.getChildren().length - 1].destroy();
+            console.log(this.groupLife2.getChildren().length)
+        });
+
+        this.registry.events.on('game_over', () => {
+            console.log("Entro Game over")
+            this.registry.events.removeAllListeners();
+            this.scene.start('GameOver', { score: this.nivel });
         });
 
         // Escucha EVENTO getStar obtener una estrella ninja

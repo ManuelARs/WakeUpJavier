@@ -14,6 +14,7 @@ class NivelA6 extends Phaser.Scene{
         this.load.path = './assets/';
     }
     create() {
+        this.registry.events.emit('desapareceHUD');
         //CONTADORES
         let contador = 0;
         this.aciertos = 0;

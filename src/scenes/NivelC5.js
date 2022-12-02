@@ -33,6 +33,7 @@ class NivelC5 extends Phaser.Scene{
         //ANIMACIONES
         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
         this.anims.create({ key: 'samuraiIdle', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiIdle', suffix: '.png', start: 1, end:1 }), repeat: -1, frameRate: 2 });
+        this.anims.create({ key: 'samuraiCaminar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiC', suffix: '.png', start: 1, end:6 }), repeat: -1, frameRate: 6 });
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
@@ -57,13 +58,13 @@ class NivelC5 extends Phaser.Scene{
            if (this.cursors.left.isDown)
            {
               this.javier.setVelocityX(-200);
-              this.javier.anims.play('samuraiIdle',true); //Caminar
+              this.javier.anims.play('samuraiCaminar',true); //Caminar
               this.javier.flipX=1;
            }
            else if (this.cursors.right.isDown)
            {
               this.javier.setVelocityX(200);
-              this.javier.anims.play('samuraiIdle',true); //Caminar
+              this.javier.anims.play('samuraiCaminar',true); //Caminar
               this.javier.flipX=0;
            }
            else

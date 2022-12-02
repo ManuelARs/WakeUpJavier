@@ -65,7 +65,8 @@ const config = {
         gravity: {
         y: 800
         },
-        debug: true
+        //MOVER
+        debug: false
         }
         },
         scale: {

@@ -41,10 +41,11 @@ class NivelA5 extends Phaser.Scene{
         this.dog.body.setMass(1);
         this.dog.flipX = true
         //Gata Mia
-        this.gata = this.physics.add.image(100, 610, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        this.gata.body.setSize(60, 60);
+        this.gata = this.physics.add.sprite(100, 610, 'Gata', 0).setScale(3)
+        this.gata.body.setSize(20, 55);
+        this.gata.body.setMass(1);
         this.gata.setPushable(false);
-        this.gata.flipX = true
+        this.gata.flipX=false;
         //Pastor aleman
         this.dogB = this.physics.add.sprite(1700, 610, 'DogB', 0).setScale(3);
         this.dogB.body.setSize(48, 70);
@@ -81,6 +82,9 @@ class NivelA5 extends Phaser.Scene{
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         this.anims.create({ key: 'pastorC', frames: this.anims.generateFrameNames('DogB', { prefix: 'pastor', suffix: '.png', start: 1, end: 8 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'pastorIdle', frames: this.anims.generateFrameNames('DogB', { prefix: 'pastorIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
+        this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
+        this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
+        this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
@@ -201,6 +205,10 @@ class NivelA5 extends Phaser.Scene{
 
 
     update(time, delta) {
+        if(this.gata.body.onFloor())
+        {
+            this.gata.anims.play('gataIdle',true);
+        }
         //MOVIMIENTOS
         if(this.movimiento==0)
         {
@@ -231,6 +239,7 @@ class NivelA5 extends Phaser.Scene{
 
             if ((this.cursors.up.isDown && this.dog.body.onFloor()))
             {
+                this.dog.anims.play('dogSalto',true);
                 this.dog.setVelocityY(-500);
             }
         }

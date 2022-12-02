@@ -126,6 +126,7 @@ class NivelB2 extends Phaser.Scene{
             this.javier.x=70
             this.cameras.main.shake(700,0.005);
             this.life--;
+            this.registry.events.emit('cambioNivelB');
             this.registry.events.emit('loseHeartB');
             this.registry.events.emit('apareceHUD2');
             if(this.life === 0) {

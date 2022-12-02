@@ -15,6 +15,7 @@ class NivelA2 extends Phaser.Scene {
     }
 
     create() {
+        this.movimientoGata = 1
         //BOUNDS DE LA ESCENA
         this.physics.world.setBounds(0,0,400, 700);
         //CAMARA INICIAL EFECTO FADE IN
@@ -47,14 +48,19 @@ class NivelA2 extends Phaser.Scene {
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
         //Gata Mia
-        this.gata = this.physics.add.image(360, 450, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        this.gata.body.setSize(40, 50);
+        this.gata = this.physics.add.sprite(360, 450, 'Gata', 0).setScale(3)
+        this.gata.body.setSize(20, 55);
+        this.gata.body.setMass(1);
         this.gata.setPushable(false);
+        this.gata.flipX=true;
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
-
+        this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
+        this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
+        this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
+    
         //APARICIÓN DE DIÁLOGOS
         setTimeout(() => {
             this.gataCara.setAlpha(1);
@@ -88,6 +94,10 @@ class NivelA2 extends Phaser.Scene {
 
     update(time, delta) {
         //MOVIMIENTOS
+        if(this.movimientoGata)
+        {
+            this.gata.anims.play('gataIdle',true);
+        }
         if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
@@ -117,6 +127,7 @@ class NivelA2 extends Phaser.Scene {
 
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
             {
+                this.dog.anims.play('dogSalto',true);
                 this.dog.setVelocityY(-500);
             }
         }

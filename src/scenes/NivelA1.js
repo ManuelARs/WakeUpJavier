@@ -89,7 +89,7 @@ class NivelA1 extends Phaser.Scene{
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
-        this.banca.body.setCollideWorldBounds(true);
+        // this.banca.body.setCollideWorldBounds(true);
   
         this.physics.add.collider(this.dog, this.banca);
         this.physics.add.collider(this.gata, this.banca);

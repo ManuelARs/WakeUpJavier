@@ -9,6 +9,7 @@ class NivelA5 extends Phaser.Scene{
         console.log('Escena NivelA5');
         console.log('init', data);
         this.life = data.score;
+        this.musicaFondoA = data.musica;
     }
 
     preload() {
@@ -24,6 +25,8 @@ class NivelA5 extends Phaser.Scene{
 
         //BANDERA MOVIMIENTO
         this.movimiento=0
+        //MUSICA
+        this.musicaFondoA.resume()
 
         this.fondo = this.add.image(770, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
         this.physics.world.setBounds(0,0,1580, 700);
@@ -191,7 +194,7 @@ class NivelA5 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.salida, () => {
             this.dog.setVelocityY(0);
             this.dog.setAccelerationY(0);
-            this.scene.start('NivelA6');
+            this.scene.start('NivelA6',{ score: this.life, musica: this.musicaFondoA });
         });
     }
 
@@ -242,6 +245,7 @@ class NivelA5 extends Phaser.Scene{
           this.life--;
           this.registry.events.emit('loseHeart');
           if(this.life === 0) {
+                this.musicaFondoA.stop();
                 this.registry.events.emit('game_over');
                 this.scene.stop()
           }

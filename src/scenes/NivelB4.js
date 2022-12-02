@@ -8,6 +8,7 @@ class NivelB4 extends Phaser.Scene{
     init(data) {
         console.log('Escena NivelB4');
         console.log('init', data);
+        this.musicaFondoB = data.musica;
         this.life = data.score;
     }
 
@@ -28,6 +29,11 @@ class NivelB4 extends Phaser.Scene{
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
+
+        //MUSICA
+        this.musicaFondoB.pause();
+        this.musicaFondoB2 = this.sound.add('nivel2DM',{loop:true});
+        this.musicaFondoB2.play();
 
         //BANDERA
         this.movimiento = 0;
@@ -210,6 +216,7 @@ class NivelB4 extends Phaser.Scene{
                 this.life--;
                 this.registry.events.emit('loseHeartB');
                 if(this.life === 0) {
+                    this.musicaFondoB2.stop();
                     clearInterval(this.identificadorTiempoDeEspera)
                     clearInterval(this.identificadorTiempoDeEspera2)
                     this.registry.events.emit('game_over');
@@ -385,6 +392,7 @@ class NivelB4 extends Phaser.Scene{
                 this.boton2B.setAlpha(1)
                 this.novia.enableBody(false, 0, 0, true, true)
                 //CUARTO TWEEN
+                this.musicaFondoB2.stop();
                 this.monstruo.body.stop()
                 this.registry.events.emit('desapareceHUD2');
                 this.fondoDialogo.setAlpha(1)
@@ -407,7 +415,7 @@ class NivelB4 extends Phaser.Scene{
             }
         });
         this.physics.add.collider(this.javier, this.novia, () => {
-            this.scene.start('NivelB5', { score: this.life })
+            this.scene.start('NivelB5', { score: this.life, musica: this.musicaFondoB})
         });
 
         this.physics.add.collider(this.javier, this.tronco)

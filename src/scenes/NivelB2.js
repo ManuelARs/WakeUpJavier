@@ -5,8 +5,10 @@ class NivelB2 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelB2');
+        console.log('init', data);
+        this.musicaFondoB = data.musica;
     }
 
     // preload() {
@@ -110,6 +112,7 @@ class NivelB2 extends Phaser.Scene{
             this.life--;
             this.registry.events.emit('loseHeartB');
             if(this.life === 0) {
+                this.musicaFondoB.stop();
                 this.registry.events.emit('game_over');
                 this.scene.stop()
             }
@@ -189,7 +192,7 @@ class NivelB2 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelB3', { score: this.life });
+            this.scene.start('NivelB3', { score: this.life, musica: this.musicaFondoB });
         });
     }
 

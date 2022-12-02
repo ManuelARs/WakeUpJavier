@@ -26,6 +26,10 @@ class NivelB1 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(2000);
 
+        //MUSICA
+        this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
+        this.musicaFondoB.play();
+
         //BANDERA
         this.movimiento = 0;
         this.dialogoChoque = 0;
@@ -92,7 +96,6 @@ class NivelB1 extends Phaser.Scene{
             this.dialogo2.setAlpha(0);
             this.movimiento = 1;
             this.registry.events.emit('cambioNivelB');
-            this.registry.events.emit('apareceHUD2');
         }, 6000);
 
          //COLISIONES
@@ -106,7 +109,6 @@ class NivelB1 extends Phaser.Scene{
                 this.movimiento = 0;
                 this.javier.x = 1190;
                 this.javier.body.stop();
-                this.registry.events.emit('desapareceHUD2');
                 this.monstruoCara.setAlpha(1);
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo3.setAlpha(1);
@@ -142,12 +144,10 @@ class NivelB1 extends Phaser.Scene{
                     this.fondoDialogo.setAlpha(0);
                     this.movimiento = 1;
                     this.dialogoChoque=1
-                    this.registry.events.emit('apareceHUD2');
                 }, 15000);
             }
             if(this.dialogoChoque==1)
             {
-                this.registry.events.emit('desapareceHUD2');
                 this.monstruoCara.setAlpha(1);
                 this.fondoDialogo.setAlpha(1);
                 this.dialogo7.setAlpha(1);
@@ -155,7 +155,6 @@ class NivelB1 extends Phaser.Scene{
                     this.monstruoCara.setAlpha(0);
                     this.fondoDialogo.setAlpha(0);
                     this.dialogo7.setAlpha(0);
-                    this.registry.events.emit('apareceHUD2');
                 }, 2000);
             }
          }); 
@@ -165,7 +164,7 @@ class NivelB1 extends Phaser.Scene{
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
             this.javier.body.stop()
-            this.scene.start('NivelB2');
+            this.scene.start('NivelB2',{ musica: this.musicaFondoB });
         });
         // TIMELINES NUBES DERECHA
         this.timeline = this.tweens.createTimeline(); 

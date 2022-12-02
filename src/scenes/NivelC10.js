@@ -28,6 +28,8 @@ class NivelC10 extends Phaser.Scene{
         this.javier.body.setOffset(400,400);
         this.javier.body.setMass(1);
         this.javier.flipX=false;
+        //Japones
+        this.japones = this.physics.add.staticImage(1020, 200, 'NivelC10/japones').setScale(0.3).refreshBody();
 
         /* ESCENARIO */
         //Grupo Barras A
@@ -45,11 +47,8 @@ class NivelC10 extends Phaser.Scene{
         this.barraA.create(760, 400, 'NivelC2/barra').setScale(0.3).refreshBody();
         this.barraA.create(465, 300, 'NivelC2/barra').setScale(0.3).refreshBody();
         this.barraA.create(750, 170, 'NivelC2/barra').setScale(0.3).refreshBody();
-        this.barraA.create(800, 710, 'NivelC2/barra').setScale(0.55,0.3).refreshBody().disableBody(true,true);;
+        this.barraA.create(800, 710, 'NivelC2/barra').setScale(0.55,0.3).refreshBody().disableBody(true,true);
 
-
-        //Japones
-        this.japones = this.physics.add.staticImage(1020, 200, 'NivelC10/japones').setScale(0.34).refreshBody();
         //Puerta
         this.puerta = this.physics.add.staticImage(865, 650, 'NivelC10/puerta').setScale(0.3,0.4).refreshBody();
         //Gong

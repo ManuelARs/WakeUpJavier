@@ -23,22 +23,6 @@ class NivelC8 extends Phaser.Scene{
         //BOUNDS DE ESCENA
         this.physics.world.setBounds(0,0,1580, 750);
 
-        // // CONTADOR VIDAS
-        // this.contadorVidas=3;
-        // //console.log(this.scene.manager.scenes)
-        // //MANEJO DE SCENE
-        // this.scene.moveAbove('SceneA','HUD');
-        // //MÚSICA
-        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        // this.musicaFondo.play();
-
-        // // IMAGEN INSTRUCCIONES
-        // this.instrucciones = this.add.image(750,25, 'instrucciones').setDepth(4).setScale(0.28);
-        // //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 19 SEGUNDOS
-        // setTimeout(() => {
-        //     this.instrucciones.setAlpha(0);
-        // }, 19000);
-
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 358, 'NivelC7/NivelC7').setDepth(-2).setScale(.37,.34);
 

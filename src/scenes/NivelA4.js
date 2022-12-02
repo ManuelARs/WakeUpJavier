@@ -5,9 +5,11 @@ class  NivelA4 extends Phaser.Scene {
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA4')
         this.scene.launch('HUD');
+        console.log('init', data);
+        this.musicaFondoA = data.musica;
     }
 
     preload() {
@@ -17,6 +19,10 @@ class  NivelA4 extends Phaser.Scene {
 
     create() {
       console.log(this.scene.manager.scenes)
+      //MUSICA
+      this.musicaFondoA.pause();
+      this.musicaAbejas = this.sound.add('abejaM',{loop:true});
+      this.musicaAbejas.play();
       //VIDAS
       this.life = 3;
       //BANDERAS
@@ -214,6 +220,8 @@ class  NivelA4 extends Phaser.Scene {
           this.life--;
           this.registry.events.emit('loseHeart');
           if(this.life === 0) {
+                this.musicaAbejas.stop();
+                this.registry.events.emit('Musica',this.musicaFondoA);
                 this.registry.events.emit('game_over');
                 this.scene.stop()
           }
@@ -233,7 +241,8 @@ class  NivelA4 extends Phaser.Scene {
         this.movimiento=0
         this.dog.body.stop();
         this.registry.events.emit('desapareceHUD');
-        this.scene.start('NivelA5', { score: this.life });
+        this.musicaAbejas.stop();
+        this.scene.start('NivelA5', { score: this.life, musica: this.musicaFondoA });
       });
 
     }

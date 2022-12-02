@@ -40,6 +40,7 @@ class HUD extends Phaser.Scene{
 
         //NIVEL
         this.nivel ="NivelA4"
+        this.musica = ""
         // TEXTO CONTADOR ESTRELLA
         // this.coraTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
 
@@ -62,7 +63,7 @@ class HUD extends Phaser.Scene{
 
         //APARECER DESAPARECER HUD2
         this.registry.events.on('apareceHUD2', () => {
-            console.log("Entra aparecerCorazones2")
+            // console.log("Entra aparecerCorazones2")
             console.log(this.groupLife2)
             this.groupLife2.setAlpha(1)
         });
@@ -70,11 +71,14 @@ class HUD extends Phaser.Scene{
             this.groupLife2.setAlpha(0)
         });
 
-        //CAMBIO NIVEL
+        //CAMBIO NIVEL Y MUSICA
         this.registry.events.on('cambioNivelB', () => {
             console.log("CAMBIO NIVEL")
             console.log(this.groupLife2)
-            this.nivel="NivelB1"
+            this.nivel="NivelB2"
+        });
+        this.registry.events.on('Musica', (data) => {
+            this.musica=data
         });
 
         //  ESCUCHA EVENTO loseHeart perder una vida
@@ -92,7 +96,7 @@ class HUD extends Phaser.Scene{
         this.registry.events.on('game_over', () => {
             console.log("Entro Game over")
             this.registry.events.removeAllListeners();
-            this.scene.start('GameOver', { score: this.nivel });
+            this.scene.start('GameOver', { score: this.nivel, musica: this.musica });
         });
 
         // Escucha EVENTO getStar obtener una estrella ninja

@@ -5,8 +5,10 @@ class NivelA7 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelA7');
+        console.log('init', data);
+        this.musicaFondoA = data.musica;
     }
 
     // preload() {
@@ -115,6 +117,7 @@ class NivelA7 extends Phaser.Scene{
                 duration: 1800,
                 onComplete: () => {
                         //console.log('Se completa el tween');
+                        this.musicaFondoA.stop();
                         this.scene.start('NivelB1');
                     },
                 });

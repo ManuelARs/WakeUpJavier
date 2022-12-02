@@ -22,9 +22,8 @@ class NivelA extends Phaser.Scene{
         this.movimiento = 1;
         
         //MÚSICA
-        // this.gong = this.sound.add('gong',{loop:false});
-        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        // this.musicaFondo.play();
+        this.musicaFondo = this.sound.add('nivelAM',{loop:true});
+        this.musicaFondo.play();
        
         //FONDO
         this.fondo = this.add.image(790, 385, 'NivelA/fondo_opc1').setDepth(-2).setScale(.36,.32);
@@ -68,6 +67,7 @@ class NivelA extends Phaser.Scene{
                 duration: 2000,
                 onComplete: () => {
                         //console.log('Se completa el tween');
+                        this.musicaFondo.stop();
                         this.scene.start('NivelA1');
                     },
                 });

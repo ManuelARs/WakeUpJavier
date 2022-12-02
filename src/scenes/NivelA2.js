@@ -5,8 +5,10 @@ class NivelA2 extends Phaser.Scene {
         });
     }
 
-    init() {
-        console.log('Escena NivelA2')
+    init(data) {
+        console.log('Escena NivelA2');
+        console.log('init', data);
+        this.musicaFondoA = data.score;
     }
 
     preload() {
@@ -21,6 +23,9 @@ class NivelA2 extends Phaser.Scene {
 
         //BANDERA movimiento
         this.movimiento = 0;
+
+        //MUSICA
+        // this.musicaFondoA.pause();
 
         //IMÁGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelA2/NivelA2').setDepth(-2).setScale(.4,.38);
@@ -74,7 +79,7 @@ class NivelA2 extends Phaser.Scene {
         this.physics.add.collider(this.dog, this.mesa, () => {});
         this.physics.add.collider(this.gata, this.mesa, () => {});
         this.physics.add.collider(this.dog, this.gata, () => {
-            this.scene.start('NivelA3');
+            this.scene.start('NivelA3',{ score: this.musicaFondoA });
         });
 
         //Teclado

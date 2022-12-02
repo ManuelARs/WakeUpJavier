@@ -9,6 +9,7 @@ class GameOver extends Phaser.Scene{
         console.log('Escena GameOver');
         console.log('init Gameover', data.score);
         this.nivel = data.score;
+        this.musica = data.musica
     }
 
     create(){
@@ -17,7 +18,7 @@ class GameOver extends Phaser.Scene{
         //IMÁGENES
         this.fondo = this.add.image(775, 395, 'GameOver/gameOverBack').setScale(.365);
         this.play = this.add.image(820, 550, 'Menu/play').setScale(.25).setInteractive();
-        this.menu = this.add.image(820, 700, 'Menu/botonMenu2').setScale(.25).setInteractive();
+        this.menu = this.add.image(820, 700, 'Menu/botonMenu').setScale(.25).setInteractive();
         //SONIDOS
         this.pop = this.sound.add('pop', {loop:false,volume: 0.3});
         this.gameOverSound = this.sound.add('gameOver', {loop:false});
@@ -38,7 +39,8 @@ class GameOver extends Phaser.Scene{
         //EVENTO CLICK MENU
         this.play.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();
-            this.scene.start(this.nivel, { score: this.hud2 });
+            console.log(this.musica)
+            this.scene.start(this.nivel, { hud: this.hud2, musica: this.musica });
         }, this);
         this.menu.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();

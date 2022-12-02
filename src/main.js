@@ -63,7 +63,7 @@ const config = {
         y: 800
         },
         //MOVER
-        debug: true
+        debug: false
         }
         },
         scale: {

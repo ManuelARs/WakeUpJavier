@@ -5,8 +5,16 @@ class NivelC5 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC5');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -18,7 +26,20 @@ class NivelC5 extends Phaser.Scene{
         this.cameras.main.fadeIn(2000);
         
         //BANDERAS
-        this.movimiento = 1;  
+        this.movimiento = 1;
+   
+        //MUSICA
+        if(this.hud!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
+
 
         //FONDO
         this.fondo = this.add.image(790, 385, 'NivelC5/NivelC5').setDepth(-2).setScale(.36,.35);
@@ -62,6 +83,13 @@ class NivelC5 extends Phaser.Scene{
                     this.malo.x = 800
                     this.malo.y = 740
                     this.cameras.main.shake(500, 0.008)
+                    this.life--;
+                    this.registry.events.emit('loseHeartB');
+                    if(this.life === 0) {
+                        this.musicaFondo.stop();
+                        this.registry.events.emit('game_over');
+                        this.scene.stop()
+                    }
                 }
             },450);
         });
@@ -69,7 +97,8 @@ class NivelC5 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelC6');
+            this.scene.start('NivelC6', { score:this.life, musica: this.musicaFondo})
+            // this.scene.start('NivelC6');
         });
         
         //TECLADO

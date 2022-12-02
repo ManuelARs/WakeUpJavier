@@ -5,8 +5,16 @@ class NivelC10 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC10');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -18,6 +26,18 @@ class NivelC10 extends Phaser.Scene{
         this.cameras.main.fadeIn(2000);
         //BANDERAS
         this.movimiento = 1; 
+        //MUSICA
+        if(this.hud2!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
+
         //FONDO
         this.fondo = this.add.image(790, 385, 'NivelC10/NivelC10').setDepth(-2).setScale(.36,.32);
 
@@ -47,7 +67,7 @@ class NivelC10 extends Phaser.Scene{
         this.barraA.create(760, 400, 'NivelC2/barra').setScale(0.3).refreshBody();
         this.barraA.create(465, 300, 'NivelC2/barra').setScale(0.3).refreshBody();
         this.barraA.create(750, 170, 'NivelC2/barra').setScale(0.3).refreshBody();
-        this.barraA.create(800, 710, 'NivelC2/barra').setScale(0.55,0.3).refreshBody().disableBody(true,true);
+        this.barraA.create(900, 710, 'NivelC2/barra').setScale(0.55,0.3).refreshBody().disableBody(true,true);
 
         //Puerta
         this.puerta = this.physics.add.staticImage(865, 650, 'NivelC10/puerta').setScale(0.3,0.4).refreshBody();
@@ -106,6 +126,7 @@ class NivelC10 extends Phaser.Scene{
         }
         //Colisión gong
         this.physics.add.collider(this.javier, this.gong, () => {
+            this.movimiento=0
             this.javier.body.stop();
             this.tweens = this.add.tween({
                 targets: [this.reflejo],
@@ -121,10 +142,18 @@ class NivelC10 extends Phaser.Scene{
         this.physics.add.collider(this.javier, picos, () => {
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
-            //this.barraA.getChildren()[13].disableBody(true,true);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
+            this.javier.body.x=50;
+            this.javier.body.y=300;
             this.javier.body.x=60;
             this.javier.body.y=100;
-            //console.log("Colision");
+            // console.log("Colision");
         });
 
         //TECLADO
@@ -135,6 +164,13 @@ class NivelC10 extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
+        if(this.movimiento==0)
+        {
+            if(this.javier.body.onFloor())
+            {
+               this.javier.anims.play('samuraiIdle',true);
+            }
+        }
         if(this.movimiento==1)
         {
             if(this.javier.body.onFloor()&&this.cursors.left.isUp&&this.cursors.right.isUp)

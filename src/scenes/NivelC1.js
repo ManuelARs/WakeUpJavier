@@ -27,6 +27,10 @@ class NivelC1 extends Phaser.Scene{
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelC1/NivelC1').setDepth(-2).setScale(.37,.35);
 
+        // //MÚSICA
+        this.musicaFondo = this.sound.add('nivelC',{loop:true});
+        this.musicaFondo.play();
+
         //PERSONAJES
         //Javier Samurai
         this.javier = this.physics.add.sprite(300, 500, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.29);
@@ -92,7 +96,8 @@ class NivelC1 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelC2');
+            this.musicaFondo.stop();
+            this.scene.start('NivelC2', { hud:1, musica: this.musicaFondo})
         });
 
         

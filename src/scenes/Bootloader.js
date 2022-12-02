@@ -96,7 +96,7 @@ class Bootloader extends Phaser.Scene{
         // this.load.audio('gong', ['./gong.mp3']);
         // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
-        this.load.image(['GameOver/gameOverBack','Menu/botonMenu2']);
+        this.load.image(['GameOver/gameOverBack','Menu/botonMenu',]);
         this.load.audio('gameOver', ['GameOver/game_over.mp3']);
         //PARA ESCENA YOU WIN
         // this.load.image(['winBack','Menu/botonMenu']);

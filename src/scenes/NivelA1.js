@@ -152,7 +152,6 @@ class NivelA1 extends Phaser.Scene{
         
     }
 
-
     update(time, delta) {
         //MOVIMIENTOS
         if(this.movimientoGata)

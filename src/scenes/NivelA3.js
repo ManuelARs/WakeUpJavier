@@ -52,7 +52,7 @@ class  NivelA3 extends Phaser.Scene {
         //MÚSICA ACIERTO
         this.acierto = this.sound.add('acierto', { loop: false, volume: 0.5 });
         //MÚSICA GANASTE
-        this.ganasteAudio = this.sound.add('ganaste', { loop: false, volume: 0.5 });
+        this.ganasteAudio = this.sound.add('ganaste', { loop: false, volume: 1 });
         
         //Piezas de rompecabezas
         this.pieza1 = this.add.image(1320, 365, 'NivelA3/1').setInteractive().setScale(.2).setName("1");

@@ -15,7 +15,7 @@ class NivelD extends Phaser.Scene{
         
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
-        this.cameras.main.fadeIn(2000);
+        this.cameras.main.fadeOut(3000);
         //this.cameras.main.startFollow(this.javier, true);
         
         //BANDERA MOVIMIENTO

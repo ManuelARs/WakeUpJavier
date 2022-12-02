@@ -11,25 +11,25 @@ class Bootloader extends Phaser.Scene{
     preload() {
         //PARA MENU
         this.load.path = './assets/';
-        this.load.image(['Menu/nube','Menu/fondo2','Menu/play','Menu/info','Menu/conf','Menu/logo2','Menu/sound','Menu/noSound','Menu/infoCuadro','Menu/noobLovers']);
+        this.load.image(['Menu/nube','Menu/fondo2','Menu/play','Menu/logo2','Menu/noobLovers']);
         this.load.audio('pop', ['./pop.mp3']);
         this.load.audio('InicioM', ['./InicioM2.mp3']);
         //PARA NIVEL A
         this.load.audio('nivelAM', ['NivelA/nivelA.mp3']);   
-        this.load.image(['NivelA/Eliminar-cama', 'NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2','NivelA/instrucciones1']);
+        this.load.image(['NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2','NivelA/instrucciones1']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
         this.load.atlas('Gata', 'gataSprite/gata.png', 'gataSprite/gata.json');
         //PARA NIVEL A1
         this.load.audio('nivel1M', ['NivelA1/nivel1.mp3']);
         this.load.audio('abejaM', ['NivelA1/abejas.mp3']);
         this.load.atlas('Dog', 'dogSprite/dog.png', 'dogSprite/dog.json');
-        this.load.image(['NivelA1/Eliminar-gata', 'NivelA1/Eliminar-pastor','NivelA1/NivelA1', 'NivelA1/banca', 'NivelA1/dogCara','NivelA1/fondoDialogo', 'NivelA1/gataCara','NivelA1/dialogo1_1','NivelA1/dialogo1_2','NivelA1/instrucciones2']);
+        this.load.image(['NivelA1/NivelA1', 'NivelA1/banca', 'NivelA1/dogCara','NivelA1/fondoDialogo', 'NivelA1/gataCara','NivelA1/dialogo1_1','NivelA1/dialogo1_2','NivelA1/instrucciones2']);
         //PARA NIVEL A2
         this.load.image(['NivelA2/NivelA2','NivelA2/panal','NivelA2/mesa','NivelA2/dialogo2_1','NivelA2/dialogo2_2']);
         //PARA NIVEL A3
         this.load.image([ 'NivelA3/fondoPuzzle', 'NivelA3/puzzleAtras','NivelA3/1','NivelA3/2','NivelA3/3','NivelA3/4','NivelA3/5','NivelA3/6', 'NivelA3/7', 'NivelA3/8', 'NivelA3/9', 'NivelA3/10', 'NivelA3/11', 'NivelA3/12', 'NivelA3/13', 'NivelA3/14', 'NivelA3/15', 'NivelA3/16','NivelA3/marco','NivelA3/javier','NivelA3/instrucciones']);
         //PARA NIVELA4
-        this.load.image([ 'NivelA4/NivelA4', 'NivelA4/panal', 'NivelA4/panalCaido', 'NivelA4/mesa', 'NivelA4/abeja', 'NivelA4/dialogo4_1', 'NivelA4/dialogo4_2']);
+        this.load.image([ 'NivelA4/NivelA4', 'NivelA4/panal', 'NivelA4/mesa', 'NivelA4/abeja', 'NivelA4/dialogo4_1', 'NivelA4/dialogo4_2']);
         //PARA NIVELA5
         this.load.image(['NivelA5/nivelA5']);
         this.load.atlas('DogB', 'badDogSprite/pastor.png', 'badDogSprite/pastor.json');
@@ -100,9 +100,9 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC7', { hud: 1, musica: this.musicaFondoB });
+        this.scene.start('NivelC3', { hud: 1, musica: this.musicaFondoB });
         //this.scene.launch('Menu');
-        console.log(this.scene.manager.scenes)
+        //console.log(this.scene.manager.scenes)
     }
 
     update(time, delta) {

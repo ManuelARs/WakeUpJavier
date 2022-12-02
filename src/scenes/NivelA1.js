@@ -128,7 +128,7 @@ class NivelA1 extends Phaser.Scene{
         this.physics.add.collider(this.dog, this.salida, () => {
             this.dog.setVelocityY(0);
             this.dog.setAccelerationY(0);
-            this.scene.start('NivelA2');
+            this.scene.start('NivelA2', { score: this.musicaFondoA });
         });
 
         //TECLADO

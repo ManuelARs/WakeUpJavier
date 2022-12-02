@@ -8,6 +8,7 @@ class NivelB3 extends Phaser.Scene{
     init(data) {
         console.log('Escena NivelB3');
         console.log('init', data);
+        this.musicaFondoB = data.musica;
         this.life = data.score;
     }
 
@@ -138,8 +139,9 @@ class NivelB3 extends Phaser.Scene{
                 this.life--;
                 this.registry.events.emit('loseHeartB');
                 if(this.life === 0) {
-                        this.registry.events.emit('game_over');
-                        this.scene.stop()
+                    this.musicaFondoB.stop();
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
                 }
                 //this.scene.restart()
             });
@@ -153,8 +155,9 @@ class NivelB3 extends Phaser.Scene{
                 this.life--;
                 this.registry.events.emit('loseHeartB');
                 if(this.life === 0) {
-                        this.registry.events.emit('game_over');
-                        this.scene.stop()
+                    this.musicaFondoB.stop();
+                    this.registry.events.emit('game_over');
+                    this.scene.stop()
                 }
                 //this.scene.restart()
             });
@@ -207,7 +210,7 @@ class NivelB3 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.salida, () => {
             this.javier.setVelocityY(0);
             this.javier.setAccelerationY(0);
-            this.scene.start('NivelB4', { score: this.life });
+            this.scene.start('NivelB4', { score: this.life, musica: this.musicaFondoB });
         });
 
         function collectMora (jugador, objeto)

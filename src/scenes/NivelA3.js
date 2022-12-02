@@ -5,8 +5,10 @@ class  NivelA3 extends Phaser.Scene {
         });
     }
 
-    init() {
-        console.log('Escena NivelA3')
+    init(data) {
+        console.log('Escena NivelA3');
+        console.log('init', data);
+        this.musicaFondoA = data.score;
     }
 
     preload() {
@@ -160,7 +162,7 @@ class  NivelA3 extends Phaser.Scene {
             //this.music.stop();
             //this.ganaste.setAlpha(1);
             //alert("GANASTE");
-            this.scene.start('NivelA4');
+            this.scene.start('NivelA4',{ musica: this.musicaFondoA });
         };
         //Evento DROP
         this.input.on(eventos.DROP, (pointer, obj, dropzone) => {

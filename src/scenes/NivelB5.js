@@ -8,6 +8,7 @@ class NivelB5 extends Phaser.Scene{
     init(data) {
         console.log('Escena NivelB5');
         console.log('init', data);
+        this.musicaFondoB = data.musica;
         this.life = data.score;
     }
 
@@ -21,6 +22,9 @@ class NivelB5 extends Phaser.Scene{
         //BANDERA
         this.movimiento = 0;
         this.final = 0;
+        //MUSICA
+        this.musicaFondoB.resume();
+        this.musicaFondoCarta = this.sound.add('nivel2CM',{loop:true});
 
         //OBJETOS
         //aletas
@@ -190,6 +194,7 @@ class NivelB5 extends Phaser.Scene{
             this.life--;
             this.registry.events.emit('loseHeartB');
             if(this.life === 0) {
+                this.musicaFondoB.stop();
                 this.registry.events.emit('game_over');
                 this.scene.stop()
             }
@@ -200,12 +205,15 @@ class NivelB5 extends Phaser.Scene{
             this.life--;
             this.registry.events.emit('loseHeartB');
             if(this.life === 0) {
+                this.musicaFondoB.stop();
                 this.registry.events.emit('game_over');
                 this.scene.stop()
             }
         });
         this.physics.add.collider(this.javier, this.sobre, () => {
             this.sobre.disableBody(true,true);
+            this.musicaFondoB.stop();
+            this.musicaFondoCarta.play()
             this.registry.events.emit('desapareceHUD2');
             this.movimiento = 0;
             this.javier.body.stop();
@@ -230,8 +238,9 @@ class NivelB5 extends Phaser.Scene{
                             duration: 4000,
                             onComplete: () => {
                                     //console.log('Se completa el tween');
+                                    this.musicaFondoCarta.stop()
                                     this.scene.start('NivelC1');
-                                },
+                            },
                         });                   
                     }
                 });

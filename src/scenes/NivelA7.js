@@ -10,21 +10,23 @@ class NivelA7 extends Phaser.Scene{
         console.log('init', data);
         this.musicaFondoA = data.musica;
     }
-
-    // preload() {
-    // }
     
     create() {
         this.movimientoGata = 1
+        
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelA7/nivelA7').setDepth(-2).setScale(.37,.35);
+        
         //BOUNDS PARA PERSONAJES
         this.physics.world.setBounds(0,0,1580, 680)
+        
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
+        
         //BANDERA MOVIMIENTO
         this.movimiento = 0;
+        
         //DIÁLOGOS
         this.fondoDialogo = this.add.image(790, 135, 'NivelA7/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
         this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(0);
@@ -64,6 +66,7 @@ class NivelA7 extends Phaser.Scene{
         this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
         this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
+        
         //TIMEOUTS PARA DIÁLOGOS
         setTimeout(() => {
             this.dialogo1.setAlpha(0);

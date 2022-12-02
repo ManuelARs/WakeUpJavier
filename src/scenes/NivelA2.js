@@ -18,6 +18,7 @@ class NivelA2 extends Phaser.Scene {
         this.movimientoGata = 1
         //BOUNDS DE LA ESCENA
         this.physics.world.setBounds(0,0,400, 700);
+        
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);

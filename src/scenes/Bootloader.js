@@ -84,18 +84,6 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelC9/NivelC9']);
         //PARA NIVEL C10
         this.load.image(['NivelC10/NivelC10','NivelC10/escalar','NivelC10/mascara','NivelC10/gong','NivelC10/puerta','NivelC10/reflejo','NivelC10/japones']);
-        //PARA ESCENA A
-        // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
-        // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
-        // 'escalera', 'ninja','fondo_opc1','coleccionable','end','instrucciones']);
-        // this.load.audio('gong', ['./gong.mp3']);
-        // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
-        //PARA ESCENA B
-        // this.load.image(['barraArriba1', 'barraArriba2', 'barraArriba3', 'barraArriba4', 'barraPuerta', 'puerta', 'barraCF1', 'barraCF2', 
-        // 'cuerda', 'torre1', 'torre2', 'torre3', 'torre4', 'torre5', 'barraElevador', 'picos', 'barraTiempo', 'escalar', 'barraDiagonal',
-        // 'escalera', 'ninja','fondo_opc1','coleccionable','end']);
-        // this.load.audio('gong', ['./gong.mp3']);
-        // this.load.audio('musicaFondo', ['./musicaFondo.mp3']);
         //PARA ESCENA GAMEOVER
         this.load.image(['GameOver/gameOverBack','Menu/botonMenu',]);
         this.load.audio('gameOver', ['GameOver/game_over.mp3']);

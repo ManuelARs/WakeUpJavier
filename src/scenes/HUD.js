@@ -11,7 +11,7 @@ class HUD extends Phaser.Scene{
     }
 
     create() {
-        // IMAGEN CORAZONES
+        // IMAGENES CORAZONES
         this.groupLife = this.add.group({
             key: 'HUD/heart',
             repeat: 2,
@@ -40,6 +40,7 @@ class HUD extends Phaser.Scene{
         //NIVEL
         this.nivel ="NivelA4"
         this.musica = ""
+        
         // TEXTO CONTADOR ESTRELLA
         // this.coraTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
 
@@ -123,8 +124,6 @@ class HUD extends Phaser.Scene{
             this.starTexto.text = this.data.list.estrellas + '/4';
 
         });
-
-
     }
     
     update(time, delta) {

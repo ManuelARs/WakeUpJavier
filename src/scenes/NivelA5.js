@@ -25,15 +25,19 @@ class NivelA5 extends Phaser.Scene{
 
         //BANDERA MOVIMIENTO
         this.movimiento=0
+        
         //MUSICA
         this.musicaFondoA.resume()
         this.registry.events.emit('Musica',this.musicaFondoA);
 
+        //FONDO
         this.fondo = this.add.image(770, 360, 'NivelA5/nivelA5').setDepth(-2).setScale(.37,.35);
         this.physics.world.setBounds(0,0,1580, 700);
+        
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
+        
         //PERSONAJES
         //Perro Javier
         this.dog = this.physics.add.sprite(250, 610, 'Dog', 0).setScale(0.2);
@@ -52,7 +56,6 @@ class NivelA5 extends Phaser.Scene{
         this.dogB.body.setMass(1);
         this.dogB.setPushable(false);
         this.dogB.disableBody(false, false)
-        //this.dogB.
         //hidrante
         this.hidrante = this.physics.add.image(800, 620, 'NivelA5/hidrante', 0).setScale(1.8);
         this.hidrante.body.setSize(30, 70);
@@ -69,6 +72,7 @@ class NivelA5 extends Phaser.Scene{
         //salida
         this.salida = this.physics.add.staticImage(1695, 690, 'NivelA/Eliminar-mirror').setScale(0.7).setAlpha(0);
         this.salida.body.setSize(150, 1100);
+        
         //CONVERSACIONES
         this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1);
         this.dogCara = this.add.image(125, 135, 'NivelA1/dogCara').setScale(1).setAlpha(0);
@@ -77,6 +81,7 @@ class NivelA5 extends Phaser.Scene{
         this.dialogo1 = this.add.image(770, 135, 'NivelA5/dialogo5_1').setScale(0.7).setAlpha(1);
         this.dialogo2 = this.add.image(790, 135, 'NivelA5/dialogo5_2').setScale(0.7).setAlpha(0);
         this.registry.events.emit('desapareceHUD');
+        
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
@@ -85,6 +90,7 @@ class NivelA5 extends Phaser.Scene{
         this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
         this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
+        
         //COLISIONES
         this.dog.body.setCollideWorldBounds(true);
         this.gata.body.setCollideWorldBounds(true);
@@ -92,8 +98,6 @@ class NivelA5 extends Phaser.Scene{
         this.hidrante.body.setCollideWorldBounds(true);
         this.tronco.body.setCollideWorldBounds(true);
         this.hueso.body.setCollideWorldBounds(true);
-        //Teclado
-        this.cursors = this.input.keyboard.createCursorKeys();
 
         //Colision con gatita
         this.physics.add.collider(this.dog, this.gata);
@@ -148,6 +152,7 @@ class NivelA5 extends Phaser.Scene{
               });
             }
           });
+        
         //SEGUNDO GRUPO
         this.abejas2 = this.physics.add.group({
             key: 'abeja',
@@ -201,6 +206,9 @@ class NivelA5 extends Phaser.Scene{
             this.dog.setAccelerationY(0);
             this.scene.start('NivelA6',{ score: this.life, musica: this.musicaFondoA });
         });
+        
+        //Teclado
+        this.cursors = this.input.keyboard.createCursorKeys();
     }
 
 

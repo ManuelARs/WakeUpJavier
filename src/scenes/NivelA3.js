@@ -41,16 +41,10 @@ class  NivelA3 extends Phaser.Scene {
         //ANIMACIONES
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         this.dog.anims.play('dogIdle',true);
-        // //Imagen Titulo(Rompecabezas)
-        // this.titulo = this.add.image(470, 80, 'rompecabezas').setScale(.6);
-        // //Imagen GANASTE
-        // this.ganaste = this.add.image(1000, 470, 'ganaste').setDepth(4).setAlpha(0);
-        // //MÚSICA DE FONDO
-        // this.music = this.sound.add('Llorona', { loop: true, volume: .2 });
-        // this.music.play();
         
         //MÚSICA ACIERTO
-        this.acierto = this.sound.add('acierto', { loop: false, volume: 0.5 });
+        this.acierto = this.sound.add('acierto', { loop: false, volume: 0.8 });
+        
         //MÚSICA GANASTE
         this.ganasteAudio = this.sound.add('ganaste', { loop: false, volume: 1 });
         
@@ -131,12 +125,14 @@ class  NivelA3 extends Phaser.Scene {
         this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
             obj.setScale(0.3);
         });
+        
         //Evento que hace que el objeto se mueva con el puntero
         this.input.on(eventos.DRAG, (pointer, obj, dragX, dragY) => {
             obj.setDepth(3);
             obj.x = dragX;
             obj.y = dragY;
         });
+        
         //Evento que controla el final del arrastre
         this.input.on(eventos.DRAG_END, (pointer, obj, dropzone) => {
             if (!dropzone) { //Cuando no sea dropeable
@@ -148,28 +144,25 @@ class  NivelA3 extends Phaser.Scene {
                 obj.setScale(.3);
             }
         });
+        
         //Personalización de eventos de la zona "dropeable"
         this.input.on(eventos.DRAG_ENTER, (pointer, obj, dropzone) => {
-            //dropzone.setAlpha(1);
             dropzone.setTint(0x3339FF);
         });
         this.input.on(eventos.DRAG_LEAVE, (pointer, obj, dropzone) => {
-            //dropzone.setAlpha(0);
             dropzone.clearTint();
         });
+        
         //FUNCIÓN QUE CAMBIA PANTALLA DE GANADOR
         let showGanaste = () => {
-            //this.music.stop();
-            //this.ganaste.setAlpha(1);
-            //alert("GANASTE");
             this.scene.start('NivelA4',{ musica: this.musicaFondoA });
         };
+        
         //Evento DROP
         this.input.on(eventos.DROP, (pointer, obj, dropzone) => {
             obj.setDepth(2);
             obj.x = dropzone.x;
             obj.y = dropzone.y;
-            //contmov = contmov+ 1; // Incremento de movimientos
              //Se verifica que el lugar sea el correspondiente a la pieza
             if (dropzone.name == obj.name) {
                 obj.setDepth(1);

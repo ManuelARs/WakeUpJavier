@@ -83,7 +83,7 @@ class NivelC6 extends Phaser.Scene{
            {
               this.javier.setVelocityY(-500);
            }
-      }
+       }
     }
 
 }

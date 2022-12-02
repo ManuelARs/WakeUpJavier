@@ -12,6 +12,7 @@ class NivelA1 extends Phaser.Scene{
 
     create() {
         // this.scene.moveAbove('Bootloader','HUD');
+        this.movimientoGata = 1
         //console.log(this.scene.manager.scenes);
         //BOUNDS DE ESCENA
         this.physics.world.setBounds(0,0,1580, 720)
@@ -57,14 +58,23 @@ class NivelA1 extends Phaser.Scene{
         this.dog.body.setMass(1);
         // this.dog.body.setImmovable(true);
         //Gata Mia
-        this.gata = this.physics.add.image(600, 600, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        this.gata.body.setSize(60, 50);
+        // this.gata = this.physics.add.image(600, 600, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
+        // this.gata.body.setSize(60, 50);
+        // this.gata.setPushable(false);
+
+        this.gata = this.physics.add.sprite(600, 560, 'Gata', 0).setScale(3)
+        this.gata.body.setSize(20, 55);
+        this.gata.body.setMass(1);
         this.gata.setPushable(false);
+        this.gata.flipX=true;
         //this.gata.body.setImmovable(true);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
+        this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
+        this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
     
 
         //DIÁLOGO DE JAVIER
@@ -107,13 +117,19 @@ class NivelA1 extends Phaser.Scene{
                 this.fondoDialogo.setAlpha(0);
                 this.dialogo2.setAlpha(0);
                 this.instrucciones.setAlpha(0);
-                this.gata.flipX=1;
+                // this.gata.anims.play('gataC',true);
+                // this.gata.flipX=false;
             }, 4000);
             this.tweens = this.add.tween({
             targets: [this.gata],
             x: 1600,
             delay: 5000,
             duration: 4000,
+            onStart: () => {
+                this.movimientoGata = 0
+                this.gata.anims.play('gataC',true);
+                this.gata.flipX=false;
+            },
             onComplete: () => {
                     console.log(this.gata.x);
                     this.gata.setAlpha(0);
@@ -139,6 +155,10 @@ class NivelA1 extends Phaser.Scene{
 
     update(time, delta) {
         //MOVIMIENTOS
+        if(this.movimientoGata)
+        {
+            this.gata.anims.play('gataIdle',true);
+        }
         if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
@@ -168,6 +188,7 @@ class NivelA1 extends Phaser.Scene{
 
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
         {
+            this.dog.anims.play('dogSalto',true);
             this.dog.setVelocityY(-500);
         }
         }

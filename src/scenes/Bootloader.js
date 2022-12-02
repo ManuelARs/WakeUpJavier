@@ -18,6 +18,7 @@ class Bootloader extends Phaser.Scene{
         this.load.audio('nivelAM', ['NivelA/nivelA.mp3']);   
         this.load.image(['NivelA/Eliminar-cama', 'NivelA/Eliminar-mirror', 'NivelA/fondo_opc1', 'NivelA/espejo', 'NivelA/espejo2','NivelA/instrucciones1']);
         this.load.atlas('Javier', 'JavierSprite/javier.png', 'JavierSprite/javier.json');
+        this.load.atlas('Gata', 'gataSprite/gata.png', 'gataSprite/gata.json');
         //PARA NIVEL A1
         this.load.audio('nivel1M', ['NivelA1/nivel1.mp3']);
         this.load.audio('abejaM', ['NivelA1/abejas.mp3']);
@@ -72,7 +73,7 @@ class Bootloader extends Phaser.Scene{
         //PARA NIVEL C4
         this.load.image(['NivelC4/NivelC4','NivelC4/barra','NivelC4/muro', 'NivelC4/mascara', 'NivelC4/guardia']);
         //PARA NIVEL C5
-        this.load.image(['NivelC5/NivelC5']);
+        this.load.image(['NivelC5/NivelC5','NivelC5/palacioEnemigo', 'NivelC5/ninja']);
         //PARA NIVEL C6
         this.load.image(['NivelC6/NivelC6','NivelC6/palacioEnemigo','NivelC6/puerta']);
         //PARA NIVEL C7
@@ -111,8 +112,8 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC7', { hud: 1, musica: this.musicaFondoB });
-        //this.scene.launch('Menu');
+        this.scene.start('NivelB1', { hud: 1, musica: this.musicaFondoB });
+        // this.scene.launch('Menu');
         console.log(this.scene.manager.scenes)
     }
 

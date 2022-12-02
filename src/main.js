@@ -30,6 +30,7 @@ import NivelC7 from "./scenes/NivelC7.js";
 import NivelC8 from "./scenes/NivelC8.js";
 import NivelC9 from "./scenes/NivelC9.js";
 import NivelC10 from "./scenes/NivelC10.js";
+import NivelD from "./scenes/NivelD.js";
 
 
 const config = {

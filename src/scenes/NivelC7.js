@@ -174,7 +174,7 @@ class NivelC7 extends Phaser.Scene{
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');

@@ -37,6 +37,18 @@ class HUD extends Phaser.Scene{
         });
         this.groupLife2.setAlpha(0);
 
+        this.groupLife3 = this.add.group({
+            key: 'HUD/heart',
+            repeat: 9,
+            setScale: { x: 0.25, y: 0.25},
+            setXY: {
+                x: 1100,
+                y: 25,
+                stepX: 50
+            }
+        });
+        this.groupLife3.setAlpha(0);
+
         //NIVEL
         this.nivel ="NivelA4"
         this.musica = ""
@@ -53,6 +65,9 @@ class HUD extends Phaser.Scene{
         // TEXTO CONTADOR ESTRELLA
         // this.starTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
 
+        this.registry.events.on('mata', () => {
+            this.registry.events.removeAllListeners();
+        });
         //APARECER DESAPARECER HUD
         this.registry.events.on('apareceHUD', () => {
             this.groupLife.setAlpha(1)
@@ -71,6 +86,15 @@ class HUD extends Phaser.Scene{
             this.groupLife2.setAlpha(0)
         });
 
+        this.registry.events.on('apareceHUD3', () => {
+            // console.log("Entra aparecerCorazones2")
+            console.log(this.groupLife3)
+            this.groupLife3.setAlpha(1)
+        });
+        this.registry.events.on('desapareceHUD3', () => {
+            this.groupLife3.setAlpha(0)
+        });
+
         //CAMBIO NIVEL Y MUSICA
         this.registry.events.on('cambioNivelB', () => {
             console.log("CAMBIO NIVEL")
@@ -79,7 +103,7 @@ class HUD extends Phaser.Scene{
         });
         this.registry.events.on('cambioNivelC', () => {
             console.log("CAMBIO NIVEL C2")
-            console.log(this.groupLife2)
+            console.log(this.groupLife3)
             this.nivel="NivelC2"
         });
         this.registry.events.on('Musica', (data) => {
@@ -96,6 +120,12 @@ class HUD extends Phaser.Scene{
             console.log("Entro a loseheartB")
             this.groupLife2.getChildren()[this.groupLife2.getChildren().length - 1].destroy();
             console.log(this.groupLife2.getChildren().length)
+        });
+
+        this.registry.events.on('loseHeartC', () => {
+            console.log("Entro a loseheartC")
+            this.groupLife3.getChildren()[this.groupLife3.getChildren().length - 1].destroy();
+            console.log(this.groupLife3.getChildren().length)
         });
 
         this.registry.events.on('game_over', () => {

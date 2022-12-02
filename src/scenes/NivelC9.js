@@ -197,7 +197,7 @@ class NivelC9 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.bullets, () => {
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');
@@ -224,7 +224,7 @@ class NivelC9 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.picos, () => {
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');
@@ -236,7 +236,7 @@ class NivelC9 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.picos2, () => {
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');

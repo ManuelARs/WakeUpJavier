@@ -31,7 +31,7 @@ class NivelA5 extends Phaser.Scene{
         this.musicaFondoA.resume()
         if(this.hud==1)
         {
-          this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
+          // this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
           this.musicaFondoA.play();
         }
         this.registry.events.emit('Musica',this.musicaFondoA);

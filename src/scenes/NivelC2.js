@@ -108,9 +108,9 @@ class NivelC2 extends Phaser.Scene{
         this.physics.add.overlap(this.javier, this.estrella, collectObjeto, null, this);
         function collectObjeto (jugador,estrella)
         {
-            this.registry.events.emit('apareceHUD2');
-            this.registry.events.emit('cambioNivelC');
             this.estrella.disableBody(true,true);
+            this.registry.events.emit('apareceHUD3');
+            this.registry.events.emit('cambioNivelC');
             picos.getChildren()[0].enableBody(false,0,0,true,true);
             picos.getChildren()[1].enableBody(false,0,0,true,true);
             picos.getChildren()[2].enableBody(false,0,0,true,true);
@@ -156,7 +156,7 @@ class NivelC2 extends Phaser.Scene{
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');

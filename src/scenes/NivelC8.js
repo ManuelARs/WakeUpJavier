@@ -82,7 +82,7 @@ class NivelC8 extends Phaser.Scene{
         this.barrasPicos.create(1500,710, 'NivelC7/barra').setScale(0.45,0.5).refreshBody(); //Barra Picos6
         
         //PICOS
-        this.picos = this.physics.add.image(890, 750, 'NivelC7/picos').setScale(0.45,0.35).setAlpha(0);
+        this.picos = this.physics.add.image(890, 750, 'NivelC7/picos').setScale(0.45,0.35);
         this.picos.setPushable(false);
         this.picos.body.setAllowGravity(false);
         this.picos2 = this.physics.add.image(1480, 400, 'NivelC7/picos2').setScale(0.17,0.2);
@@ -115,6 +115,7 @@ class NivelC8 extends Phaser.Scene{
             objeto.disableBody(true, true);
             //console.log("Entro a collectObjeto");
             this.torres.getChildren()[0].enableBody(false,0,0,true,true);
+            this.picos2.disableBody(true,true);
             // this.registry.events.emit('getStar',1);
         }
 
@@ -165,9 +166,10 @@ class NivelC8 extends Phaser.Scene{
         });
         //COLISIÓN CON PICOS
         this.physics.add.collider(this.javier, this.picos, () => {
+            this.registry.events.emit('cambioNivelC');
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');
@@ -179,7 +181,7 @@ class NivelC8 extends Phaser.Scene{
         this.physics.add.collider(this.javier, this.picos2, () => {
             this.cameras.main.shake(500,0.008);
             this.life--;
-            this.registry.events.emit('loseHeartB');
+            this.registry.events.emit('loseHeartC');
             if(this.life === 0) {
                 this.musicaFondo.stop();
                 this.registry.events.emit('game_over');

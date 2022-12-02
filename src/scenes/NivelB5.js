@@ -227,7 +227,9 @@ class NivelB5 extends Phaser.Scene{
             this.sobre.disableBody(true,true);
             this.musicaFondoB.stop();
             this.musicaFondoCarta.play()
+            console.log("Entra collider sobre")
             this.registry.events.emit('desapareceHUD2');
+            this.registry.events.emit('mata');
             this.movimiento = 0;
             this.javier.body.stop();
             this.carta.setAlpha(1); 
@@ -250,7 +252,8 @@ class NivelB5 extends Phaser.Scene{
                             alpha: 1,
                             duration: 4000,
                             onComplete: () => {
-                                    //console.log('Se completa el tween');
+                                    console.log('Se completa el tween');
+                                    
                                     this.musicaFondoCarta.stop()
                                     this.scene.start('NivelC1');
                             },

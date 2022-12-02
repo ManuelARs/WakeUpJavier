@@ -55,7 +55,7 @@ class NivelC7 extends Phaser.Scene{
         //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 20 SEGUNDOS
         setTimeout(() => {
             this.instrucciones.setAlpha(0);
-        }, 20000);
+        }, 25000);
 
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 358, 'NivelC7/NivelC7').setDepth(-2).setScale(.37,.34);
@@ -75,7 +75,7 @@ class NivelC7 extends Phaser.Scene{
         this.anims.create({ key: 'samuraiEscalar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiE', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 6 });
 
         // ESCALERA 
-        this.escalera = this.add.image(300, 215, 'NivelC7/escalera').setScale(1.5);
+        this.escalera = this.add.image(327, 215, 'NivelC7/escalera').setScale(1.5);
         //CUERDA
         this.cuerda = this.add.image(495, 342, 'NivelC7/cuerda').setScale(0.746,0.3);
         // this.cuerda.body.setSize(300,10);

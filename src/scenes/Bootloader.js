@@ -84,6 +84,8 @@ class Bootloader extends Phaser.Scene{
         this.load.image(['NivelC9/NivelC9','NivelC9/barra','NivelC9/escalar','NivelC9/picos','NivelC9/puerta','NivelC9/estrella']);
         //PARA NIVEL C10
         this.load.image(['NivelC10/NivelC10','NivelC10/escalar','NivelC10/mascara','NivelC10/gong','NivelC10/puerta','NivelC10/reflejo','NivelC10/japones']);
+        //PARA NIVEL D
+        this.load.image(['NivelD/dialogo1_1','NivelD/dialogo1_2','NivelD/dialogo1_3','NivelD/dialogo1_4','NivelD/dialogo1_5','NivelD/fondoDialogo','NivelD/fondoFinal']);
         //PARA ESCENA GAMEOVER
         this.load.image(['GameOver/gameOverBack','Menu/botonMenu',]);
         this.load.audio('gameOver', ['GameOver/game_over.mp3']);
@@ -100,7 +102,7 @@ class Bootloader extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start('NivelC7', { hud: 1, musica: this.musicaFondoB });
+        this.scene.start('Menu', { hud: 1, musica: this.musicaFondoB });
         //this.scene.launch('Menu');
         //console.log(this.scene.manager.scenes)
     }

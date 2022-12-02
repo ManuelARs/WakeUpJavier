@@ -7,11 +7,11 @@ class HUD extends Phaser.Scene{
 
     init() {
         console.log('Escena HUD');
-        this.scene.moveAbove('NivelC1','HUD');
+        this.scene.moveAbove('NivelC10','HUD');
     }
 
     create() {
-        // IMAGEN CORAZONES
+        // IMAGENES CORAZONES
         this.groupLife = this.add.group({
             key: 'HUD/heart',
             repeat: 2,
@@ -22,7 +22,6 @@ class HUD extends Phaser.Scene{
                 stepX: 50
             }
         });
-        this.groupLife.setAlpha(0);
         this.groupLife.setAlpha(0);
 
         //IMAGENES CORAZONES 2
@@ -41,6 +40,7 @@ class HUD extends Phaser.Scene{
         //NIVEL
         this.nivel ="NivelA4"
         this.musica = ""
+        
         // TEXTO CONTADOR ESTRELLA
         // this.coraTexto = this.add.text(70,30,'0/4',{fontFamily: 'Consolas',color: '#f8f9f9',fontSize: '22px'}).setDepth(1);
 
@@ -76,6 +76,11 @@ class HUD extends Phaser.Scene{
             console.log("CAMBIO NIVEL")
             console.log(this.groupLife2)
             this.nivel="NivelB2"
+        });
+        this.registry.events.on('cambioNivelC', () => {
+            console.log("CAMBIO NIVEL C2")
+            console.log(this.groupLife2)
+            this.nivel="NivelC2"
         });
         this.registry.events.on('Musica', (data) => {
             this.musica=data
@@ -124,8 +129,6 @@ class HUD extends Phaser.Scene{
             this.starTexto.text = this.data.list.estrellas + '/4';
 
         });
-
-
     }
     
     update(time, delta) {

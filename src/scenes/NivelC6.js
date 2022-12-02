@@ -5,8 +5,16 @@ class NivelC6 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC6');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -19,6 +27,17 @@ class NivelC6 extends Phaser.Scene{
 
         //BANDERAS
         this.movimiento = 1; 
+        //MUSICA
+        if(this.hud!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
 
         //FONDO
         this.fondo = this.add.image(790, 385, 'NivelC6/NivelC6').setDepth(-2).setScale(.38,.32);
@@ -44,7 +63,9 @@ class NivelC6 extends Phaser.Scene{
         
         //COLISIONES
         this.javier.body.setCollideWorldBounds(true);
-        this.physics.add.collider(this.javier, this.puerta, () => {this.scene.start('NivelC9');});
+        this.physics.add.collider(this.javier, this.puerta, () => {this.scene.start('NivelC7', { score:this.life, musica: this.musicaFondo})
+        // this.scene.start('NivelC7');
+        });
         //TECLADO
         this.cursors = this.input.keyboard.createCursorKeys();
     }

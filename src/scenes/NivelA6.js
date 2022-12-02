@@ -18,22 +18,30 @@ class NivelA6 extends Phaser.Scene{
     }
     create() {
         this.registry.events.emit('desapareceHUD');
+        
         //CONTADORES
         let contador = 0;
         this.aciertos = 0;
+        
         //BANDERAS
         this.ganasteB=false;
+        
         //TEMPORIZADOR
         this.tiempoRestante = 95
         this.timer
+        
         //TIMER
         this.timedEvent;
+        
         //FONDO
         this.fondo = this.add.image(800,400, "NivelA6/fondo_memorama").setScale(0.37,0.32);
+        
         //TEXTO PUNTAJE
         this.text = this.add.text(700,12,'',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);
+        
         //INSTRUCCIONES
         this.instrucciones = this.add.image(300, 310, 'NivelA6/instrucciones').setScale(0.4);
+        
         //DIÁLOGOS
         this.fondoDialogo = this.add.image(280, 160, 'NivelA6/fondoDialogo').setScale(0.35).setAlpha(0);
         this.pastorCara = this.add.image(430, 130, 'NivelA6/pastorCara').setScale(1.7).setAlpha(0);
@@ -42,6 +50,7 @@ class NivelA6 extends Phaser.Scene{
         //PERSONAJES
         //Perro Javier
         this.dog = this.add.sprite(200, 650, 'Dog2', 0).setScale(0.2);
+        
         //ANIMACIONES
         this.anims.create({ key: 'dogIdle2', frames: this.anims.generateFrameNames('Dog2', { prefix: 'dogIdleL', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
         this.dog.anims.play('dogIdle2',true);
@@ -53,6 +62,7 @@ class NivelA6 extends Phaser.Scene{
             this.textoContador.setText('TIEMPO RESTANTE: ' + this.tiempoRestante);
         }
         this.textoContador = this.add.text(1120, 12, 'TIEMPO RESTANTE: ',{fontFamily: 'Consolas',color: 'black',fontSize: '30px'}).setDepth(10);;
+        
         //CONSTANTE 
         const eventos = Phaser.Input.Events;
         //MÚSICA DE FONDO
@@ -87,6 +97,7 @@ class NivelA6 extends Phaser.Scene{
         this.lentes2 = this.add.image(375, 600, "NivelA6/lentes").setInteractive();
         this.pastor2 = this.add.image(625, 825, "NivelA6/pastor").setInteractive();
         this.pelota2 = this.add.image(1125, 600, "NivelA6/pelota").setInteractive();
+       
         //LOGICA PARA TARJETAS RANDOM
         let cards = [this.abeja, this.casa, this.gato, this.hidrante, this.huellas, this.hueso, this.javier, this.lentes, this.pastor, this.pelota, this.abeja2, this.casa2, this.gato2, this.hidrante2, this.huellas2, this.hueso2, this.javier2, this.lentes2, this.pastor2, this.pelota2];
         let pares = [[1260, 480], [860, 130], [1060, 130], [1260, 130], [1460,130], [660, 300], [860, 300], [1060, 300], [1260, 300], [660, 480], [860, 650], [1060, 480], [1260, 650], [660, 130], [1460, 650], [1460, 300], [660, 650], [860, 480], [1060, 650], [1460, 480]]
@@ -147,6 +158,7 @@ class NivelA6 extends Phaser.Scene{
             cardsBack[i].y = pares[random][1]
             pares.splice(random,1)
         }
+        
         //FUNCIÓN QUE MODIFICA EL TAMAÑO Y ORIGEN DE LAS CUBIERTAS
         for (let card of cardsBack){
             card.setDisplaySize(150,150);

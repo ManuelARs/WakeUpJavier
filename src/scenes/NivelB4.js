@@ -10,6 +10,14 @@ class NivelB4 extends Phaser.Scene{
         console.log('init', data);
         this.musicaFondoB = data.musica;
         this.life = data.score;
+        // if(this.hud2==1)
+        // {
+        //     this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
+        //     // this.musicaFondoB.play();
+        //     this.scene.launch('HUD');
+        //     this.registry.events.emit('Musica',this.musicaFondoB);
+        //     this.registry.events.emit('apareceHUD2');
+        // }
     }
 
     preload() {
@@ -57,7 +65,7 @@ class NivelB4 extends Phaser.Scene{
         this.tierraP2 = this.physics.add.image(460, 540, 'NivelB4/tierra2').setScale(.35);
         this.tierraP2.body.setAllowGravity(false);
         this.tierraP2.setPushable(false);
-        this.tierraP3 = this.physics.add.image(1000, 530, 'NivelB4/tierra2').setScale(.35);
+        this.tierraP3 = this.physics.add.image(1020, 530, 'NivelB4/tierra2').setScale(.35);
         this.tierraP3.body.setAllowGravity(false);
         this.tierraP3.setPushable(false);
         this.tierraP4 = this.physics.add.image(1100, 270, 'NivelB4/tierra2').setScale(.35).disableBody(true, true);
@@ -77,6 +85,7 @@ class NivelB4 extends Phaser.Scene{
         this.tronco.body.setAllowGravity(false);
         this.tronco.setPushable(true);
         this.tronco.body.setSize(80, 80);
+        // this.tronco.setVelocity(-100)
 
         //maquina
         this.maquina = this.physics.add.image(750, 110, 'NivelB4/maquina').setScale(0.1);
@@ -131,7 +140,7 @@ class NivelB4 extends Phaser.Scene{
         this.fondoDialogo = this.add.image(790, 135, 'NivelA1/fondoDialogo').setScale(0.4, 0.3).setAlpha(1).setDepth(10);
         this.javierCara = this.add.image(125, 135, 'NivelB3/caraMonstruo').setScale(1.4).setAlpha(0).setDepth(10);
         this.enemigo = this.add.image(1470, 135, 'NivelB4/caraEnemigo').setScale(0.9).setAlpha(1).setDepth(10);
-        this.abiCara = this.add.image(1420, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(0);
+        this.abiCara = this.add.image(1420, 105, 'NivelB4/caraAbi').setScale(0.55).setAlpha(0).setDepth(10);
         this.dialogo1 = this.add.image(770, 135, 'NivelB4/dialogo4_1').setScale(0.7).setAlpha(1).setDepth(10);
         this.dialogo2 = this.add.image(1000, 135, 'NivelB4/dialogo4_2').setScale(0.7).setAlpha(0).setDepth(10);
         this.dialogo3 = this.add.image(730, 135, 'NivelB4/dialogo4_3').setScale(0.55).setAlpha(0).setDepth(10);
@@ -412,6 +421,7 @@ class NivelB4 extends Phaser.Scene{
                         this.monstruo.setAlpha(0);
                         this.fondoDialogo.setAlpha(0)
                         this.dialogo5.setAlpha(0)
+                        this.abiCara.setAlpha(0)
                     },
                     duration: 3000,
                 })

@@ -84,7 +84,7 @@ class NivelB3 extends Phaser.Scene{
         }
 
         //moras
-        this.moraMarcador = this.add.image(1280, 15, 'NivelB3/mora', 0).setScale(0.19);
+        this.moraMarcador = this.add.image(80, 15, 'NivelB3/mora', 0).setScale(0.19);
         this.mora1 = this.physics.add.image(200, 550, 'NivelB3/mora', 0).setScale(0.3);
         this.mora2 = this.physics.add.image(40, 250, 'NivelB3/mora', 0).setScale(0.3);
         this.mora3 = this.physics.add.image(310, 370, 'NivelB3/mora', 0).setScale(0.3);
@@ -220,10 +220,37 @@ class NivelB3 extends Phaser.Scene{
             objeto.disableBody(true, true)
         }
 
-
+        //PRUEBAS----------------------------------------------
         //Teclado
         this.cursors = this.input.keyboard.createCursorKeys();
         this.teclado = Phaser.Input.Keyboard;
+
+        this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
+            if(this.aciertos == 9 && this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
+                if(this.lastconversacion==0)
+                {
+                    this.javier.body.stop();
+                    this.entrega.x = 2000
+                    this.registry.events.emit('desapareceHUD2');
+                    this.fondoDialogo.setAlpha(1);
+                    this.dialogo3.setAlpha(1);
+                    this.monstruoCara.setAlpha(1);
+                    this.movimiento=0
+                    this.tronco15.disableBody(true, true)
+                    setTimeout(() => {
+                        // this.scene.start('NivelB4');
+                        this.movimiento=1
+                        this.lastconversacion=1
+                        this.fondoDialogo.setAlpha(0);
+                        this.dialogo3.setAlpha(0);
+                        this.monstruoCara.setAlpha(0);
+                        this.aciertos = 0;
+                        this.registry.events.emit('apareceHUD2');
+                    }, 4000);
+                }
+            }
+
+        });
  
     }
 
@@ -267,31 +294,6 @@ class NivelB3 extends Phaser.Scene{
             this.entrega.setAlpha(1)
             this.tuerca1.disableBody(true, true)
             this.tuerca3.disableBody(true, true)
-            this.input.keyboard.addKey(this.teclado.KeyCodes.E).on('down', () => {
-                if(this.javier.x > 150 && this.javier.x < 400 && this.javier.y > 500) {
-                    if(this.lastconversacion==0)
-                    {
-                        this.javier.body.stop();
-                        this.entrega.x = 2000
-                        this.registry.events.emit('desapareceHUD2');
-                        this.fondoDialogo.setAlpha(1);
-                        this.dialogo3.setAlpha(1);
-                        this.monstruoCara.setAlpha(1);
-                        this.movimiento=0
-                        this.tronco15.disableBody(true, true)
-                        setTimeout(() => {
-                            // this.scene.start('NivelB4');
-                            this.movimiento=1
-                            this.lastconversacion=1
-                            this.fondoDialogo.setAlpha(0);
-                            this.dialogo3.setAlpha(0);
-                            this.monstruoCara.setAlpha(0);
-                            this.registry.events.emit('apareceHUD2');
-                        }, 4000);
-                    }
-                }
-    
-            });
        }
        
     }

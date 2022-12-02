@@ -15,21 +15,27 @@ class Menu extends Phaser.Scene{
         this.click1 = false;
         this.click2 = false;
         this.noSound = false;
+        
         // IMÁGENES DE MENÚ
         this.fondo = this.add.image(800,400, 'Menu/fondo2').setScale(.37,.33);
         this.logo = this.add.image(450,320, 'Menu/logo2').setScale(1).setDepth(4);
         this.noobLovers = this.add.image(420,100, 'Menu/noobLovers').setScale(.5).setDepth(4);
         this.play = this.add.image(430,600, 'Menu/play').setScale(.25).setInteractive().setDepth(4);
+        
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0,0,1580,780);
         this.cameras.main.fadeIn(1500);
+        
         // MÚSICA DE FONDO
         this.mainmenu = this.sound.add('InicioM', {loop:false,volume: 0.8});
         this.mainmenu.play();
+        
         // SONIDO CLICK SOBRE BOTÓN
         this.pop = this.sound.add('pop', {loop:false,volume: 0.3});
+        
         // CONSTANTE EVENTOS
         const eventos = Phaser.Input.Events;
+        
         // Nubes derecha
         this.nube1 = this.add.image(-200,150, 'Menu/nube').setAlpha(0.2).setScale(0.6);
         this.nube2 = this.add.image(50,150, 'Menu/nube').setAlpha(0.2).setScale(0.3);
@@ -89,6 +95,7 @@ class Menu extends Phaser.Scene{
                 this.pop.play();
             }
         });
+        
         // EVENTO SÓLO PARA PLAY
         this.play.on(eventos.POINTER_DOWN, function () {
             this.sound.pauseAll();

@@ -12,14 +12,14 @@ class NivelA1 extends Phaser.Scene{
 
     create() {
         // this.scene.moveAbove('Bootloader','HUD');
-        //console.log(this.scene.manager.scenes);
+        this.movimientoGata = 1
+
         //BOUNDS DE ESCENA
         this.physics.world.setBounds(0,0,1580, 720)
         
         //CAMARA INICIAL EFECTO FADE IN
         this.cameras.main.setBounds(0, 0, 1580, 780);
         this.cameras.main.fadeIn(1000);
-        //this.cameras.main.startFollow(this.dog, true);
 
         //BANDERA
         this.movimiento = 0;
@@ -27,7 +27,7 @@ class NivelA1 extends Phaser.Scene{
         //MÚSICA
         this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
         this.musicaFondoA.play();
-        console.log(this.musicaFondoA)
+        //console.log(this.musicaFondoA)
         
         //FONDO 
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
@@ -55,16 +55,20 @@ class NivelA1 extends Phaser.Scene{
         this.dog = this.physics.add.sprite(100, 610, 'Dog', 0).setScale(0.2);
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
-        // this.dog.body.setImmovable(true);
-        //Gata Mia
-        this.gata = this.physics.add.image(600, 600, 'NivelA1/Eliminar-gata', 0).setScale(1.8);
-        this.gata.body.setSize(60, 50);
+
+        this.gata = this.physics.add.sprite(600,560, 'Gata', 0).setScale(3)
+        this.gata.body.setSize(20, 55);
+        this.gata.body.setMass(1);
         this.gata.setPushable(false);
-        //this.gata.body.setImmovable(true);
+        this.gata.flipX=true;
+        // this.gata.body.setImmovable(true);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
         this.anims.create({ key: 'dogIdle', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogIdle', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 2 });
+        this.anims.create({ key: 'dogSalto', frames: this.anims.generateFrameNames('Dog', { prefix: 'dogSalto', suffix: '.png', start: 1, end:4 }), repeat: 0, frameRate: 4 });
+        this.anims.create({ key: 'gataC', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataC', suffix: '.png', start: 1, end: 6 }), repeat: -1, frameRate: 8 });
+        this.anims.create({ key: 'gataIdle', frames: this.anims.generateFrameNames('Gata', { prefix: 'gataIdle', suffix: '.png', start: 1, end:4 }), repeat: -1, frameRate: 4 });
     
 
         //DIÁLOGO DE JAVIER
@@ -72,7 +76,6 @@ class NivelA1 extends Phaser.Scene{
             this.dogCara.setAlpha(1);
             this.fondoDialogo.setAlpha(1);
             this.dialogo1.setAlpha(1);
-            //console.log("Entra primer Timeout")
         }, 1500);
         setTimeout(() => {
             this.dogCara.setAlpha(0);
@@ -96,8 +99,8 @@ class NivelA1 extends Phaser.Scene{
             this.movimiento = 0;
             this.dog.x=496.6;
             this.dog.y=624.9;
-            console.log(this.dog.x)
-            console.log(this.dog.y)
+            // console.log(this.dog.x)
+            // console.log(this.dog.y)
             this.gataCara.setAlpha(1);
             this.fondoDialogo.setAlpha(1);
             this.dialogo2.setAlpha(1);
@@ -107,18 +110,21 @@ class NivelA1 extends Phaser.Scene{
                 this.fondoDialogo.setAlpha(0);
                 this.dialogo2.setAlpha(0);
                 this.instrucciones.setAlpha(0);
-                this.gata.flipX=1;
             }, 4000);
             this.tweens = this.add.tween({
             targets: [this.gata],
             x: 1600,
             delay: 5000,
             duration: 4000,
+            onStart: () => {
+                this.movimientoGata = 0
+                this.gata.anims.play('gataC',true);
+                this.gata.flipX=false;
+            },
             onComplete: () => {
-                    console.log(this.gata.x);
+                    // console.log(this.gata.x);
                     this.gata.setAlpha(0);
                     this.gata.disableBody(true, true);
-                    //console.log('Se completa el tween');
                     this.movimiento = 1;
                 },
             });
@@ -136,9 +142,12 @@ class NivelA1 extends Phaser.Scene{
         
     }
 
-
     update(time, delta) {
         //MOVIMIENTOS
+        if(this.movimientoGata)
+        {
+            this.gata.anims.play('gataIdle',true);
+        }
         if(this.movimiento==0)
         {
             this.dog.anims.play('dogIdle',true);
@@ -168,6 +177,7 @@ class NivelA1 extends Phaser.Scene{
 
         if ((this.cursors.up.isDown && this.dog.body.onFloor()))
         {
+            this.dog.anims.play('dogSalto',true);
             this.dog.setVelocityY(-500);
         }
         }

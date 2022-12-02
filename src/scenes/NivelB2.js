@@ -10,7 +10,6 @@ class NivelB2 extends Phaser.Scene{
         console.log('init', data);
         this.hud2 = data.hud;
         this.musicaFondoB = data.musica;
-        console.log(this.musicaFondoB)
         if(this.hud2==1)
         {
             this.musicaFondoB = this.sound.add('nivel2M',{loop:true});
@@ -25,6 +24,7 @@ class NivelB2 extends Phaser.Scene{
     // }
     
     create() {
+        this.hacerCambio = 1
         //IMAGENES DE FONDO
         this.fondo = this.add.image(775, 360, 'NivelB2/NivelB2').setDepth(-2).setScale(.37,.32);
         this.flecha = this.add.image(1420, 170, 'NivelB2/flecha').setScale(1.2);
@@ -42,7 +42,6 @@ class NivelB2 extends Phaser.Scene{
         if(this.hud2==1)
         {   
             this.registry.events.emit('apareceHUD2');
-            console.log(this.musicaFondoB)
             this.musicaFondoB.play()
         }
         //PERSONAJES
@@ -126,6 +125,7 @@ class NivelB2 extends Phaser.Scene{
             this.javier.x=70
             this.cameras.main.shake(700,0.005);
             this.life--;
+            this.registry.events.emit('cambioNivelB');
             this.registry.events.emit('loseHeartB');
             this.registry.events.emit('apareceHUD2');
             if(this.life === 0) {
@@ -134,7 +134,14 @@ class NivelB2 extends Phaser.Scene{
                 this.scene.stop()
             }
          });
-         this.physics.add.collider(this.javier, this.pasto1);
+        //  this.physics.add.collider(this.javier, this.pasto1);
+         this.physics.add.collider(this.javier, this.pasto1, () => {
+            if(this.hacerCambio) {
+                this.registry.events.emit('cambioNivelB');
+                this.registry.events.emit('apareceHUD2');
+                this.hacerCambio = 0
+            }
+         });
          this.physics.add.collider(this.javier, this.pasto2);
          this.physics.add.collider(this.javier, this.pasto3);
          this.physics.add.collider(this.javier, this.pasto4);

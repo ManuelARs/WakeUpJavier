@@ -5,8 +5,16 @@ class NivelC8 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC8');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -19,32 +27,28 @@ class NivelC8 extends Phaser.Scene{
 
         //BANDERAS
         this.movimiento = 1; 
+        //MUSICA
+        if(this.hud!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
+
 
         //BOUNDS DE ESCENA
         this.physics.world.setBounds(0,0,1580, 750);
-
-        // // CONTADOR VIDAS
-        // this.contadorVidas=3;
-        // //console.log(this.scene.manager.scenes)
-        // //MANEJO DE SCENE
-        // this.scene.moveAbove('SceneA','HUD');
-        // //MÚSICA
-        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        // this.musicaFondo.play();
-
-        // // IMAGEN INSTRUCCIONES
-        // this.instrucciones = this.add.image(750,25, 'instrucciones').setDepth(4).setScale(0.28);
-        // //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 19 SEGUNDOS
-        // setTimeout(() => {
-        //     this.instrucciones.setAlpha(0);
-        // }, 19000);
 
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 358, 'NivelC7/NivelC7').setDepth(-2).setScale(.37,.34);
 
         //PERSONAJES
         //Javier Samurai
-        this.javier = this.physics.add.sprite(60, 40, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
+        this.javier = this.physics.add.sprite(60, 40, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.15);
         this.javier.body.setSize(300, 400);
         this.javier.body.setOffset(400,400);
         this.javier.body.setMass(1);
@@ -112,7 +116,7 @@ class NivelC8 extends Phaser.Scene{
             //console.log("Entro a collectObjeto");
             this.torres.getChildren()[0].enableBody(false,0,0,true,true);
             this.picos2.disableBody(true,true);
-            this.registry.events.emit('getStar',1);
+            // this.registry.events.emit('getStar',1);
         }
 
         function collectObjeto2(jugador, objeto)
@@ -121,7 +125,7 @@ class NivelC8 extends Phaser.Scene{
             this.barrasPicos.getChildren()[0].enableBody(false,0,0,true,true);
             this.barrasPicos.getChildren()[2].enableBody(false,0,0,true,true);
             this.torres.getChildren()[1].enableBody(false,0,0,true,true);
-            this.registry.events.emit('getStar',1);
+            // this.registry.events.emit('getStar',1);
         }
 
         function collectObjeto3(jugador, objeto)
@@ -129,7 +133,7 @@ class NivelC8 extends Phaser.Scene{
             objeto.disableBody(true, true);
             this.barrasPicos.getChildren()[2].disableBody(true,true);
             this.torres.getChildren()[2].disableBody(true,true);
-            this.registry.events.emit('getStar',1);
+            // this.registry.events.emit('getStar',1);
         }
     
         //FÍSICAS Y COLISIONES
@@ -163,31 +167,34 @@ class NivelC8 extends Phaser.Scene{
         //COLISIÓN CON PICOS
         this.physics.add.collider(this.javier, this.picos, () => {
             this.cameras.main.shake(500,0.008);
-            //this.finalScore -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
             this.javier.body.y=10;
-            // if (this.finalScore==0){
-            //     this.sound.pauseAll();
-            //     this.scene.start('GameOver');
-            // }
         });
         this.physics.add.collider(this.javier, this.picos2, () => {
             this.cameras.main.shake(500,0.008);
-            //this.finalScore -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
             this.javier.body.y=10;
-            // if (this.finalScore==0){
-            //     this.sound.pauseAll();
-            //     this.scene.start('GameOver');
-            // }
         });
         //COLISIÓN CON PUERTA / FINAL DE NIVEL
         this.physics.add.collider(this.javier, this.puerta, () => {
-            this.sound.pauseAll();
+            // this.sound.pauseAll();
             // this.registry.events.emit('YouWin');
-            this.scene.start('NivelC9');
+            // this.scene.start('NivelC9');
+            this.scene.start('NivelC9', { score:this.life, musica: this.musicaFondo})
         });
 
         //TECLADO

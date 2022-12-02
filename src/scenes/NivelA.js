@@ -52,7 +52,6 @@ class NivelA extends Phaser.Scene{
         this.javier.body.setCollideWorldBounds(true);
         this.javier.setCollideWorldBounds(true);
         this.espejo.body.setCollideWorldBounds(true);
-        //this.javier.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 1580, 635));
         this.physics.add.existing(this.espejo, true);
         
         //COLISIÓN DE JAVIER CON ESPEJO
@@ -107,7 +106,6 @@ class NivelA extends Phaser.Scene{
         }
         }
     }
-
 }
 
 export default NivelA;

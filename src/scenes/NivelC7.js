@@ -5,8 +5,16 @@ class NivelC7 extends Phaser.Scene{
         });
     }
 
-    init() {
+    init(data) {
         console.log('Escena NivelC7');
+        console.log('init', data);
+        this.hud2 = data.hud;
+        this.musicaFondo = data.musica;
+        this.life = data.score
+        if(this.hud2==1)
+        {
+            this.scene.launch('HUD');
+        }
     }
     
     create() {
@@ -20,49 +28,34 @@ class NivelC7 extends Phaser.Scene{
         //BANDERAS
         this.movimiento = 1; 
 
+        //MUSICA
+        if(this.hud!=1){
+            // this.musicaFondo.resume()
+        }
+        if(this.hud2==1)
+        {   
+            this.musicaFondo = this.sound.add('nivelC',{loop:true});
+            this.life = 10;
+            // this.registry.events.emit('apareceHUD2');
+            this.musicaFondo.play()
+        }
+
         //BOUNDS DE ESCENA
         this.physics.world.setBounds(0,0,1580, 750);
 
-        // this.cameras.main.on(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, () => {
-        //     this.cameras.main.pan(100, 702, 2000);
-        //     this.cameras.main.setZoom(5);
-        // });
-        
-        // this.cameras.main.on(Phaser.Cameras.Scene2D.Events.PAN_COMPLETE, () => {
-        //     if(this.paneo == 0){
-        //         setTimeout( () => {
-        //             // PANEO A LA PUERTA(GONG)
-        //             this.cameras.main.pan(this.puerta.x, this.puerta.y, 2000);
-        //         }, 1000);
-        //         setTimeout( () => {
-        //             this.cameras.main.setZoom(1);
-        //         }, 5000);
-        //         this.paneo = 1;
-        //     }
-        // });
-
-        // // CONTADOR VIDAS
-        // this.contadorVidas=3;
-        // //console.log(this.scene.manager.scenes)
-        // //MANEJO DE SCENE
-        // this.scene.moveAbove('SceneA','HUD');
-        // //MÚSICA
-        // this.musicaFondo = this.sound.add('musicaFondo',{loop:false});
-        // this.musicaFondo.play();
-
-        // // IMAGEN INSTRUCCIONES
-        // this.instrucciones = this.add.image(750,25, 'instrucciones').setDepth(4).setScale(0.28);
-        // //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 19 SEGUNDOS
-        // setTimeout(() => {
-        //     this.instrucciones.setAlpha(0);
-        // }, 19000);
+        // IMAGEN INSTRUCCIONES
+        this.instrucciones = this.add.image(750,25, 'NivelC7/instrucciones').setDepth(4).setScale(0.28);
+        //LAS INSTRUCCIONES DESAPARECEN DESPUÉS DE 20 SEGUNDOS
+        setTimeout(() => {
+            this.instrucciones.setAlpha(0);
+        }, 25000);
 
         //FONDO Y SPRITE
         this.fondo = this.add.image(800, 358, 'NivelC7/NivelC7').setDepth(-2).setScale(.37,.34);
 
         //PERSONAJES
         //Javier Samurai
-        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.12);
+        this.javier = this.physics.add.sprite(60, 740, 'Samurai', 0).setAlpha(1).setDepth(3).setScale(0.15);
         this.javier.body.setSize(300, 400);
         this.javier.body.setOffset(400,400);
         this.javier.body.setMass(1);
@@ -75,7 +68,7 @@ class NivelC7 extends Phaser.Scene{
         this.anims.create({ key: 'samuraiEscalar', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiE', suffix: '.png', start: 1, end:2 }), repeat: -1, frameRate: 6 });
 
         // ESCALERA 
-        this.escalera = this.add.image(300, 215, 'NivelC7/escalera').setScale(1.5);
+        this.escalera = this.add.image(327, 215, 'NivelC7/escalera').setScale(1.5);
         //CUERDA
         this.cuerda = this.add.image(495, 342, 'NivelC7/cuerda').setScale(0.746,0.3);
         // this.cuerda.body.setSize(300,10);
@@ -177,24 +170,24 @@ class NivelC7 extends Phaser.Scene{
         });
 
         //COLISIÓN con picos
-        //console.log(this.contadorVidas)
         this.physics.add.collider(this.javier, this.picos, () => {
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
-            //this.contadorVidas -= 1;
-            //this.registry.events.emit('loseHeart',-1);
+            this.life--;
+            this.registry.events.emit('loseHeartB');
+            if(this.life === 0) {
+                this.musicaFondo.stop();
+                this.registry.events.emit('game_over');
+                this.scene.stop()
+            }
             this.javier.body.x=50;
-            //console.log(this.contadorVidas)
-            // if (this.contadorVidas==0){
-            //     this.musicaFondo.stop();
-            //     this.scene.start('GameOver');
-            // }
         });
 
         //COLISIÓN CON PUERTA / FINAL DE NIVEL
         this.physics.add.collider(this.javier, this.puerta, () => {
-            this.sound.pauseAll();
-            this.scene.start('NivelC8', /*{ score: this.contadorVidas }*/);
+            // this.sound.pauseAll();
+            this.scene.start('NivelC8', { score:this.life, musica: this.musicaFondo})
+            // this.scene.start('NivelC8', /*{ score: this.contadorVidas }*/);
         });
         //TECLADO
         this.cursors = this.input.keyboard.createCursorKeys();

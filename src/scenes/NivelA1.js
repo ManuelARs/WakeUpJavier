@@ -27,7 +27,7 @@ class NivelA1 extends Phaser.Scene{
         //MÚSICA
         this.musicaFondoA = this.sound.add('nivel1M',{loop:true});
         this.musicaFondoA.play();
-        console.log(this.musicaFondoA)
+        //console.log(this.musicaFondoA)
         
         //FONDO 
         this.fondo = this.add.image(800, 395, 'NivelA1/NivelA1').setDepth(-2).setScale(.37,.35);
@@ -56,12 +56,12 @@ class NivelA1 extends Phaser.Scene{
         this.dog.body.setSize(480, 300);
         this.dog.body.setMass(1);
 
-        this.gata = this.physics.add.sprite(600, 560, 'Gata', 0).setScale(3)
+        this.gata = this.physics.add.sprite(600,560, 'Gata', 0).setScale(3)
         this.gata.body.setSize(20, 55);
         this.gata.body.setMass(1);
         this.gata.setPushable(false);
         this.gata.flipX=true;
-        this.gata.body.setImmovable(true);
+        // this.gata.body.setImmovable(true);
 
         //ANIMACIONES
         this.anims.create({ key: 'dogC', frames: this.anims.generateFrameNames('Dog', { prefix: 'dog', suffix: '.png', start: 1, end: 4 }), repeat: -1, frameRate: 8 });
@@ -99,8 +99,8 @@ class NivelA1 extends Phaser.Scene{
             this.movimiento = 0;
             this.dog.x=496.6;
             this.dog.y=624.9;
-            console.log(this.dog.x)
-            console.log(this.dog.y)
+            // console.log(this.dog.x)
+            // console.log(this.dog.y)
             this.gataCara.setAlpha(1);
             this.fondoDialogo.setAlpha(1);
             this.dialogo2.setAlpha(1);
@@ -122,7 +122,7 @@ class NivelA1 extends Phaser.Scene{
                 this.gata.flipX=false;
             },
             onComplete: () => {
-                    console.log(this.gata.x);
+                    // console.log(this.gata.x);
                     this.gata.setAlpha(0);
                     this.gata.disableBody(true, true);
                     this.movimiento = 1;

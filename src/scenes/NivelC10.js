@@ -97,7 +97,7 @@ class NivelC10 extends Phaser.Scene{
                 duration: 3000,
                 onComplete: () => {
                     this.cameras.main.setZoom(1); 
-                    console.log("Entro al complete");
+                    //console.log("Entro al complete");
                     //this.physics.add.collider(this.javier, this.techo2);
                     this.puerta.disableBody(true,true);
                     this.barraA.getChildren()[13].enableBody(false,0,0,true,true);
@@ -124,7 +124,7 @@ class NivelC10 extends Phaser.Scene{
             //this.barraA.getChildren()[13].disableBody(true,true);
             this.javier.body.x=60;
             this.javier.body.y=100;
-            console.log("Colision");
+            //console.log("Colision");
         });
 
         //TECLADO

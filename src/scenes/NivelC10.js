@@ -39,6 +39,14 @@ class NivelC10 extends Phaser.Scene{
         this.barraA.create(1410, 400, 'NivelC2/barra').setScale(0.4,0.3).refreshBody();
         this.barraA.create(1090, 250, 'NivelC2/barra').setScale(0.6,0.3).refreshBody();
         this.barraA.create(1460, 150, 'NivelC2/barra').setScale(0.7,0.3).refreshBody();
+        this.barraA.create(260, 710, 'NivelC2/barra').setScale(0.5,0.3).refreshBody();
+        this.barraA.create(400, 600, 'NivelC2/barra').setScale(0.3).refreshBody();
+        this.barraA.create(580, 500, 'NivelC2/barra').setScale(0.3).refreshBody();
+        this.barraA.create(760, 400, 'NivelC2/barra').setScale(0.3).refreshBody();
+        this.barraA.create(465, 300, 'NivelC2/barra').setScale(0.3).refreshBody();
+        this.barraA.create(750, 170, 'NivelC2/barra').setScale(0.3).refreshBody();
+        this.barraA.create(800, 710, 'NivelC2/barra').setScale(0.55,0.3).refreshBody().disableBody(true,true);;
+
 
         //Japones
         this.japones = this.physics.add.staticImage(1020, 200, 'NivelC10/japones').setScale(0.34).refreshBody();
@@ -48,16 +56,15 @@ class NivelC10 extends Phaser.Scene{
         this.gong = this.physics.add.staticImage(1520, 80, 'NivelC10/gong').setScale(0.46).refreshBody();
         this.reflejo = this.add.image(1512, 95, 'NivelC10/reflejo').setScale(0.7).setAlpha(0);
         // Mascara
-        this.mascara = this.physics.add.staticImage(620, 650, 'NivelC10/mascara').refreshBody();
+        this.mascara = this.physics.add.staticImage(760, 100, 'NivelC10/mascara').refreshBody();
         //Escalar
         this.escalar = this.physics.add.staticImage(220, 280, 'NivelC10/escalar').setScale(0.3).refreshBody();
         this.escalar2 = this.physics.add.staticImage(880, 280, 'NivelC10/escalar').setScale(0.3).refreshBody();
 
         //Picos
         var picos = this.physics.add.staticGroup();
-        picos.create(10, 750, 'NivelC2/picos2').setScale(0.3).refreshBody();
-        picos.create(1200, 750, 'NivelC2/picos2').setScale(0.3).refreshBody();
-        picos.create(1450, 750, 'NivelC2/picos2').setScale(0.3).refreshBody();
+        picos.create(40, 750, 'NivelC2/picos').setScale(0.3).refreshBody();
+        picos.create(1210, 750, 'NivelC2/picos').setScale(0.3).refreshBody();
 
         //ANIMACIONES
         this.anims.create({ key: 'samuraiG', frames: this.anims.generateFrameNames('Samurai', { prefix: 'samuraiG', suffix: '.png', start: 1, end: 3 }), repeat: -1, frameRate: 6 });
@@ -94,6 +101,7 @@ class NivelC10 extends Phaser.Scene{
                     console.log("Entro al complete");
                     //this.physics.add.collider(this.javier, this.techo2);
                     this.puerta.disableBody(true,true);
+                    this.barraA.getChildren()[13].enableBody(false,0,0,true,true);
                 }
             });
         }
@@ -114,6 +122,7 @@ class NivelC10 extends Phaser.Scene{
         this.physics.add.collider(this.javier, picos, () => {
             //EFECTO DE VIBRACIÓN EN CÁMARA
             this.cameras.main.shake(500,0.008);
+            //this.barraA.getChildren()[13].disableBody(true,true);
             this.javier.body.x=60;
             this.javier.body.y=100;
             console.log("Colision");
